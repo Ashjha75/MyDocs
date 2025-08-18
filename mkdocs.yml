@@ -16,10 +16,10 @@ extra_css:
   - overrides/extra.css
 
 nav:
-  # - Home: index.md
-  # - Getting Started:
-  #     - Installation: getting-started/install.md
-  #     - Usage: getting-started/usage.md
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/install.md
+      - Usage: getting-started/usage.md
   - Spring Boot:
       - Overview: spring-boot/overview.md
       - Project Flow:
