@@ -1,0 +1,29 @@
+site_name: Project Docs
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+
+palette:
+  - scheme: slate
+    primary: custom
+    accent: custom
+
+extra_css:
+  - overrides/extra.css
+
+nav:
+  # - Home: index.md
+  # - Getting Started:
+  #     - Installation: getting-started/install.md
+  #     - Usage: getting-started/usage.md
+  - Spring Boot:
+      - Overview: spring-boot/overview.md
+      - Project Flow:
+          - Core: spring-boot/project-flow/core.md
+          - MVC: spring-boot/project-flow/mvc.md
+          - Data: spring-boot/project-flow/data.md
+         
