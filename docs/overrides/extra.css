@@ -7,7 +7,7 @@
 */
 
 /* --- Color Palette & Font Variables --- */
-[data-md-color-scheme="slate"] {
+:root {
   --gh-bg-canvas: #0d1117;         /* Deepest background */
   --gh-bg-surface: #161b22;        /* Component bg (sidebar, header) */
   --gh-bg-code: #011627;           /* Dedicated code block background */

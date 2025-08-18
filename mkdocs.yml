@@ -13,7 +13,7 @@ palette:
     accent: custom
 
 extra_css:
-  - css/extra.css
+  - overrides/extra.css
 
 nav:
   - Home: index.md
