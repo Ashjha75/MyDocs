@@ -26,4 +26,7 @@ nav:
           - Core: spring-boot/project-flow/core.md
           - MVC: spring-boot/project-flow/mvc.md
           - Data: spring-boot/project-flow/data.md
-         
+plugins:
+  - search
+  - mermaid2
+
