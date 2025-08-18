@@ -62,10 +62,11 @@ body,
 }
 
 .md-grid {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 100%  !important;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100% !important;
 }
+
 /* --- Header, Footer, Sidebar with Borders --- */
 .md-header {
   background-color: var(--gh-bg-surface);
@@ -293,6 +294,25 @@ body,
   }
 }
 
-    .md-nav--secondary .md-nav__title {
-         background: transparent;
-    }
+.md-nav--secondary .md-nav__title {
+  background: transparent;
+}
+
+.md-nav--secondary .md-nav__title[for=__toc] {
+  scroll-snap-align: start;
+  color: #fff;
+}
+
+@media screen and (min-width: 76.25em) {
+  [dir=ltr] .md-nav--primary .md-nav__list {
+    padding-left: .8rem;
+    background: var(--gh-bg-canvas);
+  }
+}
+
+.md-content {
+  flex-grow: 1;
+  border: .5px solid #3d444d;
+  border-radius: 7px;
+  margin: 10px;
+}
