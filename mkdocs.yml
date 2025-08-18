@@ -24,7 +24,7 @@ nav:
       - Overview: spring-boot/overview.md
       - Project Flow:
           - Core: spring-boot/project-flow/core.md
-          - MVC: spring-boot/project-flow/mvc.md
+          - MVC Request Flow: spring-boot/project-flow/core2.md
           - Data: spring-boot/project-flow/data.md
 
 # This block is required to enable code syntax highlighting

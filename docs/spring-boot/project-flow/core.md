@@ -19,6 +19,13 @@ public class PatientServiceApplication {
 }
 ```
 
+``` mermaid
+graph TD
+    A[Start] --> B{Is it working?}
+    B -- Yes --> C[Great!]
+    B -- No --> D[Check config]
+```
+
 **Step by step flow:**
 
 1. `SpringApplication.run(...)` creates or loads an **ApplicationContext** (IoC container).
