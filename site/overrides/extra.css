@@ -1,0 +1,228 @@
+/* IntelliJ IDEA-inspired MkDocs Material CSS
+   ------------------------------------------
+   - Dark backgrounds: main (#2b2b2b), sidebar/header (#232323)
+   - IntelliJ New UI typography & colors
+   - Readability + clean hierarchy
+   - Icons and navigation styled for clarity
+*/
+
+/* --- Main backgrounds --- */
+body,
+.md-content,
+.md-content__inner,
+.md-main,
+.md-typeset,
+.md-typeset pre,
+.md-typeset code,
+.md-typeset table,
+.md-typeset blockquote,
+.md-typeset hr,
+.md-typeset ul,
+.md-typeset ol,
+.md-typeset li,
+.md-typeset p,
+.md-typeset span,
+.md-typeset strong,
+.md-typeset em,
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6,
+.md-typeset .admonition,
+.md-typeset .highlight,
+.md-typeset .highlight pre,
+.md-typeset .highlight code {
+  background-color: #2b2b2b !important;
+  color: #a9b7c6 !important;
+  border-color: #232323 !important;
+  font-family: 'Inter', 'Segoe UI', 'JetBrains Mono', 'Consolas', sans-serif !important;
+  letter-spacing: 0.01em;
+  line-height: 1.65;
+  font-size: 16px;
+}
+
+/* --- Sidebar, header, navigation --- */
+.md-sidebar,
+.md-sidebar--primary,
+.md-sidebar--secondary,
+.md-header,
+.md-footer,
+.md-nav,
+.md-nav__list,
+.md-nav__item,
+.md-nav__link,
+.md-search,
+.md-search__input,
+.md-tabs {
+  background-color: #232323 !important;
+  color: #a9b7c6 !important;
+  border-color: #2b2b2b !important;
+}
+
+/* --- Headings (IntelliJ-like hierarchy) --- */
+.md-typeset h1 {
+  color: #ffffff !important;
+  font-size: 2.2em;
+  font-weight: 700;
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+}
+.md-typeset h2 {
+  color: #ffc66d !important;
+  font-size: 1.8em;
+  font-weight: 600;
+  border-bottom: 1px solid #3a3f44;
+  padding-bottom: 0.3em;
+  margin-top: 1.2em;
+}
+.md-typeset h3 {
+  color: #6897bb !important;
+  font-size: 1.4em;
+  font-weight: 600;
+  margin-top: 1em;
+}
+.md-typeset h4, 
+.md-typeset h5, 
+.md-typeset h6 {
+  color: #cc7832 !important;
+  font-weight: 500;
+  margin-top: 0.8em;
+}
+
+/* --- Paragraphs --- */
+.md-typeset p {
+  margin: 0.7em 0;
+}
+
+/* --- Links --- */
+a,
+.md-nav__link,
+.md-nav__item a {
+  color: #389fd6 !important;
+  text-decoration: none;
+  font-weight: 500;
+}
+a:hover,
+.md-nav__link:hover,
+.md-nav__item a:hover {
+  color: #ffc66d !important;
+  text-decoration: none;
+}
+
+/* --- Sidebar links --- */
+.md-nav__item a,
+.md-nav__link {
+  color: #a9b7c6 !important;
+  font-size: 15px;
+  padding: 6px 12px;
+}
+.md-nav__item a:hover,
+.md-nav__item a:focus,
+.md-nav__item--active > a {
+  color: #ffc66d !important;
+  background: #2b2b2b !important;
+  font-weight: bold;
+}
+
+/* --- Code blocks and inline code --- */
+code,
+pre,
+.md-typeset code,
+.md-typeset pre {
+  background-color: #2b2b2b !important;
+  color: #a9b7c6 !important;
+  font-family: 'JetBrains Mono', 'Fira Mono', 'Consolas', monospace !important;
+  border-radius: 4px;
+  font-size: 0.95em;
+}
+.md-typeset code {
+  color: #ffc66d !important;
+  padding: 0.15em 0.3em;
+}
+
+/* --- Syntax highlighting --- */
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-literal {
+  color: #cc7832 !important;
+}
+.hljs-string,
+.hljs-title,
+.hljs-section {
+  color: #6a8759 !important;
+}
+.hljs-comment {
+  color: #808080 !important;
+  font-style: italic;
+}
+.hljs-number {
+  color: #6897bb !important;
+}
+.hljs-attr,
+.hljs-variable {
+  color: #9876aa !important;
+}
+
+/* --- Tables --- */
+.md-typeset table {
+  border-collapse: collapse;
+  margin: 1em 0;
+  width: 100%;
+}
+.md-typeset th {
+  background: #232323 !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 0.6em;
+}
+.md-typeset td {
+  background: #2b2b2b !important;
+  color: #a9b7c6 !important;
+  padding: 0.6em;
+  border-top: 1px solid #3a3f44 !important;
+}
+
+/* --- Blockquotes & Admonitions --- */
+.md-typeset blockquote,
+.md-typeset .admonition {
+  font-style: italic;
+  background-color: #232323 !important;
+  color: #9aa0a6 !important;
+  border-left: 3px solid #6897bb !important;
+  padding: 0.6em 1em;
+  margin: 1em 0;
+}
+
+/* --- Icons --- */
+.md-icon,
+.md-nav__icon,
+.md-typeset .md-icon,
+.md-typeset svg,
+.md-nav__item .md-icon {
+  color: #ffc66d !important;
+  fill: #ffc66d !important;
+  vertical-align: middle;
+  opacity: 1 !important;
+}
+
+/* --- Search bar --- */
+.md-search__input {
+  color: #a9b7c6 !important;
+  background-color: #232323 !important;
+}
+
+/* --- Flat design (remove shadows) --- */
+* {
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+  background: #232323;
+}
+::-webkit-scrollbar-thumb {
+  background: #2b2b2b;
+}

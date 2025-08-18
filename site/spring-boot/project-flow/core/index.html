@@ -1,0 +1,1143 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../../overview/">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
+    
+    
+      
+        <title>Core - Project Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../overrides/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#part-1-spring-boot-core-deep-dive" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Project Docs" class="md-header__button md-logo" aria-label="Project Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Project Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Core
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../getting-started/install.md" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../overview/" class="md-tabs__link">
+          
+  
+  
+  Spring Boot
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Project Docs" class="md-nav__button md-logo" aria-label="Project Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Project Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/install.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/usage.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Usage
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Spring Boot
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Spring Boot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Project Flow
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Project Flow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Core
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Core
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-happens-when-you-start-a-spring-boot-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What happens when you start a Spring Boot app?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ioc-inversion-of-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. IoC (Inversion of Control)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-beans" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Beans
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dependency-injection-di" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Dependency Injection (DI)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Dependency Injection (DI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Injection:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-springbootapplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. @SpringBootApplication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-profiles-configuration-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Profiles &amp; Configuration Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-bean-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Bean Scopes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-application-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Application Events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-startup-hooks-commandlinerunner" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Startup Hooks (CommandLineRunner)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mvc.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MVC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-what-happens-when-you-start-a-spring-boot-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. What happens when you start a Spring Boot app?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-ioc-inversion-of-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. IoC (Inversion of Control)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-beans" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Beans
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-dependency-injection-di" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Dependency Injection (DI)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. Dependency Injection (DI)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-injection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Injection:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-springbootapplication" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. @SpringBootApplication
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-profiles-configuration-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Profiles &amp; Configuration Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-bean-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Bean Scopes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-application-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Application Events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-startup-hooks-commandlinerunner" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Startup Hooks (CommandLineRunner)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<hr />
+<h1 id="part-1-spring-boot-core-deep-dive">📌 Part 1: Spring Boot Core (Deep Dive)</h1>
+<hr />
+<h2 id="1-what-happens-when-you-start-a-spring-boot-app"><strong>1. What happens when you start a Spring Boot app?</strong></h2>
+<p>When you run:</p>
+<pre><code class="language-java">@SpringBootApplication
+public class PatientServiceApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(PatientServiceApplication.class, args);
+    }
+}
+</code></pre>
+<p><strong>Step by step flow:</strong></p>
+<ol>
+<li><code>SpringApplication.run(...)</code> creates or loads an <strong>ApplicationContext</strong> (IoC container).</li>
+<li><strong>Component Scanning</strong>: Finds all classes annotated with <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, <code>@Controller</code>, etc.</li>
+<li><strong>Auto-Configuration</strong>: Based on dependencies (e.g., if <code>spring-boot-starter-data-jpa</code> is in classpath, Boot configures JPA + DataSource).</li>
+<li>Registers the <strong>DispatcherServlet</strong> (front controller in MVC).</li>
+<li>Runs all beans implementing <code>CommandLineRunner</code> or <code>ApplicationRunner</code>.</li>
+<li>Starts <strong>embedded Tomcat/Jetty/Undertow</strong>.</li>
+</ol>
+<p>👉 <strong>Interview Q:</strong> <em>How is Spring Boot different from Spring?</em>
+<strong>A:</strong> Spring Boot adds auto-configuration, opinionated defaults, and an embedded server so you can focus on business logic instead of boilerplate.</p>
+<hr />
+<h2 id="2-ioc-inversion-of-control"><strong>2. IoC (Inversion of Control)</strong></h2>
+<p>Traditionally, you write:</p>
+<pre><code class="language-java">PatientRepository repo = new PatientRepository();
+PatientService service = new PatientService(repo);
+</code></pre>
+<p>With Spring IoC:</p>
+<ul>
+<li>You don’t create objects manually.</li>
+<li>You just <strong>declare beans</strong>, Spring manages lifecycle + wiring.</li>
+<li>IoC Container = <code>ApplicationContext</code>.</li>
+</ul>
+<p>👉 <strong>Interview Q:</strong> <em>What is IoC in simple words?</em>
+<strong>A:</strong> Instead of you controlling object creation, you delegate that responsibility to Spring.</p>
+<hr />
+<h2 id="3-beans"><strong>3. Beans</strong></h2>
+<p>A <strong>Bean</strong> = Object managed by IoC container.</p>
+<p>Ways to create:</p>
+<ol>
+<li><strong>Annotation-based (common in Boot)</strong></li>
+</ol>
+<p><code>java
+   @Service
+   public class PatientService { }</code></p>
+<ol>
+<li><strong>Java-based (fine-grained control)</strong></li>
+</ol>
+<p><code>java
+   @Configuration
+   public class AppConfig {
+       @Bean
+       public EmailNotifier emailNotifier() {
+           return new EmailNotifier();
+       }
+   }</code></p>
+<p>👉 <strong>Interview Q:</strong></p>
+<ul>
+<li><em>When use <code>@Bean</code> vs <code>@Component</code>?</em>
+  <strong>A:</strong> Use <code>@Component</code> for your own classes (auto-detected). Use <code>@Bean</code> for third-party libraries or when you need fine control.</li>
+</ul>
+<hr />
+<h2 id="4-dependency-injection-di"><strong>4. Dependency Injection (DI)</strong></h2>
+<p>Spring injects required beans into other beans.</p>
+<h3 id="types-of-injection">Types of Injection:</h3>
+<ol>
+<li><strong>Field Injection</strong> ❌ (bad practice)</li>
+</ol>
+<p><code>java
+   @Autowired
+   private PatientRepository repo;</code></p>
+<ol>
+<li><strong>Setter Injection</strong> ✅ (okay, but mutable)</li>
+</ol>
+<p><code>java
+   @Service
+   public class PatientService {
+       private PatientRepository repo;
+       @Autowired
+       public void setRepo(PatientRepository repo) {
+           this.repo = repo;
+       }
+   }</code></p>
+<ol>
+<li><strong>Constructor Injection</strong> ✅✅ (recommended)</li>
+</ol>
+<p>```java
+   @Service
+   public class PatientService {
+       private final PatientRepository repo;
+       private final EmailNotifier notifier;</p>
+<pre><code>   public PatientService(PatientRepository repo, EmailNotifier notifier) {
+       this.repo = repo;
+       this.notifier = notifier;
+   }
+</code></pre>
+<p>}
+   ```</p>
+<p>👉 <strong>Why Constructor Injection?</strong></p>
+<ul>
+<li>Dependencies are <strong>explicit</strong>.</li>
+<li>Promotes <strong>immutability</strong>.</li>
+<li>Helps <strong>unit testing</strong>.</li>
+<li>Prevents <strong>null issues</strong>.</li>
+</ul>
+<hr />
+<h2 id="5-springbootapplication"><strong>5. @SpringBootApplication</strong></h2>
+<p>It is shorthand for 3 annotations:</p>
+<ul>
+<li><code>@Configuration</code> → marks class as a config provider.</li>
+<li><code>@EnableAutoConfiguration</code> → enables Boot auto-setup (DataSource, MVC, Jackson).</li>
+<li><code>@ComponentScan</code> → scans current + subpackages for beans.</li>
+</ul>
+<p>👉 <strong>Interview Q:</strong> <em>What if your beans are in another package?</em>
+<strong>A:</strong> Use <code>@ComponentScan(basePackages = "...")</code>.</p>
+<hr />
+<h2 id="6-profiles-configuration-management"><strong>6. Profiles &amp; Configuration Management</strong></h2>
+<p>You rarely use one config everywhere (dev DB ≠ prod DB).
+Spring Boot supports <strong>profiles</strong>.</p>
+<p>Example:</p>
+<pre><code class="language-yaml"># application-dev.yml
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+---
+# application-prod.yml
+spring:
+  datasource:
+    url: jdbc:mysql://prod-server/patients
+</code></pre>
+<p>Run with:</p>
+<pre><code class="language-bash">java -jar app.jar --spring.profiles.active=prod
+</code></pre>
+<p>👉 <strong>Real-world use case:</strong></p>
+<ul>
+<li>Developers use H2 DB (lightweight).</li>
+<li>Production uses MySQL/Postgres with connection pooling.</li>
+</ul>
+<hr />
+<h2 id="7-bean-scopes"><strong>7. Bean Scopes</strong></h2>
+<p>Default = <strong>singleton</strong> (one per ApplicationContext).
+Other scopes:</p>
+<ul>
+<li><code>prototype</code>: new instance each time requested.</li>
+<li><code>request</code>: one per HTTP request.</li>
+<li><code>session</code>: one per HTTP session.</li>
+</ul>
+<p>Example:</p>
+<pre><code class="language-java">@Component
+@Scope(&quot;prototype&quot;)
+public class ReportGenerator {
+   // new instance every request
+}
+</code></pre>
+<p>👉 <strong>Interview Q:</strong> <em>When to use prototype scope?</em>
+<strong>A:</strong> For stateful objects (rare in services, common in utility objects like PDF generators).</p>
+<hr />
+<h2 id="8-application-events"><strong>8. Application Events</strong></h2>
+<p>Spring supports publish/subscribe style events.
+Useful for decoupling.</p>
+<p>Example: Send email when patient is registered.</p>
+<pre><code class="language-java">public class PatientRegisteredEvent extends ApplicationEvent {
+    private final Patient patient;
+    public PatientRegisteredEvent(Patient patient) {
+        super(patient);
+        this.patient = patient;
+    }
+}
+</code></pre>
+<p>Publisher:</p>
+<pre><code class="language-java">@Service
+public class PatientService {
+    private final ApplicationEventPublisher publisher;
+    private final PatientRepository repo;
+
+    public PatientService(PatientRepository repo, ApplicationEventPublisher publisher) {
+        this.repo = repo;
+        this.publisher = publisher;
+    }
+
+    public Patient createPatient(Patient patient) {
+        Patient saved = repo.save(patient);
+        publisher.publishEvent(new PatientRegisteredEvent(saved));
+        return saved;
+    }
+}
+</code></pre>
+<p>Listener:</p>
+<pre><code class="language-java">@Component
+public class PatientEmailListener {
+    @EventListener
+    public void handle(PatientRegisteredEvent event) {
+        System.out.println(&quot;Sending email for new patient: &quot; + event.getPatient().getName());
+    }
+}
+</code></pre>
+<hr />
+<h2 id="9-startup-hooks-commandlinerunner"><strong>9. Startup Hooks (CommandLineRunner)</strong></h2>
+<p>Run logic after startup → often used for <strong>data seeding</strong> or <strong>integration checks</strong>.</p>
+<pre><code class="language-java">@Component
+public class DataSeeder implements CommandLineRunner {
+    private final PatientRepository repo;
+
+    public DataSeeder(PatientRepository repo) {
+        this.repo = repo;
+    }
+
+    @Override
+    public void run(String... args) {
+        repo.save(new Patient(&quot;John Doe&quot;, 30));
+        System.out.println(&quot;Sample patient added!&quot;);
+    }
+}
+</code></pre>
+<hr />
+<h1 id="interview-checklist-for-part-1">✅ Interview Checklist for Part 1</h1>
+<ul>
+<li>IoC = Spring manages object creation &amp; wiring.</li>
+<li>Beans: <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, <code>@Bean</code>.</li>
+<li>DI types (constructor preferred).</li>
+<li><code>@SpringBootApplication</code> = 3 annotations.</li>
+<li>Profiles (<code>application-dev.yml</code>, <code>application-prod.yml</code>).</li>
+<li>Bean scopes (singleton, prototype, request, session).</li>
+<li>Application events for decoupling.</li>
+<li><code>CommandLineRunner</code> for startup logic.</li>
+</ul>
+<hr />
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+    
+  </body>
+</html>
