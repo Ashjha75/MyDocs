@@ -7,11 +7,11 @@ theme:
     - navigation.sections
     - navigation.expand
 
+# This activates the dark theme, which is required for your CSS to work
 palette:
   - scheme: slate
-    primary: custom
-    accent: custom
 
+# This path must match the location of your CSS file (docs/css/extra.css)
 extra_css:
   - overrides/extra.css
 
@@ -26,7 +26,13 @@ nav:
           - Core: spring-boot/project-flow/core.md
           - MVC: spring-boot/project-flow/mvc.md
           - Data: spring-boot/project-flow/data.md
+
+# This block is required to enable code syntax highlighting
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.superfences
+
 plugins:
   - search
   - mermaid2
-
