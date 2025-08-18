@@ -128,16 +128,28 @@ body, .md-main {
   font-size: 85%;
   font-family: var(--gh-font-mono);
 }
-.md-typeset pre, .md-typeset .highlight {
-  background-color: var(--gh-bg-surface); /* Use surface color for consistency */
-  border: 1px solid var(--gh-border-default);
+/* Remove double border from code blocks */
+.md-typeset pre {
+  background-color: var(--gh-bg-surface);
+  border: 1px solid var(--gh-border-default) !important;
   border-radius: 6px;
   padding: 1em;
+  box-shadow: none !important;
 }
 .md-typeset pre code {
   background-color: transparent;
   padding: 0;
   color: var(--gh-code-fg);
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove border from code block containers (admonitions, etc.) */
+.md-typeset .admonition,
+.md-typeset .admonition .highlight,
+.md-typeset .admonition pre {
+  border: none !important;
+  box-shadow: none !important;
 }
 
 /* --- Syntax Highlighting (Primer/GitHub Style) --- */
@@ -200,10 +212,10 @@ body, .md-main {
 
 /* --- Custom Additions --- */
 .md-content {
-    border: 1px solid var(--gh-border-default);
-    border-radius: 7px;
-    margin: 10px;
-    background: var(--gh-bg-surface);
+  border: none;
+  border-radius: 7px;
+  margin: 10px;
+  background: var(--gh-bg-surface);
 }
 
 .md-nav--secondary .md-nav__title {
