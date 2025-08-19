@@ -6,7 +6,7 @@ theme:
     - navigation.sections
     - navigation.expand
     - navigation.footer
-
+use_directory_urls: false
 # This activates the dark theme, which is required for your CSS to work
 palette:
   - scheme: slate
