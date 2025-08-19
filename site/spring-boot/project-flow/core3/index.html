@@ -12,6 +12,8 @@
         <link rel="prev" href="../core2/">
       
       
+        <link rel="next" href="../core4/">
+      
       
       <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
@@ -405,35 +407,16 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How Auto-Configuration Works">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#conditional-annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      @Conditional Annotations
-    </span>
-  </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#boot-startup-flow-detailed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Boot Startup Flow (Detailed)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#spring-mvc-advanced-topics" class="md-nav__link">
     <span class="md-ellipsis">
-      ## Spring MVC Advanced Topics
+      Spring MVC Advanced Topics
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="## Spring MVC Advanced Topics">
+    <nav class="md-nav" aria-label="Spring MVC Advanced Topics">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -458,15 +441,15 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#spring-aop-proxies" class="md-nav__link">
     <span class="md-ellipsis">
-      ## Spring AOP &amp; Proxies
+      Spring AOP &amp; Proxies
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="## Spring AOP &amp; Proxies">
+    <nav class="md-nav" aria-label="Spring AOP &amp; Proxies">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -500,16 +483,34 @@
     </nav>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../core4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validation & DTOs
+    
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -659,35 +660,16 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="How Auto-Configuration Works">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#conditional-annotations" class="md-nav__link">
-    <span class="md-ellipsis">
-      @Conditional Annotations
-    </span>
-  </a>
-  
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#boot-startup-flow-detailed" class="md-nav__link">
-    <span class="md-ellipsis">
-      Boot Startup Flow (Detailed)
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#spring-mvc-advanced-topics" class="md-nav__link">
     <span class="md-ellipsis">
-      ## Spring MVC Advanced Topics
+      Spring MVC Advanced Topics
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="## Spring MVC Advanced Topics">
+    <nav class="md-nav" aria-label="Spring MVC Advanced Topics">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -712,15 +694,15 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#spring-aop-proxies" class="md-nav__link">
     <span class="md-ellipsis">
-      ## Spring AOP &amp; Proxies
+      Spring AOP &amp; Proxies
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="## Spring AOP &amp; Proxies">
+    <nav class="md-nav" aria-label="Spring AOP &amp; Proxies">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -747,11 +729,6 @@
       Example: How @Transactional Works
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -789,8 +766,6 @@
 <li><strong>Conditional Evaluation</strong>: Each auto-configuration class is evaluated. These classes are heavily annotated with <strong><code>@Conditional</code></strong> annotations. Spring checks these conditions to decide whether to activate the configuration and create the associated beans.</li>
 <li><strong>Bean Creation</strong>: If all conditions for an auto-configuration class are met, the beans defined within it are registered in the <code>ApplicationContext</code>.</li>
 </ol>
-<!-- end list -->
-
 <pre class="mermaid"><code>graph TD
     A[@SpringBootApplication] -- includes --&gt; B[@EnableAutoConfiguration];
     B -- 1. Triggers Scan --&gt; C[Classpath JARs];
@@ -802,50 +777,31 @@
         F -- No --&gt; H[❌ Deactivate &amp; Skip];
     end
     G --&gt; I[ApplicationContext];
-    H --&gt; I[ApplicationContext];</code></pre>
-<hr />
-<h4 id="conditional-annotations">@Conditional Annotations</h4>
-<p><code>@Conditional</code> annotations are the "brains" of auto-configuration. They allow a configuration to be included only if certain conditions are true. Interviewers love these because they demonstrate a deep understanding of Spring's inner workings.</p>
-<table>
-<thead>
-<tr>
-<th>Annotation</th>
-<th>Purpose</th>
-<th>Example Use Case</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong><code>@ConditionalOnClass</code></strong></td>
-<td>The configuration is applied only if the specified class is present on the classpath.</td>
-<td><code>DataSourceAutoConfiguration</code> only runs if <code>javax.sql.DataSource</code> is present.</td>
-</tr>
-<tr>
-<td><strong><code>@ConditionalOnMissingBean</code></strong></td>
-<td>A bean is created only if no other bean of the same type is already defined in the context.</td>
-<td>Creates a default <code>ObjectMapper</code> bean only if the user hasn't defined their own.</td>
-</tr>
-<tr>
-<td><strong><code>@ConditionalOnProperty</code></strong></td>
-<td>The configuration is applied only if a specific property in the environment has a certain value.</td>
-<td><code>ServerPropertiesAutoConfiguration</code> can be disabled with <code>spring.main.web-application-type=none</code>.</td>
-</tr>
-<tr>
-<td><strong><code>@ConditionalOnBean</code></strong></td>
-<td>The configuration is applied only if a bean of the specified type already exists in the context.</td>
-<td>Auto-configuring a component that depends on an already-configured <code>DataSource</code>.</td>
-</tr>
-<tr>
-<td><strong><code>@ConditionalOnWebApplication</code></strong></td>
-<td>The configuration is applied only if the application is a web application.</td>
-<td><code>WebMvcAutoConfiguration</code> only runs if it detects a web context.</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h4 id="boot-startup-flow-detailed">Boot Startup Flow (Detailed)</h4>
-<p>The <code>SpringApplication.run()</code> method orchestrates a complex sequence of events to get the application running.</p>
-<pre class="mermaid"><code>graph TD
+    H --&gt; I[ApplicationContext];
+````
+
+-----
+
+#### @Conditional Annotations
+
+`@Conditional` annotations are the "brains" of auto-configuration. They allow a configuration to be included only if certain conditions are true. Interviewers love these because they demonstrate a deep understanding of Spring's inner workings.
+
+| Annotation | Purpose | Example Use Case |
+| --- | --- | --- |
+| **`@ConditionalOnClass`** | The configuration is applied only if the specified class is present on the classpath. | `DataSourceAutoConfiguration` only runs if `javax.sql.DataSource` is present. |
+| **`@ConditionalOnMissingBean`** | A bean is created only if no other bean of the same type is already defined in the context. | Creates a default `ObjectMapper` bean only if the user hasn't defined their own. |
+| **`@ConditionalOnProperty`** | The configuration is applied only if a specific property in the environment has a certain value. | `ServerPropertiesAutoConfiguration` can be disabled with `spring.main.web-application-type=none`. |
+| **`@ConditionalOnBean`** | The configuration is applied only if a bean of the specified type already exists in the context. | Auto-configuring a component that depends on an already-configured `DataSource`. |
+| **`@ConditionalOnWebApplication`** | The configuration is applied only if the application is a web application. | `WebMvcAutoConfiguration` only runs if it detects a web context. |
+
+-----
+
+#### Boot Startup Flow (Detailed)
+
+The `SpringApplication.run()` method orchestrates a complex sequence of events to get the application running.
+
+```mermaid
+graph TD
     A[Start: SpringApplication.run()] --&gt; B[1. Prepare Environment];
     subgraph B
         B1[Load Properties &amp; Profiles]
@@ -889,7 +845,7 @@
 </ol>
 <hr />
 <hr />
-<h3 id="spring-mvc-advanced-topics">## Spring MVC Advanced Topics</h3>
+<h2 id="spring-mvc-advanced-topics">Spring MVC Advanced Topics</h2>
 <h4 id="filter-vs-interceptor-vs-controlleradvice">Filter vs. Interceptor vs. ControllerAdvice</h4>
 <p>These are three distinct mechanisms for intercepting requests, each operating at a different level and with a different purpose.</p>
 <table>
@@ -964,7 +920,7 @@
 </ul>
 <hr />
 <hr />
-<h3 id="spring-aop-proxies">## Spring AOP &amp; Proxies</h3>
+<h2 id="spring-aop-proxies">Spring AOP &amp; Proxies</h2>
 <h4 id="why-proxies-are-created-at-postprocessafterinitialization">Why Proxies are created at <code>postProcessAfterInitialization</code></h4>
 <p>The <code>BeanPostProcessor</code>'s <code>postProcessAfterInitialization</code> method is the <strong>last step</strong> in the bean's initialization lifecycle before it's considered ready for use. Creating the proxy here is critical for two reasons:</p>
 <ol>
@@ -1052,6 +1008,7 @@
 </ul>
 </li>
 </ol>
+<!-- end list -->
 
 
 
@@ -1096,6 +1053,22 @@
             </div>
           </a>
         
+        
+          
+          <a href="../core4/" class="md-footer__link md-footer__link--next" aria-label="Next: Validation &amp; DTOs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Validation & DTOs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
         
       </nav>
     
