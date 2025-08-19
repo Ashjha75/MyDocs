@@ -1,285 +1,439 @@
 
 
-# 📌 Part 2: Spring MVC Request Flow (Detailed & Interview Ready)
+## Spring MVC Request Flow: An In-Depth Look
 
----
+The Spring MVC request flow is orchestrated by the `DispatcherServlet`. It follows a highly structured, decoupled pattern using specific components to process a request from arrival to response.
 
-## **1. High-Level Flow**
+## 📖 Detailed Request Lifecycle
 
-When a request comes in (e.g., `GET /patients/1`):
+The flow for a RESTful API request is a precise sequence of events managed internally by the `DispatcherServlet`.
 
-1. **Client (Browser/Postman/Angular)** sends HTTP request.
-2. Request hits **DispatcherServlet** (Front Controller in Spring MVC).
-3. **Handler Mapping** finds the correct controller method.
-4. **Handler Adapter** invokes the method.
-5. **Controller Method** executes business logic (calls Service → Repository).
-6. **ResponseBody Advice + MessageConverters** convert Java objects → JSON/XML.
-7. Response sent back to client.
-
-👉 **Diagram (simplified flow)**
+Code snippet
 
 ```
-Client → DispatcherServlet → HandlerMapping → Controller → Service → Repository → DB
-       ←    JSON Response ←  MessageConverters  ←  Controller
+graph TD
+    A[Client Request] --> B(DispatcherServlet);
+    B -- 1. Find Handler --> C[HandlerMapping];
+    C -- 2. Return HandlerMethod --> B;
+    B -- 3. Find Adapter --> D[HandlerAdapter];
+    D -- 4. Return Supported Adapter --> B;
+    B -- 5. Invoke Handler --> E[Controller Method];
+    subgraph "Argument Resolvers"
+        F[@PathVariable]
+        G[@RequestParam]
+        H[@RequestBody]
+    end
+    E -- Uses --> F & G & H;
+    E -- 6. Return Value --> B;
+    B -- 7. Process Return Value --> I[HttpMessageConverter];
+    I -- 8. Serialize to JSON --> B;
+    B -- 9. Send Response --> A;
+
+    style D fill:#f9f,stroke:#333,stroke-width:2px
+    style I fill:#ccf,stroke:#333,stroke-width:2px
+
 ```
 
----
+**Step-by-Step Breakdown:**
 
-## **2. DispatcherServlet (Front Controller Pattern)**
+1.  **Request Reception (`DispatcherServlet`)**: The `DispatcherServlet` receives the `HttpServletRequest` from the servlet container (e.g., Tomcat).
+    
+2.  **Handler Resolution (`HandlerMapping`)**: The `DispatcherServlet` iterates through its registered `HandlerMapping` beans (like `RequestMappingHandlerMapping`) to find a suitable handler for the request. The handler is typically a `HandlerMethod` object, which is a reference to the specific method in your `@RestController` class.
+    
+3.  **Handler Adaptation (`HandlerAdapter`)**: Once a handler is found, the `DispatcherServlet` finds a `HandlerAdapter` that can execute it. For `@RequestMapping` methods, this is the `RequestMappingHandlerAdapter`. This decouples the `DispatcherServlet` from the specific way a handler method is invoked.
+    
+4.  **Argument Resolution**: The `HandlerAdapter` inspects the controller method's signature and uses registered `HandlerMethodArgumentResolver`s to resolve each argument. This is how annotations like `@PathVariable`, `@RequestParam`, and `@RequestBody` work. For `@RequestBody`, it uses an `HttpMessageConverter` to deserialize the request body into a Java object.
+    
+5.  **Handler Invocation**: The `HandlerAdapter` invokes the controller method with the resolved arguments. Your business logic in the `Service` and `Repository` layers is executed.
+    
+6.  **Return Value Handling**: The controller method returns a value. The `HandlerAdapter` uses a `HandlerMethodReturnValueHandler` to process this. For `@RestController` or `@ResponseBody` methods, this involves selecting an appropriate `HttpMessageConverter` (usually `MappingJackson2HttpMessageConverter`) to serialize the return object into a JSON response.
+    
+7.  **Response Generation**: The serialized JSON is written to the `HttpServletResponse` body. If `ResponseEntity` was returned, the status code and headers are set accordingly. The response is then sent back to the client.
+    
 
-* Acts as a single entry point for **all requests**.
-* Delegates request to right controller.
-* Registered automatically by Spring Boot.
+----------
 
-👉 **Interview Q:** *Why DispatcherServlet?*
-**A:** It centralizes request handling → better separation of concerns, flexible routing, and consistent handling of exceptions, views, etc.
+#### 🎯 Structured Interview Answers
 
----
+Feature
 
-## **3. Controller Layer**
+`@RequestParam`
 
-Controllers = entry points for handling HTTP requests.
+`@PathVariable`
 
-Example: **PatientController**
+**Purpose**
 
-```java
-@RestController
-@RequestMapping("/patients")
-public class PatientController {
-    private final PatientService service;
+Extracts values from the URL's query string.
 
-    public PatientController(PatientService service) {
-        this.service = service;
-    }
+Extracts values from the URL's path segments.
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Patient> getPatient(@PathVariable Long id) {
-        return ResponseEntity.ok(service.getPatientById(id));
-    }
+**URL Structure**
 
-    @PostMapping
-    public ResponseEntity<Patient> createPatient(@Valid @RequestBody Patient patient) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.createPatient(patient));
-    }
-}
-```
+`.../search?name=john&status=active`
 
-### Key Concepts:
+`.../patients/123` or `.../orders/456/items/789`
 
-* `@RestController` = `@Controller + @ResponseBody` (returns JSON by default).
-* `@RequestMapping` = base path.
-* `@GetMapping`, `@PostMapping`, etc. map HTTP verbs.
-* `@Valid` = trigger validation (Bean Validation API).
-* `ResponseEntity` = flexible HTTP response (status + headers + body).
+**Typical Use Case**
 
-👉 **Interview Q:** *Difference between `@RestController` and `@Controller`?*
-**A:** `@RestController` returns data (JSON/XML). `@Controller` returns views (JSP, Thymeleaf).
+Filtering, sorting, pagination, and optional data.
 
----
+Identifying a specific, unique resource.
 
-## **4. Request Parameters & Path Variables**
+**Annotation Example**
 
-### Query Params
+`@RequestParam(required = false) String status`
 
-```java
-@GetMapping
-public List<Patient> searchPatients(
-        @RequestParam(required = false) String name,
-        @RequestParam(defaultValue = "0") int page) {
-    return service.searchPatients(name, page);
-}
-```
+`@PathVariable Long patientId`
 
-### Path Variables
+-   Q: How does Spring convert JSON to a Java object?
+    
+    Spring's MVC module uses an abstraction called HttpMessageConverter.
+    
+    1.  When a request contains a body and the controller method parameter is annotated with **`@RequestBody`**, the framework invokes a suitable converter.
+        
+    2.  It selects the converter based on the request's `Content-Type` header. For `application/json`, it selects the **`MappingJackson2HttpMessageConverter`** (if Jackson is on the classpath).
+        
+    3.  This converter then uses the Jackson library to perform the data binding, mapping the JSON fields to the fields of the specified Java class.
+        
+-   Q: Why use ResponseEntity?
+    
+    Using ResponseEntity provides a higher level of control over the HTTP response compared to returning a plain object. It is the professional standard for building REST APIs.
+    
+    -   **Explicit Status Code Control**: You can programmatically set any HTTP status code (e.g., `HttpStatus.CREATED` (201), `HttpStatus.NO_CONTENT` (204)), which is crucial for RESTful compliance.
+        
+    -   **HTTP Header Manipulation**: It allows you to add custom headers to the response (e.g., `Location` headers for newly created resources or custom authentication headers).
+        
+    -   **Clear Intent**: The method signature `ResponseEntity<Patient>` makes it immediately clear that the method is responsible for constructing the full HTTP response, not just returning a data payload.
+        
 
-```java
-@GetMapping("/{id}")
-public Patient getById(@PathVariable Long id) {
-    return service.getPatientById(id);
-}
-```
+----------
 
-👉 **Interview Q:** *When to use `@PathVariable` vs `@RequestParam`?*
-**A:** Path variables = resource identifiers (`/patients/1`). Request params = filtering, pagination (`/patients?name=John&page=2`).
+----------
 
----
+### ## Spring Context & Bean Lifecycle: An In-Depth Look
 
-## **5. Validation**
+The lifecycle of a Spring bean is a formal process managed by the IoC container, offering several extension points for custom logic.
 
-Spring integrates **JSR-380 Bean Validation** (`javax.validation`).
+#### 📖 Detailed Bean Lifecycle
 
-Example:
+The lifecycle includes critical intermediate steps, especially the role of `BeanPostProcessor`, which is fundamental to how Spring AOP (e.g., for `@Transactional`) and other features work.
 
-```java
-@Entity
-public class Patient {
-    @Id @GeneratedValue
-    private Long id;
-
-    @NotBlank(message = "Name cannot be empty")
-    private String name;
-
-    @Min(value = 0, message = "Age must be positive")
-    private int age;
-}
-```
-
-Controller:
-
-```java
-@PostMapping
-public ResponseEntity<Patient> createPatient(@Valid @RequestBody Patient patient) {
-    return ResponseEntity.ok(service.createPatient(patient));
-}
-```
-
-👉 **Interview Q:** *How to handle custom validation?*
-**A:** Create `@Constraint` + `ConstraintValidator`.
-
----
-
-## **6. Service Layer**
-
-Business logic goes here.
-
-```java
-@Service
-public class PatientService {
-    private final PatientRepository repo;
-
-    public PatientService(PatientRepository repo) {
-        this.repo = repo;
-    }
-
-    public Patient getPatientById(Long id) {
-        return repo.findById(id)
-                   .orElseThrow(() -> new PatientNotFoundException(id));
-    }
-
-    public Patient createPatient(Patient patient) {
-        return repo.save(patient);
-    }
-}
-```
-
-👉 **Best Practices**
-
-* Keep **controllers thin, services fat**.
-* Service = transactions, validation, business rules.
-* Controller = request/response handling.
-
----
-
-## **7. Repository Layer (with JPA)**
-
-Spring Data JPA abstracts CRUD.
-
-```java
-@Repository
-public interface PatientRepository extends JpaRepository<Patient, Long> {
-    List<Patient> findByNameContainingIgnoreCase(String name);
-}
-```
-
-* `JpaRepository` already gives `save()`, `findById()`, `delete()`, etc.
-* Custom query = method naming conventions or `@Query`.
-
-👉 **Interview Q:** *Why Spring Data JPA instead of plain JDBC?*
-**A:** Less boilerplate, transaction management, integrates with Hibernate. But may need fine-tuning for performance.
-
----
-
-## **8. JSON Conversion**
-
-Spring Boot uses **Jackson** by default.
-
-```java
-@RestController
-public class InfoController {
-    @GetMapping("/info")
-    public Map<String, String> info() {
-        return Map.of("app", "Patient Service", "version", "1.0");
-    }
-}
-```
-
-Response automatically converted to JSON:
-
-```json
-{
-  "app": "Patient Service",
-  "version": "1.0"
-}
-```
-
-👉 **Customization:** Use `@JsonProperty`, `@JsonIgnore`, or global config.
-
----
-
-## **9. Exception Handling (Global)**
-
-Instead of writing `try/catch` everywhere → use **Controller Advice**.
-
-```java
-@RestControllerAdvice
-public class GlobalExceptionHandler {
-
-    @ExceptionHandler(PatientNotFoundException.class)
-    public ResponseEntity<String> handleNotFound(PatientNotFoundException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
-    }
-
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<Map<String, String>> handleValidation(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new HashMap<>();
-        ex.getBindingResult().getFieldErrors()
-          .forEach(err -> errors.put(err.getField(), err.getDefaultMessage()));
-        return ResponseEntity.badRequest().body(errors);
-    }
-}
-```
-
-👉 **Real-world value:** Centralizes error responses → consistent API.
-
-👉 **Interview Q:** *What’s difference between `@ControllerAdvice` and `@ExceptionHandler`?*
-**A:** `@ExceptionHandler` is method-level. `@ControllerAdvice` is global, applies to all controllers.
-
----
-
-## **10. Pageable & Sorting**
-
-Spring Data makes pagination trivial.
-
-```java
-@GetMapping
-public Page<Patient> getPatients(Pageable pageable) {
-    return repo.findAll(pageable);
-}
-```
-
-Request:
+Code snippet
 
 ```
-GET /patients?page=0&size=5&sort=name,asc
+graph TD
+    A[1. Instantiate] -- Raw Object Created --> B[2. Populate Properties];
+    B -- DI Occurs --> C[3. BeanNameAware, etc.];
+    C -- "Aware" Interfaces Set --> D[4. BeanPostProcessor's<br/>postProcess<b>Before</b>Initialization];
+    D -- Pre-Init Hook --> E[5. Initialization Callbacks];
+    subgraph E
+        direction LR
+        E1[@PostConstruct] --> E2[InitializingBean's<br/>afterPropertiesSet]
+    end
+    E --> F[6. BeanPostProcessor's<br/>postProcess<b>After</b>Initialization];
+    F -- Post-Init Hook (Proxying) --> G([✅ Bean Ready for Use]);
+    
+    subgraph Destruction
+        H[Container Shutdown] --> I[7. Destruction Callbacks];
+        subgraph I
+            direction LR
+            I1[@PreDestroy] --> I2[DisposableBean's<br/>destroy]
+        end
+    end
+    
+    G --> H;
+    I --> J([🗑️ Bean Destroyed]);
+
+    style D fill:#cde,stroke:#333,stroke-width:2px
+    style F fill:#cde,stroke:#333,stroke-width:2px
+
 ```
 
-👉 **Interview Q:** *How to handle large datasets efficiently?*
-**A:** Use pagination (`Pageable`) or streaming with `Streamable`. Avoid fetching everything in one query.
+**Lifecycle Phases:**
 
----
+1.  **Instantiation**: The container creates an instance of the bean, typically by calling its default constructor.
+    
+2.  **Populate Properties**: The container injects dependencies through fields or setters.
+    
+3.  **Aware Interfaces**: If the bean implements `Aware` interfaces (e.g., `BeanNameAware`, `ApplicationContextAware`), the container calls their respective `set*()` methods to provide access to container resources.
+    
+4.  **`postProcessBeforeInitialization`**: The container passes the bean to the `postProcessBeforeInitialization` method of any registered `BeanPostProcessor`s. This allows for custom modifications before the primary initialization logic runs.
+    
+5.  **Initialization Callbacks**: The container invokes the bean's initialization methods in this order:
+    
+    -   A method annotated with **`@PostConstruct`**.
+        
+    -   The `afterPropertiesSet()` method if the bean implements `InitializingBean`.
+        
+6.  **`postProcessAfterInitialization`**: The container passes the bean to the `postProcessAfterInitialization` method of any `BeanPostProcessor`s. **This is a crucial step**, often used to wrap the bean in a proxy (e.g., for transactions or security). The bean returned from this step is the one that will be available to other beans.
+    
+7.  **Destruction**: When the container is shut down, it invokes destruction callbacks in this order:
+    
+    -   A method annotated with **`@PreDestroy`**.
+        
+    -   The `destroy()` method if the bean implements `DisposableBean`.
+        
 
-# ✅ Interview Checklist for Part 2
+----------
 
-* Explain **DispatcherServlet** role.
-* `@RestController` vs `@Controller`.
-* `@PathVariable` vs `@RequestParam`.
-* Validation (`@Valid`, custom validators).
-* Thin Controller, Fat Service.
-* JPA Repository methods (`findByName...`).
-* Jackson JSON serialization.
-* Global Exception Handling with `@ControllerAdvice`.
-* Pageable for performance.
+#### 🎯 Structured Interview Answers
 
----
+Feature
 
+`BeanFactory`
 
+`ApplicationContext`
+
+**Relationship**
+
+The most basic, foundational IoC container.
+
+A superset of `BeanFactory`; provides more advanced features.
+
+**Bean Loading**
+
+**Lazy** by default. Beans are created on request.
+
+**Eager** by default for singletons. Beans are created at startup.
+
+**Enterprise Features**
+
+No built-in support.
+
+Built-in support for AOP, Event Publication, and Internationalization (i18n).
+
+**Typical Usage**
+
+Rarely used directly; suitable for memory-constrained environments.
+
+The standard container for all modern Spring and Spring Boot applications.
+
+-   Q: “When is a bean created?”
+    
+    The creation timing of a bean depends on its scope and lazy initialization configuration.
+    
+    1.  **Default Case (Singleton)**: A singleton-scoped bean is instantiated **eagerly** during the startup and initialization of the `ApplicationContext`.
+        
+    2.  **Exception 1 (Lazy Initialization)**: If a singleton bean is annotated with **`@Lazy`**, its creation is deferred until it is first injected into another bean or explicitly requested from the container.
+        
+    3.  **Exception 2 (Prototype Scope)**: A bean with `@Scope("prototype")` is created **on-demand**. A new instance is created every time it is injected or requested from the container. The container does not manage the full lifecycle of prototype beans; it does not call their destruction callbacks.Of course. Here is a more structured and in-depth explanation of both topics, designed to provide a deeper understanding suitable for technical interviews.
+
+----------
+
+### ## Spring MVC Request Flow: An In-Depth Look
+
+The Spring MVC request flow is orchestrated by the `DispatcherServlet`. It follows a highly structured, decoupled pattern using specific components to process a request from arrival to response.
+
+#### 📖 Detailed Request Lifecycle
+
+The flow for a RESTful API request is a precise sequence of events managed internally by the `DispatcherServlet`.
+
+Code snippet
+
+```
+graph TD
+    A[Client Request] --> B(DispatcherServlet);
+    B -- 1. Find Handler --> C[HandlerMapping];
+    C -- 2. Return HandlerMethod --> B;
+    B -- 3. Find Adapter --> D[HandlerAdapter];
+    D -- 4. Return Supported Adapter --> B;
+    B -- 5. Invoke Handler --> E[Controller Method];
+    subgraph "Argument Resolvers"
+        F[@PathVariable]
+        G[@RequestParam]
+        H[@RequestBody]
+    end
+    E -- Uses --> F & G & H;
+    E -- 6. Return Value --> B;
+    B -- 7. Process Return Value --> I[HttpMessageConverter];
+    I -- 8. Serialize to JSON --> B;
+    B -- 9. Send Response --> A;
+
+    style D fill:#f9f,stroke:#333,stroke-width:2px
+    style I fill:#ccf,stroke:#333,stroke-width:2px
+
+```
+
+**Step-by-Step Breakdown:**
+
+1.  **Request Reception (`DispatcherServlet`)**: The `DispatcherServlet` receives the `HttpServletRequest` from the servlet container (e.g., Tomcat).
+    
+2.  **Handler Resolution (`HandlerMapping`)**: The `DispatcherServlet` iterates through its registered `HandlerMapping` beans (like `RequestMappingHandlerMapping`) to find a suitable handler for the request. The handler is typically a `HandlerMethod` object, which is a reference to the specific method in your `@RestController` class.
+    
+3.  **Handler Adaptation (`HandlerAdapter`)**: Once a handler is found, the `DispatcherServlet` finds a `HandlerAdapter` that can execute it. For `@RequestMapping` methods, this is the `RequestMappingHandlerAdapter`. This decouples the `DispatcherServlet` from the specific way a handler method is invoked.
+    
+4.  **Argument Resolution**: The `HandlerAdapter` inspects the controller method's signature and uses registered `HandlerMethodArgumentResolver`s to resolve each argument. This is how annotations like `@PathVariable`, `@RequestParam`, and `@RequestBody` work. For `@RequestBody`, it uses an `HttpMessageConverter` to deserialize the request body into a Java object.
+    
+5.  **Handler Invocation**: The `HandlerAdapter` invokes the controller method with the resolved arguments. Your business logic in the `Service` and `Repository` layers is executed.
+    
+6.  **Return Value Handling**: The controller method returns a value. The `HandlerAdapter` uses a `HandlerMethodReturnValueHandler` to process this. For `@RestController` or `@ResponseBody` methods, this involves selecting an appropriate `HttpMessageConverter` (usually `MappingJackson2HttpMessageConverter`) to serialize the return object into a JSON response.
+    
+7.  **Response Generation**: The serialized JSON is written to the `HttpServletResponse` body. If `ResponseEntity` was returned, the status code and headers are set accordingly. The response is then sent back to the client.
+    
+
+----------
+
+#### 🎯 Structured Interview Answers
+
+Feature
+
+`@RequestParam`
+
+`@PathVariable`
+
+**Purpose**
+
+Extracts values from the URL's query string.
+
+Extracts values from the URL's path segments.
+
+**URL Structure**
+
+`.../search?name=john&status=active`
+
+`.../patients/123` or `.../orders/456/items/789`
+
+**Typical Use Case**
+
+Filtering, sorting, pagination, and optional data.
+
+Identifying a specific, unique resource.
+
+**Annotation Example**
+
+`@RequestParam(required = false) String status`
+
+`@PathVariable Long patientId`
+
+-   Q: How does Spring convert JSON to a Java object?
+    
+    Spring's MVC module uses an abstraction called HttpMessageConverter.
+    
+    1.  When a request contains a body and the controller method parameter is annotated with **`@RequestBody`**, the framework invokes a suitable converter.
+        
+    2.  It selects the converter based on the request's `Content-Type` header. For `application/json`, it selects the **`MappingJackson2HttpMessageConverter`** (if Jackson is on the classpath).
+        
+    3.  This converter then uses the Jackson library to perform the data binding, mapping the JSON fields to the fields of the specified Java class.
+        
+-   Q: Why use ResponseEntity?
+    
+    Using ResponseEntity provides a higher level of control over the HTTP response compared to returning a plain object. It is the professional standard for building REST APIs.
+    
+    -   **Explicit Status Code Control**: You can programmatically set any HTTP status code (e.g., `HttpStatus.CREATED` (201), `HttpStatus.NO_CONTENT` (204)), which is crucial for RESTful compliance.
+        
+    -   **HTTP Header Manipulation**: It allows you to add custom headers to the response (e.g., `Location` headers for newly created resources or custom authentication headers).
+        
+    -   **Clear Intent**: The method signature `ResponseEntity<Patient>` makes it immediately clear that the method is responsible for constructing the full HTTP response, not just returning a data payload.
+        
+
+----------
+
+----------
+
+### ## Spring Context & Bean Lifecycle: An In-Depth Look
+
+The lifecycle of a Spring bean is a formal process managed by the IoC container, offering several extension points for custom logic.
+
+#### 📖 Detailed Bean Lifecycle
+
+The lifecycle includes critical intermediate steps, especially the role of `BeanPostProcessor`, which is fundamental to how Spring AOP (e.g., for `@Transactional`) and other features work.
+
+Code snippet
+
+```
+graph TD
+    A[1. Instantiate] -- Raw Object Created --> B[2. Populate Properties];
+    B -- DI Occurs --> C[3. BeanNameAware, etc.];
+    C -- "Aware" Interfaces Set --> D[4. BeanPostProcessor's<br/>postProcess<b>Before</b>Initialization];
+    D -- Pre-Init Hook --> E[5. Initialization Callbacks];
+    subgraph E
+        direction LR
+        E1[@PostConstruct] --> E2[InitializingBean's<br/>afterPropertiesSet]
+    end
+    E --> F[6. BeanPostProcessor's<br/>postProcess<b>After</b>Initialization];
+    F -- Post-Init Hook (Proxying) --> G([✅ Bean Ready for Use]);
+    
+    subgraph Destruction
+        H[Container Shutdown] --> I[7. Destruction Callbacks];
+        subgraph I
+            direction LR
+            I1[@PreDestroy] --> I2[DisposableBean's<br/>destroy]
+        end
+    end
+    
+    G --> H;
+    I --> J([🗑️ Bean Destroyed]);
+
+    style D fill:#cde,stroke:#333,stroke-width:2px
+    style F fill:#cde,stroke:#333,stroke-width:2px
+
+```
+
+**Lifecycle Phases:**
+
+1.  **Instantiation**: The container creates an instance of the bean, typically by calling its default constructor.
+    
+2.  **Populate Properties**: The container injects dependencies through fields or setters.
+    
+3.  **Aware Interfaces**: If the bean implements `Aware` interfaces (e.g., `BeanNameAware`, `ApplicationContextAware`), the container calls their respective `set*()` methods to provide access to container resources.
+    
+4.  **`postProcessBeforeInitialization`**: The container passes the bean to the `postProcessBeforeInitialization` method of any registered `BeanPostProcessor`s. This allows for custom modifications before the primary initialization logic runs.
+    
+5.  **Initialization Callbacks**: The container invokes the bean's initialization methods in this order:
+    
+    -   A method annotated with **`@PostConstruct`**.
+        
+    -   The `afterPropertiesSet()` method if the bean implements `InitializingBean`.
+        
+6.  **`postProcessAfterInitialization`**: The container passes the bean to the `postProcessAfterInitialization` method of any `BeanPostProcessor`s. **This is a crucial step**, often used to wrap the bean in a proxy (e.g., for transactions or security). The bean returned from this step is the one that will be available to other beans.
+    
+7.  **Destruction**: When the container is shut down, it invokes destruction callbacks in this order:
+    
+    -   A method annotated with **`@PreDestroy`**.
+        
+    -   The `destroy()` method if the bean implements `DisposableBean`.
+        
+
+----------
+
+#### 🎯 Structured Interview Answers
+
+Feature
+
+`BeanFactory`
+
+`ApplicationContext`
+
+**Relationship**
+
+The most basic, foundational IoC container.
+
+A superset of `BeanFactory`; provides more advanced features.
+
+**Bean Loading**
+
+**Lazy** by default. Beans are created on request.
+
+**Eager** by default for singletons. Beans are created at startup.
+
+**Enterprise Features**
+
+No built-in support.
+
+Built-in support for AOP, Event Publication, and Internationalization (i18n).
+
+**Typical Usage**
+
+Rarely used directly; suitable for memory-constrained environments.
+
+The standard container for all modern Spring and Spring Boot applications.
+
+-   Q: “When is a bean created?”
+    
+    The creation timing of a bean depends on its scope and lazy initialization configuration.
+    
+    1.  **Default Case (Singleton)**: A singleton-scoped bean is instantiated **eagerly** during the startup and initialization of the `ApplicationContext`.
+        
+    2.  **Exception 1 (Lazy Initialization)**: If a singleton bean is annotated with **`@Lazy`**, its creation is deferred until it is first injected into another bean or explicitly requested from the container.
+        
+    3.  **Exception 2 (Prototype Scope)**: A bean with `@Scope("prototype")` is created **on-demand**. A new instance is created every time it is injected or requested from the container. The container does not manage the full lifecycle of prototype beans; it does not call their destruction callbacks.
