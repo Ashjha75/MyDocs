@@ -64,7 +64,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#part-1-spring-boot-core-deep-dive" class="md-skip">
+        <a href="#spring-boot-interview-notes-complete-basics-pro-touch" class="md-skip">
           Skip to content
         </a>
       
@@ -355,96 +355,144 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-what-happens-when-you-start-a-spring-boot-app" class="md-nav__link">
+  <a href="#1-ioc-inversion-of-control" class="md-nav__link">
     <span class="md-ellipsis">
-      1. What happens when you start a Spring Boot app?
+      📌 1. IoC (Inversion of Control)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-ioc-inversion-of-control" class="md-nav__link">
+  <a href="#2-dependency-injection-di" class="md-nav__link">
     <span class="md-ellipsis">
-      2. IoC (Inversion of Control)
+      📌 2. Dependency Injection (DI)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-beans" class="md-nav__link">
+  <a href="#3-bean" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Beans
+      📌 3. Bean
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-dependency-injection-di" class="md-nav__link">
+  <a href="#4-applicationcontext-the-ioc-container" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Dependency Injection (DI)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Dependency Injection (DI)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#types-of-injection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Types of Injection:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-springbootapplication" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. @SpringBootApplication
+      📌 4. ApplicationContext (The IoC Container)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-profiles-configuration-management" class="md-nav__link">
+  <a href="#5-spel-spring-expression-language" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Profiles &amp; Configuration Management
+      📌 5. SpEL (Spring Expression Language)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-bean-scopes" class="md-nav__link">
+  <a href="#6-aop-aspect-oriented-programming" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Bean Scopes
+      📌 6. AOP (Aspect-Oriented Programming)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-application-events" class="md-nav__link">
+  <a href="#7-springbootapplication" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Application Events
+      📌 7. @SpringBootApplication
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-startup-hooks-commandlinerunner" class="md-nav__link">
+  <a href="#8-how-auto-configuration-really-works" class="md-nav__link">
     <span class="md-ellipsis">
-      9. Startup Hooks (CommandLineRunner)
+      📌 8. How Auto-Configuration Really Works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-composition-vs-inheritance-spring-boot-design-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 9. Composition vs. Inheritance (Spring Boot Design Choice)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-startup-flow-in-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 10. Startup Flow in Spring Boot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-the-web-layer-handling-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 11. The Web Layer: Handling Requests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-application-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 12. Application Events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-profiles-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 13. Profiles &amp; Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-commandlinerunner-applicationrunner" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 14. CommandLineRunner / ApplicationRunner
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-interview-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Quick Interview Checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-advanced-tricky-interview-qa" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 10 Advanced "Tricky" Interview Q\&amp;A
     </span>
   </a>
   
@@ -643,96 +691,144 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-what-happens-when-you-start-a-spring-boot-app" class="md-nav__link">
+  <a href="#1-ioc-inversion-of-control" class="md-nav__link">
     <span class="md-ellipsis">
-      1. What happens when you start a Spring Boot app?
+      📌 1. IoC (Inversion of Control)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-ioc-inversion-of-control" class="md-nav__link">
+  <a href="#2-dependency-injection-di" class="md-nav__link">
     <span class="md-ellipsis">
-      2. IoC (Inversion of Control)
+      📌 2. Dependency Injection (DI)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-beans" class="md-nav__link">
+  <a href="#3-bean" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Beans
+      📌 3. Bean
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-dependency-injection-di" class="md-nav__link">
+  <a href="#4-applicationcontext-the-ioc-container" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Dependency Injection (DI)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. Dependency Injection (DI)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#types-of-injection" class="md-nav__link">
-    <span class="md-ellipsis">
-      Types of Injection:
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-springbootapplication" class="md-nav__link">
-    <span class="md-ellipsis">
-      5. @SpringBootApplication
+      📌 4. ApplicationContext (The IoC Container)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-profiles-configuration-management" class="md-nav__link">
+  <a href="#5-spel-spring-expression-language" class="md-nav__link">
     <span class="md-ellipsis">
-      6. Profiles &amp; Configuration Management
+      📌 5. SpEL (Spring Expression Language)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-bean-scopes" class="md-nav__link">
+  <a href="#6-aop-aspect-oriented-programming" class="md-nav__link">
     <span class="md-ellipsis">
-      7. Bean Scopes
+      📌 6. AOP (Aspect-Oriented Programming)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-application-events" class="md-nav__link">
+  <a href="#7-springbootapplication" class="md-nav__link">
     <span class="md-ellipsis">
-      8. Application Events
+      📌 7. @SpringBootApplication
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#9-startup-hooks-commandlinerunner" class="md-nav__link">
+  <a href="#8-how-auto-configuration-really-works" class="md-nav__link">
     <span class="md-ellipsis">
-      9. Startup Hooks (CommandLineRunner)
+      📌 8. How Auto-Configuration Really Works
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-composition-vs-inheritance-spring-boot-design-choice" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 9. Composition vs. Inheritance (Spring Boot Design Choice)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-startup-flow-in-spring-boot" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 10. Startup Flow in Spring Boot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-the-web-layer-handling-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 11. The Web Layer: Handling Requests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-application-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 12. Application Events
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-profiles-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 13. Profiles &amp; Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-commandlinerunner-applicationrunner" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 14. CommandLineRunner / ApplicationRunner
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-interview-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Quick Interview Checklist
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-advanced-tricky-interview-qa" class="md-nav__link">
+    <span class="md-ellipsis">
+      💡 10 Advanced "Tricky" Interview Q\&amp;A
     </span>
   </a>
   
@@ -755,247 +851,324 @@
 
 
 <hr />
-<h1 id="part-1-spring-boot-core-deep-dive">📌 Part 1: Spring Boot Core (Deep Dive)</h1>
+<h1 id="spring-boot-interview-notes-complete-basics-pro-touch">🪼 Spring Boot Interview Notes (Complete Basics + Pro Touch)</h1>
 <hr />
-<h2 id="1-what-happens-when-you-start-a-spring-boot-app"><strong>1. What happens when you start a Spring Boot app?</strong></h2>
-<p>When you run:</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@SpringBootApplication</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientServiceApplication</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">SpringApplication</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">PatientServiceApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p><pre class="mermaid"><code>
-graph TD
-    A[Start] --&gt; B{Is it working?}
-    B -- Yes --&gt; C[Great!]
-    B -- No --&gt; D[Check config]
-
-    %% Assign classes
-    class A nodeGradient;
-    class B nodeGradient;
-    class C nodeGradient;
-    class D nodeGradient;
-
-    %% Styles (gradient comes from CSS)
-    classDef nodeGradient fill:#18141e,color:#fff,stroke-width:2px;</code></pre>
-<strong>Step by step flow:</strong></p>
-<ol>
-<li><code>SpringApplication.run(...)</code> creates or loads an <strong>ApplicationContext</strong> (IoC container).</li>
-<li><strong>Component Scanning</strong>: Finds all classes annotated with <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, <code>@Controller</code>, etc.</li>
-<li><strong>Auto-Configuration</strong>: Based on dependencies (e.g., if <code>spring-boot-starter-data-jpa</code> is in classpath, Boot configures JPA + DataSource).</li>
-<li>Registers the <strong>DispatcherServlet</strong> (front controller in MVC).</li>
-<li>Runs all beans implementing <code>CommandLineRunner</code> or <code>ApplicationRunner</code>.</li>
-<li>Starts <strong>embedded Tomcat/Jetty/Undertow</strong>.</li>
-</ol>
-<p>👉 <strong>Interview Q:</strong> <em>How is Spring Boot different from Spring?</em>
-<strong>A:</strong> Spring Boot adds auto-configuration, opinionated defaults, and an embedded server so you can focus on business logic instead of boilerplate.</p>
-<hr />
-<h2 id="2-ioc-inversion-of-control"><strong>2. IoC (Inversion of Control)</strong></h2>
-<p>Traditionally, you write:</p>
+<h2 id="1-ioc-inversion-of-control">📌 1. IoC (Inversion of Control)</h2>
+<p><strong>Definition:</strong>
+IoC means <strong>the control of object creation and dependency management is given to the container (Spring IoC Container)</strong> instead of the programmer.</p>
+<p><strong>Without IoC:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PatientRepository</span><span class="p">();</span>
 <span class="n">PatientService</span><span class="w"> </span><span class="n">service</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">PatientService</span><span class="p">(</span><span class="n">repo</span><span class="p">);</span>
 </code></pre></div>
-<p>With Spring IoC:</p>
-<ul>
-<li>You don’t create objects manually.</li>
-<li>You just <strong>declare beans</strong>, Spring manages lifecycle + wiring.</li>
-<li>IoC Container = <code>ApplicationContext</code>.</li>
-</ul>
-<p>👉 <strong>Interview Q:</strong> <em>What is IoC in simple words?</em>
-<strong>A:</strong> Instead of you controlling object creation, you delegate that responsibility to Spring.</p>
-<hr />
-<h2 id="3-beans"><strong>3. Beans</strong></h2>
-<p>A <strong>Bean</strong> = Object managed by IoC container.</p>
-<p>Ways to create:</p>
-<ol>
-<li><strong>Annotation-based (common in Boot)</strong></li>
-</ol>
+<p><strong>With IoC:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="nd">@Service</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientService</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">}</span>
-</code></pre></div>
-<ol>
-<li><strong>Java-based (fine-grained control)</strong></li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AppConfig</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@Bean</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">EmailNotifier</span><span class="w"> </span><span class="nf">emailNotifier</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">EmailNotifier</span><span class="p">();</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PatientService</span><span class="p">(</span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>👉 <strong>Interview Q:</strong></p>
+<p>👉 Spring creates the <code>PatientRepository</code> and <code>PatientService</code> objects and injects the dependencies for you.</p>
+<p><strong>Advantages:</strong></p>
 <ul>
-<li><em>When use <code>@Bean</code> vs <code>@Component</code>?</em>
-  <strong>A:</strong> Use <code>@Component</code> for your own classes (auto-detected). Use <code>@Bean</code> for third-party libraries or when you need fine control.</li>
+<li><strong>Loose coupling</strong> between classes.</li>
+<li>Centralized lifecycle &amp; dependency management.</li>
+<li>Easy <strong>testing</strong> with mock objects.</li>
+<li>Promotes cleaner, more maintainable design.</li>
 </ul>
 <hr />
-<h2 id="4-dependency-injection-di"><strong>4. Dependency Injection (DI)</strong></h2>
-<p>Spring injects required beans into other beans.</p>
-<h3 id="types-of-injection">Types of Injection:</h3>
+<h2 id="2-dependency-injection-di">📌 2. Dependency Injection (DI)</h2>
+<p><strong>Definition:</strong>
+DI is the <strong>process</strong> through which the IoC container provides required dependencies (objects) to a class. It's one way to achieve IoC.</p>
+<p><strong>Types of DI:</strong></p>
 <ol>
-<li><strong>Field Injection</strong> ❌ (bad practice)</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="nd">@Autowired</span>
-<span class="kd">private</span><span class="w"> </span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
-</code></pre></div>
-<ol>
-<li><strong>Setter Injection</strong> ✅ (okay, but mutable)</li>
-</ol>
+<li><strong>Constructor Injection (✅ Preferred)</strong><ul>
+<li>Dependencies are clearly stated, ensures the object is always in a valid state, and supports immutability with <code>final</code> fields.
+<!-- end list -->
+<div class="highlight"><pre><span></span><code><span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PatientService</span><span class="p">(</span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="c1">// Dependencies provided on creation</span>
+<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+</li>
+<li><strong>Setter Injection</strong><ul>
+<li>Allows for optional dependencies and re-configuration but makes the object mutable.
+<!-- end list -->
 <div class="highlight"><pre><span></span><code><span class="nd">@Service</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientService</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
+
 <span class="w">    </span><span class="nd">@Autowired</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setRepo</span><span class="p">(</span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
 <span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
 <span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-<ol>
-<li><strong>Constructor Injection</strong> ✅✅ (recommended)</li>
+</code></pre></div></li>
+</ul>
+</li>
+<li><strong>Field Injection (❌ Not Recommended)</strong><ul>
+<li>Hides dependencies, makes testing harder (requires reflection), and can violate the single responsibility principle.
+<!-- end list -->
+<div class="highlight"><pre><span></span><code><span class="nd">@Service</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientService</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@Autowired</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></li>
+</ul>
+</li>
 </ol>
-<div class="highlight"><pre><span></span><code><span class="nd">@Service</span>
+<hr />
+<h2 id="3-bean">📌 3. Bean</h2>
+<p><strong>Definition:</strong>
+A bean is any Java object whose lifecycle is <strong>created, configured, and managed by the Spring IoC container</strong>.</p>
+<p><strong>Ways to create beans:</strong></p>
+<ul>
+<li>Using stereotype annotations: <strong><code>@Component</code></strong>, <strong><code>@Service</code></strong>, <strong><code>@Repository</code></strong>, <strong><code>@Controller</code></strong>.</li>
+<li>Using a <strong><code>@Bean</code></strong> method inside a <strong><code>@Configuration</code></strong> class.</li>
+</ul>
+<p><strong>Scopes of Beans:</strong></p>
+<ul>
+<li><strong><code>singleton</code></strong> (Default): One single instance of the bean per Spring IoC container.</li>
+<li><strong><code>prototype</code></strong>: A new instance is created every time the bean is requested.</li>
+<li><strong><code>request</code></strong>, <strong><code>session</code></strong>, <strong><code>application</code></strong>, <strong><code>websocket</code></strong> (Web-specific scopes).</li>
+</ul>
+<hr />
+<h2 id="4-applicationcontext-the-ioc-container">📌 4. ApplicationContext (The IoC Container)</h2>
+<p><strong>Definition:</strong>
+The <code>ApplicationContext</code> is the central interface in Spring for providing configuration information. It is the IoC container that:</p>
+<ul>
+<li>Creates and manages beans.</li>
+<li>Resolves dependencies.</li>
+<li>Handles bean scopes &amp; lifecycle callbacks.</li>
+<li>Publishes application-wide events.</li>
+<li>Supports internationalization and AOP features.</li>
+</ul>
+<p><strong>Difference between <code>BeanFactory</code> &amp; <code>ApplicationContext</code>:</strong></p>
+<ul>
+<li><strong><code>BeanFactory</code></strong>: The most basic IoC container, providing fundamental bean management and DI. It loads beans lazily.</li>
+<li><strong><code>ApplicationContext</code></strong>: A superset of <code>BeanFactory</code>. It adds more enterprise-specific functionality like event propagation, AOP integration, and eager loading of singleton beans.
+  👉 In Spring Boot, you almost always use <code>ApplicationContext</code>.</li>
+</ul>
+<hr />
+<h2 id="5-spel-spring-expression-language">📌 5. SpEL (Spring Expression Language)</h2>
+<p><strong>Definition:</strong>
+SpEL is a powerful expression language used to query and manipulate an object graph at runtime. It's often used for dynamic configuration within annotations.</p>
+<p><strong>Examples:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Injecting a simple calculation result</span>
+<span class="nd">@Value</span><span class="p">(</span><span class="s">&quot;#{2 * 10}&quot;</span><span class="p">)</span>
+<span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">value</span><span class="p">;</span>
+
+<span class="c1">// Accessing system properties</span>
+<span class="nd">@Value</span><span class="p">(</span><span class="s">&quot;#{systemProperties[&#39;user.name&#39;]}&quot;</span><span class="p">)</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">userName</span><span class="p">;</span>
+
+<span class="c1">// Referencing another bean&#39;s property</span>
+<span class="nd">@Value</span><span class="p">(</span><span class="s">&quot;#{someOtherBean.someProperty}&quot;</span><span class="p">)</span>
+<span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">otherBeanValue</span><span class="p">;</span>
+</code></pre></div>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Inject dynamic values from properties, other beans, or system variables.</li>
+<li>Perform calculations and logical operations at runtime.</li>
+<li>Enables highly flexible and dynamic configuration.</li>
+</ul>
+<hr />
+<h2 id="6-aop-aspect-oriented-programming">📌 6. AOP (Aspect-Oriented Programming)</h2>
+<p><strong>Definition:</strong>
+AOP is a programming paradigm that allows you to modularize <strong>cross-cutting concerns</strong> (like logging, security, and transaction management) that cut across multiple types and objects.</p>
+<p><strong>Core Concepts:</strong></p>
+<ul>
+<li><strong>Aspect:</strong> The class that implements the cross-cutting concern (e.g., <code>LoggingAspect</code>). Annotated with <code>@Aspect</code>.</li>
+<li><strong>Join Point:</strong> A point during the execution of a program, such as a method call.</li>
+<li><strong>Advice:</strong> The action taken by an aspect at a join point (e.g., log before a method runs). Types: <code>@Before</code>, <code>@After</code>, <code>@Around</code>.</li>
+<li><strong>Pointcut:</strong> An expression that defines <em>which</em> join points the advice should apply to.</li>
+</ul>
+<p>👉 <strong>Why it matters:</strong> Spring's declarative <strong><code>@Transactional</code></strong> annotation is powered by AOP. The transaction logic (begin, commit, rollback) is an <em>aspect</em> that gets applied around your repository method calls without you writing the boilerplate code.</p>
+<hr />
+<h2 id="7-springbootapplication">📌 7. @SpringBootApplication</h2>
+<p>This is a convenience annotation that is shorthand for three annotations:</p>
+<ol>
+<li><strong><code>@SpringBootConfiguration</code></strong>: A specialized version of <code>@Configuration</code>. Marks the main class as a source of bean definitions.</li>
+<li><strong><code>@EnableAutoConfiguration</code></strong>: Tells Spring Boot to start adding beans based on classpath settings, other beans, and various property settings.</li>
+<li><strong><code>@ComponentScan</code></strong>: Scans for other components, configurations, and services in the same package as the main class and its sub-packages.</li>
+</ol>
+<p>👉 If your beans are in a different package, you must specify it: <code>@ComponentScan(basePackages="com.example.otherpackage")</code>.</p>
+<hr />
+<h2 id="8-how-auto-configuration-really-works">📌 8. How Auto-Configuration <em>Really</em> Works</h2>
+<p><strong>Definition:</strong>
+Auto-configuration is Spring Boot's mechanism to automatically configure your application based on the <strong>JAR dependencies</strong> on the classpath.</p>
+<p><strong>How it Works:</strong></p>
+<ol>
+<li>At startup, <code>@EnableAutoConfiguration</code> looks for a file in the classpath of all included JARs: <code>META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports</code>.</li>
+<li>This file lists all potential auto-configuration classes (e.g., <code>DataSourceAutoConfiguration</code>, <code>WebMvcAutoConfiguration</code>).</li>
+<li>Each configuration class uses conditions (<code>@ConditionalOnClass</code>, <code>@ConditionalOnBean</code>) to decide if it should activate. For example, <code>DataSourceAutoConfiguration</code> only runs if the <code>DataSource.class</code> is on the classpath.</li>
+</ol>
+<hr />
+<h2 id="9-composition-vs-inheritance-spring-boot-design-choice">📌 9. Composition vs. Inheritance (Spring Boot Design Choice)</h2>
+<p><strong>Inheritance (<code>is-a</code> relationship):</strong></p>
+<ul>
+<li>A class <code>extends</code> another class.</li>
+<li>Creates <strong>tight coupling</strong> and a rigid class hierarchy.</li>
+<li>Difficult to change or extend.</li>
+</ul>
+<p><strong>Composition (<code>has-a</code> relationship):</strong></p>
+<ul>
+<li>A class <code>HAS</code> an instance of another class.</li>
+<li>Promotes <strong>loose coupling</strong> and flexibility. You can easily swap out dependencies.</li>
+<li>This is the model encouraged by IoC and DI.</li>
+</ul>
+<p>👉 <strong>Spring Boot prefers Composition.</strong> Instead of a <code>PatientService</code> extending a <code>JdbcTemplate</code>, we inject the <code>JdbcTemplate</code> into the service. This makes the code more modular, flexible, and testable.</p>
+<p><strong>Example:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Good: Composition via DI</span>
+<span class="nd">@Service</span>
 <span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">EmailNotifier</span><span class="w"> </span><span class="n">notifier</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">JdbcTemplate</span><span class="w"> </span><span class="n">jdbc</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PatientService</span><span class="p">(</span><span class="n">JdbcTemplate</span><span class="w"> </span><span class="n">jdbc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">jdbc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jdbc</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
 
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PatientService</span><span class="p">(</span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">EmailNotifier</span><span class="w"> </span><span class="n">notifier</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">notifier</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">notifier</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
+<span class="c1">// Bad: Inheritance</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientService</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">JdbcTemplate</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ... tightly coupled to JdbcTemplate implementation</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>👉 <strong>Why Constructor Injection?</strong></p>
+<hr />
+<h2 id="10-startup-flow-in-spring-boot">📌 10. Startup Flow in Spring Boot</h2>
+<p><strong>Steps:</strong></p>
+<ol>
+<li><strong><code>SpringApplication.run()</code></strong> starts the process.</li>
+<li>Loads environment variables and profiles (<code>application-dev.yml</code>, etc.).</li>
+<li>Creates the <code>ApplicationContext</code>.</li>
+<li>Applies <code>@EnableAutoConfiguration</code> and performs component scanning.</li>
+<li>Creates and wires all singleton beans in the context.</li>
+<li>Starts the embedded server (Tomcat/Jetty/Undertow).</li>
+<li>Publishes lifecycle events.</li>
+<li>Runs any <code>CommandLineRunner</code> / <code>ApplicationRunner</code> beans for startup tasks.</li>
+</ol>
+<hr />
+<p>For a more detailed explanation of the startup process, see the <a href="../springbootStartDetails/">Detailed Spring Boot Startup Guide</a>.</p>
+<h2 id="11-the-web-layer-handling-requests">📌 11. The Web Layer: Handling Requests</h2>
 <ul>
-<li>Dependencies are <strong>explicit</strong>.</li>
-<li>Promotes <strong>immutability</strong>.</li>
-<li>Helps <strong>unit testing</strong>.</li>
-<li>Prevents <strong>null issues</strong>.</li>
+<li><strong><code>@RestController</code></strong>: Combines <code>@Controller</code> and <code>@ResponseBody</code>. Tells Spring that all methods will return JSON/XML responses directly.</li>
+<li><strong><code>@RequestMapping("/api/patients")</code></strong>: Maps a URL path to a controller. Shortcuts: <code>@GetMapping</code>, <code>@PostMapping</code>, <code>@PutMapping</code>, <code>@DeleteMapping</code>.</li>
+<li><strong><code>@RequestBody</code></strong>: Binds the incoming HTTP request body (JSON) to an object.</li>
+<li><strong><code>@RequestParam</code></strong>: Binds a URL query parameter (<code>?name=John</code>).</li>
+<li><strong><code>@PathVariable</code></strong>: Binds a value from the URL path (<code>/patients/{id}</code>).</li>
+<li><strong><code>ResponseEntity&lt;T&gt;</code></strong>: An object representing the entire HTTP response (status code, headers, body), giving you full control.</li>
 </ul>
 <hr />
-<h2 id="5-springbootapplication"><strong>5. @SpringBootApplication</strong></h2>
-<p>It is shorthand for 3 annotations:</p>
+<h2 id="12-application-events">📌 12. Application Events</h2>
+<p>Spring has a built-in event mechanism for a <strong>publisher-subscriber</strong> model.</p>
 <ul>
-<li><code>@Configuration</code> → marks class as a config provider.</li>
-<li><code>@EnableAutoConfiguration</code> → enables Boot auto-setup (DataSource, MVC, Jackson).</li>
-<li><code>@ComponentScan</code> → scans current + subpackages for beans.</li>
+<li><strong>Publisher:</strong> Injects <code>ApplicationEventPublisher</code> and calls <code>publisher.publishEvent(new MyEvent(...))</code>.</li>
+<li><strong>Listener:</strong> A method annotated with <code>@EventListener</code> that takes the event object as a parameter.</li>
 </ul>
-<p>👉 <strong>Interview Q:</strong> <em>What if your beans are in another package?</em>
-<strong>A:</strong> Use <code>@ComponentScan(basePackages = "...")</code>.</p>
+<p>👉 <strong>Use Case:</strong> Decoupling components. A <code>PatientService</code> can publish a <code>PatientRegisteredEvent</code> without knowing that an <code>EmailService</code> or <code>AuditService</code> is listening for it. This keeps the services loosely coupled.</p>
 <hr />
-<h2 id="6-profiles-configuration-management"><strong>6. Profiles &amp; Configuration Management</strong></h2>
-<p>You rarely use one config everywhere (dev DB ≠ prod DB).
-Spring Boot supports <strong>profiles</strong>.</p>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># application-dev.yml</span>
-<span class="nt">spring</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datasource</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:h2:mem:testdb</span>
-<span class="nn">---</span>
-<span class="c1"># application-prod.yml</span>
-<span class="nt">spring</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">datasource</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">jdbc:mysql://prod-server/patients</span>
-</code></pre></div>
-<p>Run with:</p>
-<div class="highlight"><pre><span></span><code>java<span class="w"> </span>-jar<span class="w"> </span>app.jar<span class="w"> </span>--spring.profiles.active<span class="o">=</span>prod
-</code></pre></div>
-<p>👉 <strong>Real-world use case:</strong></p>
+<h2 id="13-profiles-configuration">📌 13. Profiles &amp; Configuration</h2>
+<p>Profiles allow you to define different configurations for different environments (dev, test, prod).</p>
 <ul>
-<li>Developers use H2 DB (lightweight).</li>
-<li>Production uses MySQL/Postgres with connection pooling.</li>
+<li>Create profile-specific property files: <code>application-dev.yml</code>, <code>application-prod.yml</code>.</li>
+<li>Activate a profile using the property <code>spring.profiles.active=prod</code> or via a command-line argument <code>--spring.profiles.active=prod</code>.</li>
 </ul>
+<p>👉 <strong>Real-world use:</strong> <code>dev</code> profile uses an in-memory H2 database, while the <code>prod</code> profile connects to a production PostgreSQL database.</p>
 <hr />
-<h2 id="7-bean-scopes"><strong>7. Bean Scopes</strong></h2>
-<p>Default = <strong>singleton</strong> (one per ApplicationContext).
-Other scopes:</p>
+<h2 id="14-commandlinerunner-applicationrunner">📌 14. CommandLineRunner / ApplicationRunner</h2>
+<p>These are interfaces you can implement to run code <strong>after</strong> the <code>ApplicationContext</code> is fully initialized but before the application starts accepting requests.</p>
 <ul>
-<li><code>prototype</code>: new instance each time requested.</li>
-<li><code>request</code>: one per HTTP request.</li>
-<li><code>session</code>: one per HTTP session.</li>
+<li><strong><code>CommandLineRunner</code></strong>: Provides access to application arguments as a raw <code>String[]</code>.</li>
+<li><strong><code>ApplicationRunner</code></strong>: Provides a more structured <code>ApplicationArguments</code> object.</li>
 </ul>
-<p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
-<span class="nd">@Scope</span><span class="p">(</span><span class="s">&quot;prototype&quot;</span><span class="p">)</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ReportGenerator</span><span class="w"> </span><span class="p">{</span>
-<span class="w">   </span><span class="c1">// new instance every request</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>👉 <strong>Interview Q:</strong> <em>When to use prototype scope?</em>
-<strong>A:</strong> For stateful objects (rare in services, common in utility objects like PDF generators).</p>
+<p>👉 <strong>Used for:</strong> Seeding a database with initial data, running one-time integration checks, or printing startup logs.</p>
 <hr />
-<h2 id="8-application-events"><strong>8. Application Events</strong></h2>
-<p>Spring supports publish/subscribe style events.
-Useful for decoupling.</p>
-<p>Example: Send email when patient is registered.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientRegisteredEvent</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">ApplicationEvent</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Patient</span><span class="w"> </span><span class="n">patient</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PatientRegisteredEvent</span><span class="p">(</span><span class="n">Patient</span><span class="w"> </span><span class="n">patient</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="kd">super</span><span class="p">(</span><span class="n">patient</span><span class="p">);</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">patient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">patient</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Publisher:</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Service</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientService</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">ApplicationEventPublisher</span><span class="w"> </span><span class="n">publisher</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">PatientService</span><span class="p">(</span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">,</span><span class="w"> </span><span class="n">ApplicationEventPublisher</span><span class="w"> </span><span class="n">publisher</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">publisher</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">publisher</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">Patient</span><span class="w"> </span><span class="nf">createPatient</span><span class="p">(</span><span class="n">Patient</span><span class="w"> </span><span class="n">patient</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">Patient</span><span class="w"> </span><span class="n">saved</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="n">patient</span><span class="p">);</span>
-<span class="w">        </span><span class="n">publisher</span><span class="p">.</span><span class="na">publishEvent</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">PatientRegisteredEvent</span><span class="p">(</span><span class="n">saved</span><span class="p">));</span>
-<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">saved</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<p>Listener:</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientEmailListener</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nd">@EventListener</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">handle</span><span class="p">(</span><span class="n">PatientRegisteredEvent</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sending email for new patient: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getPatient</span><span class="p">().</span><span class="na">getName</span><span class="p">());</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h2 id="9-startup-hooks-commandlinerunner"><strong>9. Startup Hooks (CommandLineRunner)</strong></h2>
-<p>Run logic after startup → often used for <strong>data seeding</strong> or <strong>integration checks</strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@Component</span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">DataSeeder</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">CommandLineRunner</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
-
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">DataSeeder</span><span class="p">(</span><span class="n">PatientRepository</span><span class="w"> </span><span class="n">repo</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">repo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">repo</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-
-<span class="w">    </span><span class="nd">@Override</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="n">String</span><span class="p">...</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
-<span class="w">        </span><span class="n">repo</span><span class="p">.</span><span class="na">save</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Patient</span><span class="p">(</span><span class="s">&quot;John Doe&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">30</span><span class="p">));</span>
-<span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Sample patient added!&quot;</span><span class="p">);</span>
-<span class="w">    </span><span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
-<hr />
-<h1 id="interview-checklist-for-part-1">✅ Interview Checklist for Part 1</h1>
+<h2 id="quick-interview-checklist">✅ Quick Interview Checklist</h2>
 <ul>
-<li>IoC = Spring manages object creation &amp; wiring.</li>
-<li>Beans: <code>@Component</code>, <code>@Service</code>, <code>@Repository</code>, <code>@Bean</code>.</li>
-<li>DI types (constructor preferred).</li>
-<li><code>@SpringBootApplication</code> = 3 annotations.</li>
-<li>Profiles (<code>application-dev.yml</code>, <code>application-prod.yml</code>).</li>
-<li>Bean scopes (singleton, prototype, request, session).</li>
-<li>Application events for decoupling.</li>
-<li><code>CommandLineRunner</code> for startup logic.</li>
+<li><strong>IoC</strong> → Container manages object creation and lifecycle.</li>
+<li><strong>DI</strong> → How the container provides dependencies (constructor injection is best).</li>
+<li><strong>Bean</strong> → An object managed by the Spring container.</li>
+<li><strong><code>ApplicationContext</code></strong> → The advanced IoC container.</li>
+<li><strong>AOP</strong> → Manages cross-cutting concerns like <code>@Transactional</code>.</li>
+<li><strong><code>@SpringBootApplication</code></strong> → The 3-in-1 annotation that starts everything.</li>
+<li><strong>Auto-Configuration</strong> → Magic that configures the app based on JARs present.</li>
+<li><strong>Composition &gt; Inheritance</strong> → Spring's design philosophy for flexibility.</li>
+<li><strong>Web Layer</strong> → <code>@RestController</code>, <code>@GetMapping</code>, <code>@RequestBody</code> handle HTTP requests.</li>
+<li><strong>Profiles</strong> → Manage configs for dev/test/prod.</li>
+<li><strong>Bean Scopes</strong> → <code>singleton</code> (default), <code>prototype</code>, <code>request</code>, <code>session</code>.</li>
+<li><strong>Events</strong> → Decouple logic via a pub-sub model.</li>
+<li><strong>Startup Flow</strong> → <code>run()</code> → context → auto-config → scan → beans → server → runners.</li>
 </ul>
 <hr />
+<h2 id="10-advanced-tricky-interview-qa">💡 10 Advanced "Tricky" Interview Q\&amp;A</h2>
+<ol>
+<li>
+<p><strong>What happens if you have two beans of the same type? How does Spring resolve this?</strong>
+    Spring throws a <code>NoUniqueBeanDefinitionException</code>. You can resolve it using:</p>
+<ul>
+<li><strong><code>@Primary</code></strong>: Mark one bean as the default choice.</li>
+<li><strong><code>@Qualifier("beanName")</code></strong>: Specify which bean to inject at the autowiring point.</li>
+</ul>
+</li>
+<li>
+<p><strong>How does Spring handle circular dependencies?</strong></p>
+<ul>
+<li>For <strong>constructor injection</strong>, it fails with a <code>BeanCurrentlyInCreationException</code>. This is good as it signals a design problem.</li>
+<li>For <strong>setter/field injection</strong>, Spring can resolve it by using a three-tier cache to store partially created objects, but this practice is discouraged.</li>
+</ul>
+</li>
+<li>
+<p><strong>What's the difference between <code>@Component</code>, <code>@Service</code>, and <code>@Repository</code>?</strong>
+    Functionally, they all register a bean. The difference is <strong>semantic</strong>:</p>
+<ul>
+<li><code>@Repository</code>: For the persistence layer. It also enables Spring's exception translation for database errors.</li>
+<li><code>@Service</code>: For the business logic layer.</li>
+<li><code>@Component</code>: A generic stereotype for any Spring-managed component.</li>
+</ul>
+</li>
+<li>
+<p><strong>How does <code>@Transactional</code> actually work?</strong>
+    It uses <strong>AOP proxies</strong>. Spring creates a proxy object that wraps your bean. When a <code>@Transactional</code> method is called, the proxy intercepts it, begins a transaction, calls your actual method, and then commits or rolls back the transaction upon completion.</p>
+</li>
+<li>
+<p><strong>How can you exclude a specific auto-configuration?</strong>
+    Use the <code>exclude</code> attribute on the <code>@SpringBootApplication</code> annotation:
+    <code>@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})</code></p>
+</li>
+<li>
+<p><strong>What is the difference between <code>@Configuration</code> and <code>@Component</code>?</strong>
+    A <code>@Configuration</code> class is special. Spring uses CGLIB to proxy it. This ensures that calls to <code>@Bean</code> methods within the class always return the same singleton instance, respecting the bean's scope. A plain <code>@Component</code> does not have this proxy behavior.</p>
+</li>
+<li>
+<p><strong>Why is constructor injection preferred over field injection?</strong></p>
+<ul>
+<li><strong>Immutability:</strong> Dependencies can be declared as <code>final</code>.</li>
+<li><strong>Explicit Dependencies:</strong> The constructor signature clearly shows all required dependencies.</li>
+<li><strong>Testability:</strong> It's easy to instantiate the class in a unit test by passing mocks to the constructor without reflection.</li>
+</ul>
+</li>
+<li>
+<p><strong>What's the purpose of the <code>spring-boot-starter-parent</code> POM?</strong>
+    It's a Maven project you inherit from. It manages <strong>dependency versions</strong> for a vast number of common libraries to ensure they are compatible, and it provides sensible default configurations for plugins.</p>
+</li>
+<li>
+<p><strong>What is the difference between <code>@Controller</code> and <code>@RestController</code>?</strong></p>
+<ul>
+<li><code>@Controller</code>: The classic Spring MVC controller. Methods typically return a view name to be resolved by a <code>ViewResolver</code>.</li>
+<li><code>@RestController</code>: A convenience annotation that combines <code>@Controller</code> and <code>@ResponseBody</code>. All methods in a <code>@RestController</code> will serialize the return object directly into the HTTP response body (e.g., as JSON).</li>
+</ul>
+</li>
+<li>
+<p><strong>What is the difference between <code>application.properties</code> and <code>application.yml</code>?</strong>
+    Both are used for configuration. The choice is a matter of preference.</p>
+<ul>
+<li><strong><code>.properties</code></strong>: Uses a flat <code>key=value</code> structure.</li>
+<li><strong><code>.yml</code></strong>: Uses a hierarchical YAML structure, which is often more readable and less repetitive for complex, nested configurations. YAML properties are overridden by <code>.properties</code> if both are present.</li>
+</ul>
+</li>
+</ol>
 
 
 
