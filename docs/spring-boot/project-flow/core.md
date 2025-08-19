@@ -19,13 +19,32 @@ public class PatientServiceApplication {
 }
 ```
 
-``` mermaid
+```mermaid
+%%{init: {
+  "theme": "dark",
+  "themeVariables": {
+    "primaryColor": "#18141e",
+    "edgeLabelBackground": "#18141e",
+    "fontFamily": "JetBrains Mono",
+    "textColor": "#fff"
+  }
+}}%%
+
 graph TD
     A[Start] --> B{Is it working?}
     B -- Yes --> C[Great!]
     B -- No --> D[Check config]
-```
 
+    %% Assign classes
+    class A nodeGradient;
+    class B nodeGradient;
+    class C nodeGradient;
+    class D nodeGradient;
+
+    %% Styles (gradient comes from CSS)
+    classDef nodeGradient fill:#18141e,color:#fff,stroke-width:2px;
+
+```
 **Step by step flow:**
 
 1. `SpringApplication.run(...)` creates or loads an **ApplicationContext** (IoC container).
