@@ -1,6 +1,5 @@
 
-
-#  Spring Boot Internals
+# Spring Boot Internals
 
 ## How Auto-Configuration Works
 
@@ -10,11 +9,9 @@ Auto-configuration is Spring Boot's mechanism for automatically configuring the 
 
 1.  **Trigger**: The process begins with `@EnableAutoConfiguration`, which is included in `@SpringBootApplication`.
 2.  **Candidate Loading**: Spring looks for a specific file on the classpath of all included JARs: `META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports`. This file contains a list of all potential auto-configuration classes.
-      * *Legacy Note:* In older versions, this was done via a `spring.factories` file. The new `.imports` file is more efficient.
+    * *Legacy Note:* In older versions, this was done via a `spring.factories` file. The new `.imports` file is more efficient.
 3.  **Conditional Evaluation**: Each auto-configuration class is evaluated. These classes are heavily annotated with **`@Conditional`** annotations. Spring checks these conditions to decide whether to activate the configuration and create the associated beans.
 4.  **Bean Creation**: If all conditions for an auto-configuration class are met, the beans defined within it are registered in the `ApplicationContext`.
-
-<!-- end list -->
 
 ```mermaid
 graph TD
@@ -29,7 +26,7 @@ graph TD
     end
     G --> I[ApplicationContext];
     H --> I[ApplicationContext];
-```
+````
 
 -----
 
@@ -37,13 +34,13 @@ graph TD
 
 `@Conditional` annotations are the "brains" of auto-configuration. They allow a configuration to be included only if certain conditions are true. Interviewers love these because they demonstrate a deep understanding of Spring's inner workings.
 
-| Annotation                      | Purpose                                                                                                 | Example Use Case                                                              |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| **`@ConditionalOnClass`** | The configuration is applied only if the specified class is present on the classpath.                   | `DataSourceAutoConfiguration` only runs if `javax.sql.DataSource` is present. |
-| **`@ConditionalOnMissingBean`** | A bean is created only if no other bean of the same type is already defined in the context.             | Creates a default `ObjectMapper` bean only if the user hasn't defined their own. |
-| **`@ConditionalOnProperty`** | The configuration is applied only if a specific property in the environment has a certain value.      | `ServerPropertiesAutoConfiguration` can be disabled with `spring.main.web-application-type=none`. |
-| **`@ConditionalOnBean`** | The configuration is applied only if a bean of the specified type already exists in the context.        | Auto-configuring a component that depends on an already-configured `DataSource`. |
-| **`@ConditionalOnWebApplication`** | The configuration is applied only if the application is a web application. | `WebMvcAutoConfiguration` only runs if it detects a web context.              |
+| Annotation | Purpose | Example Use Case |
+| --- | --- | --- |
+| **`@ConditionalOnClass`** | The configuration is applied only if the specified class is present on the classpath. | `DataSourceAutoConfiguration` only runs if `javax.sql.DataSource` is present. |
+| **`@ConditionalOnMissingBean`** | A bean is created only if no other bean of the same type is already defined in the context. | Creates a default `ObjectMapper` bean only if the user hasn't defined their own. |
+| **`@ConditionalOnProperty`** | The configuration is applied only if a specific property in the environment has a certain value. | `ServerPropertiesAutoConfiguration` can be disabled with `spring.main.web-application-type=none`. |
+| **`@ConditionalOnBean`** | The configuration is applied only if a bean of the specified type already exists in the context. | Auto-configuring a component that depends on an already-configured `DataSource`. |
+| **`@ConditionalOnWebApplication`** | The configuration is applied only if the application is a web application. | `WebMvcAutoConfiguration` only runs if it detects a web context. |
 
 -----
 
@@ -88,26 +85,26 @@ graph TD
 2.  **Create `ApplicationContext`**: Based on the classpath, an appropriate `ApplicationContext` is instantiated (e.g., `AnnotationConfigServletWebServerApplicationContext` for a web app).
 3.  **Prepare Context**: The context is prepared *before* it's refreshed. The environment is attached, and special `ApplicationContextInitializer` beans are run. `BeanFactoryPostProcessor`s are executed here to modify bean definitions before they are created.
 4.  **Refresh Context**: This is the heart of the IoC container startup. This single `refresh()` call triggers the entire bean lifecycle process:
-      * It registers all `BeanPostProcessor`s.
-      * It finds all bean definitions (from component scanning and auto-configuration).
-      * It instantiates, configures, and wires all singleton beans (as detailed in the bean lifecycle).
-      * It starts the embedded web server (Tomcat).
+    * It registers all `BeanPostProcessor`s.
+    * It finds all bean definitions (from component scanning and auto-configuration).
+    * It instantiates, configures, and wires all singleton beans (as detailed in the bean lifecycle).
+    * It starts the embedded web server (Tomcat).
 5.  **Call Runners**: After the context is fully refreshed and ready, the `run()` methods of all `ApplicationRunner` and `CommandLineRunner` beans are executed for any final startup tasks.
 
 -----
 
 -----
 
-### \#\# Spring MVC Advanced Topics
+## Spring MVC Advanced Topics
 
 #### Filter vs. Interceptor vs. ControllerAdvice
 
 These are three distinct mechanisms for intercepting requests, each operating at a different level and with a different purpose.
 
-| Feature               | Servlet Filter                                 | Spring Interceptor                           | `@ControllerAdvice` AOP                      |
-| --------------------- | ---------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
-| **Scope** | Servlet Container Level (e.g., Tomcat)         | Spring MVC / `DispatcherServlet` Level         | Spring AOP / Controller Level                |
-| **Awareness** | Not Spring-aware. Works with `HttpServletRequest/Response`. | Spring-aware. Can access the `ApplicationContext` and the target `HandlerMethod`. | Spring-aware. AOP proxy around controllers.  |
+| Feature | Servlet Filter | Spring Interceptor | `@ControllerAdvice` AOP |
+| --- | --- | --- | --- |
+| **Scope** | Servlet Container Level (e.g., Tomcat) | Spring MVC / `DispatcherServlet` Level | Spring AOP / Controller Level |
+| **Awareness** | Not Spring-aware. Works with `HttpServletRequest/Response`. | Spring-aware. Can access the `ApplicationContext` and the target `HandlerMethod`. | Spring-aware. AOP proxy around controllers. |
 | **Purpose** | Cross-cutting concerns before Spring is involved: authentication, logging, compression, CORS. | Pre/post-processing of requests within Spring MVC: modifying the model, detailed logging, permissions checks. | Global concerns for controllers: exception handling, model attribute binding, request/response body modification. |
 | **Configuration** | Implement `Filter`, register as `@Component` or `FilterRegistrationBean`. | Implement `HandlerInterceptor`, register with a `WebMvcConfigurer`. | Annotate a class with `@ControllerAdvice`. |
 
@@ -147,14 +144,14 @@ By default, a Spring MVC application uses one thread per request from the servle
 
 <!-- end list -->
 
-  * **`Callable<T>`**: The simplest approach. You return a `Callable` that computes a value in another thread. Spring manages the entire process.
-  * **`DeferredResult<T>`**: More advanced. It allows the result to be produced by any thread, even one not managed by Spring (e.g., a response from a message queue listener).
+* **`Callable<T>`**: The simplest approach. You return a `Callable` that computes a value in another thread. Spring manages the entire process.
+* **`DeferredResult<T>`**: More advanced. It allows the result to be produced by any thread, even one not managed by Spring (e.g., a response from a message queue listener).
 
 -----
 
 -----
 
-### \#\# Spring AOP & Proxies
+## Spring AOP & Proxies
 
 #### Why Proxies are created at `postProcessAfterInitialization`
 
@@ -169,12 +166,12 @@ The `BeanPostProcessor`'s `postProcessAfterInitialization` method is the **last 
 
 Spring AOP uses one of two proxying strategies to create proxies at runtime.
 
-| Feature               | JDK Dynamic Proxy                                         | CGLIB (Code Generation Library)                               |
-| --------------------- | --------------------------------------------------------- | ------------------------------------------------------------- |
-| **Mechanism** | Uses Java's built-in `java.lang.reflect.Proxy`.           | Uses bytecode generation to create a subclass of the target.  |
+| Feature | JDK Dynamic Proxy | CGLIB (Code Generation Library) |
+| --- | --- | --- |
+| **Mechanism** | Uses Java's built-in `java.lang.reflect.Proxy`. | Uses bytecode generation to create a subclass of the target. |
 | **Requirement** | The target class **must implement at least one interface**. | The target class **does not need to implement an interface**. |
-| **Limitation** | Can only proxy method calls defined in the interface.     | Cannot proxy `final` classes or `final` methods.              |
-| **Spring's Choice** | Used if the target bean implements an interface.          | Used if the target bean does not implement an interface.      |
+| **Limitation** | Can only proxy method calls defined in the interface. | Cannot proxy `final` classes or `final` methods. |
+| **Spring's Choice** | Used if the target bean implements an interface. | Used if the target bean does not implement an interface. |
 
 In modern Spring Boot, **CGLIB is often the default**, even if interfaces are present, as it allows for more flexibility (e.g., proxying calls to methods not on the interface). This can be controlled with the `proxy-target-class` property.
 
@@ -225,5 +222,8 @@ sequenceDiagram
 4.  **Transaction Start**: The `TransactionInterceptor` asks the `TransactionManager` to begin a new transaction. A database connection is obtained and set to `auto-commit=false`.
 5.  **Method Execution**: The interceptor invokes the original `savePatient()` method on the real `MyService` object. The method executes its database operations.
 6.  **Transaction Commit/Rollback**:
-      * **Success**: If the method completes without an exception, the interceptor tells the `TransactionManager` to **commit** the transaction.
-      * **Failure**: If a runtime exception is thrown, the interceptor catches it and tells the `TransactionManager` to **rollback** the transaction. The exception is then re-thrown.
+    * **Success**: If the method completes without an exception, the interceptor tells the `TransactionManager` to **commit** the transaction.
+    * **Failure**: If a runtime exception is thrown, the interceptor catches it and tells the `TransactionManager` to **rollback** the transaction. The exception is then re-thrown.
+
+<!-- end list -->
+

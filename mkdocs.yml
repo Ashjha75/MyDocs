@@ -24,6 +24,7 @@ nav:
           - Core: spring-boot/project-flow/core.md
           - MVC Request Flow: spring-boot/project-flow/core2.md
           - Spring Boot Internals : spring-boot/project-flow/core3.md
+          - Validation & DTOs : spring-boot/project-flow/core4.md
       - Another Section:
           - Topic 1: another/topic1.md
           - Topic 2: another/topic2.md
