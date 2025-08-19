@@ -85,22 +85,93 @@ DI is the **process** through which the IoC container provides required dependen
     ```
 
 -----
-
 ## 📌 3. Bean
+In Spring, a **bean** is any Java object whose lifecycle is **created, configured, and managed** by the Spring IoC (Inversion of Control) container. These beans form the backbone of your application.
 
-**Definition:**
-A bean is any Java object whose lifecycle is **created, configured, and managed by the Spring IoC container**.
 
-**Ways to create beans:**
+## Ways to Create Beans
 
-* Using stereotype annotations: **`@Component`**, **`@Service`**, **`@Repository`**, **`@Controller`**.
-* Using a **`@Bean`** method inside a **`@Configuration`** class.
+You can declare a class as a Spring bean in a few primary ways:
 
-**Scopes of Beans:**
+1.  **Stereotype Annotations**: This is the most common, annotation-based approach. You mark your classes with specific annotations, and Spring's component scanning finds them and registers them as beans.
 
-* **`singleton`** (Default): One single instance of the bean per Spring IoC container.
-* **`prototype`**: A new instance is created every time the bean is requested.
-* **`request`**, **`session`**, **`application`**, **`websocket`** (Web-specific scopes).
+      * `@Component`: A generic stereotype for any Spring-managed component.
+      * `@Service`: Marks a class in the service layer (business logic).
+      * `@Repository`: Marks a class in the persistence layer (data access).
+      * `@Controller` or `@RestController`: Marks a class in the presentation layer (handling web requests).
+
+2.  **Java-based Configuration**: You can explicitly declare beans within a `@Configuration` class using a method annotated with `@Bean`. This gives you fine-grained control over the bean's creation and configuration.
+
+    ```java
+    @Configuration
+    public class AppConfig {
+
+        @Bean
+        public MyService myService() {
+            return new MyService();
+        }
+    }
+    ```
+
+-----
+
+### Bean Scopes
+
+A bean's scope defines its lifecycle and visibility within the application.
+
+  * **singleton** (Default): Only **one single instance** of the bean is created for the entire Spring container. Every request for the bean gets a reference to the same object. Ideal for stateless services and repositories.
+  * **prototype**: A **new instance** is created every time the bean is requested. Perfect for stateful objects where each user or process needs an independent copy.
+  * **request**: A new instance is created for each HTTP request. (Web-specific)
+  * **session**: A new instance is created for each user's HTTP session. (Web-specific)
+  * **application**: A single instance is created for the entire web application's lifecycle (`ServletContext`). (Web-specific)
+  * **websocket**: A new instance is created for each WebSocket session. (Web-specific)
+
+-----
+
+## The Spring Bean Lifecycle
+
+The Spring container manages a bean's entire journey, from its creation to its destruction. This lifecycle involves several key phases and callback methods that allow developers to hook into the process.
+
+Here is a step-by-step breakdown of the lifecycle for a singleton bean:
+
+1.  **Instantiation** 🏗️: The Spring container first creates an instance of the bean, typically by calling its constructor.
+
+2.  **Populate Properties (Dependency Injection)**: The container injects all required dependencies into the bean. This is done through `@Autowired` on fields, constructors, or setter methods.
+
+3.  **Aware Interfaces**: If the bean implements `Aware` interfaces (like `BeanNameAware` or `ApplicationContextAware`), the container calls their methods to provide the bean with information about its environment.
+
+4.  **`BeanPostProcessor` (Before Initialization)**: The `postProcessBeforeInitialization()` method of any registered `BeanPostProcessor` is called. This allows for custom modifications before the bean is fully initialized.
+
+5.  **Initialization Callbacks** 🛠️: The container calls the bean's initialization methods. This is where you can add custom logic that needs to run after all properties have been set. The order is:
+
+      * A method annotated with `@PostConstruct`.
+      * The `afterPropertiesSet()` method (if the bean implements the `InitializingBean` interface).
+      * A custom `init-method` specified in the bean definition.
+
+6.  **`BeanPostProcessor` (After Initialization)**: The `postProcessAfterInitialization()` method of any `BeanPostProcessor` is called. This step is crucial for applying proxies, which is how Spring AOP (Aspect-Oriented Programming) works.
+
+7.  **Bean is Ready** ✅: The bean is now fully configured and ready to be used by the application. It will remain in the container until it's closed.
+
+8.  **Destruction Callbacks** 🗑️: When the Spring container is shut down, it calls the bean's destruction methods to allow for a graceful cleanup of resources (like closing database connections or releasing files). The order is:
+
+      * A method annotated with `@PreDestroy`.
+      * The `destroy()` method (if the bean implements the `DisposableBean` interface).
+      * A custom `destroy-method` specified in the bean definition.
+
+```mermaid
+graph TD
+    A["Start: Spring Container finds bean definition"] --> B["1. Instantiation"]
+    B --> C["2. Populate Properties / Dependency Injection"]
+    C --> D["3. Aware Interfaces\nsetBeanName()\nsetBeanFactory()\nsetApplicationContext()"]
+    D --> E["4. BeanPostProcessor\npostProcessBeforeInitialization()"]
+    E --> F["5. Initialization\n@PostConstruct\nafterPropertiesSet()\ncustom init-method"]
+    F --> G["6. BeanPostProcessor\npostProcessAfterInitialization()"]
+    G --> H["Bean is Ready & In Use"]
+    H --> I["Container Shutdown"]
+    I --> J["7. Destruction Callbacks\n@PreDestroy\ndestroy()\ncustom destroy-method"]
+    J --> K["End: Bean is Destroyed"]
+```
+
 
 -----
 
