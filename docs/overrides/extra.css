@@ -379,3 +379,96 @@ body,
   scroll-snap-type: y mandatory;
   touch-action: pan-y;
 }
+.md-search__scrollwrap {
+    /* -webkit-backface-visibility: hidden; */
+    /* backface-visibility: hidden; */
+    background-color: #181c247c; /* Lighter dark for better contrast */
+    height: 100%;
+    overflow-y: auto;
+    touch-action: pan-y;
+    color: #e6edf3 !important; /* Brighter text for readability */
+}
+/* Force all text inside search results to be light */
+/* === 1. SEARCH INPUT TEXT COLOR (FIX BLACK TEXT) === */
+.md-search__input {
+  color: #e6edf3 !important;           /* Light text */
+  background-color: #181c24cc !important; /* Dark semi-transparent bg */
+  caret-color: #00aaff !important;     /* Blue cursor */
+  border: 1px solid #30363d !important;
+  border-radius: 6px;
+}
+
+/* Placeholder text */
+.md-search__input::placeholder {
+  color: #6e7681 !important;
+  opacity: 0.7;
+}
+
+/* Input focus glow */
+.md-search__input:focus {
+  outline: none !important;
+  border-color: #00aaff !important;
+  box-shadow: 0 0 0 2px rgba(0, 170, 255, 0.3) !important;
+}
+
+/* === 2. SEARCH RESULTS WRAPPER & TEXT === */
+:where(.md-search__scrollwrap *) {
+  color: #e6edf3 !important;
+  background-color: #181c24 !important;
+}
+
+/* Result links */
+.md-search__result a {
+  color: #e6edf3 !important;
+  transition: color 0.2s ease;
+}
+
+.md-search__result a:hover {
+  color: #ffffff !important;
+  text-shadow: 0 0 4px rgba(0, 170, 255, 0.4);
+}
+
+/* === 3. HIGHLIGHTED TEXT (SEARCH MATCHES) === */
+.md-search__highlight {
+  background: none !important;
+  color: #ff66bb !important; /* Pink for keywords */
+  font-weight: 700 !important;
+  padding: 0;
+  border-radius: 2px;
+}
+
+/* Optional: subtle background on highlight */
+.md-search__highlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 102, 187, 0.1);
+  border-radius: 2px;
+  z-index: -1;
+}
+
+/* === 4. EXCERPT / DESCRIPTION TEXT === */
+.md-search__result .md-search__excerpt {
+  color: #c9d1d9 !important;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  margin-top: 4px;
+}
+
+/* === 5. IMPROVE SCROLLBAR (Optional but nice for dark mode) === */
+.md-search__scrollwrap::-webkit-scrollbar {
+  width: 6px;
+}
+
+.md-search__scrollwrap::-webkit-scrollbar-track {
+  background: #181c24;
+}
+
+.md-search__scrollwrap::-webkit-scrollbar-thumb {
+  background: #444c56;
+  border-radius: 3px;
+}
+
+.md-search__scrollwrap::-webkit-scrollbar-thumb:hover {
+  background: #555f6b;
+}   
