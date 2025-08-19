@@ -1,0 +1,1083 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../core3/">
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
+    
+    
+      
+        <title>Validation & DTOs - Project Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.7e37652d.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../overrides/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#validation-dtos" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Project Docs" class="md-header__button md-logo" aria-label="Project Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Project Docs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Validation & DTOs
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Project Docs" class="md-nav__button md-logo" aria-label="Project Docs" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Project Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Spring Boot
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Spring Boot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Project Flow
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Project Flow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../core/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Core
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../core2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MVC Request Flow
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../core3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Spring Boot Internals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Validation & DTOs
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Validation & DTOs
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#validation-dtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation &amp; DTOs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jakarta-bean-validation-formerly-jsr-303380" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jakarta Bean Validation (formerly JSR-303/380)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggering-validation-valid-validated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggering Validation: @Valid &amp; @Validated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Groups
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dtos-data-transfer-objects-vs-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      DTOs (Data Transfer Objects) vs. Entities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mapping Strategies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      💻 Coding Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-patientdto-with-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. PatientDTO with Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-validation-groups-oncreate-onupdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Validation Groups (OnCreate, OnUpdate)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-controller-with-validated" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Controller with @Validated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-custom-validator-validage" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Custom Validator (@ValidAge)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Interview Questions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Another Section
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Another Section
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../another/topic1.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Topic 1
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../another/topic2.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Topic 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#validation-dtos" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation &amp; DTOs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#jakarta-bean-validation-formerly-jsr-303380" class="md-nav__link">
+    <span class="md-ellipsis">
+      Jakarta Bean Validation (formerly JSR-303/380)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#triggering-validation-valid-validated" class="md-nav__link">
+    <span class="md-ellipsis">
+      Triggering Validation: @Valid &amp; @Validated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#validation-groups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Validation Groups
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dtos-data-transfer-objects-vs-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      DTOs (Data Transfer Objects) vs. Entities
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mapping-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mapping Strategies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      💻 Coding Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-patientdto-with-validation" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. PatientDTO with Validation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-validation-groups-oncreate-onupdate" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Validation Groups (OnCreate, OnUpdate)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-controller-with-validated" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Controller with @Validated
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-custom-validator-validage" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Custom Validator (@ValidAge)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interview-questions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Interview Questions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Validation & DTOs</h1>
+
+<hr />
+<h2 id="validation-dtos">Validation &amp; DTOs</h2>
+<p>Data validation ensures that the input to your application is correct before it's processed. DTOs (Data Transfer Objects) are a critical pattern for creating secure, stable, and flexible APIs.</p>
+<h2 id="jakarta-bean-validation-formerly-jsr-303380">Jakarta Bean Validation (formerly JSR-303/380)</h2>
+<p>This is a standard specification that provides a framework for validating Java objects using annotations. Spring Boot seamlessly integrates this via the <code>spring-boot-starter-validation</code> dependency.</p>
+<p><strong>Common Annotations:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Annotation</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@NotNull</code></td>
+<td>Asserts that a field is not <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>@NotEmpty</code></td>
+<td>Asserts that a collection/string is not <code>null</code> and its size &gt; 0.</td>
+</tr>
+<tr>
+<td><code>@NotBlank</code></td>
+<td>Asserts that a string is not <code>null</code> and contains non-whitespace characters.</td>
+</tr>
+<tr>
+<td><code>@Size</code></td>
+<td>Asserts that a string/collection size is within a given range (<code>min</code>, <code>max</code>).</td>
+</tr>
+<tr>
+<td><code>@Email</code></td>
+<td>Asserts that a string is a well-formed email address.</td>
+</tr>
+<tr>
+<td><code>@Min</code>/<code>@Max</code></td>
+<td>Asserts that a numeric value is above or below a certain value.</td>
+</tr>
+<tr>
+<td><code>@Pattern</code></td>
+<td>Asserts that a string matches a given regular expression.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="triggering-validation-valid-validated">Triggering Validation: <code>@Valid</code> &amp; <code>@Validated</code></h2>
+<p>Placing validation annotations on a DTO is not enough. You must tell Spring to trigger the validation process.</p>
+<ul>
+<li><strong><code>@Valid</code></strong>: When a controller method parameter (typically one annotated with <code>@RequestBody</code>) is marked with <code>@Valid</code>, Spring automatically validates that object.</li>
+<li><strong><code>@Validated</code></strong>: A Spring-specific annotation that is a variant of <code>@Valid</code>. It's required when you need to use <strong>validation groups</strong>.</li>
+</ul>
+<h2 id="validation-groups">Validation Groups</h2>
+<p>Often, validation rules differ based on the context. A common example is Create vs. Update operations:</p>
+<ul>
+<li><strong>On Create</strong>: The <code>id</code> field should be <code>null</code>.</li>
+<li><strong>On Update</strong>: The <code>id</code> field must <strong>not</strong> be <code>null</code>.</li>
+</ul>
+<p>Validation groups allow you to apply a subset of constraints at a time. You define marker interfaces for each group and associate constraints with them.</p>
+<h2 id="dtos-data-transfer-objects-vs-entities">DTOs (Data Transfer Objects) vs. Entities</h2>
+<p>An <strong>Entity</strong> represents a table in your database. A <strong>DTO</strong> is a plain object designed to carry data to and from your API. <strong>Never expose JPA entities directly in your REST APIs.</strong></p>
+<p><strong>Key Reasons to Use DTOs:</strong></p>
+<ol>
+<li><strong>API Contract Stability</strong>: Your database schema can change (e.g., renaming a column), but you can keep your API's JSON structure consistent, preventing breaking changes for your clients.</li>
+<li><strong>Security</strong>: Exposing entities can leak sensitive information (like password hashes) or internal database structures. DTOs ensure you only expose the fields you intend to.</li>
+<li><strong>View-Specific Payloads</strong>: Your API might need to return a combination of data from multiple entities or a simplified version of one entity. DTOs are tailored to fit the exact needs of the API endpoint.</li>
+<li><strong>Input Validation</strong>: DTOs provide a dedicated place to define validation rules for incoming data, separating API input concerns from database persistence rules.</li>
+</ol>
+<h2 id="mapping-strategies">Mapping Strategies</h2>
+<p>You need a way to convert between DTOs and Entities.</p>
+<ul>
+<li><strong>Manual Mapper</strong>: A simple class with methods like <code>toDto(Entity e)</code> and <code>toEntity(Dto d)</code>. It's straightforward but can be tedious.</li>
+<li><strong>MapStruct/ModelMapper</strong>: Libraries that automate the mapping process through convention over configuration, reducing boilerplate code significantly.</li>
+</ul>
+<hr />
+<h2 id="coding-examples">💻 Coding Examples</h2>
+<h2 id="1-patientdto-with-validation">1. PatientDTO with Validation</h2>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientDTO</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Validation rules are applied here</span>
+<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Name cannot be null&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Size</span><span class="p">(</span><span class="n">min</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">max</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Name must be between 2 and 100 characters&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Min</span><span class="p">(</span><span class="n">value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Age cannot be negative&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">age</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@Email</span><span class="p">(</span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Please provide a valid email address&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@NotEmpty</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="2-validation-groups-oncreate-onupdate">2. Validation Groups (<code>OnCreate</code>, <code>OnUpdate</code>)</h2>
+<p>First, define the marker interfaces.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">OnCreate</span><span class="w"> </span><span class="p">{}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">OnUpdate</span><span class="w"> </span><span class="p">{}</span>
+</code></pre></div>
+<p>Then, apply them to the DTO.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientDTO</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nd">@NotNull</span><span class="p">(</span><span class="n">groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OnUpdate</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ID is required for updates&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="nd">@Null</span><span class="p">(</span><span class="n">groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OnCreate</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ID must be null for new patients&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">;</span>
+
+<span class="w">    </span><span class="nd">@NotBlank</span><span class="p">(</span><span class="n">groups</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">OnCreate</span><span class="p">.</span><span class="na">class</span><span class="p">,</span><span class="w"> </span><span class="n">OnUpdate</span><span class="p">.</span><span class="na">class</span><span class="p">},</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Name is required&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span>
+<span class="w">    </span><span class="c1">// ... other fields</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="3-controller-with-validated">3. Controller with <code>@Validated</code></h2>
+<p>To trigger group-based validation, use <code>@Validated</code> in the controller.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@RestController</span>
+<span class="nd">@RequestMapping</span><span class="p">(</span><span class="s">&quot;/api/patients&quot;</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PatientController</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@PostMapping</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">Patient</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">createPatient</span><span class="p">(</span>
+<span class="w">        </span><span class="nd">@Validated</span><span class="p">(</span><span class="n">OnCreate</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"> </span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">PatientDTO</span><span class="w"> </span><span class="n">patientDTO</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ... conversion and saving logic</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="nd">@PutMapping</span><span class="p">(</span><span class="s">&quot;/{id}&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ResponseEntity</span><span class="o">&lt;</span><span class="n">Patient</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">updatePatient</span><span class="p">(</span>
+<span class="w">        </span><span class="nd">@PathVariable</span><span class="w"> </span><span class="n">Long</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="nd">@Validated</span><span class="p">(</span><span class="n">OnUpdate</span><span class="p">.</span><span class="na">class</span><span class="p">)</span><span class="w"> </span><span class="nd">@RequestBody</span><span class="w"> </span><span class="n">PatientDTO</span><span class="w"> </span><span class="n">patientDTO</span>
+<span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="c1">// ... conversion and update logic</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="4-custom-validator-validage">4. Custom Validator (<code>@ValidAge</code>)</h2>
+<p><strong>Step 1: Create the annotation.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Target</span><span class="p">({</span><span class="n">ElementType</span><span class="p">.</span><span class="na">FIELD</span><span class="p">})</span>
+<span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span>
+<span class="nd">@Constraint</span><span class="p">(</span><span class="n">validatedBy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AgeValidator</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="kd">public</span><span class="w"> </span><span class="nd">@interface</span><span class="w"> </span><span class="n">ValidAge</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="nf">message</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="s">&quot;Patient must be at least 18 years old&quot;</span><span class="p">;</span>
+<span class="w">    </span><span class="n">Class</span><span class="o">&lt;?&gt;[]</span><span class="w"> </span><span class="nf">groups</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{};</span>
+<span class="w">    </span><span class="n">Class</span><span class="o">&lt;?</span><span class="w"> </span><span class="kd">extends</span><span class="w"> </span><span class="n">Payload</span><span class="o">&gt;[]</span><span class="w"> </span><span class="nf">payload</span><span class="p">()</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="p">{};</span>
+<span class="p">}</span>
+</code></pre></div>
+<p><strong>Step 2: Create the validator implementation.</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AgeValidator</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">ConstraintValidator</span><span class="o">&lt;</span><span class="n">ValidAge</span><span class="p">,</span><span class="w"> </span><span class="n">Integer</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Override</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isValid</span><span class="p">(</span><span class="n">Integer</span><span class="w"> </span><span class="n">age</span><span class="p">,</span><span class="w"> </span><span class="n">ConstraintValidatorContext</span><span class="w"> </span><span class="n">context</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">age</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">;</span><span class="w"> </span><span class="c1">// Let @NotNull handle this</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Now you can use <code>@ValidAge</code> on a field in your DTO.</p>
+<hr />
+<h2 id="interview-questions">🎯 Interview Questions</h2>
+<ul>
+<li><strong>Q: Difference between entity validation vs. DTO validation?</strong>
+  They operate at different layers and serve different purposes. It's best practice to use both.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Aspect</th>
+<th><strong>DTO Validation</strong></th>
+<th><strong>Entity Validation (JPA)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>To validate <strong>external input</strong> from the client at the API boundary.</td>
+<td>To ensure <strong>data integrity</strong> and enforce business rules at the persistence layer.</td>
+</tr>
+<tr>
+<td><strong>Layer</strong></td>
+<td>Controller/Web Layer.</td>
+<td>Persistence Layer (just before a <code>persist</code> or <code>merge</code> operation).</td>
+</tr>
+<tr>
+<td><strong>Annotations</strong></td>
+<td>Jakarta Bean Validation (<code>@NotNull</code>, <code>@Size</code>, etc.).</td>
+<td>Can use both Bean Validation and JPA-specific annotations (<code>@Column(nullable=false)</code>).</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>"Is the incoming JSON well-formed and does it meet the API contract requirements?"</td>
+<td>"Does this object meet the business rules required to be stored in the database?"</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Q: How are validation errors handled by default?</strong>
+  By default, if validation fails on a method argument annotated with <code>@Valid</code>, Spring throws a <strong><code>MethodArgumentNotValidException</code></strong>. This results in a default, often verbose, JSON error response with a <code>400 Bad Request</code> status code.</li>
+</ul>
+<p>The <strong>best practice</strong> is to handle this exception globally using a <strong><code>@ControllerAdvice</code></strong> class. This allows you to intercept the exception and format a clean, consistent, and user-friendly JSON error response across your entire application.</p>
+<ul>
+<li>
+<p><strong>Q: How to write a custom validator?</strong>
+  There are three main steps:</p>
+<ol>
+<li><strong>Create an Annotation Interface</strong>: Define a new annotation (e.g., <code>@ValidAge</code>). This interface must be annotated with <code>@Constraint(validatedBy = YourValidatorClass.class)</code>. It also requires three methods: <code>message()</code>, <code>groups()</code>, and <code>payload()</code>.</li>
+<li><strong>Create a Validator Class</strong>: This class must implement the <code>ConstraintValidator&lt;YourAnnotation, TypeToValidate&gt;</code> interface. For example, <code>ConstraintValidator&lt;ValidAge, Integer&gt;</code>.</li>
+<li><strong>Implement the <code>isValid()</code> Method</strong>: This method contains the actual validation logic. It receives the value of the field being validated and must return <code>true</code> if the value is valid and <code>false</code> otherwise.</li>
+</ol>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../core3/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Spring Boot Internals">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Spring Boot Internals
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.sections", "navigation.expand", "navigation.footer"], "search": "../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.92b07e13.min.js"></script>
+      
+        <script src="../../../overrides/extra.js"></script>
+      
+    
+  </body>
+</html>
