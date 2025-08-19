@@ -3,9 +3,9 @@ site_name: Project Docs
 theme:
   name: material
   features:
-    - navigation.tabs
     - navigation.sections
     - navigation.expand
+    - navigation.footer
 
 # This activates the dark theme, which is required for your CSS to work
 palette:
@@ -16,14 +16,17 @@ extra_css:
   - overrides/extra.css
 extra_javascript:
   - overrides/extra.js
+
 nav:
   - Home: index.md
-  - Spring Boot:
-      - Overview: spring-boot/overview.md
+  - Spring Boot: 
       - Project Flow:
           - Core: spring-boot/project-flow/core.md
           - MVC Request Flow: spring-boot/project-flow/core2.md
           - Data: spring-boot/project-flow/data.md
+      - Another Section:
+          - Topic 1: another/topic1.md
+          - Topic 2: another/topic2.md
 
 
 # This block is required to enable code syntax highlighting

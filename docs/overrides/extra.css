@@ -1,134 +1,66 @@
-/* GitHub Dark (Dimmed) Theme for MkDocs Material - V6 (Final)
-   ------------------------------------------------
-   - Corrected the typo in the border color variable for GitHub Pages compatibility.
-   - Cleaned up and integrated custom styles for better stability.
-   - Polished sidebar navigation with clear hierarchy for headings/subheadings.
-   - Added subtle borders to header and sidebar for a defined, GitHub-like layout.
-*/
-
-/* --- Color Palette & Font Variables --- */
 :root {
-  --gh-bg-canvas: #0d1117;         /* Deepest background */
-  --gh-bg-surface: #161b22;        /* Component bg (sidebar, header) */
-  --gh-bg-code: #011627;           /* Dedicated code block background */
-  --gh-border-default: #30363d;    /* Default border color (FIXED) */
-  --gh-border-muted: #21262d;      /* Muted border for headings */
+  --gh-bg-canvas: #0d1117;
+  --gh-bg-surface: #161b22;
+  --gh-bg-code: #011627;
+  --gh-border-default: #30363d;
+  --gh-border-muted: #21262d;
 
-  --gh-text-fg: #c9d1d9;           /* Primary foreground text (softer white) */
-  --gh-text-muted: #8b949e;        /* Muted text (secondary info) */
-  --gh-text-link: #58a6ff;         /* Link color */
-  --gh-text-link-hover: #79c0ff;   /* Link hover color */
-  --gh-text-heading: #e6edf3;      /* Heading color (brighter) */
-  --gh-text-active-nav: #ffffff;   /* Active nav link in sidebar */
+  --gh-text-fg: #c9d1d9;
+  --gh-text-muted: #8b949e;
+  --gh-text-link: #58a6ff;
+  --gh-text-link-hover: #79c0ff;
+  --gh-text-heading: #e6edf3;
+  --gh-text-active-nav: #ffffff;
 
-  /* Syntax Highlighting - Refined for Comfort */
   --gh-code-fg: #d6deeb;
   --gh-code-comment: #808080;
-  --gh-code-keyword: #ff7b72;      /* Red/Orange for keywords */
-  --gh-code-class: #ffa657;        /* Yellow for classes */
-  --gh-code-function: #d2a8ff;     /* Purple for functions */
-  --gh-code-string: #a5d6ff;       /* Light blue for strings */
-  --gh-code-number: #79c0ff;       /* Blue for numbers/constants */
-  --gh-code-variable: #79c0ff;     /* Blue for variables */
+  --gh-code-keyword: #ff7b72;
+  --gh-code-class: #ffa657;
+  --gh-code-function: #d2a8ff;
+  --gh-code-string: #a5d6ff;
+  --gh-code-number: #79c0ff;
+  --gh-code-variable: #79c0ff;
 
-  /* Fonts */
   --gh-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
   --gh-font-mono: "JetBrains Mono", "SFMono-Regular", "Consolas", "Liberation Mono", "Menlo", monospace;
 }
 
-/* --- Global Styles & Main Backgrounds --- */
-body, .md-main {
+body,
+.md-main {
   background-color: var(--gh-bg-canvas);
   color: var(--gh-text-fg);
   font-family: var(--gh-font-sans);
 }
 
 .md-grid {
-    max-width: 100% !important;
+  max-width: 100% !important;
 }
 
-/* --- Header, Footer, Sidebar with Borders --- */
-.md-header {
-  background-color: var(--gh-bg-surface);
-  border-bottom: 1px solid var(--gh-border-default);
-}
-.md-sidebar {
-  background-color: var(--gh-bg-surface);
-  border-right: 1px solid var(--gh-border-default);
-}
-.md-footer {
-  background-color: var(--gh-bg-surface);
-  border-top: 1px solid var(--gh-border-default);
-}
-.md-tabs {
-  background-color: var(--gh-bg-surface);
-}
-
-/* --- Typography & Headings --- */
-.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4, .md-typeset h5, .md-typeset h6 {
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3,
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6 {
   color: var(--gh-text-heading);
   font-weight: 600;
 }
+
 .md-typeset h2 {
   font-size: 1.5em;
   border-bottom: 1px solid var(--gh-border-muted);
   padding-bottom: .3em;
 }
 
-/* --- Sidebar Navigation (V5 - HIERARCHY AND ACTIVE STATE FIX) --- */
-
-/* Style for section titles like "Project Flow" */
-.md-nav__title {
-  color: var(--gh-text-muted);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 1.5em 1.2rem 0.5em; /* More top padding */
-}
-
-/* Default state for all navigation links */
-.md-nav__link {
-  color: var(--gh-text-muted);
-  transition: color 0.1s ease-in-out, background-color 0.1s ease-in-out;
-  border-radius: 4px;
-}
-
-/* Hover state for all navigation links */
-.md-nav__link:hover {
-  background-color: rgba(139, 148, 158, 0.1); /* Subtle hover background */
-  color: var(--gh-text-fg);
-}
-
-/* --- THIS IS THE KEY FIX --- */
-/* Target the active item's link specifically to override the default background */
-.md-nav__item--active > .md-nav__link:not(.md-nav__toggle) {
-  background-color: transparent; /* REMOVE the background */
-  color: var(--gh-text-active-nav); /* Make the text bright white */
-  font-weight: 600;
-}
-
-/* Style for the parent sections of the active page */
-.md-nav__item--section > .md-nav__link--active {
-    color: var(--gh-text-fg);
-}
-
-/* Indent nested items for clear hierarchy */
-.md-nav__list .md-nav__list {
-    padding-left: 1rem;
-}
-
-
-/* --- Code Blocks & Inline Code (Polished) --- */
 .md-typeset code {
   color: var(--gh-text-link);
-  background-color: rgba(88, 166, 255, 0.15); /* Subtle blue background */
+  background-color: rgba(88, 166, 255, 0.15);
   border-radius: 6px;
   padding: .2em .4em;
   font-size: 85%;
   font-family: var(--gh-font-mono);
 }
-/* Remove double border from code blocks */
+
 .md-typeset pre {
   background-color: var(--gh-bg-surface);
   border: 1px solid var(--gh-border-default) !important;
@@ -136,6 +68,7 @@ body, .md-main {
   padding: 1em;
   box-shadow: none !important;
 }
+
 .md-typeset pre code {
   background-color: transparent;
   padding: 0;
@@ -144,7 +77,6 @@ body, .md-main {
   box-shadow: none !important;
 }
 
-/* Remove border from code block containers (admonitions, etc.) */
 .md-typeset .admonition,
 .md-typeset .admonition .highlight,
 .md-typeset .admonition pre {
@@ -152,17 +84,54 @@ body, .md-main {
   box-shadow: none !important;
 }
 
-/* --- Syntax Highlighting (Primer/GitHub Style) --- */
-.md-typeset .highlight .c, .md-typeset .highlight .c1, .md-typeset .highlight .cm { color: var(--gh-code-comment); }
-.md-typeset .highlight .k, .md-typeset .highlight .kc, .md-typeset .highlight .kd, .md-typeset .highlight .kp, .md-typeset .highlight .kr, .md-typeset .highlight .kt { color: var(--gh-code-keyword); }
-.md-typeset .highlight .s, .md-typeset .highlight .s1, .md-typeset .highlight .s2 { color: var(--gh-code-string); }
-.md-typeset .highlight .mi, .md-typeset .highlight .m, .md-typeset .highlight .mf, .md-typeset .highlight .mh, .md-typeset .highlight .il { color: var(--gh-code-number); }
-.md-typeset .highlight .nc, .md-typeset .highlight .nb { color: var(--gh-code-class); }
-.md-typeset .highlight .nf { color: var(--gh-code-function); }
-.md-typeset .highlight .nv, .md-typeset .highlight .nn { color: var(--gh-code-variable); }
-.md-typeset .highlight .p, .md-typeset .highlight .na { color: var(--gh-code-fg); }
+.md-typeset .highlight .c,
+.md-typeset .highlight .c1,
+.md-typeset .highlight .cm {
+  color: var(--gh-code-comment);
+}
 
-/* --- Tables --- */
+.md-typeset .highlight .k,
+.md-typeset .highlight .kc,
+.md-typeset .highlight .kd,
+.md-typeset .highlight .kp,
+.md-typeset .highlight .kr,
+.md-typeset .highlight .kt {
+  color: var(--gh-code-keyword);
+}
+
+.md-typeset .highlight .s,
+.md-typeset .highlight .s1,
+.md-typeset .highlight .s2 {
+  color: var(--gh-code-string);
+}
+
+.md-typeset .highlight .mi,
+.md-typeset .highlight .m,
+.md-typeset .highlight .mf,
+.md-typeset .highlight .mh,
+.md-typeset .highlight .il {
+  color: var(--gh-code-number);
+}
+
+.md-typeset .highlight .nc,
+.md-typeset .highlight .nb {
+  color: var(--gh-code-class);
+}
+
+.md-typeset .highlight .nf {
+  color: var(--gh-code-function);
+}
+
+.md-typeset .highlight .nv,
+.md-typeset .highlight .nn {
+  color: var(--gh-code-variable);
+}
+
+.md-typeset .highlight .p,
+.md-typeset .highlight .na {
+  color: var(--gh-code-fg);
+}
+
 .md-typeset table:not([class]) {
   border-spacing: 0;
   border-collapse: collapse;
@@ -173,44 +142,45 @@ body, .md-main {
   border: 1px solid var(--gh-border-default);
   border-radius: 6px;
 }
+
 .md-typeset table:not([class]) th,
 .md-typeset table:not([class]) td {
   padding: 6px 13px;
   border: 1px solid var(--gh-border-default);
 }
+
 .md-typeset table:not([class]) th {
   background-color: var(--gh-bg-surface);
   font-weight: 600;
 }
+
 .md-typeset table:not([class]) tr {
   background-color: var(--gh-bg-canvas);
 }
+
 .md-typeset table:not([class]) tr:nth-child(2n) {
   background-color: var(--gh-bg-surface);
 }
 
-/* --- Search --- */
 .md-search__input {
   background-color: var(--gh-bg-canvas);
   border: 1px solid var(--gh-border-default);
 }
 
-/* --- Scrollbar --- */
 ::-webkit-scrollbar {
   width: 8px;
   background: var(--gh-bg-surface);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--gh-border-default);
   border-radius: 4px;
 }
 
-/* --- Remove Shadows --- */
 * {
   box-shadow: none !important;
 }
 
-/* --- Custom Additions --- */
 .md-content {
   border: none;
   border-radius: 7px;
@@ -219,77 +189,193 @@ body, .md-main {
 }
 
 .md-nav--secondary .md-nav__title {
-    background: transparent;
-    color: var(--gh-text-heading);
-    font-weight: 600;
-}
-/* Fix for dark text in code blocks */
-/* --- Syntax Highlighting (Primer/GitHub Style) --- */
-/* ... your existing rules for .c, .k, .s etc. ... */
-
-/* FIX: Brighten generic code elements that were too dark */
-.md-typeset .highlight .n,  /* Name */
-.md-typeset .highlight .o,  /* Operator */
-.md-typeset .highlight .p   /* Punctuation */
-{
-  color: #d6deeb; /* Use the bright default code color */
-}
-/* .md-sidebar {
-  opacity: 0;
-} */
-.md-sidebar .md-sidebar__scrollwrap{
-  opacity: 1 !important;
-  background: #161b22;
-    height:fit-content  !important ;
-    padding: 1rem 0;
-    top: 49px;
-    border-radius: 7px;
-    border: .2px solid #4a5050 !important;
-        box-shadow: 0 2px 8px -2px rgba(162, 169, 176, 0.16)  !important;
-    margin-top: .5rem;
-}
-.md-nav__link {
-  color: var(--gh-text-secondary);
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--gh-border-default);
-  transition: background 0.2s ease;
-}
-.md-nav__link:hover, .md-nav__link:focus {
-  background: rgba(88,166,255,0.08);
-  color: var(--gh-text-link-hover);
-  text-decoration: none;
-}
-.md-nav__item--active > .md-nav__link {
-  color: var(--gh-text-active-nav);
-  background: rgba(88,166,255,0.16);
+  background: transparent;
+  color: var(--gh-text-heading);
   font-weight: 600;
 }
-.pymdownx-highlight{
+
+.md-typeset .highlight .n,
+.md-typeset .highlight .o,
+.md-typeset .highlight .p {
+  color: #d6deeb;
+}
+
+.pymdownx-highlight {
   background-color: transparent;
   border: none;
   outline: none;
 }
 
-/* ------------------------------
-   Mermaid: card, pattern, gradient
-   ------------------------------ */
-
-/* Diagram canvas (subtle patterned card) */
 .mermaid {
-  background-color: #0d0d13;                            /* soft dark base */
-  background-image: url("/docs/overrides/darkPattern.svg"); /* your SVG pattern */
+  background-color: #0d0d13;
+  background-image: url("/docs/overrides/darkPattern.svg");
   background-repeat: repeat;
   background-size: 14px 14px;
   border-radius: 10px;
   padding: 1.25rem;
   margin: 1.25rem 0;
-  box-shadow: 0 6px 24px rgba(0,0,0,0.45);
-  overflow-x: auto;                                     /* avoid clipping on wide graphs */
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+  overflow-x: auto;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .nodeGradient {
   stroke: #00aaff;
   filter: drop-shadow(0 0 4px #ff006a) drop-shadow(0 0 8px #00aaff);
+}
+
+
+@media (min-width: 901px) {
+  .md-header {
+    background-color: var(--gh-bg-surface);
+    border-bottom: 1px solid var(--gh-border-default);
+  }
+
+  .md-sidebar {
+    background-color: var(--gh-bg-surface);
+    border-right: 1px solid var(--gh-border-default);
+  }
+
+  .md-footer {
+    background-color: var(--gh-bg-surface);
+    border-top: 1px solid var(--gh-border-default);
+  }
+
+  .md-tabs {
+    background-color: var(--gh-bg-surface);
+  }
+
+  .md-nav__title {
+    color: var(--gh-text-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 1.5em 1.2rem 0.5em;
+    background: #161b22;
+  }
+
+  .md-nav--primary .md-nav__title[for=__drawer] {
+    scroll-snap-align: start;
+    background: #161b22;
+  }
+
+  .md-nav__link {
+    color: var(--gh-text-secondary);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--gh-border-default);
+    transition: background 0.2s ease;
+    border-radius: 4px;
+  }
+
+  .md-nav__link:hover,
+  .md-nav__link:focus {
+    background: rgba(88, 166, 255, 0.08);
+    color: var(--gh-text-link-hover);
+    text-decoration: none;
+  }
+
+  .md-nav__item--active>.md-nav__link:not(.md-nav__toggle) {
+    background-color: transparent;
+    color: var(--gh-text-active-nav);
+    font-weight: 600;
+  }
+
+  .md-nav__item--active>.md-nav__link {
+    color: var(--gh-text-active-nav);
+    background: rgba(88, 166, 255, 0.16);
+    font-weight: 600;
+  }
+
+  .md-nav__item--section>.md-nav__link--active {
+    color: var(--gh-text-fg);
+  }
+
+  .md-nav__list .md-nav__list {
+    padding-left: 1rem;
+  }
+
+  .md-sidebar .md-sidebar__scrollwrap {
+    opacity: 1 !important;
+    background: #161b22;
+    height: fit-content !important;
+    max-height: 500px;
+    padding: 1rem 0;
+    top: 49px;
+    border-radius: 7px;
+    border: .2px solid #4a5050 !important;
+    box-shadow: 0 2px 8px -2px rgba(162, 169, 176, 0.16) !important;
+    margin-top: .5rem;
+  }
+
+  .md-nav__link[for^="__nav_"] {
+    color: #f3f3f3 !important;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  footer {
+    width: 50%;
+    margin: auto;
+    border-radius: 20px;
+  }
+
+  footer nav {
+    width: 90% !important;
+  }
+
+}
+
+/* Force dark theme everywhere (desktop + mobile) */
+body,
+.md-main {
+  background-color: var(--gh-bg-canvas);
+  color: var(--gh-text-fg);
+  font-family: var(--gh-font-sans);
+}
+
+/* Header, sidebar, footer dark even on mobile */
+.md-header,
+.md-sidebar,
+.md-footer,
+.md-tabs {
+  background-color: var(--gh-bg-surface) !important;
+  color: var(--gh-text-fg) !important;
+  border: none;
+}
+
+/* Mobile nav drawer dark mode */
+.md-nav__link,
+.md-nav__title {
+  background-color: var(--gh-bg-surface) !important;
+  color: var(--gh-text-fg) !important;
+}
+
+.md-nav__link:hover {
+  background: rgba(88, 166, 255, 0.08) !important;
+  color: var(--gh-text-link-hover) !important;
+}
+
+/* Ensure drawer overlay is dark */
+[data-md-color-scheme="default"] {
+  --md-default-bg-color: var(--gh-bg-canvas);
+  --md-default-fg-color: var(--gh-text-fg);
+  --md-default-accent-color: #00aaff;
+}
+
+.md-nav__toggle:checked~.md-nav>.md-nav__list {
+  -webkit-backface-visibility: hidden;
+  background: #161b22 !important;
+  backface-visibility: hidden;
+}
+
+.md-nav--primary .md-nav__title~.md-nav__list {
+  background-color: #161b22;
+  box-shadow: 0 .05rem 0 var(--md-default-fg-color--lightest) inset;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  touch-action: pan-y;
 }
