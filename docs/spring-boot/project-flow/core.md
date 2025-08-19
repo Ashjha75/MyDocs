@@ -20,15 +20,6 @@ public class PatientServiceApplication {
 ```
 
 ```mermaid
-%%{init: {
-  "theme": "dark",
-  "themeVariables": {
-    "primaryColor": "#18141e",
-    "edgeLabelBackground": "#18141e",
-    "fontFamily": "JetBrains Mono",
-    "textColor": "#fff"
-  }
-}}%%
 
 graph TD
     A[Start] --> B{Is it working?}
@@ -43,7 +34,6 @@ graph TD
 
     %% Styles (gradient comes from CSS)
     classDef nodeGradient fill:#18141e,color:#fff,stroke-width:2px;
-
 ```
 **Step by step flow:**
 

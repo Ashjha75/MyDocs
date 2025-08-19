@@ -270,51 +270,26 @@ body, .md-main {
   outline: none;
 }
 
+/* ------------------------------
+   Mermaid: card, pattern, gradient
+   ------------------------------ */
 
-
-
-/* -------------------- */
-/* Mermaid Diagram Glow */
-/* -------------------- */
-
-.mermaid .node rect,
-.mermaid .node polygon,
-.mermaid .node ellipse {
-  stroke: url(#mermaid-grad-border);
-  stroke-width: 2.5px;
-  fill: #0f0f17 !important; /* darker neutral fill */
-  color: #fff !important;
-  rx: 6; /* rounded corners for rects */
-  ry: 6;
-  filter: drop-shadow(0 0 6px rgba(0, 170, 255, 0.25))
-          drop-shadow(0 0 12px rgba(255, 0, 106, 0.15));
-}
-
-/* -------------------- */
-/* Mermaid Diagram Canvas */
-/* -------------------- */
+/* Diagram canvas (subtle patterned card) */
 .mermaid {
-  background-color: #0d0d13; /* softer dark */
-  background-image: url("/docs/overrides/darkPattern.svg"); /* your pattern */
+  background-color: #0d0d13;                            /* soft dark base */
+  background-image: url("/docs/overrides/darkPattern.svg"); /* your SVG pattern */
   background-repeat: repeat;
-  background-size: 16px 16px; /* slightly larger for visibility */
+  background-size: 14px 14px;
   border-radius: 10px;
-  padding: 2rem;
-  margin: 1.5rem 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6); /* soft shadow around */
-  overflow-x: auto; /* avoids clipping for wide diagrams */
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.45);
+  overflow-x: auto;                                     /* avoid clipping on wide graphs */
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-/* Make Mermaid text readable */
-.mermaid text {
-  fill: #ffffff !important;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 14px;
-  font-weight: 500;
-}
-.mermaid .basic .label-container{
-  display: none;
+.nodeGradient {
+  stroke: #00aaff;
+  filter: drop-shadow(0 0 4px #ff006a) drop-shadow(0 0 8px #00aaff);
 }
