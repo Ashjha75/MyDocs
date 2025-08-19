@@ -264,3 +264,8 @@ body, .md-main {
   background: rgba(88,166,255,0.16);
   font-weight: 600;
 }
+.pymdownx-highlight{
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
