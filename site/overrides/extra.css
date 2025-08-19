@@ -223,3 +223,44 @@ body, .md-main {
     color: var(--gh-text-heading);
     font-weight: 600;
 }
+/* Fix for dark text in code blocks */
+/* --- Syntax Highlighting (Primer/GitHub Style) --- */
+/* ... your existing rules for .c, .k, .s etc. ... */
+
+/* FIX: Brighten generic code elements that were too dark */
+.md-typeset .highlight .n,  /* Name */
+.md-typeset .highlight .o,  /* Operator */
+.md-typeset .highlight .p   /* Punctuation */
+{
+  color: #d6deeb; /* Use the bright default code color */
+}
+/* .md-sidebar {
+  opacity: 0;
+} */
+.md-sidebar .md-sidebar__scrollwrap{
+  opacity: 1 !important;
+  background: #161b22;
+    height:fit-content  !important ;
+    padding: 1rem 0;
+    top: 49px;
+    border-radius: 7px;
+    border: .2px solid #4a5050 !important;
+        box-shadow: 0 2px 8px -2px rgba(162, 169, 176, 0.16)  !important;
+    margin-top: .5rem;
+}
+.md-nav__link {
+  color: var(--gh-text-secondary);
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--gh-border-default);
+  transition: background 0.2s ease;
+}
+.md-nav__link:hover, .md-nav__link:focus {
+  background: rgba(88,166,255,0.08);
+  color: var(--gh-text-link-hover);
+  text-decoration: none;
+}
+.md-nav__item--active > .md-nav__link {
+  color: var(--gh-text-active-nav);
+  background: rgba(88,166,255,0.16);
+  font-weight: 600;
+}
