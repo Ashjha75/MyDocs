@@ -23,7 +23,7 @@ nav:
       - Project Flow:
           - Core: spring-boot/project-flow/core.md
           - MVC Request Flow: spring-boot/project-flow/core2.md
-          - Data: spring-boot/project-flow/data.md
+          - Spring Boot Internals : spring-boot/project-flow/core3.md
       - Another Section:
           - Topic 1: another/topic1.md
           - Topic 2: another/topic2.md
