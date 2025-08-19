@@ -382,6 +382,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ways-to-create-beans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ways to Create Beans
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ways to Create Beans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bean-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bean Scopes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-spring-bean-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Spring Bean Lifecycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#4-applicationcontext-the-ioc-container" class="md-nav__link">
     <span class="md-ellipsis">
       📌 4. ApplicationContext (The IoC Container)
@@ -741,6 +774,39 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ways-to-create-beans" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ways to Create Beans
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ways to Create Beans">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bean-scopes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Bean Scopes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-spring-bean-lifecycle" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Spring Bean Lifecycle
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#4-applicationcontext-the-ioc-container" class="md-nav__link">
     <span class="md-ellipsis">
       📌 4. ApplicationContext (The IoC Container)
@@ -947,19 +1013,94 @@ DI is the <strong>process</strong> through which the IoC container provides requ
 </ol>
 <hr />
 <h2 id="3-bean">📌 3. Bean</h2>
-<p><strong>Definition:</strong>
-A bean is any Java object whose lifecycle is <strong>created, configured, and managed by the Spring IoC container</strong>.</p>
-<p><strong>Ways to create beans:</strong></p>
+<p>In Spring, a <strong>bean</strong> is any Java object whose lifecycle is <strong>created, configured, and managed</strong> by the Spring IoC (Inversion of Control) container. These beans form the backbone of your application.</p>
+<h2 id="ways-to-create-beans">Ways to Create Beans</h2>
+<p>You can declare a class as a Spring bean in a few primary ways:</p>
+<ol>
+<li>
+<p><strong>Stereotype Annotations</strong>: This is the most common, annotation-based approach. You mark your classes with specific annotations, and Spring's component scanning finds them and registers them as beans.</p>
 <ul>
-<li>Using stereotype annotations: <strong><code>@Component</code></strong>, <strong><code>@Service</code></strong>, <strong><code>@Repository</code></strong>, <strong><code>@Controller</code></strong>.</li>
-<li>Using a <strong><code>@Bean</code></strong> method inside a <strong><code>@Configuration</code></strong> class.</li>
+<li><code>@Component</code>: A generic stereotype for any Spring-managed component.</li>
+<li><code>@Service</code>: Marks a class in the service layer (business logic).</li>
+<li><code>@Repository</code>: Marks a class in the persistence layer (data access).</li>
+<li><code>@Controller</code> or <code>@RestController</code>: Marks a class in the presentation layer (handling web requests).</li>
 </ul>
-<p><strong>Scopes of Beans:</strong></p>
+</li>
+<li>
+<p><strong>Java-based Configuration</strong>: You can explicitly declare beans within a <code>@Configuration</code> class using a method annotated with <code>@Bean</code>. This gives you fine-grained control over the bean's creation and configuration.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Configuration</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AppConfig</span><span class="w"> </span><span class="p">{</span>
+
+<span class="w">    </span><span class="nd">@Bean</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">MyService</span><span class="w"> </span><span class="nf">myService</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MyService</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<h3 id="bean-scopes">Bean Scopes</h3>
+<p>A bean's scope defines its lifecycle and visibility within the application.</p>
 <ul>
-<li><strong><code>singleton</code></strong> (Default): One single instance of the bean per Spring IoC container.</li>
-<li><strong><code>prototype</code></strong>: A new instance is created every time the bean is requested.</li>
-<li><strong><code>request</code></strong>, <strong><code>session</code></strong>, <strong><code>application</code></strong>, <strong><code>websocket</code></strong> (Web-specific scopes).</li>
+<li><strong>singleton</strong> (Default): Only <strong>one single instance</strong> of the bean is created for the entire Spring container. Every request for the bean gets a reference to the same object. Ideal for stateless services and repositories.</li>
+<li><strong>prototype</strong>: A <strong>new instance</strong> is created every time the bean is requested. Perfect for stateful objects where each user or process needs an independent copy.</li>
+<li><strong>request</strong>: A new instance is created for each HTTP request. (Web-specific)</li>
+<li><strong>session</strong>: A new instance is created for each user's HTTP session. (Web-specific)</li>
+<li><strong>application</strong>: A single instance is created for the entire web application's lifecycle (<code>ServletContext</code>). (Web-specific)</li>
+<li><strong>websocket</strong>: A new instance is created for each WebSocket session. (Web-specific)</li>
 </ul>
+<hr />
+<h2 id="the-spring-bean-lifecycle">The Spring Bean Lifecycle</h2>
+<p>The Spring container manages a bean's entire journey, from its creation to its destruction. This lifecycle involves several key phases and callback methods that allow developers to hook into the process.</p>
+<p>Here is a step-by-step breakdown of the lifecycle for a singleton bean:</p>
+<ol>
+<li>
+<p><strong>Instantiation</strong> 🏗️: The Spring container first creates an instance of the bean, typically by calling its constructor.</p>
+</li>
+<li>
+<p><strong>Populate Properties (Dependency Injection)</strong>: The container injects all required dependencies into the bean. This is done through <code>@Autowired</code> on fields, constructors, or setter methods.</p>
+</li>
+<li>
+<p><strong>Aware Interfaces</strong>: If the bean implements <code>Aware</code> interfaces (like <code>BeanNameAware</code> or <code>ApplicationContextAware</code>), the container calls their methods to provide the bean with information about its environment.</p>
+</li>
+<li>
+<p><strong><code>BeanPostProcessor</code> (Before Initialization)</strong>: The <code>postProcessBeforeInitialization()</code> method of any registered <code>BeanPostProcessor</code> is called. This allows for custom modifications before the bean is fully initialized.</p>
+</li>
+<li>
+<p><strong>Initialization Callbacks</strong> 🛠️: The container calls the bean's initialization methods. This is where you can add custom logic that needs to run after all properties have been set. The order is:</p>
+<ul>
+<li>A method annotated with <code>@PostConstruct</code>.</li>
+<li>The <code>afterPropertiesSet()</code> method (if the bean implements the <code>InitializingBean</code> interface).</li>
+<li>A custom <code>init-method</code> specified in the bean definition.</li>
+</ul>
+</li>
+<li>
+<p><strong><code>BeanPostProcessor</code> (After Initialization)</strong>: The <code>postProcessAfterInitialization()</code> method of any <code>BeanPostProcessor</code> is called. This step is crucial for applying proxies, which is how Spring AOP (Aspect-Oriented Programming) works.</p>
+</li>
+<li>
+<p><strong>Bean is Ready</strong> ✅: The bean is now fully configured and ready to be used by the application. It will remain in the container until it's closed.</p>
+</li>
+<li>
+<p><strong>Destruction Callbacks</strong> 🗑️: When the Spring container is shut down, it calls the bean's destruction methods to allow for a graceful cleanup of resources (like closing database connections or releasing files). The order is:</p>
+<ul>
+<li>A method annotated with <code>@PreDestroy</code>.</li>
+<li>The <code>destroy()</code> method (if the bean implements the <code>DisposableBean</code> interface).</li>
+<li>A custom <code>destroy-method</code> specified in the bean definition.</li>
+</ul>
+</li>
+</ol>
+<pre class="mermaid"><code>graph TD
+    A["Start: Spring Container finds bean definition"] --&gt; B["1. Instantiation"]
+    B --&gt; C["2. Populate Properties / Dependency Injection"]
+    C --&gt; D["3. Aware Interfaces\nsetBeanName()\nsetBeanFactory()\nsetApplicationContext()"]
+    D --&gt; E["4. BeanPostProcessor\npostProcessBeforeInitialization()"]
+    E --&gt; F["5. Initialization\n@PostConstruct\nafterPropertiesSet()\ncustom init-method"]
+    F --&gt; G["6. BeanPostProcessor\npostProcessAfterInitialization()"]
+    G --&gt; H["Bean is Ready &amp; In Use"]
+    H --&gt; I["Container Shutdown"]
+    I --&gt; J["7. Destruction Callbacks\n@PreDestroy\ndestroy()\ncustom destroy-method"]
+    J --&gt; K["End: Bean is Destroyed"]</code></pre>
 <hr />
 <h2 id="4-applicationcontext-the-ioc-container">📌 4. ApplicationContext (The IoC Container)</h2>
 <p><strong>Definition:</strong>
