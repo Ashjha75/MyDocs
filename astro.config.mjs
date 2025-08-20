@@ -9,6 +9,7 @@ export default defineConfig({
 		rehypePlugins: [rehypeMermaid],
 	},
 	site: 'https://ashjha75.github.io/MyDocs/',
+	base: '/MyDocs/',
 	integrations: [
 		starlight({
 			title: 'My Docs',
