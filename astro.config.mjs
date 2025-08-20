@@ -10,12 +10,11 @@ export default defineConfig({
 	},
 	
 	site: 'https://ashjha75.github.io/MyDocs/',
-	base: '/MyDocs/',
 	integrations: [
 		starlight({
 			title: 'My Docs',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-			plugins: [starlightThemeObsidian()],
+			// plugins: [starlightThemeObsidian()],
 			sidebar: [
 				{
 					label: 'Springboot',
