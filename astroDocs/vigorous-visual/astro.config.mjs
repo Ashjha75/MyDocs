@@ -1,12 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import remarkMermaid from 'remark-mermaidjs';
+import rehypeMermaid from 'rehype-mermaid';
 import starlightThemeObsidian from 'starlight-theme-obsidian'
 // https://astro.build/config
 export default defineConfig({
 	markdown: {
-		remarkPlugins: [remarkMermaid],
+		rehypePlugins: [rehypeMermaid],
 	},
 	integrations: [
 		starlight({

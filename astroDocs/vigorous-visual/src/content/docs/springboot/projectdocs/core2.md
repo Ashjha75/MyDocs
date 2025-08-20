@@ -15,6 +15,8 @@ The flow for a RESTful API request is a precise sequence of events managed inter
 Code snippet
 
 ```
+
+
 graph TD
     A[Client Request] --> B(DispatcherServlet);
     B -- 1. Find Handler --> C[HandlerMapping];

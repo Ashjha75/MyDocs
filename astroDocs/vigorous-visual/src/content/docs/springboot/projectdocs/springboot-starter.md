@@ -12,7 +12,11 @@ description: Spring Boot core notes and interview-ready explanations
 ```mermaid
 ---
 config:
-  theme: neo-dark
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#BB2528'
+    primaryTextColor: '#fff'
+    fontFamily: 'monospace'
 ---
 graph TD
     A["Start: Spring Container finds bean definition"] --> B["1. Instantiation"]
