@@ -1,8 +1,7 @@
 ---
-title: Example Reference
-description: A reference page in my new Starlight docs site.
+title: Springboot starter
+description: Spring Boot core notes and interview-ready explanations
 ---
-
 
 
 -----
@@ -13,7 +12,11 @@ description: A reference page in my new Starlight docs site.
 ```mermaid
 ---
 config:
-  theme: neo-dark
+  theme: 'base'
+  themeVariables:
+    primaryColor: '#BB2528'
+    primaryTextColor: '#fff'
+    fontFamily: 'monospace'
 ---
 graph TD
     A["Start: Spring Container finds bean definition"] --> B["1. Instantiation"]
@@ -184,7 +187,7 @@ graph TD
     A["Start: Spring Container finds bean definition"] --> B["1. Instantiation"]
     B --> C["2. Populate Properties / Dependency Injection"]
     C --> D["3. Aware Interfaces\nsetBeanName()\nsetBeanFactory()\nsetApplicationContext()"]
-    D --> E["4. BeanPostProcessor\npostProcessBeforeInitialization()"]
+    D --> E["4. BeanPostProcessor\npostProcessBeforeInitialization"]
     E --> F["5. Initialization\n@PostConstruct\nafterPropertiesSet()\ncustom init-method"]
     F --> G["6. BeanPostProcessor\npostProcessAfterInitialization()"]
     G --> H["Bean is Ready & In Use"]
@@ -254,9 +257,9 @@ AOP is a programming paradigm that allows you to modularize **cross-cutting conc
 * **Aspect:** The class that implements the cross-cutting concern (e.g., `LoggingAspect`). Annotated with `@Aspect`.
 * **Join Point:** A point during the execution of a program, such as a method call.
 * **Advice:** The action taken by an aspect at a join point (e.g., log before a method runs). Types: `@Before`, `@After`, `@Around`.
-* **Pointcut:** An expression that defines *which* join points the advice should apply to.
+* **Pointcut:** An expression that defines which join points the advice should apply to.
 
-👉 **Why it matters:** Spring's declarative **`@Transactional`** annotation is powered by AOP. The transaction logic (begin, commit, rollback) is an *aspect* that gets applied around your repository method calls without you writing the boilerplate code.
+👉 **Why it matters:** Spring's declarative **`@Transactional`** annotation is powered by AOP. The transaction logic (begin, commit, rollback) is an aspect that gets applied around your repository method calls without you writing the boilerplate code.
 
 -----
 
@@ -389,7 +392,7 @@ These are interfaces you can implement to run code **after** the `ApplicationCon
 * **AOP** → Manages cross-cutting concerns like `@Transactional`.
 * **`@SpringBootApplication`** → The 3-in-1 annotation that starts everything.
 * **Auto-Configuration** → Magic that configures the app based on JARs present.
-* **Composition \> Inheritance** → Spring's design philosophy for flexibility.
+* **Composition > Inheritance** → Spring's design philosophy for flexibility.
 * **Web Layer** → `@RestController`, `@GetMapping`, `@RequestBody` handle HTTP requests.
 * **Profiles** → Manage configs for dev/test/prod.
 * **Bean Scopes** → `singleton` (default), `prototype`, `request`, `session`.
@@ -398,7 +401,7 @@ These are interfaces you can implement to run code **after** the `ApplicationCon
 
 -----
 
-## 💡 10 Advanced "Tricky" Interview Q\&A
+## 💡 10 Advanced "Tricky" Interview Q&A
 
 1.  **What happens if you have two beans of the same type? How does Spring resolve this?**
     Spring throws a `NoUniqueBeanDefinitionException`. You can resolve it using:
@@ -448,6 +451,4 @@ These are interfaces you can implement to run code **after** the `ApplicationCon
     * **`.properties`**: Uses a flat `key=value` structure.
     * **`.yml`**: Uses a hierarchical YAML structure, which is often more readable and less repetitive for complex, nested configurations. YAML properties are overridden by `.properties` if both are present.
 
-## Further reading
 
-- Read [about reference](https://diataxis.fr/reference/) in the Diátaxis framework
