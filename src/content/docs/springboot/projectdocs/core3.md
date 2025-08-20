@@ -3,7 +3,6 @@ title: Spring Boot Internals
 description: Spring Boot Spring Boot Internals notes and interview-ready explanations
 ---
 
-
 # Spring Boot Internals
 
 ## How Auto-Configuration Works

@@ -4,7 +4,6 @@ description: Spring Boot Spring MVC Request Flow notes and interview-ready expla
 ---
 
 
-
 ## Spring MVC Request Flow: An In-Depth Look
 
 The Spring MVC request flow is orchestrated by the `DispatcherServlet`. It follows a highly structured, decoupled pattern using specific components to process a request from arrival to response.
