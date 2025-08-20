@@ -22,9 +22,7 @@
     "exists": true,
     "title": "Example Reference",
     "tags": [],
-    "links": [
-      "mydocs/springbootstartdetails.md/"
-    ],
+    "links": [],
     "backlinks": [],
     "nodeStyle": {}
   },
@@ -73,9 +71,7 @@
     "tags": [],
     "links": [],
     "backlinks": [
-      "mydocs/reference/example/",
       "mydocs/springboot/projectdocs/springboot-starter/",
-      "MyDocs/reference/example/",
       "MyDocs/springboot/projectdocs/springboot-starter/"
     ],
     "nodeStyle": {}
@@ -103,9 +99,7 @@
     "exists": true,
     "title": "example",
     "tags": [],
-    "links": [
-      "mydocs/springbootstartdetails.md/"
-    ],
+    "links": [],
     "backlinks": [],
     "nodeStyle": {}
   },
