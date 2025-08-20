@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import remarkMermaid from 'remark-mermaidjs';
-
+import starlightThemeObsidian from 'starlight-theme-obsidian'
 // https://astro.build/config
 export default defineConfig({
 	markdown: {
@@ -12,7 +12,7 @@ export default defineConfig({
 		starlight({
 			title: 'My Docs',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-
+			plugins: [starlightThemeObsidian()],
 			sidebar: [
 				{
 					label: 'Springboot',
