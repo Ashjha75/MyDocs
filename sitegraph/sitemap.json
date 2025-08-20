@@ -1,0 +1,150 @@
+{
+  "mydocs/guides/example/": {
+    "external": false,
+    "exists": true,
+    "title": "Example Guide",
+    "tags": [],
+    "links": [],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "mydocs/": {
+    "external": false,
+    "exists": true,
+    "title": "Welcome to Starlight",
+    "tags": [],
+    "links": [],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "mydocs/reference/example/": {
+    "external": false,
+    "exists": true,
+    "title": "Example Reference",
+    "tags": [],
+    "links": [
+      "mydocs/springbootstartdetails.md/"
+    ],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "mydocs/springboot/projectdocs/core2/": {
+    "external": false,
+    "exists": true,
+    "title": "Spring MVC Request Flow An In-Depth Look",
+    "tags": [],
+    "links": [],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "mydocs/springboot/projectdocs/core3/": {
+    "external": false,
+    "exists": true,
+    "title": "Spring Boot Internals",
+    "tags": [],
+    "links": [],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "mydocs/springboot/projectdocs/core4/": {
+    "external": false,
+    "exists": true,
+    "title": "Validation & DTOs",
+    "tags": [],
+    "links": [],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "mydocs/springboot/projectdocs/springboot-starter/": {
+    "external": false,
+    "exists": true,
+    "title": "Springboot starter",
+    "tags": [],
+    "links": [
+      "mydocs/springbootstartdetails.md/"
+    ],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "mydocs/springbootstartdetails.md/": {
+    "external": false,
+    "exists": false,
+    "title": "Detailed Spring Boot Startup Guide",
+    "tags": [],
+    "links": [],
+    "backlinks": [
+      "mydocs/reference/example/",
+      "mydocs/springboot/projectdocs/springboot-starter/",
+      "MyDocs/reference/example/",
+      "MyDocs/springboot/projectdocs/springboot-starter/"
+    ],
+    "nodeStyle": {}
+  },
+  "MyDocs/guides/example/": {
+    "external": false,
+    "exists": true,
+    "title": "example",
+    "tags": [],
+    "links": [],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "MyDocs/": {
+    "external": false,
+    "exists": true,
+    "title": "MyDocs",
+    "tags": [],
+    "links": [],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "MyDocs/reference/example/": {
+    "external": false,
+    "exists": true,
+    "title": "example",
+    "tags": [],
+    "links": [
+      "mydocs/springbootstartdetails.md/"
+    ],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "MyDocs/springboot/projectdocs/core2/": {
+    "external": false,
+    "exists": true,
+    "title": "core2",
+    "tags": [],
+    "links": [],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "MyDocs/springboot/projectdocs/core3/": {
+    "external": false,
+    "exists": true,
+    "title": "core3",
+    "tags": [],
+    "links": [],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "MyDocs/springboot/projectdocs/core4/": {
+    "external": false,
+    "exists": true,
+    "title": "core4",
+    "tags": [],
+    "links": [],
+    "backlinks": [],
+    "nodeStyle": {}
+  },
+  "MyDocs/springboot/projectdocs/springboot-starter/": {
+    "external": false,
+    "exists": true,
+    "title": "springboot-starter",
+    "tags": [],
+    "links": [
+      "mydocs/springbootstartdetails.md/"
+    ],
+    "backlinks": [],
+    "nodeStyle": {}
+  }
+}
