@@ -7,15 +7,17 @@ theme:
     - navigation.expand
     - navigation.footer
 use_directory_urls: false
-# This activates the dark theme, which is required for your CSS to work
+
 palette:
   - scheme: slate
 
-# This path must match the location of your CSS file (docs/css/extra.css)
 extra_css:
   - overrides/extra.css
+
 extra_javascript:
   - overrides/extra.js
+  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
+  - overrides/init-mermaid.js   # we’ll add this file for init
 
 nav:
   - Home: index.md
@@ -23,14 +25,12 @@ nav:
       - Project Flow:
           - Core: spring-boot/project-flow/core.md
           - MVC Request Flow: spring-boot/project-flow/core2.md
-          - Spring Boot Internals : spring-boot/project-flow/core3.md
-          - Validation & DTOs : spring-boot/project-flow/core4.md
+          - Spring Boot Internals: spring-boot/project-flow/core3.md
+          - Validation & DTOs: spring-boot/project-flow/core4.md
       - Another Section:
           - Topic 1: another/topic1.md
           - Topic 2: another/topic2.md
 
-
-# This block is required to enable code syntax highlighting
 markdown_extensions:
   - pymdownx.highlight
   - pymdownx.superfences:
