@@ -208,7 +208,7 @@ body,
 
 .mermaid {
   background-color: #0d0d13;
-  background-image: url("/docs/overrides/darkPattern.svg");
+  background-image: url("overrides/darkPattern.svg"); /* Use relative path for MkDocs */
   background-repeat: repeat;
   background-size: 14px 14px;
   border-radius: 10px;
@@ -220,12 +220,15 @@ body,
   justify-content: center;
   align-items: center;
 }
-
-.nodeGradient {
-  stroke: #00aaff;
-  filter: drop-shadow(0 0 4px #ff006a) drop-shadow(0 0 8px #00aaff);
+.mermaid .node text {
+  fill: #fff !important;
 }
-
+/* Simulate a "gradient" border glow for nodes */
+.nodeGradient {
+  stroke: #00aaff; /* Main border color (blue) */
+  filter: drop-shadow(0 0 6px #00aaff) drop-shadow(0 0 12px #ff006a);
+  /* You can tweak the blur and color for a more pronounced effect */
+}
 
 @media (min-width: 901px) {
   .md-header {
