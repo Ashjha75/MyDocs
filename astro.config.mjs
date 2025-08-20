@@ -8,6 +8,7 @@ export default defineConfig({
 	markdown: {
 		rehypePlugins: [rehypeMermaid],
 	},
+	
 	site: 'https://ashjha75.github.io/MyDocs/',
 	base: '/MyDocs/',
 	integrations: [
