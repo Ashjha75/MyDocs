@@ -27,7 +27,9 @@ It asks a list of `HandlerExceptionResolver` beans, "Can you handle this excepti
 ```mermaid
 ---
 config:
+  look: handDrawn
   theme: dark
+  layout: elk
 ---
 graph TD
     A[DispatcherServlet catches Exception] --> B{HandlerExceptionResolverComposite};
