@@ -18,6 +18,12 @@ Auto-configuration is Spring Boot's mechanism for automatically configuring the 
 4.  **Bean Creation**: If all conditions for an auto-configuration class are met, the beans defined within it are registered in the `ApplicationContext`.
 
 ```mermaid
+---
+config:
+  look: handDrawn
+  theme: dark
+  layout: elk
+---
 graph TD
     A[ SpringBootApplication]-- includes --> B[EnableAutoConfiguration] 
     B -- 1. Triggers Scan --> C[Classpath JARs]
@@ -53,6 +59,12 @@ graph TD
 The `SpringApplication.run()` method orchestrates a complex sequence of events to get the application running.
 
 ```mermaid
+---
+config:
+  look: handDrawn
+  theme: dark
+  layout: elk
+---
 graph TD
     A[Start: SpringApplication.run] --> B1
 
@@ -115,6 +127,12 @@ These are three distinct mechanisms for intercepting requests, each operating at
 | **Configuration** | Implement `Filter`, register as `@Component` or `FilterRegistrationBean`. | Implement `HandlerInterceptor`, register with a `WebMvcConfigurer`. | Annotate a class with `@ControllerAdvice`. |
 
 ```mermaid
+---
+config:
+  look: handDrawn
+  theme: dark
+  layout: elk
+---
 graph TD
     A[Client Request] --> B(Servlet Container Tomcat);
     B -- "Enters Container" --> C[Filter Chain];
@@ -130,9 +148,7 @@ graph TD
     C -- "Response processing" --> B;
     B --> A;
 
-    style C fill:#f9f,stroke:#333,stroke-width:2px
-    style E fill:#ccf,stroke:#333,stroke-width:2px
-    style G fill:#cfc,stroke:#333,stroke-width:2px
+  
 
 ```
 

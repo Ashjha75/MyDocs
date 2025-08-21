@@ -10,14 +10,13 @@ description: Spring Boot core notes and interview-ready explanations
 # 🪼 Spring Boot Interview Notes (Complete Basics + Pro Touch)
 
 -----
+
 ```mermaid
 ---
 config:
-  theme: 'base'
-  themeVariables:
-    primaryColor: '#BB2528'
-    primaryTextColor: '#fff'
-    fontFamily: 'monospace'
+  look: handDrawn
+  theme: dark
+  layout: elk
 ---
 graph TD
     A["Start: Spring Container finds bean definition"] --> B["1. Instantiation"]
@@ -184,6 +183,12 @@ Here is a step-by-step breakdown of the lifecycle for a singleton bean:
       * A custom `destroy-method` specified in the bean definition.
 
 ```mermaid
+---
+config:
+  look: handDrawn
+  theme: dark
+  layout: elk
+---
 graph TD
     A["Start: Spring Container finds bean definition"] --> B["1. Instantiation"]
     B --> C["2. Populate Properties / Dependency Injection"]

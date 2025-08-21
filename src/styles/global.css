@@ -4,4 +4,6 @@ aside[aria-label="On this page"] {
   max-width: 260px !important; /* or any width you prefer */
   width: 260px !important;
   min-width: 180px !important;
+  
 }
+
