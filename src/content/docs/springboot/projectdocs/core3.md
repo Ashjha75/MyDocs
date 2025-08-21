@@ -19,17 +19,17 @@ Auto-configuration is Spring Boot's mechanism for automatically configuring the 
 
 ```mermaid
 graph TD
-    A[@SpringBootApplication] -- includes --> B[@EnableAutoConfiguration];
-    B -- 1. Triggers Scan --> C[Classpath JARs];
-    C -- 2. Loads Candidates from --> D["META-INF/.../AutoConfiguration.imports"];
-    D -- 3. Provides List of --> E{AutoConfiguration Classes};
+    A[ SpringBootApplication]-- includes --> B[EnableAutoConfiguration] 
+    B -- 1. Triggers Scan --> C[Classpath JARs]
+    C -- 2. Loads Candidates from --> D["META-INF/.../AutoConfiguration.imports"]
+    D -- 3. Provides List of --> E{AutoConfiguration Classes}
     subgraph "Conditional Evaluation"
-        E -- "Are conditions met?" --> F{Evaluate @Conditional Annotations};
-        F -- Yes --> G[✅ Activate & Create Beans];
-        F -- No --> H[❌ Deactivate & Skip];
+        E -- "Are conditions met?" --> F{Evaluate @Conditional Annotations}
+        F -- Yes --> G[ Activate & Create Beans]
+        F -- No --> H[ Deactivate & Skip]
     end
-    G --> I[ApplicationContext];
-    H --> I[ApplicationContext];
+    G --> I[ApplicationContext]
+    H --> I[ApplicationContext]
 ````
 
 -----
@@ -54,33 +54,35 @@ The `SpringApplication.run()` method orchestrates a complex sequence of events t
 
 ```mermaid
 graph TD
-    A[Start: SpringApplication.run()] --> B[1. Prepare Environment];
-    subgraph B
-        B1[Load Properties & Profiles]
-        B2[Configure ClassLoaders]
-    end
-    
-    B --> C[2. Create ApplicationContext];
-    C --> D[3. Prepare Context];
-    subgraph D
-        D1[Apply Initializers]
-        D2[Set Environment]
-        D3[Run BeanFactoryPostProcessors]
+    A[Start: SpringApplication.run] --> B1
+
+    subgraph B [1. Prepare Environment]
+        B1[Load Properties & Profiles] --> B2[Configure ClassLoaders]
     end
 
-    D --> E[4. Refresh Context];
-    subgraph E
+    B2 --> C1
+    subgraph C [2. Create ApplicationContext]
+        C1[Create ApplicationContext Instance]
+    end
+
+    C1 --> D1
+    subgraph D [3. Prepare Context]
+        D1[Apply Initializers] --> D2[Set Environment] --> D3[Run BeanFactoryPostProcessors]
+    end
+
+    D3 --> E1
+    subgraph E [4. Refresh Context]
         direction LR
         E1[Register BeanPostProcessors] --> E2[Instantiate & Wire Beans] --> E3[Finish Initialization]
     end
 
-    E --> F[5. Call Runners];
-    subgraph F
-        F1[ApplicationRunner]
-        F2[CommandLineRunner]
+    E3 --> F1
+    subgraph F [5. Call Runners]
+        F1[ApplicationRunner] --> F2[CommandLineRunner]
     end
-    
-    F --> G([✅ Application Ready]);
+
+    F2 --> G([Application Ready])
+
 ```
 
 **Breakdown:**
@@ -114,13 +116,13 @@ These are three distinct mechanisms for intercepting requests, each operating at
 
 ```mermaid
 graph TD
-    A[Client Request] --> B{Servlet Container (Tomcat)};
+    A[Client Request] --> B(Servlet Container Tomcat);
     B -- "Enters Container" --> C[Filter Chain];
     subgraph "Spring Context"
         C -- "Forwards to Spring" --> D(DispatcherServlet);
         D -- "preHandle" --> E[Interceptor Chain];
         E -- "Invokes Handler" --> F[Controller Method];
-        F -- "Throws Exception" --> G[@ControllerAdvice<br/>@ExceptionHandler];
+        F -- "Throws Exception" --> G[ControllerAdvice<br/>ExceptionHandler];
         F -- "Returns Response" --> E;
         E -- "postHandle / afterCompletion" --> D;
     end
@@ -131,6 +133,7 @@ graph TD
     style C fill:#f9f,stroke:#333,stroke-width:2px
     style E fill:#ccf,stroke:#333,stroke-width:2px
     style G fill:#cfc,stroke:#333,stroke-width:2px
+
 ```
 
 -----
