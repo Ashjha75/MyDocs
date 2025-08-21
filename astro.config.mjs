@@ -29,11 +29,10 @@ export default defineConfig({
 							items: [
 								{ label: 'Springboot starter', link: '/springboot/projectdocs/springboot-starter' },
 								{ label: 'Springboot  MVC Request Flow', link: '/springboot/projectdocs/core2' },
-								{ label: 'Spring Boot Internals', link: '/springboot/projectdocs/core3' },
+								{ label: 'Springboot Internals', link: '/springboot/projectdocs/core3' },
 								{ label: 'Springboot Validation & DTOs', link: '/springboot/projectdocs/core4' },
-								{ label: 'Building  REST Endpoints ', link: '/springboot/projectdocs/rest-api' },
-
-
+								{ label: 'Springboot Exception Handling', link: '/springboot/projectdocs/exception-handling' },
+								{ label: 'Building REST Endpoints', link: '/springboot/projectdocs/rest-api' },
 
 							],
 						},
