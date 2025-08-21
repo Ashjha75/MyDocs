@@ -10,7 +10,7 @@ export default defineConfig({
 	},
 
 	site: 'https://ashjha75.github.io/MyDocs/',
-	// base: '/MyDocs/',
+	base: '/MyDocs/',
 	integrations: [
 		starlight({
 			title: 'My Docs',
