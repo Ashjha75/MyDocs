@@ -13,6 +13,10 @@ export default defineConfig({
 	base: '/MyDocs/',
 	integrations: [
 		starlight({
+			logo: {
+				src: '/public/favicon.svg', // Path to your logo in the public folder
+				alt: 'MyDocs',
+			},
 			title: 'My Docs',
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			// plugins: [starlightThemeObsidian()],
@@ -23,14 +27,14 @@ export default defineConfig({
 						{
 							label: 'ProjectDocs',
 							items: [
-								{ label: 'Springboot starter', link: '/springboot/projectdocs/springboot-starter'},
+								{ label: 'Springboot starter', link: '/springboot/projectdocs/springboot-starter' },
 								// { label: 'Springboot starter Detail', link: '/springboot/projectdocs/springboot-starter-details'},
 								{ label: 'Springboot  MVC Request Flow', link: '/springboot/projectdocs/core2' },
 								{ label: 'Spring Boot Internals', link: '/springboot/projectdocs/core3' },
 								{ label: 'Springboot Validation & DTOs', link: '/springboot/projectdocs/core4' },
 								{ label: 'Building  REST Endpoints ', link: '/springboot/projectdocs/rest-api' },
-								
-								
+
+
 
 							],
 						},
