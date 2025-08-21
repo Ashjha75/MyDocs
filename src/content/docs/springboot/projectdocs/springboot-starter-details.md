@@ -1,7 +1,9 @@
 ---
-title: Springboot starter Details
+title: Springboot starter Detail
 description: Spring Boot core notes and interview-ready explanations
 ---
+
+
 -----
 
 ## The Spring Boot Startup Process 🚀
