@@ -380,12 +380,91 @@ Profiles allow you to define different configurations for different environments
 
 ## 📌 14. CommandLineRunner / ApplicationRunner
 
-These are interfaces you can implement to run code **after** the `ApplicationContext` is fully initialized but before the application starts accepting requests.
 
-* **`CommandLineRunner`**: Provides access to application arguments as a raw `String[]`.
-* **`ApplicationRunner`**: Provides a more structured `ApplicationArguments` object.
 
-👉 **Used for:** Seeding a database with initial data, running one-time integration checks, or printing startup logs.
+Both `CommandLineRunner` and `ApplicationRunner` are Spring Boot interfaces that let you run custom code 
+**right after the application context is created**, but before the app is fully started.  
+They’re typically used for tasks like:  
+- Loading initial data  
+- Running scripts  
+- Logging startup info  
+
+---
+
+## 1. CommandLineRunner
+
+- Arguments come as a simple `String... args`.  
+- Best for quick/raw argument handling.  
+
+```java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
+import java.util.Arrays;
+
+@Component
+public class MyCommandLineRunner implements CommandLineRunner {
+
+    private static final Logger logger = LoggerFactory.getLogger(MyCommandLineRunner.class);
+
+    @Override
+    public void run(String... args) throws Exception {
+        logger.info("CommandLineRunner executed with arguments: {}", Arrays.toString(args));
+        // Example: load initial data into DB
+    }
+}
+```
+---
+## 2. ApplicationRunner
+
+-Uses ApplicationArguments for more structured access.
+-Can easily handle option arguments (--env=dev) and non-option arguments.
+``` java
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.boot.ApplicationArguments;
+import org.springframework.boot.ApplicationRunner;
+import org.springframework.stereotype.Component;
+
+@Component
+public class MyApplicationRunner implements ApplicationRunner {
+
+    private static final Logger logger = LoggerFactory.getLogger(MyApplicationRunner.class);
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
+        // Example of accessing named argument like --env=dev
+        if (args.containsOption("env")) {
+            String environment = args.getOptionValues("env").get(0);
+            logger.info("ApplicationRunner executed for environment: {}", environment);
+        }
+
+        // Accessing non-option arguments
+        logger.info("Non-option arguments: {}", args.getNonOptionArgs());
+    }
+}
+```
+
+-----
+
+### How to Run
+
+Compile your application into a JAR file and run it from the terminal with arguments.
+
+```bash
+java -jar my-app.jar --env=dev first_arg second_arg
+```
+
+#### Expected Output
+
+Spring Boot will automatically detect and run both beans. The output in your console will look something like this:
+
+```
+INFO 71... [           main] c.e.MyApplicationRunner    : ApplicationRunner executed for environment: dev
+INFO 71... [           main] c.e.MyApplicationRunner    : Non-option arguments: [first_arg, second_arg]
+INFO 71... [           main] c.e.MyCommandLineRunner    : CommandLineRunner executed with arguments: [--env=dev, first_arg, second_arg]
+```
 
 -----
 
