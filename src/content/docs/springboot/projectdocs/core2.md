@@ -19,24 +19,25 @@ Code snippet
 config:
   look: handDrawn
   theme: dark
+  layout: elk
 ---
 graph TD
-    A[Client Request] --> B(DispatcherServlet);
-    B -- 1. Find Handler --> C[HandlerMapping];
-    C -- 2. Return HandlerMethod --> B;
-    B -- 3. Find Adapter --> D[HandlerAdapter];
-    D -- 4. Return Supported Adapter --> B;
-    B -- 5. Invoke Handler --> E[Controller Method];
-    subgraph "Argument Resolvers"
-        F[PathVariable]
-        G[RequestParam]
-        H[RequestBody]
-    end
-    E -- Uses --> F & G & H;
-    E -- 6. Return Value --> B;
-    B -- 7. Process Return Value --> I[HttpMessageConverter];
-    I -- 8. Serialize to JSON --> B;
-    B -- 9. Send Response --> A;
+ subgraph subGraph0["Argument Resolvers"]
+        F["PathVariable"]
+        G["RequestParam"]
+        H["RequestBody"]
+  end
+    A["Client Request"] --> B("DispatcherServlet")
+    B -- "1. Find Handler" --> C["HandlerMapping"]
+    C -- "2. Return HandlerMethod" --> B
+    B -- "3. Find Adapter" --> D["HandlerAdapter"]
+    D -- "4. Return Supported Adapter" --> B
+    B -- "5. Invoke Handler" --> E["Controller Method"]
+    E -- Uses --> F & G & H
+    E -- "6. Return Value" --> B
+    B -- "7. Process Return Value" --> I["HttpMessageConverter"]
+    I -- "8. Serialize to JSON" --> B
+    B -- "9. Send Response" --> A
 
 ```
 
@@ -126,7 +127,12 @@ The lifecycle includes critical intermediate steps, especially the role of `Bean
 
 Code snippet
 
-```
+```mermaid
+---
+config:
+  look: handDrawn
+  theme: dark
+---
 graph TD
     A[1. Instantiate] -- Raw Object Created --> B[2. Populate Properties];
     B -- DI Occurs --> C[3. BeanNameAware, etc.];
@@ -134,7 +140,7 @@ graph TD
     D -- Pre-Init Hook --> E[5. Initialization Callbacks];
     subgraph E
         direction LR
-        E1[@PostConstruct] --> E2[InitializingBean's<br/>afterPropertiesSet]
+        E1[PostConstruct] --> E2[InitializingBean's<br/>afterPropertiesSet]
     end
     E --> F[6. BeanPostProcessor's<br/>postProcess<b>After</b>Initialization];
     F -- Post-Init Hook (Proxying) --> G([✅ Bean Ready for Use]);
@@ -143,15 +149,13 @@ graph TD
         H[Container Shutdown] --> I[7. Destruction Callbacks];
         subgraph I
             direction LR
-            I1[@PreDestroy] --> I2[DisposableBean's<br/>destroy]
+            I1[PreDestroy] --> I2[DisposableBean's<br/>destroy]
         end
     end
     
     G --> H;
     I --> J([🗑️ Bean Destroyed]);
 
-    style D fill:#cde,stroke:#333,stroke-width:2px
-    style F fill:#cde,stroke:#333,stroke-width:2px
 
 ```
 
@@ -236,27 +240,31 @@ The flow for a RESTful API request is a precise sequence of events managed inter
 
 Code snippet
 
-```
-graph TD
-    A[Client Request] --> B(DispatcherServlet);
-    B -- 1. Find Handler --> C[HandlerMapping];
-    C -- 2. Return HandlerMethod --> B;
-    B -- 3. Find Adapter --> D[HandlerAdapter];
-    D -- 4. Return Supported Adapter --> B;
-    B -- 5. Invoke Handler --> E[Controller Method];
-    subgraph "Argument Resolvers"
-        F[@PathVariable]
-        G[@RequestParam]
-        H[@RequestBody]
-    end
-    E -- Uses --> F & G & H;
-    E -- 6. Return Value --> B;
-    B -- 7. Process Return Value --> I[HttpMessageConverter];
-    I -- 8. Serialize to JSON --> B;
-    B -- 9. Send Response --> A;
+```mermaid
+---
+config:
+  look: handDrawn
+  theme: dark
+  layout: elk
+---
+flowchart TD
+ subgraph subGraph0["Argument Resolvers"]
+        F["PathVariable"]
+        G["RequestParam"]
+        H["RequestBody"]
+  end
+    A["Client Request"] --> B("DispatcherServlet")
+    B -- "1. Find Handler" --> C["HandlerMapping"]
+    C -- "2. Return HandlerMethod" --> B
+    B -- "3. Find Adapter" --> D["HandlerAdapter"]
+    D -- "4. Return Supported Adapter" --> B
+    B -- "5. Invoke Handler" --> E["Controller Method"]
+    E -- Uses --> F & G & H
+    E -- "6. Return Value" --> B
+    B -- "7. Process Return Value" --> I["HttpMessageConverter"]
+    I -- "8. Serialize to JSON" --> B
+    B -- "9. Send Response" --> A
 
-    style D fill:#f9f,stroke:#333,stroke-width:2px
-    style I fill:#ccf,stroke:#333,stroke-width:2px
 
 ```
 
@@ -346,32 +354,34 @@ The lifecycle includes critical intermediate steps, especially the role of `Bean
 
 Code snippet
 
-```
-graph TD
-    A[1. Instantiate] -- Raw Object Created --> B[2. Populate Properties];
-    B -- DI Occurs --> C[3. BeanNameAware, etc.];
-    C -- "Aware" Interfaces Set --> D[4. BeanPostProcessor's<br/>postProcess<b>Before</b>Initialization];
-    D -- Pre-Init Hook --> E[5. Initialization Callbacks];
-    subgraph E
-        direction LR
-        E1[@PostConstruct] --> E2[InitializingBean's<br/>afterPropertiesSet]
+```mermaid
+---
+config:
+  theme: dark
+  layout: elk
+---
+flowchart TD
+    subgraph "Argument Resolvers"
+        F["PathVariable"]
+        G["RequestParam"]
+        H["RequestBody"]
     end
-    E --> F[6. BeanPostProcessor's<br/>postProcess<b>After</b>Initialization];
-    F -- Post-Init Hook (Proxying) --> G([✅ Bean Ready for Use]);
-    
-    subgraph Destruction
-        H[Container Shutdown] --> I[7. Destruction Callbacks];
-        subgraph I
-            direction LR
-            I1[@PreDestroy] --> I2[DisposableBean's<br/>destroy]
-        end
-    end
-    
-    G --> H;
-    I --> J([🗑️ Bean Destroyed]);
 
-    style D fill:#cde,stroke:#333,stroke-width:2px
-    style F fill:#cde,stroke:#333,stroke-width:2px
+    A["Client Request"] --> B("DispatcherServlet")
+    B -- "1. Find Handler" --> C["HandlerMapping"]
+    C -- "2. Return HandlerMethod" --> B
+    B -- "3. Find Adapter" --> D["HandlerAdapter"]
+    D -- "4. Return Supported Adapter" --> B
+    B -- "5. Invoke Handler" --> E["Controller Method"]
+    E -- Uses --> F
+    E -- Uses --> G
+    E -- Uses --> H
+    E -- "6. Return Value" --> B
+    B -- "7. Process Return Value" --> I["HttpMessageConverter"]
+    I -- "8. Serialize to JSON" --> B
+    B -- "9. Send Response" --> A
+    
+
 
 ```
 
