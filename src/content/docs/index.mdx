@@ -1,37 +1,59 @@
 ---
-title: Welcome to Starlight
-description: Get started building your docs site with Starlight.
-template: splash
-hero:
-  tagline: Congrats on setting up a new Starlight project!
-  image:
-    file: ../../assets/houston.webp
-  actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
-      icon: external
-      variant: minimal
 ---
-
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
-## Next steps
-
-
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>
+<html>
+  <head>
+    <meta http-equiv="refresh" content="0; url=/springboot/projectdocs/springboot-starter" />
+    <script>
+      window.location.href = "/springboot/projectdocs/springboot-starter";
+    </script>
+  </head>
+  <body>
+   <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "60vh",
+        fontFamily: "var(--sl-font, 'Inter', 'Segoe UI', Arial, sans-serif)",
+        color: "var(--sl-color-text, #c9d1d9)",
+        background: "var(--sl-color-bg, #23272e)",
+      }}
+    >
+      <svg width="48" height="48" viewBox="0 0 50 50" style={{ marginBottom: "1.5rem" }}>
+        <circle cx="25" cy="25" r="20" fill="none" stroke="#7f53ac" strokeWidth="5" opacity="0.2" />
+        <circle
+          cx="25"
+          cy="25"
+          r="20"
+          fill="none"
+          stroke="#7f53ac"
+          strokeWidth="5"
+          strokeLinecap="round"
+          strokeDasharray="31.4 188.4"
+          transform="rotate(-90 25 25)"
+        >
+          <animateTransform
+            attributeName="transform"
+            type="rotate"
+            from="0 25 25"
+            to="360 25 25"
+            dur="1s"
+            repeatCount="indefinite"
+          />
+        </circle>
+      </svg>
+      <h2 style={{ marginBottom: "0.5rem" }}>Redirecting…</h2>
+      <p style={{ opacity: 0.7, marginBottom: 0 }}>
+        Taking you to <b>Spring Boot Starter Docs</b>
+      </p>
+      <p style={{ fontSize: "0.9em", opacity: 0.5 }}>
+        If you are not redirected,{" "}
+        <a href="/springboot/projectdocs/springboot-starter" style={{ color: "#7f53ac" }}>
+          click here
+        </a>
+        .
+      </p>
+    </div>
+  </body>
+</html>
