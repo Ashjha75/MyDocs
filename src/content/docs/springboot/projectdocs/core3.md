@@ -242,7 +242,7 @@ This is a classic use case of AOP proxies.
 ```mermaid
 ---
 config:
-  theme: forest
+  theme: dark
 ---
 sequenceDiagram
   participant Client as Client
