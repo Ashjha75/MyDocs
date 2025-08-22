@@ -1,5 +1,5 @@
 ---
-title: Spring AOP Look
+title: Spring AOP 
 description: Spring Boot AOP Concepts
 ---
 ---
@@ -175,8 +175,8 @@ config:
 ---
 graph TD
     A[Application Startup] --> B{IoC Container Scans for Beans};
-    B --> C[@Component, @Service];
-    B --> D[@Aspect Beans];
+    B --> C[Component, Service];
+    B --> D[Aspect Beans];
     
     D --> E{1. Parse All Pointcuts};
     C --> F{2. Identify Candidate Beans for Proxying};
@@ -195,42 +195,32 @@ graph TD
 A client request triggers a method on your advised bean.
 
 ```mermaid
+---
+config:
+  theme: dark
+---
 sequenceDiagram
     participant Controller
     participant ServiceProxy as Service Proxy
     participant MethodInterceptor as AOP Interceptor Chain
     participant YourAspect as Your Aspect Code
     participant RealService as Target Object
-
     Controller->>+ServiceProxy: advisedMethod()
-
     Note right of ServiceProxy: Call Intercepted! The Proxy takes control.
-
     ServiceProxy->>+MethodInterceptor: invoke()
-    
     MethodInterceptor->>+YourAspect: (e.g., @Around advice method)
-
     Note right of YourAspect: "Before" logic runs.
-    
     YourAspect->>+MethodInterceptor: joinPoint.proceed()
-    
     Note right of MethodInterceptor: Continues down the chain. Finally...
-
     MethodInterceptor->>+RealService: advisedMethod()
-    
     Note right of RealService: The original business logic runs.
-    
     RealService-->>-MethodInterceptor: returns result
-    
     MethodInterceptor-->>-YourAspect: (result from proceed())
-
     Note right of YourAspect: "After" logic runs.
-    
     YourAspect-->>-MethodInterceptor: return modifiedResult;
-    
     MethodInterceptor-->>-ServiceProxy: return modifiedResult;
-
     ServiceProxy-->>-Controller: return modifiedResult;
+
 ```
 ---
 

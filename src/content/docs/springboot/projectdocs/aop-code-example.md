@@ -187,6 +187,10 @@ public class TransferService {
 This is the most critical concept to master. When you apply multiple aspects, Spring creates a chain of interceptors. The `@Order` annotation controls their sequence.
 
 ```mermaid
+---
+config:
+  theme: dark
+---
 sequenceDiagram
     participant Controller
     participant ServiceProxy as TransferService Proxy
