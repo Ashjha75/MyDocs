@@ -249,3 +249,6 @@ sequenceDiagram
 3.  **Advice Precedence:**
     *   **Scenario:** What if two different aspects advise the same method? Which one runs first?
     *   **Solution:** You can control the order by having your aspect classes implement the `Ordered` interface or, more simply, by using the `@Order` annotation (`@Order(1)`, `@Order(2)`). Lower numbers have higher precedence and run first.
+
+
+For practical code examples, see the [Spring AOP Code Examples](/MyDocs/springboot/projectdocs/aop-code-example).

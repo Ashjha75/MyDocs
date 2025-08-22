@@ -33,6 +33,7 @@ export default defineConfig({
 								{ label: 'Springboot Validation & DTOs', link: '/springboot/projectdocs/core4' },
 								{ label: 'Springboot Exception Handling', link: '/springboot/projectdocs/exception-handling' },
 								{ label: 'Building REST Endpoints', link: '/springboot/projectdocs/rest-api' },
+								{ label: 'Springboot AOP', link: '/springboot/projectdocs/aop' },
 
 							],
 						},
