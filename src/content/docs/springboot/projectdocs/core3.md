@@ -240,36 +240,40 @@ Spring AOP uses one of two proxying strategies to create proxies at runtime.
 This is a classic use case of AOP proxies.
 
 ```mermaid
+---
+config:
+  theme: forest
+---
 sequenceDiagram
-    participant Client
-    participant Proxy as ServiceProxy
-    participant Target as RealService
-    participant TM as TransactionManager
-    participant DB as Database
+  participant Client as Client
+  participant Proxy as ServiceProxy
+  participant Target as RealService
+  participant TM as TransactionManager
+  participant DB as Database
+  autonumber
+  Client ->>+ Proxy: savePatient(patient)
+  Proxy ->>+ TM: beginTransaction()
+  TM ->>+ DB: Start Transaction
+  DB -->>- TM: OK
+  TM -->>- Proxy: OK
+  Proxy ->>+ Target: savePatient(patient)
+  Target ->>+ DB: INSERT INTO...
+  DB -->>- Target: OK
+  Target -->>- Proxy: Return Result
+  Proxy ->>+ TM: commit()
+  TM ->>+ DB: COMMIT
+  DB -->>- TM: OK
+  TM -->>- Proxy: OK
+  Proxy -->>- Client: Return Result
+  alt On Exception
+    Target -->> Proxy: throws DataAccessException
+    Proxy ->>+ TM: rollback()
+    TM ->>+ DB: ROLLBACK
+    DB -->>- TM: OK
+    TM -->>- Proxy: OK
+    Proxy -->> Client: throws DataAccessException
+  end
 
-    Client->>+Proxy: savePatient(patient)
-    Proxy->>+TM: beginTransaction()
-    TM->>+DB: Start Transaction
-    DB-->>-TM: OK
-    TM-->>-Proxy: OK
-    Proxy->>+Target: savePatient(patient)
-    Target->>+DB: INSERT INTO...
-    DB-->>-Target: OK
-    Target-->>-Proxy: Return Result
-    Proxy->>+TM: commit()
-    TM->>+DB: COMMIT
-    DB-->>-TM: OK
-    TM-->>-Proxy: OK
-    Proxy-->>-Client: Return Result
-
-    alt On Exception
-        Target-->>Proxy: throws DataAccessException
-        Proxy->>+TM: rollback()
-        TM->>+DB: ROLLBACK
-        DB-->>-TM: OK
-        TM-->>-Proxy: OK
-        Proxy-->>Client: throws DataAccessException
-    end
 ```
 
 **Step-by-Step Flow:**
