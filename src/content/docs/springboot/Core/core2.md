@@ -78,4 +78,4 @@ The `DispatcherServlet` receives the final response (e.g., the JSON string). The
 The client receives the HTTP response, and if it's a browser, it will render the received data, or if it's another application, it will parse the JSON to use the data.
 
 > ⚠️ **Note:**  
-> For a detailed explanation of the JSON Serialization and Deserialization, see the [Detailed Spring Boot JSON Serialization and Deserialization Guide](/MyDocs/springboot/projectdocs/json-serialization).
+> For a detailed explanation of the JSON Serialization and Deserialization, see the [Detailed Spring Boot JSON Serialization and Deserialization Guide](/MyDocs/springboot/Core/json-serialization).

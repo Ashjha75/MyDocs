@@ -325,7 +325,7 @@ public class PatientService extends JdbcTemplate {
 8.  Runs any `CommandLineRunner` / `ApplicationRunner` beans for startup tasks.
 
 -----
-For a more detailed explanation of the startup process, see the [Detailed Spring Boot Startup Guide](/MyDocs/springboot/projectdocs/springboot-starter-details).
+For a more detailed explanation of the startup process, see the [Detailed Spring Boot Startup Guide](/MyDocs/springboot/Core/springboot-starter-details).
 
 ## 📌 11. The Web Layer: Handling Requests
 
