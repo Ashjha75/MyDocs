@@ -73,17 +73,10 @@ When another bean needs a `NotificationService`, Spring throws a `NoUniqueBeanDe
 | Feature | `application.properties` | `application.yml` |
 | :--- | :--- | :--- |
 | **Syntax** | Flat key-value pairs using dot notation. | Hierarchical, using indentation. |
-| **Example** | `server.port=8080`<br>`server.servlet.context-path=/api` |
- ```yaml
-server:
-  port: 8080
-  servlet:
-    context-path: /api
-```
-|
-
+| **Example** | `server.port=8080`<br>`server.servlet.context-path=/api` | `server:`<br>&nbsp;&nbsp;`port: 8080`<br>&nbsp;&nbsp;`servlet:`<br>&nbsp;&nbsp;&nbsp;&nbsp;`context-path: /api` |
 | **Pros** | Simpler syntax, standard in Java, easy for scripts to parse. | More readable for complex/nested configurations, avoids repetition, supports lists and multi-line strings easily. |
 | **Cons** | Can become very repetitive and hard to read with deep nesting. | Strict indentation rules can lead to parsing errors, slightly less common in pure Java ecosystems. |
+
 
 **Best Practices & Interview Nuance:**
 *   **The professional answer is not "always use YAML."** The professional answer is **"consistency is key."**
