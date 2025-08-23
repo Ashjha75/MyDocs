@@ -25,7 +25,7 @@ export default defineConfig({
 			// plugins: [starlightThemeObsidian()],
 			sidebar: [
 				{
-					label: 'Springboot',
+					label: '🌱 Springboot',
 					items: [
 						{
 							label: 'Core',
