@@ -1,4 +1,19 @@
-svg[id^="mermaid"] {
-  background-color:#ffffffbe;
-  color: #d6f4ffbe;
+:root svg[id^="mermaid"] {
+
+  background-color: #39404b39 !important;
+  color: #c9d1d9 !important;
+  border-radius: 10px !important;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10) !important;
+  padding: 12px !important;
+  margin: 1.5em 0 !important;
+  max-width: 100% !important;
+  height: auto !important;
+}
+svg[id^="mermaid"] text {
+  fill: #e9eaff !important;
+
+}
+svg[id^="mermaid"] line {
+    stroke-width: .2rem;
+    stroke: #c1c4ea !important;
 }

@@ -25,7 +25,11 @@ Let's demystify the diagrams you've seen. When an exception is thrown from your 
 It asks a list of `HandlerExceptionResolver` beans, "Can you handle this exception?" This is a classic **Chain of Responsibility** design pattern.
 
 ```mermaid
-
+---
+config:
+  theme: dark
+  layout: elk
+---
 graph TD
     A[DispatcherServlet catches Exception] --> B{HandlerExceptionResolverComposite};
     subgraph "Chain of Resolvers (in order)"
