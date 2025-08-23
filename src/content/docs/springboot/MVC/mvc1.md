@@ -1,3 +1,8 @@
+---
+title: Spring MVC1
+---
+
+
 ### **The Definitive Guide to Building REST APIs with Spring MVC (Part 1: The Core Foundation)**
 
 **Objective:** To provide a comprehensive, interview-ready understanding of the core Spring MVC components and techniques required to build professional, production-grade RESTful APIs.

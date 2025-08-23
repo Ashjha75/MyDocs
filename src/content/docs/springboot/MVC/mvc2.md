@@ -1,5 +1,8 @@
 
 ---
+title: Spring MVC2
+---
+---
 
 ### **The Definitive Spring MVC Masterclass (Part 2: Advanced Techniques & Applications)**
 
