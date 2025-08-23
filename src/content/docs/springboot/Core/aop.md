@@ -30,14 +30,14 @@ Without AOP, the logic for these concerns would be **scattered** across your cod
 
 To speak the language of AOP, you must master its vocabulary.
 
-| Term | Definition |
-| :--- | :--- |
-| **Aspect** | A class that modularizes a cross-cutting concern. It is annotated with `@Aspect`. |
-| **Join Point** | A specific point in the execution of the application, such as a method call or the handling of an exception. In Spring AOP, a join point *always* represents a method execution. |
-| **Advice** | The action taken by an aspect at a particular join point. This is the code that actually runs. |
-| **Pointcut** | A predicate or expression that matches join points. It defines *where* the advice should be executed. |
-| **Target Object**| The original bean instance being advised by one or more aspects. |
-| **AOP Proxy** | A dynamic object created by the Spring AOP framework that wraps the target object. The proxy intercepts method calls to the target, allowing the advice to be executed. |
+| Term | Definition | Example |
+| :--- | :--- | :--- |
+| **Aspect** | A class that modularizes a cross-cutting concern. It is annotated with `@Aspect`. | ```java\n@Aspect\n@Component\npublic class LoggingAspect { }\n``` |
+| **Join Point** | A specific point in the execution of the application. In Spring AOP, it always represents a method execution. | ```java\n// This method execution is a join point\npublic void placeOrder() { ... }\n``` |
+| **Advice** | The action taken by an aspect at a particular join point (the code that runs). | ```java\n@Before(\"execution(* com.app.service.*.*(..))\")\npublic void logBefore() {\n    System.out.println(\"Method called...\");\n}\n``` |
+| **Pointcut** | A predicate/expression that matches join points. Defines *where* advice should run. | ```java\n@Pointcut(\"execution(* com.app.service.OrderService.*(..))\")\npublic void orderMethods() { }\n``` |
+| **Target Object** | The original bean instance being advised by one or more aspects. | ```java\n// OrderService bean is target object\n@Service\npublic class OrderService { ... }\n``` |
+| **AOP Proxy** | A dynamic object created by Spring AOP to wrap the target object. Intercepts method calls so advice executes. | ```java\nOrderService proxy = context.getBean(OrderService.class);\nproxy.placeOrder(); // advice runs before method\n``` |
 
 ---
 
