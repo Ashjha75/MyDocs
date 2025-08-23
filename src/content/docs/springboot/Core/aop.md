@@ -241,4 +241,4 @@ sequenceDiagram
     *   **Solution:** You can control the order by having your aspect classes implement the `Ordered` interface or, more simply, by using the `@Order` annotation (`@Order(1)`, `@Order(2)`). Lower numbers have higher precedence and run first.
 
 
-For practical code examples, see the [Spring AOP Code Examples](/MyDocs/springboot/Core/aop-code-example).
+For practical code examples, see the [Spring AOP Code Examples](/MyDocs/springboot/core/aop-code-example).

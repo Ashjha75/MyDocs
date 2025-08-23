@@ -30,14 +30,14 @@ export default defineConfig({
 						{
 							label: 'ProjectDocs',
 							items: [
-								{ label: 'Springboot starter', link: '/springboot/Core/springboot-starter' },
-								{ label: 'Springboot  MVC Request Flow', link: '/springboot/Core/core2' },
-								{ label: 'Springboot Internals', link: '/springboot/Core/core3' },
-								{ label: 'Springboot Validation & DTOs', link: '/springboot/Core/core4' },
-								{ label: 'Springboot Exception Handling', link: '/springboot/Core/exception-handling' },
-								{ label: 'Building REST Endpoints', link: '/springboot/Core/rest-api' },
-								{ label: 'Springboot AOP', link: '/springboot/Core/aop' },
-								{ label: 'Essentials Spring Boot Compendium', link: '/springboot/Core/essentials' },
+								{ label: 'Springboot starter', link: '/springboot/core/springboot-starter' },
+								{ label: 'Springboot  MVC Request Flow', link: '/springboot/core/core2' },
+								{ label: 'Springboot Internals', link: '/springboot/core/core3' },
+								{ label: 'Springboot Validation & DTOs', link: '/springboot/core/core4' },
+								{ label: 'Springboot Exception Handling', link: '/springboot/core/exception-handling' },
+								{ label: 'Building REST Endpoints', link: '/springboot/core/rest-api' },
+								{ label: 'Springboot AOP', link: '/springboot/core/aop' },
+								{ label: 'Essentials Spring Boot Compendium', link: '/springboot/core/essentials' },
 
 							],
 						},
