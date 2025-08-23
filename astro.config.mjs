@@ -44,7 +44,8 @@ export default defineConfig({
 						{
 							label: 'MVC',
 							items: [
-								
+								{ label: 'Spring Mvc 1', link: '/springboot/mvc/mvc1' },
+								{ label: 'Spring Mvc 2', link: '/springboot/mvc/mvc2' },
 							],
 						},
 					],
