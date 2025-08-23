@@ -128,11 +128,17 @@ Imagine you have an interface <code dir="auto">NotificationService</code> and tw
 
 
 
-<table><thead><tr><th align="left">Feature</th><th align="left"><code dir="auto">application.properties</code></th><th align="left"><code dir="auto">application.yml</code></th></tr></thead><tbody><tr><td align="left"><strong>Syntax</strong></td><td align="left">Flat key-value pairs using dot notation.</td><td align="left">Hierarchical, using indentation.</td></tr><tr><td align="left"><strong>Example</strong></td><td align="left"><code dir="auto">server.port=8080</code><br><code dir="auto">server.servlet.context-path=/api</code></td><td align="left"></td></tr></tbody></table>
-<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="yaml"><code><div class="ec-line"><div class="code"><span style="--0:#7FDBCA;--1:#111111">server</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent"> </span><span style="--0:#7FDBCA;--1:#111111">port</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#F78C6C;--1:#AA0982">8080</span></div></div><div class="ec-line"><div class="code"><span class="indent"> </span><span style="--0:#7FDBCA;--1:#111111">servlet</span><span style="--0:#D6DEEB;--1:#403F53">:</span></div></div><div class="ec-line"><div class="code"><span class="indent">   </span><span style="--0:#7FDBCA;--1:#111111">context-path</span><span style="--0:#D6DEEB;--1:#403F53">: </span><span style="--0:#ECC48D;--1:#3B61B0">/api</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="server: port: 8080 servlet:   context-path: /api"><div></div></button></div></figure></div>
-<p>|</p>
-<p>| <strong>Pros</strong> | Simpler syntax, standard in Java, easy for scripts to parse. | More readable for complex/nested configurations, avoids repetition, supports lists and multi-line strings easily. |
-| <strong>Cons</strong> | Can become very repetitive and hard to read with deep nesting. | Strict indentation rules can lead to parsing errors, slightly less common in pure Java ecosystems. |</p>
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">Feature</th><th align="left"><code dir="auto">application.properties</code></th><th align="left"><code dir="auto">application.yml</code></th></tr></thead><tbody><tr><td align="left"><strong>Syntax</strong></td><td align="left">Flat key-value pairs using dot notation.</td><td align="left">Hierarchical, using indentation.</td></tr><tr><td align="left"><strong>Example</strong></td><td align="left"><code dir="auto">server.port=8080</code><br><code dir="auto">server.servlet.context-path=/api</code></td><td align="left"><code dir="auto">server:</code><br>  <code dir="auto">port: 8080</code><br>  <code dir="auto">servlet:</code><br>    <code dir="auto">context-path: /api</code></td></tr><tr><td align="left"><strong>Pros</strong></td><td align="left">Simpler syntax, standard in Java, easy for scripts to parse.</td><td align="left">More readable for complex/nested configurations, avoids repetition, supports lists and multi-line strings easily.</td></tr><tr><td align="left"><strong>Cons</strong></td><td align="left">Can become very repetitive and hard to read with deep nesting.</td><td align="left">Strict indentation rules can lead to parsing errors, slightly less common in pure Java ecosystems.</td></tr></tbody></table>
 <p><strong>Best Practices &#x26; Interview Nuance:</strong></p>
 <ul>
 <li><strong>The professional answer is not “always use YAML.”</strong> The professional answer is <strong>“consistency is key.”</strong></li>
