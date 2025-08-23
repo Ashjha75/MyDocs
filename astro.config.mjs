@@ -41,14 +41,15 @@ export default defineConfig({
 
 							],
 						},
+						{
+							label: 'MVC',
+							items: [
+								
+							],
+						},
 					],
 				},
-				{
-					label: 'MVC',
-					items: [
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
+				
 				{
 					label: 'Reference',
 					autogenerate: { directory: 'reference' },
