@@ -2,9 +2,8 @@
 title: Essentials  Spring Boot Compendium
 ---
 
-### **The Spring Boot Compendium**
 
-#### **Module 1: Disambiguation - `@Qualifier` vs. `@Primary`**
+### **Module 1: Disambiguation - `@Qualifier` vs. `@Primary`**
 
 **The Concept:** Both annotations solve the problem of ambiguity when the Spring IoC container finds multiple beans of the same type that could satisfy a dependency.
 
@@ -65,7 +64,7 @@ When another bean needs a `NotificationService`, Spring throws a `NoUniqueBeanDe
 
 ---
 
-#### **Module 2: Configuration - `properties` vs. `yaml`**
+### **Module 2: Configuration - `properties` vs. `yaml`**
 
 **The Concept:** Both are file formats for externalizing application configuration.
 
@@ -94,7 +93,7 @@ server:
 
 ---
 
-#### **Module 3: Environment Flexibility - Relaxed Binding**
+### **Module 3: Environment Flexibility - Relaxed Binding**
 
 **The Concept:** Spring Boot is highly flexible in how it maps configuration properties from various sources to the fields in your `@ConfigurationProperties` beans.
 
@@ -113,7 +112,7 @@ This allows for seamless overriding across different environments. A developer c
 
 ---
 
-#### **Module 4: Environment Separation - Spring Boot Profiles**
+### **Module 4: Environment Separation - Spring Boot Profiles**
 
 **The Concept:** Profiles are a core Spring feature that allows you to register different beans and configuration for different environments (e.g., `dev`, `test`, `prod`).
 
@@ -143,7 +142,7 @@ This allows for seamless overriding across different environments. A developer c
 
 ---
 
-#### **Module 5: Operations - Spring Boot Actuator**
+### **Module 5: Operations - Spring Boot Actuator**
 
 **The Concept:** A production-ready feature set that exposes operational information about your running application via HTTP endpoints or JMX. It's enabled by adding the `spring-boot-starter-actuator` dependency.
 
@@ -173,7 +172,7 @@ public class PaymentGatewayHealthIndicator implements HealthIndicator {
 
 ---
 
-#### **Module 6: Web Layer - Interceptors vs. Filters**
+### **Module 6: Web Layer - Interceptors vs. Filters**
 
 This is a classic interview question that tests your understanding of the servlet architecture vs. Spring's dispatching.
 
@@ -186,7 +185,7 @@ This is a classic interview question that tests your understanding of the servle
 
 ---
 
-#### **Module 7: Startup Logic - `CommandLineRunner` vs. `ApplicationRunner`**
+### **Module 7: Startup Logic - `CommandLineRunner` vs. `ApplicationRunner`**
 
 **The Concept:** Both are interfaces that allow you to execute code *after* the Spring `ApplicationContext` has been fully initialized but *before* the application starts accepting requests.
 
@@ -199,7 +198,7 @@ Use them for one-time initialization tasks like seeding a database, warming up a
 
 ---
 
-#### **Module 8: High-Level Concepts (Awareness Check)**
+### **Module 8: High-Level Concepts (Awareness Check)**
 
 *   **HATEOAS (Hypermedia as the Engine of Application State):** The concept that a REST API response should include links to related actions or resources. For example, an "order" response might contain a "cancel" link if the order is still in a cancellable state. It allows clients to navigate the API dynamically. You just need to know the concept.
 
@@ -213,7 +212,7 @@ Use them for one-time initialization tasks like seeding a database, warming up a
 
 ---
 
-#### **Module 9: Essential Annotations (Quick Reference)**
+### **Module 9: Essential Annotations (Quick Reference)**
 
 *   **`@PropertySource`:**
     *   **What:** An annotation to load properties from a specific file (other than the default `application.properties`).
