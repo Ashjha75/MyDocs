@@ -11,25 +11,7 @@ description: Spring Boot core notes and interview-ready explanations
 
 -----
 
-```mermaid
----
-config:
-  look: handDrawn
-  theme: dark
-  layout: elk
----
-graph TD
-    A["Start: Spring Container finds bean definition"] --> B["1. Instantiation"]
-    B --> C["2. Populate Properties / Dependency Injection"]
-    C --> D["3. Aware Interfaces\nsetBeanName()\nsetBeanFactory()\nsetApplicationContext()"]
-    D --> E["4. BeanPostProcessor\npostProcessBeforeInitialization()"]
-    E --> F["5. Initialization\n@PostConstruct\nafterPropertiesSet()\ncustom init-method"]
-    F --> G["6. BeanPostProcessor\npostProcessAfterInitialization()"]
-    G --> H["Bean is Ready & In Use"]
-    H --> I["Container Shutdown"]
-    I --> J["7. Destruction Callbacks\n@PreDestroy\ndestroy()\ncustom destroy-method"]
-    J --> K["End: Bean is Destroyed"]
-```
+
 ## 📌 1. IoC (Inversion of Control)
 
 **Definition:**

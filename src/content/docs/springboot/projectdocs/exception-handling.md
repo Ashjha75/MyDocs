@@ -245,26 +245,27 @@ public class OrderController {
 Here is what happens when a client requests a non-existent order.
 
 ```mermaid
-sequenceDiagram
-    participant Client
-    participant DispatcherServlet
-    participant OrderController
-    participant OrderService
-    participant GlobalExceptionHandler as Advice
 
-    Client->>+DispatcherServlet: GET /api/v1/orders/999
-    DispatcherServlet->>+OrderController: getOrderById(999)
-    OrderController->>+OrderService: findOrderById(999)
-    OrderService-->>-OrderController: throws ResourceNotFoundException
-    OrderController-->>-DispatcherServlet: throws ResourceNotFoundException
-    
-    Note over DispatcherServlet: Catches exception. Who can resolve this?
-    DispatcherServlet->>+Advice: Can you handle ResourceNotFoundException?
-    Note over Advice: Yes, I have an @ExceptionHandler for that.
-    
-    Advice->>Advice: Creates ErrorResponse DTO
-    Advice-->>-DispatcherServlet: Returns ResponseEntity<ErrorResponse> (404)
-    DispatcherServlet-->>-Client: HTTP 404 with JSON Body
+sequenceDiagram
+  participant Client as Client
+  participant DispatcherServlet as DispatcherServlet
+  participant OrderController as OrderController
+  participant OrderService as OrderService
+  participant GlobalExceptionHandler as Advice
+  participant Advice as Advice
+  autonumber
+  Client ->>+ DispatcherServlet: GET /api/v1/orders/999
+  DispatcherServlet ->>+ OrderController: getOrderById(999)
+  OrderController ->>+ OrderService: findOrderById(999)
+  OrderService -->>- OrderController: throws ResourceNotFoundException
+  OrderController -->>- DispatcherServlet: throws ResourceNotFoundException
+  Note over DispatcherServlet: Catches exception. Who can resolve this?
+  DispatcherServlet ->>+ Advice: Can you handle ResourceNotFoundException?
+  Note over Advice: Yes, I have an @ExceptionHandler for that.
+  Advice ->> Advice: Creates ErrorResponse DTO
+  Advice -->>- DispatcherServlet: Returns ResponseEntity<ErrorResponse> (404)
+  DispatcherServlet -->>- Client: HTTP 404 with JSON Body
+
 ```
 
 ---
