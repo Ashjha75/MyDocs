@@ -28,7 +28,7 @@ export default defineConfig({
 					label: 'Springboot',
 					items: [
 						{
-							label: 'ProjectDocs',
+							label: 'Core',
 							items: [
 								{ label: 'Springboot starter', link: '/springboot/core/springboot-starter' },
 								{ label: 'Springboot  MVC Request Flow', link: '/springboot/core/core2' },
@@ -44,7 +44,7 @@ export default defineConfig({
 					],
 				},
 				{
-					label: 'Guides',
+					label: 'MVC',
 					items: [
 						{ label: 'Example Guide', slug: 'guides/example' },
 					],
