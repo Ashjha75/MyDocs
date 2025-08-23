@@ -6,11 +6,13 @@ import starlightThemeObsidian from 'starlight-theme-obsidian'
 // https://astro.build/config
 export default defineConfig({
 	markdown: {
+		remarkPlugins: [],
 		rehypePlugins: [rehypeMermaid],
 	},
 
 	site: 'https://ashjha75.github.io/MyDocs/',
 	base: '/MyDocs/',
+
 	integrations: [
 		starlight({
 			logo: {
@@ -18,7 +20,8 @@ export default defineConfig({
 				alt: 'MyDocs',
 			},
 			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			customCss: ['/styles/mermaid.css'],
+			// social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			// plugins: [starlightThemeObsidian()],
 			sidebar: [
 				{

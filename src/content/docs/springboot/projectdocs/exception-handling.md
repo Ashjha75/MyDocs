@@ -93,7 +93,8 @@ public class PaymentRequiredException extends RuntimeException {
     public PaymentRequiredException(String message) {
         super(message);
     }
-}```
+}
+```
 
 #### **Step 2: The Contract - The Standardized Error DTO**
 
@@ -220,7 +221,8 @@ public class OrderService {
         }
         return order;
     }
-}```
+}
+```
 
 **The Controller Layer (Clean and Simple)**
 ```java
