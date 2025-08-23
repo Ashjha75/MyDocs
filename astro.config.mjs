@@ -20,7 +20,7 @@ export default defineConfig({
 				alt: 'MyDocs',
 			},
 			title: 'My Docs',
-			customCss: ['/styles/mermaid.css'],
+			customCss: ['./src/styles/mermaid.css'],
 			// social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			// plugins: [starlightThemeObsidian()],
 			sidebar: [

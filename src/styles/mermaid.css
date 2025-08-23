@@ -1,5 +1,4 @@
 svg[id^="mermaid"] {
-  background-color: var(--sl-color-bg);
-  color: var(--sl-color-text);
-  /* Customize node colors, links, text based on your theme tokens */
+  background-color:#ffffffbe;
+  color: #d6f4ffbe;
 }
