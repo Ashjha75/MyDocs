@@ -37,6 +37,7 @@ export default defineConfig({
 								{ label: 'Springboot Exception Handling', link: '/springboot/Core/exception-handling' },
 								{ label: 'Building REST Endpoints', link: '/springboot/Core/rest-api' },
 								{ label: 'Springboot AOP', link: '/springboot/Core/aop' },
+								{ label: 'Essentials Spring Boot Compendium', link: '/springboot/Core/essentials' },
 
 							],
 						},

@@ -1,4 +1,5 @@
-
+---
+title: Essentials  Spring Boot Compendium
 ---
 
 ### **The Spring Boot Compendium**
