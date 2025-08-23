@@ -30,13 +30,13 @@ export default defineConfig({
 						{
 							label: 'ProjectDocs',
 							items: [
-								{ label: 'Springboot starter', link: '/springboot/projectdocs/springboot-starter' },
-								{ label: 'Springboot  MVC Request Flow', link: '/springboot/projectdocs/core2' },
-								{ label: 'Springboot Internals', link: '/springboot/projectdocs/core3' },
-								{ label: 'Springboot Validation & DTOs', link: '/springboot/projectdocs/core4' },
-								{ label: 'Springboot Exception Handling', link: '/springboot/projectdocs/exception-handling' },
-								{ label: 'Building REST Endpoints', link: '/springboot/projectdocs/rest-api' },
-								{ label: 'Springboot AOP', link: '/springboot/projectdocs/aop' },
+								{ label: 'Springboot starter', link: '/springboot/Core/springboot-starter' },
+								{ label: 'Springboot  MVC Request Flow', link: '/springboot/Core/core2' },
+								{ label: 'Springboot Internals', link: '/springboot/Core/core3' },
+								{ label: 'Springboot Validation & DTOs', link: '/springboot/Core/core4' },
+								{ label: 'Springboot Exception Handling', link: '/springboot/Core/exception-handling' },
+								{ label: 'Building REST Endpoints', link: '/springboot/Core/rest-api' },
+								{ label: 'Springboot AOP', link: '/springboot/Core/aop' },
 
 							],
 						},
