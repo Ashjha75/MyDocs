@@ -30,14 +30,92 @@ Without AOP, the logic for these concerns would be **scattered** across your cod
 
 To speak the language of AOP, you must master its vocabulary.
 
-| Term | Definition | Example |
-| :--- | :--- | :--- |
-| **Aspect** | A class that modularizes a cross-cutting concern. It is annotated with `@Aspect`. | ```java\n@Aspect\n@Component\npublic class LoggingAspect { }\n``` |
-| **Join Point** | A specific point in the execution of the application. In Spring AOP, it always represents a method execution. | ```java\n// This method execution is a join point\npublic void placeOrder() { ... }\n``` |
-| **Advice** | The action taken by an aspect at a particular join point (the code that runs). | ```java\n@Before(\"execution(* com.app.service.*.*(..))\")\npublic void logBefore() {\n    System.out.println(\"Method called...\");\n}\n``` |
-| **Pointcut** | A predicate/expression that matches join points. Defines *where* advice should run. | ```java\n@Pointcut(\"execution(* com.app.service.OrderService.*(..))\")\npublic void orderMethods() { }\n``` |
-| **Target Object** | The original bean instance being advised by one or more aspects. | ```java\n// OrderService bean is target object\n@Service\npublic class OrderService { ... }\n``` |
-| **AOP Proxy** | A dynamic object created by Spring AOP to wrap the target object. Intercepts method calls so advice executes. | ```java\nOrderService proxy = context.getBean(OrderService.class);\nproxy.placeOrder(); // advice runs before method\n``` |
+#### Aspect  
+- **Definition**: A class that modularizes a cross-cutting concern. Annotated with `@Aspect`.  
+- **Example**:  
+```java
+@Aspect
+@Component
+public class LoggingAspect { }
+
+```
+
+----------
+
+#### Join Point
+
+-   **Definition**: A specific point in the execution of the application. In Spring AOP, it always represents a method execution.
+    
+-   **Example**:
+    
+
+```java
+// This method execution is a join point
+public void placeOrder() { ... }
+
+```
+
+----------
+
+#### Advice
+
+-   **Definition**: The action taken by an aspect at a particular join point (the code that runs).
+    
+-   **Example**:
+    
+
+```java
+@Before("execution(* com.app.service.*.*(..))")
+public void logBefore() {
+    System.out.println("Method called...");
+}
+
+```
+
+----------
+
+#### Pointcut
+
+-   **Definition**: A predicate/expression that matches join points. Defines _where_ advice should run.
+    
+-   **Example**:
+    
+
+```java
+@Pointcut("execution(* com.app.service.OrderService.*(..))")
+public void orderMethods() { }
+
+```
+
+----------
+
+#### Target Object
+
+-   **Definition**: The original bean instance being advised by one or more aspects.
+    
+-   **Example**:
+    
+
+```java
+// OrderService bean is target object
+@Service
+public class OrderService { ... }
+
+```
+
+----------
+
+#### AOP Proxy
+
+-   **Definition**: A dynamic object created by Spring AOP to wrap the target object. Intercepts method calls so advice executes.
+    
+-   **Example**:
+    
+
+```java
+OrderService proxy = context.getBean(OrderService.class);
+proxy.placeOrder(); // advice runs before method
+```
 
 ---
 
