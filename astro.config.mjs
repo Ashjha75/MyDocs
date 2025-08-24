@@ -21,7 +21,9 @@ export default defineConfig({
 			},
 			title: 'My Docs',
 			customCss: ['./src/styles/mermaid.css','./src/styles/global.css'],
-			// social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
+			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Ashjha75' },
+				{ icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/ashjha75/' }, 
+				{ icon: 'external', label: 'Portfolio', href: 'https://ashish5jha.github.io/portfolio/' }],
 			// plugins: [starlightThemeObsidian()],
 			 head: [
                 {

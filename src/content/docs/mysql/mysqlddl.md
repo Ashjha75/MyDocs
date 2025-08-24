@@ -4,7 +4,7 @@ title: DDL commands
 ---
 ### **Schema Architecture**
 
-This guide covers the DDL commands ($\text{CREATE}$, $\text{ALTER}$, $\text{DROP}$) and the foundational DML command ($\text{INSERT}$) to build and populate our database schema.
+This guide covers the DDL commands `($\text{CREATE}$, $\text{ALTER}$, $\text{DROP}$)` and the foundational DML command ($\text{INSERT}$) to build and populate our database schema.
 
 ### **1. $\text{CREATE TABLE}$: The Blueprint of Data**
 
