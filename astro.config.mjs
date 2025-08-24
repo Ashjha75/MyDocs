@@ -57,10 +57,9 @@ export default defineConfig({
 							],
 						},
 						{
-							label: 'Data Jpa',
+							label: 'Spring Data Jpa',
 							items: [
-								{ label: 'Spring Data JPA 1', link: '/springboot/data-jpa/data-jpa1' },
-								{ label: 'Spring Data JPA 2', link: '/springboot/data-jpa/data-jpa2' },
+								{ label: 'Jpa Core', link: '/springboot/jpa/jpacore' },
 							],
 						},
 					],
