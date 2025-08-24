@@ -23,6 +23,11 @@ export default defineConfig({
 			customCss: ['./src/styles/mermaid.css','./src/styles/global.css'],
 			// social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
 			// plugins: [starlightThemeObsidian()],
+			 head: [
+                {
+                    tag: 'script',
+                    attrs: { src: '/src/scripts/mermaid-init.js', defer: true },
+                },],
 			sidebar: [
 				{
 					label: '🌱 Springboot',
@@ -60,6 +65,7 @@ export default defineConfig({
 							label: 'Spring Data Jpa',
 							items: [
 								{ label: 'Jpa Core', link: '/springboot/jpa/jpacore' },
+								{ label: 'Jpa Caching', link: '/springboot/jpa/jpacaching' },
 							],
 						},
 					],

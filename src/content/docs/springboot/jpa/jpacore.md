@@ -275,38 +275,18 @@ This is the final leg of the journey, where your object-oriented intent is conve
 
 ```
 
-*  **Configuration (`application.yml`):**
+*  **Configuration (`application.properties`):**
 
-```yaml
+```bash
+spring.datasource.url=jdbc:postgresql://localhost:5432/mydatabase
+spring.datasource.username=myuser
+spring.datasource.password=mypassword
+spring.datasource.driver-class-name=org.postgresql.Driver
 
-spring:
-
-datasource:
-
-url: jdbc:postgresql://localhost:5432/mydatabase
-
-username: myuser
-
-password: mypassword
-
-driver-class-name: org.postgresql.Driver
-
-jpa:
-
-hibernate:
-
-ddl-auto: validate  # Use 'validate' in prod, 'update' in dev
-
-properties:
-
-hibernate:
-
-dialect: org.hibernate.dialect.PostgreSQLDialect
-
-format_sql: true  # Pretty-prints SQL in logs for readability
-
-show-sql: true  # Logs the generated SQL to the console
-
+spring.jpa.hibernate.ddl-auto=validate
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
 ```
 
   
