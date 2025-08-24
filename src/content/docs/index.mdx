@@ -9,6 +9,46 @@ description: Redirecting to docs home.
       window.location.href = "/MyDocs/springboot/core/springboot-starter";
     </script>
   </head>
+  <style>
+.mermaid-container {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  margin: 1rem 0;
+  max-width: 100%;
+  overflow: hidden;
+  position: relative;
+  background: #fafafa;
+}
+
+.mermaid-container.enlarged {
+  width: 100%;
+  height: 80vh;  /* take up big space */
+  overflow: scroll; /* add scrollbars */
+}
+
+.mermaid-container svg {
+  width: 100%;
+  height: auto;
+  transition: transform 0.2s ease;
+}
+
+.mermaid-container.enlarged svg {
+  width: 200%;  /* zoom factor */
+  height: auto;
+}
+
+.controls {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.controls button {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+</style>
   <body>
    <div
       style={{
@@ -58,4 +98,40 @@ description: Redirecting to docs home.
       </p>
     </div>
   </body>
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const mermaidBlocks = document.querySelectorAll(".mermaid");
+
+  mermaidBlocks.forEach(block => {
+    // Wrap in container
+    const container = document.createElement("div");
+    container.classList.add("mermaid-container");
+
+    block.parentNode.insertBefore(container, block);
+    container.appendChild(block);
+
+    // Add buttons
+    const controls = document.createElement("div");
+    controls.classList.add("controls");
+
+    const zoomBtn = document.createElement("button");
+    zoomBtn.textContent = "🔍 Enlarge";
+
+    const resetBtn = document.createElement("button");
+    resetBtn.textContent = "↩ Reset";
+
+    controls.appendChild(zoomBtn);
+    controls.appendChild(resetBtn);
+    container.appendChild(controls);
+
+    // Button actions
+    zoomBtn.addEventListener("click", () => {
+      container.classList.add("enlarged");
+    });
+    resetBtn.addEventListener("click", () => {
+      container.classList.remove("enlarged");
+    });
+  });
+});
+</script>
 </html>

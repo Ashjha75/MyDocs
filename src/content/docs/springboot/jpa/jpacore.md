@@ -60,6 +60,11 @@ This document provides a detailed, architectural breakdown of the components inv
   
 
 ```mermaid
+---
+config:
+   theme: dark
+   
+---
 
 flowchart LR
 
@@ -324,6 +329,10 @@ An `@Entity` object can be in one of four states. Understanding these states is 
   
 
 ```mermaid
+---
+config:
+   theme: dark
+---
 graph TD
 
     A[Transient] -->|em.persist| B[Managed]
@@ -380,6 +389,10 @@ An entity that is currently being tracked by a Persistence Context. This is the 
   
 
 ```mermaid
+---
+config:
+   theme: dark
+---
 
 sequenceDiagram
 
@@ -436,8 +449,12 @@ An entity that was once managed but whose Persistence Context has been closed.
   
 
 ```mermaid
-
+---
+config:
+   theme: dark
+---
 graph TD
+
 
 subgraph "Transaction 1 (Transactional method)"
     A[Load Product id=1] --> B[Managed State]
