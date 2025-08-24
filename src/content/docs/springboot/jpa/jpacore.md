@@ -29,7 +29,25 @@ title: Jpa Core
 
 This is the most fundamental concept, and you must articulate it clearly.
 
-  
+  ```mermaid
+---
+config:
+  theme: dark
+---
+graph LR
+  subgraph ORM_Framework
+    direction LR
+    JPA[JPA<br/>interface]
+    Hibernate[Hibernate<br/>implementation]
+  end
+  AL[Application Logic] --> JPA
+  JPA --> Hibernate
+  Hibernate --> JDBC[JDBC<br/>interface]
+  JDBC --> Driver[Specific DB Driver<br/>implementation]
+  Driver --> RDB[Relational DB]
+  classDef orm stroke:#f39c12,stroke-width:2px;
+  class JPA,Hibernate orm;
+```
 
 *  **JPA (Jakarta Persistence API): The Specification**
 
@@ -63,9 +81,7 @@ This document provides a detailed, architectural breakdown of the components inv
 ---
 config:
    theme: dark
-   
 ---
-
 flowchart LR
 
 PU[Persistence Unit 1] -->|is used to create| EMF[EntityManagerFactory 1]
@@ -113,9 +129,6 @@ JDBC --> DB1[(DB1)]
 TM[Transaction Manager] -. controls .-> EM1
 
 TM -. controls .-> EMN
-
-  
-
 ```
 
   
