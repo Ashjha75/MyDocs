@@ -1,0 +1,521 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Basic Terminology | My Docs</title><link rel="canonical" href="https://ashjha75.github.io/MyDocs/mysql/mysqlbasic/"/><link rel="sitemap" href="/MyDocs/sitemap-index.xml"/><script src="/src/scripts/mermaid-init.js" defer></script><link rel="shortcut icon" href="/MyDocs/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.13.2"/><meta name="generator" content="Starlight v0.35.2"/><meta property="og:title" content="Basic Terminology"/><meta property="og:type" content="article"/><meta property="og:url" content="https://ashjha75.github.io/MyDocs/mysql/mysqlbasic/"/><meta property="og:locale" content="en"/><meta property="og:description"/><meta property="og:site_name" content="My Docs"/><meta name="twitter:card" content="summary_large_image"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/MyDocs/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/MyDocs/_astro/index.CohxtHEy.css"><script type="module" src="/MyDocs/_astro/page.7qqag-5g.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">Skip to content</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-kmkmnagf"> <div class="title-wrapper sl-flex astro-kmkmnagf"> <a href="/MyDocs/" class="site-title sl-flex astro-m46x6ez3">  <img class="astro-m46x6ez3" alt="MyDocs" src="/MyDocs/_astro/favicon.n3obPKBA.svg" width="128" height="128">  <span class="astro-m46x6ez3" translate="no"> My Docs </span> </a>  </div> <div class="sl-flex print:hidden astro-kmkmnagf"> <site-search class="astro-kmkmnagf astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;Search&#34;}"> <button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">Search</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="Search" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> Cancel </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/MyDocs/_astro/Search.astro_astro_type_script_index_0_lang.C5umfDAo.js"></script>   </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-kmkmnagf"> <div class="sl-flex social-icons astro-kmkmnagf">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">Dark</option><option value="light" class="astro-4yphtoen">Light</option><option value="auto" selected class="astro-4yphtoen">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div> </header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="Main"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="1kbj9ox" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">🌱 Springboot</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Base</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/base/rest" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Rest Basics</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Core</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/springboot-starter" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot starter</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/core2" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot  MVC Request Flow</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/core3" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot Internals</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/core4" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot Validation &amp; DTOs</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/exception-handling" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot Exception Handling</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/rest-api" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Building REST Endpoints</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/aop" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot AOP</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/essentials" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Essentials Spring Boot Compendium</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">MVC</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/mvc/mvc1" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Spring Mvc 1</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/mvc/mvc2" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Spring Mvc 2</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="4"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spring Data Jpa</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/jpa/jpacore" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Jpa Core</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/jpa/jpacaching" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Jpa Caching</span>  </a> </li> </ul>  </details> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="5"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">⛈️ Mysql</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/mysqlbasic/" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Basic Terminology</span>  </a> </li> </ul>  </details> </li> </ul>   <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt">  </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">Dark</option><option value="light" class="astro-4yphtoen">Light</option><option value="auto" selected class="astro-4yphtoen">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-the-language-of-sql-command-categories" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. The Language of SQL: Command Categories</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-core-database-concepts--terminology" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. Core Database Concepts &amp; Terminology</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-mysql-data-types" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. MySQL Data Types</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-mysql-user-management" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. MySQL User Management</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-practical-command-line-usage" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. Practical Command-Line Usage</span> </a>  </li> </ul>  </li> </ul> </div></details></nav></mobile-starlight-toc><script type="module" src="/MyDocs/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#1-the-language-of-sql-command-categories" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">1. The Language of SQL: Command Categories</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#2-core-database-concepts--terminology" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">2. Core Database Concepts &amp; Terminology</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#3-mysql-data-types" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">3. MySQL Data Types</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#4-mysql-user-management" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">4. MySQL User Management</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#5-practical-command-line-usage" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">5. Practical Command-Line Usage</span> </a>  </li> </ul>  </li> </ul> </nav></starlight-toc><script type="module" src="/MyDocs/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">Basic Terminology</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <hr>
+<div class="sl-heading-wrapper level-h3"><h3 id="1-the-language-of-sql-command-categories"><strong>1. The Language of SQL: Command Categories</strong></h3><a class="sl-anchor-link" href="#1-the-language-of-sql-command-categories"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “1. The Language of SQL: Command Categories”</span></a></div>
+<p>Structured Query Language (SQL) is the universal language used to communicate with relational databases. It is not a single monolithic language but is divided into logical sub-languages, each with a distinct and vital purpose. Understanding this separation is the first step to fluency.</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="a-ddl-data-definition-language"><strong>A. DDL (Data Definition Language)</strong></h4><a class="sl-anchor-link" href="#a-ddl-data-definition-language"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “A. DDL (Data Definition Language)”</span></a></div>
+<ul>
+<li>
+<p><strong>Definition:</strong> DDL commands are the architectural blueprints of the database. They are used to $\text{CREATE}$, $\text{MODIFY}$, and $\text{DESTROY}$ the actual structure of database objects like tables, indexes, and schemas. A DDL statement is final; its effects are immediate and generally cannot be rolled back easily. Think of this as the construction phase.</p>
+</li>
+<li>
+<p><strong>Key Commands &#x26; Examples:</strong></p>
+<ol>
+<li>
+<p><strong>$\text{CREATE}$</strong>: Builds a new database object. The most common use is <code dir="auto">CREATE TABLE</code>.</p>
+<ul>
+<li>
+<p><strong>Syntax:</strong></p>
+<div class="expressive-code"><link rel="stylesheet" href="/MyDocs/_astro/ec.v4551.css"><script type="module" src="/MyDocs/_astro/ec.p1z7b.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">CREATE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TABLE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">table_name</span><span style="--0:#D6DEEB;--1:#403F53"> (</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">column1_name data_type [constraints],</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">column2_name data_type [constraints],</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">...</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">);</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="CREATE TABLE table_name (    column1_name data_type [constraints],    column2_name data_type [constraints],    ...);"><div></div></button></div></figure></div>
+</li>
+<li>
+<p><strong>Example:</strong> Creating a table to store user information.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">CREATE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TABLE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">Users</span><span style="--0:#D6DEEB;--1:#403F53"> (</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">UserID </span><span style="--0:#C792EA;--1:#8844AE">INT</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">PRIMARY KEY</span><span style="--0:#D6DEEB;--1:#403F53"> AUTO_INCREMENT,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">Username </span><span style="--0:#C792EA;--1:#8844AE">VARCHAR</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">50</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#C792EA;--1:#8844AE">NOT NULL</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">UNIQUE</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">PasswordHash </span><span style="--0:#C792EA;--1:#8844AE">VARCHAR</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">255</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#C792EA;--1:#8844AE">NOT NULL</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">Email </span><span style="--0:#C792EA;--1:#8844AE">VARCHAR</span><span style="--0:#D6DEEB;--1:#403F53">(</span><span style="--0:#F78C6C;--1:#AA0982">100</span><span style="--0:#D6DEEB;--1:#403F53">) </span><span style="--0:#C792EA;--1:#8844AE">NOT NULL</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">UNIQUE</span><span style="--0:#D6DEEB;--1:#403F53">,</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#D6DEEB;--1:#403F53">    </span></span><span style="--0:#D6DEEB;--1:#403F53">DateRegistered </span><span style="--0:#C792EA;--1:#8844AE">DATETIME</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">DEFAULT</span><span style="--0:#D6DEEB;--1:#403F53"> CURRENT_TIMESTAMP</span></div></div><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">);</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="CREATE TABLE Users (    UserID INT PRIMARY KEY AUTO_INCREMENT,    Username VARCHAR(50) NOT NULL UNIQUE,    PasswordHash VARCHAR(255) NOT NULL,    Email VARCHAR(100) NOT NULL UNIQUE,    DateRegistered DATETIME DEFAULT CURRENT_TIMESTAMP);"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{ALTER}$</strong>: Modifies the structure of an existing database object. This is used for evolving your schema over time, such as adding a new column to a table.</p>
+<ul>
+<li>
+<p><strong>Syntax:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">ALTER</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TABLE</span><span style="--0:#D6DEEB;--1:#403F53"> table_name</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">ADD</span><span style="--0:#D6DEEB;--1:#403F53"> COLUMN new_column_name data_type [constraints];</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="ALTER TABLE table_nameADD COLUMN new_column_name data_type [constraints];"><div></div></button></div></figure></div>
+</li>
+<li>
+<p><strong>Example:</strong> Adding a <code dir="auto">LastLogin</code> column to the <code dir="auto">Users</code> table.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">ALTER</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TABLE</span><span style="--0:#D6DEEB;--1:#403F53"> Users</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">ADD</span><span style="--0:#D6DEEB;--1:#403F53"> COLUMN LastLogin </span><span style="--0:#C792EA;--1:#8844AE">DATETIME</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">NULL</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="ALTER TABLE UsersADD COLUMN LastLogin DATETIME NULL;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{DROP}$</strong>: Permanently deletes an entire database object and all the data within it. This is an irreversible and highly destructive command.</p>
+<ul>
+<li>
+<p><strong>Syntax:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">DROP</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TABLE</span><span style="--0:#D6DEEB;--1:#403F53"> table_name;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="DROP TABLE table_name;"><div></div></button></div></figure></div>
+</li>
+<li>
+<p><strong>Example:</strong> Deleting the <code dir="auto">Users</code> table.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">DROP</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TABLE</span><span style="--0:#D6DEEB;--1:#403F53"> Users;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="DROP TABLE Users;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h4"><h4 id="b-dml-data-manipulation-language"><strong>B. DML (Data Manipulation Language)</strong></h4><a class="sl-anchor-link" href="#b-dml-data-manipulation-language"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “B. DML (Data Manipulation Language)”</span></a></div>
+<ul>
+<li>
+<p><strong>Definition:</strong> DML commands are used to interact with the <em>data</em> inside the structures defined by DDL. This is the language of day-to-day operations: creating, reading, updating, and deleting records. These operations are typically performed within transactions and can be rolled back.</p>
+</li>
+<li>
+<p><strong>Key Commands &#x26; Examples:</strong></p>
+<ol>
+<li>
+<p><strong>$\text{INSERT}$</strong>: Adds new rows (records) of data into a table.</p>
+<ul>
+<li>
+<p><strong>Syntax:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">INSERT INTO</span><span style="--0:#D6DEEB;--1:#403F53"> table_name (column1, column2, ...)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">VALUES</span><span style="--0:#D6DEEB;--1:#403F53"> (value1, value2, ...);</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="INSERT INTO table_name (column1, column2, ...)VALUES (value1, value2, ...);"><div></div></button></div></figure></div>
+</li>
+<li>
+<p><strong>Example:</strong> Adding a new user to the <code dir="auto">Users</code> table.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">INSERT INTO</span><span style="--0:#D6DEEB;--1:#403F53"> Users (Username, PasswordHash, Email)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">VALUES</span><span style="--0:#D6DEEB;--1:#403F53"> (</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">j.doe</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">a1b2c3d4e5f6...</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">j.doe@example.com</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">);</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="INSERT INTO Users (Username, PasswordHash, Email)VALUES (&#x27;j.doe&#x27;, &#x27;a1b2c3d4e5f6...&#x27;, &#x27;j.doe@example.com&#x27;);"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{UPDATE}$</strong>: Modifies existing data within one or more rows of a table. The <code dir="auto">WHERE</code> clause is critical to specify <em>which</em> rows to change.</p>
+<ul>
+<li>
+<p><strong>Syntax:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">UPDATE</span><span style="--0:#D6DEEB;--1:#403F53"> table_name</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">SET</span><span style="--0:#D6DEEB;--1:#403F53"> column1 </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> new_value1, column2 </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> new_value2</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">WHERE</span><span style="--0:#D6DEEB;--1:#403F53"> condition;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="UPDATE table_nameSET column1 = new_value1, column2 = new_value2WHERE condition;"><div></div></button></div></figure></div>
+</li>
+<li>
+<p><strong>Example:</strong> Updating the <code dir="auto">LastLogin</code> time for a specific user.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">UPDATE</span><span style="--0:#D6DEEB;--1:#403F53"> Users</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">SET</span><span style="--0:#D6DEEB;--1:#403F53"> LastLogin </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">NOW</span><span style="--0:#D6DEEB;--1:#403F53">()</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">WHERE</span><span style="--0:#D6DEEB;--1:#403F53"> Username </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">j.doe</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="UPDATE UsersSET LastLogin = NOW()WHERE Username = &#x27;j.doe&#x27;;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{DELETE}$</strong>: Removes one or more rows from a table. Like <code dir="auto">UPDATE</code>, the <code dir="auto">WHERE</code> clause is essential to avoid deleting unintended data.</p>
+<ul>
+<li>
+<p><strong>Syntax:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">DELETE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">FROM</span><span style="--0:#D6DEEB;--1:#403F53"> table_name </span><span style="--0:#C792EA;--1:#8844AE">WHERE</span><span style="--0:#D6DEEB;--1:#403F53"> condition;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="DELETE FROM table_name WHERE condition;"><div></div></button></div></figure></div>
+</li>
+<li>
+<p><strong>Example:</strong> Deleting a user account.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">DELETE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">FROM</span><span style="--0:#D6DEEB;--1:#403F53"> Users </span><span style="--0:#C792EA;--1:#8844AE">WHERE</span><span style="--0:#D6DEEB;--1:#403F53"> Username </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">j.doe</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="DELETE FROM Users WHERE Username = &#x27;j.doe&#x27;;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h4"><h4 id="c-dcl-data-control-language"><strong>C. DCL (Data Control Language)</strong></h4><a class="sl-anchor-link" href="#c-dcl-data-control-language"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “C. DCL (Data Control Language)”</span></a></div>
+<ul>
+<li>
+<p><strong>Definition:</strong> DCL commands are concerned with security and permissions. They manage who has access to the database and what actions they are allowed to perform (e.g., read-only, write, full admin). This is the gatekeeper of your data.</p>
+</li>
+<li>
+<p><strong>Key Commands &#x26; Examples:</strong></p>
+<ol>
+<li>
+<p><strong>$\text{GRANT}$</strong>: Gives specific permissions to a database user.</p>
+<ul>
+<li>
+<p><strong>Syntax:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">GRANT</span><span style="--0:#D6DEEB;--1:#403F53"> permission_type </span><span style="--0:#C792EA;--1:#8844AE">ON</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">database_name</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#82AAFF;--1:#3B61B0">table_name</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TO</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">user</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">host</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="GRANT permission_type ON database_name.table_name TO &#x27;user&#x27;@&#x27;host&#x27;;"><div></div></button></div></figure></div>
+</li>
+<li>
+<p><strong>Example:</strong> Giving a new application user read and write permissions on the <code dir="auto">Users</code> table.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">GRANT</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">SELECT</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#C792EA;--1:#8844AE">INSERT</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#C792EA;--1:#8844AE">UPDATE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">ON</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">my_app_db</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#82AAFF;--1:#3B61B0">Users</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TO</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">app_user</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">localhost</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="GRANT SELECT, INSERT, UPDATE ON my_app_db.Users TO &#x27;app_user&#x27;@&#x27;localhost&#x27;;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{REVOKE}$</strong>: Removes permissions that were previously granted.</p>
+<ul>
+<li>
+<p><strong>Syntax:</strong></p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">REVOKE</span><span style="--0:#D6DEEB;--1:#403F53"> permission_type </span><span style="--0:#C792EA;--1:#8844AE">ON</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">database_name</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#82AAFF;--1:#3B61B0">table_name</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">FROM</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">user</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">host</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="REVOKE permission_type ON database_name.table_name FROM &#x27;user&#x27;@&#x27;host&#x27;;"><div></div></button></div></figure></div>
+</li>
+<li>
+<p><strong>Example:</strong> Revoking the <code dir="auto">UPDATE</code> permission from the application user.</p>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">REVOKE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">UPDATE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">ON</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">my_app_db</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#82AAFF;--1:#3B61B0">Users</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">FROM</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">app_user</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">localhost</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="REVOKE UPDATE ON my_app_db.Users FROM &#x27;app_user&#x27;@&#x27;localhost&#x27;;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h4"><h4 id="d-tcl-transaction-control-language"><strong>D. TCL (Transaction Control Language)</strong></h4><a class="sl-anchor-link" href="#d-tcl-transaction-control-language"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “D. TCL (Transaction Control Language)”</span></a></div>
+<ul>
+<li>
+<p><strong>Definition:</strong> TCL commands manage transactions. A transaction is a sequence of DML operations that are treated as a single, atomic unit of work. Either all operations within the transaction succeed, or none of them do, ensuring the database remains in a consistent state.</p>
+</li>
+<li>
+<p><strong>Key Commands &#x26; Examples:</strong></p>
+<ol>
+<li><strong>$\text{START TRANSACTION}$</strong>: Marks the beginning of a new transaction.</li>
+<li><strong>$\text{COMMIT}$</strong>: Makes all the changes within the current transaction permanent.</li>
+<li><strong>$\text{ROLLBACK}$</strong>: Undoes all the changes made within the current transaction.</li>
+</ol>
+<ul>
+<li><strong>Example:</strong> A classic bank transfer, which must be atomic.
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">-- Start the transaction block</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">START TRANSACTION</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">-- Step 1: Deduct $100 from Account A (user_id = 1)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">UPDATE</span><span style="--0:#D6DEEB;--1:#403F53"> Accounts </span><span style="--0:#C792EA;--1:#8844AE">SET</span><span style="--0:#D6DEEB;--1:#403F53"> Balance </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> Balance </span><span style="--0:#7FDBCA;--1:#096E72">-</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">100</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#F78C6C;--1:#AA0982">00</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">WHERE</span><span style="--0:#D6DEEB;--1:#403F53"> UserID </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">1</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">-- Step 2: Add $100 to Account B (user_id = 2)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">UPDATE</span><span style="--0:#D6DEEB;--1:#403F53"> Accounts </span><span style="--0:#C792EA;--1:#8844AE">SET</span><span style="--0:#D6DEEB;--1:#403F53"> Balance </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> Balance </span><span style="--0:#7FDBCA;--1:#096E72">+</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">100</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#F78C6C;--1:#AA0982">00</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">WHERE</span><span style="--0:#D6DEEB;--1:#403F53"> UserID </span><span style="--0:#C792EA;--1:#8844AE">=</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#F78C6C;--1:#AA0982">2</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">-- If both operations were successful, make the changes permanent</span></div></div><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">COMMIT</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div><div class="ec-line"><div class="code">
+</div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">-- If an error occurred anywhere above, a ROLLBACK would be issued</span></div></div><div class="ec-line"><div class="code"><span style="--0:#919F9F;--1:#5F636F">-- by the application logic to undo both updates.</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="-- Start the transaction blockSTART TRANSACTION;-- Step 1: Deduct $100 from Account A (user_id = 1)UPDATE Accounts SET Balance = Balance - 100.00 WHERE UserID = 1;-- Step 2: Add $100 to Account B (user_id = 2)UPDATE Accounts SET Balance = Balance + 100.00 WHERE UserID = 2;-- If both operations were successful, make the changes permanentCOMMIT;-- If an error occurred anywhere above, a ROLLBACK would be issued-- by the application logic to undo both updates."><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="2-core-database-concepts--terminology"><strong>2. Core Database Concepts &#x26; Terminology</strong></h3><a class="sl-anchor-link" href="#2-core-database-concepts--terminology"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “2. Core Database Concepts &#x26; Terminology”</span></a></div>
+<p>Understanding these terms is non-negotiable. They form the vocabulary of database architecture.</p>
+<ul>
+<li>
+<p><strong>Schema (or Database):</strong></p>
+<ul>
+<li><strong>Analogy:</strong> Think of a schema as a filing cabinet. It is not the data itself but a container designed to hold and organize related items.</li>
+<li><strong>Technical Definition:</strong> A schema is a named collection of database objects, including tables, views, indexes, and stored procedures. In MySQL, the terms <code dir="auto">SCHEMA</code> and <code dir="auto">DATABASE</code> are synonymous. It provides a namespace to prevent conflicts and logically group related data structures. For example, you might have a <code dir="auto">sales_db</code> schema for sales data and a separate <code dir="auto">hr_db</code> for human resources data.</li>
+</ul>
+</li>
+<li>
+<p><strong>Table:</strong></p>
+<ul>
+<li><strong>Analogy:</strong> A table is like a single spreadsheet within the filing cabinet.</li>
+<li><strong>Technical Definition:</strong> It is the primary structure for data storage, organized into a grid of horizontal <strong>rows</strong> (records) and vertical <strong>columns</strong> (attributes or fields). Each row represents a single entity (e.g., a specific user), and each column represents a specific attribute of that entity (e.g., their <code dir="auto">Username</code>).</li>
+</ul>
+</li>
+<li>
+<p><strong>Index:</strong></p>
+<ul>
+<li><strong>Analogy:</strong> Exactly like the index at the back of a textbook. Instead of scanning every page to find a topic (a “full table scan”), you look up the topic in the index, which tells you the exact page number (the physical address of the data row), allowing you to jump there directly.</li>
+<li><strong>Technical Definition:</strong> An index is a special on-disk data structure (most commonly a B-Tree in MySQL) that the database server uses to dramatically speed up data retrieval operations. It maps column values to the physical location of their corresponding data rows. While indexes significantly accelerate <code dir="auto">SELECT</code> queries with <code dir="auto">WHERE</code> clauses, they slightly slow down data modification (<code dir="auto">INSERT</code>, <code dir="auto">UPDATE</code>, <code dir="auto">DELETE</code>) because the index must also be updated.</li>
+</ul>
+</li>
+<li>
+<p><strong>View:</strong></p>
+<ul>
+<li><strong>Analogy:</strong> A view is like a pre-defined filter or report template for your spreadsheet. It doesn’t store any data itself; it just provides a specific way of <em>looking</em> at the data from one or more underlying tables.</li>
+<li><strong>Technical Definition:</strong> A view is a stored <code dir="auto">SELECT</code> query that is given a name and treated as a virtual table. It can be used to simplify complex queries, join data from multiple tables, or restrict access to certain columns or rows for security purposes.</li>
+</ul>
+</li>
+<li>
+<p><strong>Constraints:</strong></p>
+<ul>
+<li><strong>Purpose:</strong> Constraints are the rules that guard the integrity and reliability of your data. They prevent invalid or inconsistent data from ever being entered into the database, enforcing business logic at the lowest possible level.</li>
+</ul>
+<ol>
+<li>
+<p><strong>$\text{PRIMARY KEY}$</strong>:</p>
+<ul>
+<li><strong>Rule:</strong> Uniquely identifies each row in a table. It cannot contain <code dir="auto">NULL</code> values, and all values in the column must be unique. A table can have only one primary key.</li>
+<li><strong>Example:</strong> In a <code dir="auto">Products</code> table, <code dir="auto">ProductID</code> would be the primary key because no two products can have the same ID.</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{FOREIGN KEY}$</strong>:</p>
+<ul>
+<li><strong>Rule:</strong> Creates a link between two tables. It is a column (or set of columns) in one table that refers to the <code dir="auto">PRIMARY KEY</code> of another table. This enforces referential integrity, ensuring that a record in one table cannot point to a non-existent record in another.</li>
+<li><strong>Example:</strong> In an <code dir="auto">Orders</code> table, a <code dir="auto">CustomerID</code> column would be a foreign key referencing the <code dir="auto">CustomerID</code> primary key in the <code dir="auto">Customers</code> table. This makes it impossible to create an order for a customer who does not exist.</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{UNIQUE}$</strong>:</p>
+<ul>
+<li><strong>Rule:</strong> Ensures that all values in a column (or set of columns) are distinct from one another. Unlike a primary key, a unique constraint allows for one <code dir="auto">NULL</code> value.</li>
+<li><strong>Example:</strong> In a <code dir="auto">Users</code> table, <code dir="auto">Email</code> should have a <code dir="auto">UNIQUE</code> constraint because no two users can register with the same email address.</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{NOT NULL}$</strong>:</p>
+<ul>
+<li><strong>Rule:</strong> Ensures that a column cannot have a <code dir="auto">NULL</code> (empty) value.</li>
+<li><strong>Example:</strong> In a <code dir="auto">Users</code> table, the <code dir="auto">Username</code> and <code dir="auto">PasswordHash</code> columns must be <code dir="auto">NOT NULL</code> because a user account is meaningless without them.</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{DEFAULT}$</strong>:</p>
+<ul>
+<li><strong>Rule:</strong> Provides a default value for a column if no value is specified during an <code dir="auto">INSERT</code> operation.</li>
+<li><strong>Example:</strong> In a <code dir="auto">Users</code> table, the <code dir="auto">DateRegistered</code> column can have a <code dir="auto">DEFAULT</code> value of <code dir="auto">CURRENT_TIMESTAMP</code> to automatically record the registration time.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="3-mysql-data-types"><strong>3. MySQL Data Types</strong></h3><a class="sl-anchor-link" href="#3-mysql-data-types"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “3. MySQL Data Types”</span></a></div>
+<p>Choosing the correct data type is critical for data integrity, performance, and storage efficiency. Selecting an overly large type wastes space, while selecting one that is too small can lead to data truncation or errors.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">Data Type</th><th align="left">Use Case &#x26; Real-World Scenario</th><th align="left">Storage &#x26; Range</th></tr></thead><tbody><tr><td align="left"><strong>Numeric Types</strong></td><td align="left"></td><td align="left"></td></tr><tr><td align="left"><code dir="auto">TINYINT</code></td><td align="left">For very small integers, often used for boolean flags (0 or 1). <strong>Scenario:</strong> An <code dir="auto">IsActive</code> column in a <code dir="auto">Users</code> table to flag if an account is enabled.</td><td align="left">1 Byte (-128 to 127 or 0 to 255 <code dir="auto">UNSIGNED</code>)</td></tr><tr><td align="left"><code dir="auto">INT</code></td><td align="left">The standard choice for whole numbers. <strong>Scenario:</strong> The <code dir="auto">UserID</code> in a <code dir="auto">Users</code> table or <code dir="auto">ProductID</code> in a <code dir="auto">Products</code> table.</td><td align="left">4 Bytes (-2.1 billion to 2.1 billion, or 0 to 4.2 billion <code dir="auto">UNSIGNED</code>)</td></tr><tr><td align="left"><code dir="auto">BIGINT</code></td><td align="left">For extremely large whole numbers, essential for primary keys in tables that could exceed 4 billion rows. <strong>Scenario:</strong> The primary key <code dir="auto">EventID</code> in a high-traffic logging table.</td><td align="left">8 Bytes (A very large range)</td></tr><tr><td align="left"><code dir="auto">DECIMAL(p, s)</code></td><td align="left">For fixed-point numbers where exact precision is mandatory. <strong>Scenario:</strong> Financial data. A <code dir="auto">Price</code> column in a <code dir="auto">Products</code> table should be <code dir="auto">DECIMAL(10, 2)</code> to store values like <code dir="auto">999.99</code> accurately, avoiding floating-point rounding errors.</td><td align="left">Varies based on precision (p) and scale (s).</td></tr><tr><td align="left"><strong>String Types</strong></td><td align="left"></td><td align="left"></td></tr><tr><td align="left"><code dir="auto">VARCHAR(n)</code></td><td align="left">For variable-length strings where the length is known to be limited. <code dir="auto">n</code> is the <em>maximum</em> number of characters. <strong>Scenario:</strong> A <code dir="auto">Username</code> column set to <code dir="auto">VARCHAR(50)</code>. It only uses storage for the actual characters entered, plus 1-2 bytes for length.</td><td align="left"><code dir="auto">n</code> characters max. Storage = Length + 1 or 2 bytes.</td></tr><tr><td align="left"><code dir="auto">CHAR(n)</code></td><td align="left">For fixed-length strings. Always uses <code dir="auto">n</code> characters of storage regardless of content. <strong>Scenario:</strong> A <code dir="auto">CountryCode</code> column set to <code dir="auto">CHAR(2)</code> (e.g., ‘US’, ‘DE’). It’s slightly more performant than <code dir="auto">VARCHAR</code> for truly fixed-length data.</td><td align="left"><code dir="auto">n</code> characters. Storage = <code dir="auto">n</code> bytes.</td></tr><tr><td align="left"><code dir="auto">TEXT</code></td><td align="left">For long-form text data where the length is unknown or very large. <strong>Scenario:</strong> The <code dir="auto">ProductDescription</code> in a <code dir="auto">Products</code> table or the <code dir="auto">Body</code> of a blog post.</td><td align="left">Up to 65,535 characters.</td></tr><tr><td align="left"><code dir="auto">BLOB</code></td><td align="left">For binary data, such as images, audio files, or documents. It is generally recommended to store files on a file system or object store and only store the path/URL in the database.</td><td align="left">Up to 65,535 bytes.</td></tr><tr><td align="left"><strong>Date &#x26; Time Types</strong></td><td align="left"></td><td align="left"></td></tr><tr><td align="left"><code dir="auto">DATE</code></td><td align="left">Stores a date value (‘YYYY-MM-DD’). <strong>Scenario:</strong> A <code dir="auto">BirthDate</code> column in a <code dir="auto">Profiles</code> table.</td><td align="left">3 Bytes</td></tr><tr><td align="left"><code dir="auto">TIME</code></td><td align="left">Stores a time value (‘HH:MM:SS’). <strong>Scenario:</strong> An <code dir="auto">OpeningHour</code> column in a <code dir="auto">StoreHours</code> table.</td><td align="left">3 Bytes</td></tr><tr><td align="left"><code dir="auto">DATETIME</code></td><td align="left">Stores both date and time (‘YYYY-MM-DD HH:MM:SS’). <strong>Scenario:</strong> A <code dir="auto">DateRegistered</code> or <code dir="auto">LastLogin</code> column in a <code dir="auto">Users</code> table. The most common choice for timestamps.</td><td align="left">8 Bytes</td></tr><tr><td align="left"><code dir="auto">TIMESTAMP</code></td><td align="left">Similar to <code dir="auto">DATETIME</code>, but with a smaller range and automatic properties. It’s often used for tracking when a row was last modified. <strong>Scenario:</strong> A <code dir="auto">LastModified</code> column that automatically updates when the row is changed.</td><td align="left">4 Bytes (Range from 1970 to 2038)</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="4-mysql-user-management"><strong>4. MySQL User Management</strong></h3><a class="sl-anchor-link" href="#4-mysql-user-management"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “4. MySQL User Management”</span></a></div>
+<p>Proper user management is a cornerstone of database security. The principle of least privilege dictates that users should only have the exact permissions they need to perform their duties.</p>
+<ul>
+<li>
+<p><strong>Creating Users:</strong></p>
+<ul>
+<li>The <code dir="auto">CREATE USER</code> statement defines a new account with a username, the host from which they can connect, and a password.</li>
+<li><strong>Syntax:</strong>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">CREATE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">USER</span><span style="--0:#D6DEEB;--1:#403F53"> '</span><span style="--0:#82AAFF;--1:#3B61B0">username</span><span style="--0:#D6DEEB;--1:#403F53">'@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">host</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53"> IDENTIFIED </span><span style="--0:#C792EA;--1:#8844AE">BY</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">a_strong_password</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="CREATE USER &#x27;username&#x27;@&#x27;host&#x27; IDENTIFIED BY &#x27;a_strong_password&#x27;;"><div></div></button></div></figure></div>
+</li>
+<li><strong>Example:</strong> Create a user <code dir="auto">app_user</code> that can only connect from the local machine (the database server itself).
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">CREATE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">USER</span><span style="--0:#D6DEEB;--1:#403F53"> '</span><span style="--0:#82AAFF;--1:#3B61B0">app_user</span><span style="--0:#D6DEEB;--1:#403F53">'@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">localhost</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53"> IDENTIFIED </span><span style="--0:#C792EA;--1:#8844AE">BY</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">P@ssw0rd321!</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="CREATE USER &#x27;app_user&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;P@ssw0rd321!&#x27;;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Granting Privileges:</strong></p>
+<ul>
+<li>The <code dir="auto">GRANT</code> command assigns specific rights to a user on a specific scope (a whole database, a single table, or even specific columns).</li>
+<li><strong>Syntax:</strong>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">GRANT</span><span style="--0:#D6DEEB;--1:#403F53"> privilege1, privilege2 </span><span style="--0:#C792EA;--1:#8844AE">ON</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">database_name</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#82AAFF;--1:#3B61B0">table_name</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TO</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">username</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">host</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="GRANT privilege1, privilege2 ON database_name.table_name TO &#x27;username&#x27;@&#x27;host&#x27;;"><div></div></button></div></figure></div>
+</li>
+<li><strong>Example:</strong> Grant the <code dir="auto">app_user</code> the ability to <code dir="auto">SELECT</code>, <code dir="auto">INSERT</code>, and <code dir="auto">UPDATE</code> records on the <code dir="auto">Products</code> table within the <code dir="auto">e_commerce_db</code> database.
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">GRANT</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">SELECT</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#C792EA;--1:#8844AE">INSERT</span><span style="--0:#D6DEEB;--1:#403F53">, </span><span style="--0:#C792EA;--1:#8844AE">UPDATE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">ON</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">e_commerce_db</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#82AAFF;--1:#3B61B0">Products</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TO</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">app_user</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">localhost</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="GRANT SELECT, INSERT, UPDATE ON e_commerce_db.Products TO &#x27;app_user&#x27;@&#x27;localhost&#x27;;"><div></div></button></div></figure></div>
+</li>
+<li><strong>To grant all permissions on a database:</strong>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">GRANT</span><span style="--0:#D6DEEB;--1:#403F53"> ALL PRIVILEGES </span><span style="--0:#C792EA;--1:#8844AE">ON</span><span style="--0:#D6DEEB;--1:#403F53"> e_commerce_db.</span><span style="--0:#7FDBCA;--1:#096E72">*</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">TO</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">admin_user</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">localhost</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="GRANT ALL PRIVILEGES ON e_commerce_db.* TO &#x27;admin_user&#x27;@&#x27;localhost&#x27;;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Revoking Privileges:</strong></p>
+<ul>
+<li>The <code dir="auto">REVOKE</code> command removes previously granted permissions.</li>
+<li><strong>Syntax:</strong>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">REVOKE</span><span style="--0:#D6DEEB;--1:#403F53"> privilege1 </span><span style="--0:#C792EA;--1:#8844AE">ON</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">database_name</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#82AAFF;--1:#3B61B0">table_name</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">FROM</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">username</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">host</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="REVOKE privilege1 ON database_name.table_name FROM &#x27;username&#x27;@&#x27;host&#x27;;"><div></div></button></div></figure></div>
+</li>
+<li><strong>Example:</strong> Remove the <code dir="auto">UPDATE</code> permission from the <code dir="auto">app_user</code>.
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">REVOKE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">UPDATE</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">ON</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">e_commerce_db</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#82AAFF;--1:#3B61B0">Products</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#C792EA;--1:#8844AE">FROM</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">app_user</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">@</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#ECC48D;--1:#984E4D">localhost</span><span style="--0:#D9F5DD;--1:#111111">'</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="REVOKE UPDATE ON e_commerce_db.Products FROM &#x27;app_user&#x27;@&#x27;localhost&#x27;;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Best Practices for User Security:</strong></p>
+<ul>
+<li><strong>Never use the <code dir="auto">root</code> user for your application.</strong> The <code dir="auto">root</code> user is for administration only.</li>
+<li><strong>Create dedicated users for each application</strong> with the minimum permissions required.</li>
+<li><strong>Use specific hosts</strong> (e.g., <code dir="auto">app_user@'192.168.1.100'</code>) instead of the wildcard (<code dir="auto">%</code>) whenever possible to restrict connection locations.</li>
+<li><strong>Always use strong, complex passwords</strong> and change them regularly.</li>
+<li><strong>Periodically audit user privileges</strong> to ensure they are still appropriate.</li>
+</ul>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h3"><h3 id="5-practical-command-line-usage"><strong>5. Practical Command-Line Usage</strong></h3><a class="sl-anchor-link" href="#5-practical-command-line-usage"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “5. Practical Command-Line Usage”</span></a></div>
+<p>The MySQL command-line client is an essential tool for any developer or administrator.</p>
+<ul>
+<li>
+<p><strong>Connecting to the Server:</strong></p>
+<ul>
+<li>The command <code dir="auto">mysql</code> is used, with flags to specify the user (<code dir="auto">-u</code>), password (<code dir="auto">-p</code>), and optionally the host (<code dir="auto">-h</code>).</li>
+<li><strong>Command:</strong>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">mysql</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">-u</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">&#x3C;username></span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">-p</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="mysql -u <username> -p"><div></div></button></div></figure></div>
+</li>
+<li>The shell will then prompt you to enter the password securely.</li>
+<li><strong>Example:</strong> Logging in as the <code dir="auto">root</code> user.
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#82AAFF;--1:#3B61B0">mysql</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">-u</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#ECC48D;--1:#3B61B0">root</span><span style="--0:#D6DEEB;--1:#403F53"> </span><span style="--0:#82AAFF;--1:#3B61B0">-p</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="mysql -u root -p"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>Essential “Day-to-Day” Commands:</strong></p>
+<ul>
+<li>Once you are logged into the <code dir="auto">mysql></code> prompt, these commands are your primary tools for navigation and inspection. <em>Note: All commands inside the MySQL client must end with a semicolon (;).</em></li>
+</ul>
+<ol>
+<li>
+<p><strong>$\text{SHOW DATABASES;}$</strong></p>
+<ul>
+<li><strong>Purpose:</strong> Lists all the databases (schemas) that are present on the server and that you have permission to see.</li>
+<li><strong>Usage:</strong>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">SHOW DATABASES;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="SHOW DATABASES;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{USE database_name;}$</strong></p>
+<ul>
+<li><strong>Purpose:</strong> Selects a specific database to be your current “working” context. All subsequent commands (like <code dir="auto">SHOW TABLES</code>) will be executed against this database.</li>
+<li><strong>Usage:</strong>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#C792EA;--1:#8844AE">USE</span><span style="--0:#D6DEEB;--1:#403F53"> e_commerce_db;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="USE e_commerce_db;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{SHOW TABLES;}$</strong></p>
+<ul>
+<li><strong>Purpose:</strong> Lists all the tables within the currently selected database.</li>
+<li><strong>Usage:</strong>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">SHOW TABLES;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="SHOW TABLES;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{DESCRIBE table_name;}$ (or $\text{DESC table_name;}$)</strong></p>
+<ul>
+<li><strong>Purpose:</strong> Shows the structure of a table, including column names, data types, constraints (<code dir="auto">KEY</code>), default values, and whether <code dir="auto">NULL</code> is allowed. This is incredibly useful for understanding a table’s schema at a glance.</li>
+<li><strong>Usage:</strong>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">DESCRIBE Users;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="DESCRIBE Users;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>$\text{SOURCE /path/to/script.sql;}$</strong></p>
+<ul>
+<li><strong>Purpose:</strong> Executes a series of SQL commands from an external file. This is extremely useful for setting up a database, loading large amounts of data, or running complex reports without typing or pasting into the console.</li>
+<li><strong>Usage:</strong>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="sql"><code><div class="ec-line"><div class="code"><span style="--0:#D6DEEB;--1:#403F53">SOURCE </span><span style="--0:#7FDBCA;--1:#096E72">/</span><span style="--0:#D6DEEB;--1:#403F53">home</span><span style="--0:#7FDBCA;--1:#096E72">/</span><span style="--0:#D6DEEB;--1:#403F53">user</span><span style="--0:#7FDBCA;--1:#096E72">/</span><span style="--0:#D6DEEB;--1:#403F53">sql_scripts</span><span style="--0:#7FDBCA;--1:#096E72">/</span><span style="--0:#82AAFF;--1:#3B61B0">setup_database</span><span style="--0:#D6DEEB;--1:#403F53">.</span><span style="--0:#82AAFF;--1:#3B61B0">sql</span><span style="--0:#D6DEEB;--1:#403F53">;</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="SOURCE /home/user/sql_scripts/setup_database.sql;"><div></div></button></div></figure></div>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/MyDocs/springboot/jpa/jpacaching" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Jpa Caching</span> </span> </a>  </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
