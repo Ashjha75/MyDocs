@@ -72,8 +72,8 @@ export default defineConfig({
 				},
 				
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					label: '⛈️ Mysql',
+					autogenerate: { directory: 'mysql' },
 				},
 			],
 		}),
