@@ -201,48 +201,51 @@ This is how all the caches work together when a query is executed for the first 
 
 ```mermaid
 graph TD
-    %% Define the central, shared components first. These are singletons for the application.
-    subgraph "Application Scope (Shared & Long-Lived)"
-        L2[<b>2nd Level Cache</b><br><i>The shared, application-wide data shelf</i>]
-    end
+    %% ===== Shared Components =====
+    L2[<b>2nd Level Cache</b><br/>Shared across all transactions]
     DB[(Database)]
 
-    %% --- Transaction 1: The WRITE Operation ---
-    subgraph "Transaction 1: POST Call (e.g., User A creates Product ID: 123)"
-        direction LR
-        Request1[1st POST Call] --> EM1(EntityManager 1 / Session 1);
-        EM1 --> L1_1[<b>Own 1st Level Cache</b><br><i>The private workbench for this transaction</i>];
+    %% ===== Transaction 1: WRITE =====
+    subgraph "Transaction 1: POST /product (Create ID: 123)"
+        Req1[POST Request] --> EM1[EntityManager 1]
+        EM1 --> L1_1[<b>L1 Cache</b><br/>Private to EM1]
     end
-    
-    %% --- Transaction 2: The FIRST READ Operation ---
-    subgraph "Transaction 2: GET Call (e.g., User B requests Product ID: 123)"
-        direction LR
-        Request2[2nd GET Call] --> EM2(EntityManager 2 / Session 2);
-        EM2 --> L1_2[<b>Own 1st Level Cache</b><br><i>A new, empty workbench for this transaction</i>];
-    end
-    
-    %% --- Transaction 3: The SECOND READ Operation ---
-    subgraph "Transaction 3: GET Call (e.g., User C requests Product ID: 123 again)"
-        direction LR
-        Request3[3rd GET Call] --> EM3(EntityManager 3 / Session 3);
-        EM3 --> L1_3[<b>Own 1st Level Cache</b><br><i>Another new, empty workbench</i>];
-    end
-    
-    %% --- Define the interactions and the data flow ---
-    
-    %% WRITE PATH (Transaction 1)
-    L1_1 -- "<b>Step 1:</b> `persist()` places the new Product in the L1 Cache" --> L2;
-    L2 -- "<b>Step 2:</b> At transaction commit, the Product is also stored in the L2 Cache" --> L2;
-    L2 -- "<b>Step 3:</b> The Product data is written to the database" --> DB;
 
-    %% READ PATH 1 (Transaction 2)
-    L1_2 -- "<b>Step 4:</b> `find()` checks its own L1 Cache. It's empty (<b>Cache Miss</b>)." --> L2;
-    L2 -- "<b>Step 5:</b> Hibernate checks the L2 Cache. The Product is found! (<b>Cache Hit!</b>)" --> L1_2;
-    L1_2 -- "<b>Step 6:</b> The Product is loaded into L1 and returned to User B" --> EM2;
-    L2 -.-> |<b>Step 7: The Database is NOT Accessed!</b>| DB;
+    %% ===== Transaction 2: FIRST READ =====
+    subgraph "Transaction 2: GET /product/123"
+        Req2[GET Request] --> EM2[EntityManager 2]
+        EM2 --> L1_2[<b>L1 Cache</b><br/>Empty at start]
+    end
 
-    %% READ PATH 2 (Transaction 3)
-    L1_3 -- "<b>Step 8:</b> `find()` checks its own L1 Cache. It's also empty (<b>Cache Miss</b>)." --> L2;
-    L2 -- "<b>Step 9:</b> Hibernate checks the L2 Cache again. The Product is found! (<b>Cache Hit!</b>)" --> L1_3;
-    L1_3 -- "<b>Step 10:</b> The Product is loaded into L1 and returned to User C" --> EM3;
+    %% ===== Transaction 3: SECOND READ =====
+    subgraph "Transaction 3: GET /product/123"
+        Req3[GET Request] --> EM3[EntityManager 3]
+        EM3 --> L1_3[<b>L1 Cache</b><br/>Empty at start]
+    end
+
+    %% ===== Data Flow =====
+
+    %% WRITE FLOW
+    L1_1 -- "1. persist(entity)" --> L2
+    L2 -- "2. On commit: Store in L2" --> L2
+    L2 -- "3. Write to DB" --> DB
+
+    %% READ FLOW 1
+    L1_2 -- "4. find(123) → L1 miss" --> L2
+    L2 -- "5. L2 Hit! → Return data" --> L1_2
+    L1_2 -- "6. Load into L1, return result" --> EM2
+
+    %% Optional note: DB not accessed
+    L2 -. "7. DB NOT accessed" .-> DB
+
+    %% READ FLOW 2
+    L1_3 -- "8. find(123) → L1 miss" --> L2
+    L2 -- "9. L2 Hit again!" --> L1_3
+    L1_3 -- "10. Load into L1, return result" --> EM3
+
+    style L2 fill:#f0f8ff,stroke:#333
+    style DB fill:#ffe4e1,stroke:#333
+    style L1_1 fill:#fffacd,stroke:#333
+    style L1_2 fill:#fffacd,stroke:#333
+    style L1_3 fill:#fffacd,stroke:#333
 ```
