@@ -28,6 +28,14 @@ export default defineConfig({
 					label: '🌱 Springboot',
 					items: [
 						{
+							label: 'Base',
+							items: [
+								{ label: 'Rest Basics', link: '/springboot/base/rest' },
+								
+								
+							],
+						},
+						{
 							label: 'Core',
 							items: [
 								{ label: 'Springboot starter', link: '/springboot/core/springboot-starter' },
@@ -46,6 +54,13 @@ export default defineConfig({
 							items: [
 								{ label: 'Spring Mvc 1', link: '/springboot/mvc/mvc1' },
 								{ label: 'Spring Mvc 2', link: '/springboot/mvc/mvc2' },
+							],
+						},
+						{
+							label: 'Data Jpa',
+							items: [
+								{ label: 'Spring Data JPA 1', link: '/springboot/data-jpa/data-jpa1' },
+								{ label: 'Spring Data JPA 2', link: '/springboot/data-jpa/data-jpa2' },
 							],
 						},
 					],
