@@ -31,7 +31,7 @@ export default defineConfig({
 							label: 'Base',
 							items: [
 								{ label: 'Rest Basics', link: '/springboot/base/rest' },
-								
+
 								
 							],
 						},
