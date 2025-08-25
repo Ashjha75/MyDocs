@@ -77,15 +77,23 @@ export default defineConfig({
 				{
 					label: '⛈️ Mysql',
 					items: [
-						{ label: 'Logical Operator', link: '/mysql/retrival/logicalOperator' },
-						{ label: 'Comparision Operator', link: '/mysql/retrival/comparisionOperator' },
-						{ label: 'Range Set Operators', link: '/mysql/retrival/range-setOperators' },
-						{ label: 'Distinct', link: '/mysql/retrival/distinct' },
-						{ label: 'Patterns Matching', link: '/mysql/retrival/patternsMatching' },
-						{ label: 'Aliases', link: '/mysql/retrival/aliases' },
-						{ label: 'Limits', link: '/mysql/retrival/limits' },
-						{ label: 'Order By', link: '/mysql/retrival/orderBy' },
-						{ label: 'Select', link: '/mysql/retrival/select' },
+						{ label: 'Basics', link: '/mysql/mysqlbasic' },
+						{ label: 'DDL', link: '/mysql/mysqlddl' },
+						{
+							label: "Retrival",
+							items: [
+								{ label: 'Comparision Operator', link: '/mysql/retrival/comparision-operator' },
+								{ label: 'Logical Operator', link: '/mysql/retrival/logical-operator' },
+								{ label: 'Range Set Operators', link: '/mysql/retrival/range-setoperators' },
+								{ label: 'Patterns Matching', link: '/mysql/retrival/patterns-matching' },
+								{ label: 'Distinct', link: '/mysql/retrival/distinct' },
+								{ label: 'Aliases', link: '/mysql/retrival/aliases' },
+								{ label: 'Limits', link: '/mysql/retrival/limits' },
+								{ label: 'Order By', link: '/mysql/retrival/order-by' },
+								{ label: 'Select', link: '/mysql/retrival/select' },
+							]
+						}
+
 					],
 				},
 				{
