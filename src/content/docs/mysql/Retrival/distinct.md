@@ -1,5 +1,5 @@
 ---
-title : Mastering DISTINCT
+title :  DISTINCT 
 ---
 
 
