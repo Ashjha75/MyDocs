@@ -79,6 +79,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Basics', link: '/mysql/mysqlbasic' },
 						{ label: 'DDL', link: '/mysql/mysqlddl' },
+						{ label: 'Functions', link: '/mysql/function' },
 						{
 							label: "Retrival",
 							items: [
