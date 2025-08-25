@@ -72,7 +72,8 @@ This is the most critical concept in this guide and a frequent source of intervi
 -- INCORRECT QUERY
 SELECT ProductID, ProductName, CategoryID, Price, StockQuantity
 FROM Products
-WHERE CategoryID = 1 AND Price > 1000.00 OR StockQuantity = 0;```
+WHERE CategoryID = 1 AND Price > 1000.00 OR StockQuantity = 0;
+```
 *   **Why it's wrong:** Because `AND` is evaluated first, MySQL interprets this query as: "Find a product where (`CategoryID = 1 AND Price > 1000.00`) is true, OR (`StockQuantity = 0`) is true." This is actually the correct logic for the request, but it's a happy accident. The interviewer will press further.
 
 **Interviewer:** "Okay, now modify that. Find all 'Electronics' products that are either over $1000 *or* are out of stock."
