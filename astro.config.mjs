@@ -88,8 +88,8 @@ export default defineConfig({
 								{ label: 'Patterns Matching', link: '/mysql/retrival/patterns-matching' },
 								{ label: 'Distinct', link: '/mysql/retrival/distinct' },
 								{ label: 'Aliases', link: '/mysql/retrival/aliases' },
-								{ label: 'Limits', link: '/mysql/retrival/limits' },
 								{ label: 'Order By', link: '/mysql/retrival/order-by' },
+								{ label: 'Limits', link: '/mysql/retrival/limits' },
 								{ label: 'Select', link: '/mysql/retrival/select' },
 							]
 						}
