@@ -1,3 +1,3 @@
 ---
-title:Logical Operators
+title: Logical Operators
 ---
