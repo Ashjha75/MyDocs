@@ -1,3 +1,8 @@
+---
+title: Normalization
+---
+
+
 ### **The Architecture of Sanity: Database Normalization**
 
 This guide provides a detailed, beginner-friendly, and interview-focused explanation of the first three normal forms. We will start with *why* we need normalization before explaining *how* to do it.
