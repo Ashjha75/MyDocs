@@ -23,6 +23,7 @@ export default defineConfig({
 			customCss: ['./src/styles/mermaid.css','./src/styles/global.css'],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Ashjha75' },
 				{ icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/ashjha75/' }, 
+				{ icon: 'twitter', label: 'Twitter', href: 'https://x.com/ashish5jha' }, 
 				{ icon: 'external', label: 'Portfolio', href: 'https://ashish5jha.github.io/portfolio/' }],
 			// plugins: [starlightThemeObsidian()],
 			 head: [
