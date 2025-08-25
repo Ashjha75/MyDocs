@@ -1,0 +1,455 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-bguv2lll"> <head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Normalization | My Docs</title><link rel="canonical" href="https://ashjha75.github.io/MyDocs/mysql/normalization/"/><link rel="sitemap" href="/MyDocs/sitemap-index.xml"/><script src="/src/scripts/mermaid-init.js" defer></script><link rel="shortcut icon" href="/MyDocs/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v5.13.2"/><meta name="generator" content="Starlight v0.35.2"/><meta property="og:title" content="Normalization"/><meta property="og:type" content="article"/><meta property="og:url" content="https://ashjha75.github.io/MyDocs/mysql/normalization/"/><meta property="og:locale" content="en"/><meta property="og:description"/><meta property="og:site_name" content="My Docs"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:site" content="@ashish5jha"/><script>
+	window.StarlightThemeProvider = (() => {
+		const storedTheme =
+			typeof localStorage !== 'undefined' && localStorage.getItem('starlight-theme');
+		const theme =
+			storedTheme ||
+			(window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+		document.documentElement.dataset.theme = theme === 'light' ? 'light' : 'dark';
+		return {
+			updatePickers(theme = storedTheme || 'auto') {
+				document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+					const select = picker.querySelector('select');
+					if (select) select.value = theme;
+					/** @type {HTMLTemplateElement | null} */
+					const tmpl = document.querySelector(`#theme-icons`);
+					const newIcon = tmpl && tmpl.content.querySelector('.' + theme);
+					if (newIcon) {
+						const oldIcon = picker.querySelector('svg.label-icon');
+						if (oldIcon) {
+							oldIcon.replaceChildren(...newIcon.cloneNode(true).childNodes);
+						}
+					}
+				});
+			},
+		};
+	})();
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/MyDocs/_astro/print.DNXP8c50.css" media="print"><link rel="stylesheet" href="/MyDocs/_astro/index.CohxtHEy.css"><script type="module" src="/MyDocs/_astro/page.7qqag-5g.js"></script></head> <body class="astro-bguv2lll"> <a href="#_top" class="astro-7q3lir66">Skip to content</a>  <div class="page sl-flex astro-vrdttmbt"> <header class="header astro-vrdttmbt"><div class="header astro-kmkmnagf"> <div class="title-wrapper sl-flex astro-kmkmnagf"> <a href="/MyDocs/" class="site-title sl-flex astro-m46x6ez3">  <img class="astro-m46x6ez3" alt="MyDocs" src="/MyDocs/_astro/favicon.n3obPKBA.svg" width="128" height="128">  <span class="astro-m46x6ez3" translate="no"> My Docs </span> </a>  </div> <div class="sl-flex print:hidden astro-kmkmnagf"> <site-search class="astro-kmkmnagf astro-v37mnknz" data-translations="{&#34;placeholder&#34;:&#34;Search&#34;}"> <button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-v37mnknz"> <svg aria-hidden="true" class="astro-v37mnknz astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg> <span class="sl-hidden md:sl-block astro-v37mnknz" aria-hidden="true">Search</span> <kbd class="sl-hidden md:sl-flex astro-v37mnknz" style="display: none;"> <kbd class="astro-v37mnknz">Ctrl</kbd><kbd class="astro-v37mnknz">K</kbd> </kbd> </button> <dialog style="padding:0" aria-label="Search" class="astro-v37mnknz"> <div class="dialog-frame sl-flex astro-v37mnknz">  <button data-close-modal class="sl-flex md:sl-hidden astro-v37mnknz"> Cancel </button> <div class="search-container astro-v37mnknz"> <div id="starlight__search" class="astro-v37mnknz"></div> </div> </div> </dialog> </site-search>  <script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script> <script type="module" src="/MyDocs/_astro/Search.astro_astro_type_script_index_0_lang.C5umfDAo.js"></script>   </div> <div class="sl-hidden md:sl-flex print:hidden right-group astro-kmkmnagf"> <div class="sl-flex social-icons astro-kmkmnagf"> <a href="https://github.com/Ashjha75" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://www.linkedin.com/in/ashjha75/" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">LinkedIn</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.47 2H3.53a1.45 1.45 0 0 0-1.47 1.43v17.14A1.45 1.45 0 0 0 3.53 22h16.94a1.45 1.45 0 0 0 1.47-1.43V3.43A1.45 1.45 0 0 0 20.47 2ZM8.09 18.74h-3v-9h3v9ZM6.59 8.48a1.56 1.56 0 0 1 0-3.12 1.57 1.57 0 1 1 0 3.12Zm12.32 10.26h-3v-4.83c0-1.21-.43-2-1.52-2A1.65 1.65 0 0 0 12.85 13a2 2 0 0 0-.1.73v5h-3v-9h3V11a3 3 0 0 1 2.71-1.5c2 0 3.45 1.29 3.45 4.06v5.18Z"/></svg></a><a href="https://x.com/ashish5jha" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">Twitter</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M24 4.4a10 10 0 0 1-2.83.78 5.05 5.05 0 0 0 2.17-2.79 9.7 9.7 0 0 1-3.13 1.23 4.89 4.89 0 0 0-5.94-1.03 5 5 0 0 0-2.17 2.38 5.15 5.15 0 0 0-.3 3.25c-1.95-.1-3.86-.63-5.61-1.53a14.04 14.04 0 0 1-4.52-3.74 5.2 5.2 0 0 0-.09 4.91c.39.74.94 1.35 1.61 1.82a4.77 4.77 0 0 1-2.23-.63v.06c0 1.16.4 2.29 1.12 3.18a4.9 4.9 0 0 0 2.84 1.74c-.73.22-1.5.26-2.24.12a4.89 4.89 0 0 0 4.59 3.49A9.78 9.78 0 0 1 0 19.73 13.65 13.65 0 0 0 7.55 22a13.63 13.63 0 0 0 9.96-4.16A14.26 14.26 0 0 0 21.6 7.65V7c.94-.72 1.75-1.6 2.4-2.6Z"/></svg></a><a href="https://ashish5jha.github.io/portfolio/" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">Portfolio</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M19.33 10.18a1 1 0 0 1-.77 0 1 1 0 0 1-.62-.93l.01-1.83-8.2 8.2a1 1 0 0 1-1.41-1.42l8.2-8.2H14.7a1 1 0 0 1 0-2h4.25a1 1 0 0 1 1 1v4.25a1 1 0 0 1-.62.93Z"/><path d="M11 4a1 1 0 1 1 0 2H7a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-4a1 1 0 1 1 2 0v4a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h4Z"/></svg></a> </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">Dark</option><option value="light" class="astro-4yphtoen">Light</option><option value="auto" selected class="astro-4yphtoen">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script> <script type="module">const r="starlight-theme",o=e=>e==="auto"||e==="dark"||e==="light"?e:"auto",c=()=>o(typeof localStorage<"u"&&localStorage.getItem(r));function n(e){typeof localStorage<"u"&&localStorage.setItem(r,e==="light"||e==="dark"?e:"")}const l=()=>matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";function t(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e==="auto"?l():e,n(e)}matchMedia("(prefers-color-scheme: light)").addEventListener("change",()=>{c()==="auto"&&t("auto")});class s extends HTMLElement{constructor(){super(),t(c()),this.querySelector("select")?.addEventListener("change",a=>{a.currentTarget instanceof HTMLSelectElement&&t(o(a.currentTarget.value))})}}customElements.define("starlight-theme-select",s);</script> <script type="module">class s extends HTMLElement{constructor(){super();const e=this.querySelector("select");e&&(e.addEventListener("change",t=>{t.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=t.currentTarget.value)}),window.addEventListener("pageshow",t=>{if(!t.persisted)return;const n=e.querySelector("option[selected]")?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}}customElements.define("starlight-lang-select",s);</script> </div> </div> </header> <nav class="sidebar print:hidden astro-vrdttmbt" aria-label="Main"> <starlight-menu-button class="print:hidden astro-jif73yzw"> <button aria-expanded="false" aria-label="Menu" aria-controls="starlight__sidebar" class="sl-flex md:sl-hidden astro-jif73yzw"> <svg aria-hidden="true" class="open-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg> <svg aria-hidden="true" class="close-menu astro-jif73yzw astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg> </button> </starlight-menu-button> <script type="module">class s extends HTMLElement{constructor(){super(),this.btn=this.querySelector("button"),this.btn.addEventListener("click",()=>this.toggleExpanded());const t=this.closest("nav");t&&t.addEventListener("keyup",e=>this.closeOnEscape(e))}setExpanded(t){this.setAttribute("aria-expanded",String(t)),document.body.toggleAttribute("data-mobile-menu-expanded",t)}toggleExpanded(){this.setExpanded(this.getAttribute("aria-expanded")!=="true")}closeOnEscape(t){t.code==="Escape"&&(this.setExpanded(!1),this.btn.focus())}}customElements.define("starlight-menu-button",s);</script>   <div id="starlight__sidebar" class="sidebar-pane astro-vrdttmbt"> <div class="sidebar-content sl-flex astro-vrdttmbt"> <sl-sidebar-state-persist data-hash="0he91y8" class="astro-kku4brbg"> <script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script>  <ul class="top-level astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="0"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">🌱 Springboot</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="1"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Base</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/base/rest" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Rest Basics</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="2"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Core</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/springboot-starter" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot starter</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/core2" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot  MVC Request Flow</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/core3" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot Internals</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/core4" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot Validation &amp; DTOs</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/exception-handling" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot Exception Handling</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/rest-api" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Building REST Endpoints</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/aop" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Springboot AOP</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/core/essentials" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Essentials Spring Boot Compendium</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="3"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">MVC</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/mvc/mvc1" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Spring Mvc 1</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/mvc/mvc2" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Spring Mvc 2</span>  </a> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="4"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Spring Data Jpa</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/jpa/jpacore" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Jpa Core</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/springboot/jpa/jpacaching" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Jpa Caching</span>  </a> </li> </ul>  </details> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="5"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">⛈️ Mysql</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/mysqlbasic" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Basics</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/mysqlddl" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">DDL</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/function" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Functions</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/keys" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Keys</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/normalization" aria-current="page" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Normalization</span>  </a> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="6"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">Retrival</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms"> <li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/retrival/comparision-operator" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Comparision Operator</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/retrival/logical-operator" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Logical Operator</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/retrival/range-setoperators" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Range Set Operators</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/retrival/patterns-matching" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Patterns Matching</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/retrival/distinct" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Distinct</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/retrival/aliases" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Aliases</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/retrival/order-by" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Order By</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/retrival/limits" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Limits</span>  </a> </li><li class="astro-3ii7xxms"> <a href="/MyDocs/mysql/retrival/select" aria-current="false" class="astro-3ii7xxms"> <span class="astro-3ii7xxms">Select</span>  </a> </li> </ul>  </details> </li> </ul>  </details> </li><li class="astro-3ii7xxms"> <details open class="astro-3ii7xxms"> <sl-sidebar-restore data-index="7"></sl-sidebar-restore> <summary class="astro-3ii7xxms"> <div class="group-label astro-3ii7xxms"> <span class="large astro-3ii7xxms">🤖 Context</span>  </div> <svg aria-hidden="true" class="caret astro-3ii7xxms astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.25rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg> </summary> <ul class="astro-3ii7xxms">  </ul>  </details> </li> </ul>   <script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script> </sl-sidebar-state-persist>  <div class="md:sl-hidden"> <div class="mobile-preferences sl-flex astro-wu23bvmt"> <div class="social-icons astro-wu23bvmt"> <a href="https://github.com/Ashjha75" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">GitHub</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><a href="https://www.linkedin.com/in/ashjha75/" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">LinkedIn</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M20.47 2H3.53a1.45 1.45 0 0 0-1.47 1.43v17.14A1.45 1.45 0 0 0 3.53 22h16.94a1.45 1.45 0 0 0 1.47-1.43V3.43A1.45 1.45 0 0 0 20.47 2ZM8.09 18.74h-3v-9h3v9ZM6.59 8.48a1.56 1.56 0 0 1 0-3.12 1.57 1.57 0 1 1 0 3.12Zm12.32 10.26h-3v-4.83c0-1.21-.43-2-1.52-2A1.65 1.65 0 0 0 12.85 13a2 2 0 0 0-.1.73v5h-3v-9h3V11a3 3 0 0 1 2.71-1.5c2 0 3.45 1.29 3.45 4.06v5.18Z"/></svg></a><a href="https://x.com/ashish5jha" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">Twitter</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M24 4.4a10 10 0 0 1-2.83.78 5.05 5.05 0 0 0 2.17-2.79 9.7 9.7 0 0 1-3.13 1.23 4.89 4.89 0 0 0-5.94-1.03 5 5 0 0 0-2.17 2.38 5.15 5.15 0 0 0-.3 3.25c-1.95-.1-3.86-.63-5.61-1.53a14.04 14.04 0 0 1-4.52-3.74 5.2 5.2 0 0 0-.09 4.91c.39.74.94 1.35 1.61 1.82a4.77 4.77 0 0 1-2.23-.63v.06c0 1.16.4 2.29 1.12 3.18a4.9 4.9 0 0 0 2.84 1.74c-.73.22-1.5.26-2.24.12a4.89 4.89 0 0 0 4.59 3.49A9.78 9.78 0 0 1 0 19.73 13.65 13.65 0 0 0 7.55 22a13.63 13.63 0 0 0 9.96-4.16A14.26 14.26 0 0 0 21.6 7.65V7c.94-.72 1.75-1.6 2.4-2.6Z"/></svg></a><a href="https://ashish5jha.github.io/portfolio/" rel="me" class="sl-flex astro-wy4te6ga"><span class="sr-only astro-wy4te6ga">Portfolio</span><svg aria-hidden="true" class="astro-wy4te6ga astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M19.33 10.18a1 1 0 0 1-.77 0 1 1 0 0 1-.62-.93l.01-1.83-8.2 8.2a1 1 0 0 1-1.41-1.42l8.2-8.2H14.7a1 1 0 0 1 0-2h4.25a1 1 0 0 1 1 1v4.25a1 1 0 0 1-.62.93Z"/><path d="M11 4a1 1 0 1 1 0 2H7a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1v-4a1 1 0 1 1 2 0v4a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3V7a3 3 0 0 1 3-3h4Z"/></svg></a> </div> <starlight-theme-select>  <label style="--sl-select-width: 6.25em" class="astro-4yphtoen"> <span class="sr-only astro-4yphtoen">Select theme</span> <svg aria-hidden="true" class="icon label-icon astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg> <select value="auto" autocomplete="off" class="astro-4yphtoen"> <option value="dark" class="astro-4yphtoen">Dark</option><option value="light" class="astro-4yphtoen">Light</option><option value="auto" selected class="astro-4yphtoen">Auto</option> </select> <svg aria-hidden="true" class="icon caret astro-4yphtoen astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg> </label>  </starlight-theme-select>  <script>
+	StarlightThemeProvider.updatePickers();
+</script>   </div>  </div> </div> </div> </nav> <div class="main-frame astro-vrdttmbt">  <script type="module">const a=document.getElementById("starlight__sidebar"),n=a?.querySelector("sl-sidebar-state-persist"),o="sl-sidebar-state",i=()=>{let t=[];const e=n?.dataset.hash||"";try{const s=sessionStorage.getItem(o),r=JSON.parse(s||"{}");Array.isArray(r.open)&&r.hash===e&&(t=r.open)}catch{}return{hash:e,open:t,scroll:a?.scrollTop||0}},c=t=>{try{sessionStorage.setItem(o,JSON.stringify(t))}catch{}},d=()=>c(i()),l=(t,e)=>{const s=i();s.open[e]=t,c(s)};n?.addEventListener("click",t=>{if(!(t.target instanceof Element))return;const e=t.target.closest("summary")?.closest("details");if(!e)return;const s=e.querySelector("sl-sidebar-restore"),r=parseInt(s?.dataset.index||"");isNaN(r)||l(!e.open,r)});addEventListener("visibilitychange",()=>{document.visibilityState==="hidden"&&d()});addEventListener("pageHide",d);</script> <div class="lg:sl-flex astro-67yu43on"> <aside class="right-sidebar-container print:hidden astro-67yu43on"> <div class="right-sidebar astro-67yu43on"> <div class="lg:sl-hidden astro-pb3aqygn"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-doynk5tl"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-doynk5tl"><details id="starlight__mobile-toc" class="astro-doynk5tl"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-doynk5tl"><div class="toggle sl-flex astro-doynk5tl">On this page<svg aria-hidden="true" class="caret astro-doynk5tl astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></div><span class="display-current astro-doynk5tl"></span></summary><div class="dropdown astro-doynk5tl"><ul class="isMobile astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a> <ul class="isMobile astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#the-architecture-of-sanity-database-normalization" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">The Architecture of Sanity: Database Normalization</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#first-normal-form-1nf-the-rule-of-atomicity" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">First Normal Form (1NF): The Rule of Atomicity</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#second-normal-form-2nf-the-rule-of-the-whole-key" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Second Normal Form (2NF): The Rule of the “Whole Key”</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#third-normal-form-3nf-the-rule-of-nothing-but-the-key" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Third Normal Form (3NF): The Rule of “Nothing but the Key”</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#interview-gold-the-summary-and-key-questions" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Interview Gold: The Summary and Key Questions</span> </a>  </li> </ul>  </li> </ul> </div></details></nav></mobile-starlight-toc><script type="module" src="/MyDocs/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C181hMzK.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-pb3aqygn"><div class="sl-container astro-pb3aqygn"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-g2bywc46" style="--depth: 0;"> <li class="astro-g2bywc46" style="--depth: 0;"> <a href="#_top" class="astro-g2bywc46" style="--depth: 0;"> <span class="astro-g2bywc46" style="--depth: 0;">Overview</span> </a> <ul class="astro-g2bywc46" style="--depth: 1;"> <li class="astro-g2bywc46" style="--depth: 1;"> <a href="#the-architecture-of-sanity-database-normalization" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">The Architecture of Sanity: Database Normalization</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#first-normal-form-1nf-the-rule-of-atomicity" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">First Normal Form (1NF): The Rule of Atomicity</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#second-normal-form-2nf-the-rule-of-the-whole-key" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Second Normal Form (2NF): The Rule of the “Whole Key”</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#third-normal-form-3nf-the-rule-of-nothing-but-the-key" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Third Normal Form (3NF): The Rule of “Nothing but the Key”</span> </a>  </li><li class="astro-g2bywc46" style="--depth: 1;"> <a href="#interview-gold-the-summary-and-key-questions" class="astro-g2bywc46" style="--depth: 1;"> <span class="astro-g2bywc46" style="--depth: 1;">Interview Gold: The Summary and Key Questions</span> </a>  </li> </ul>  </li> </ul> </nav></starlight-toc><script type="module" src="/MyDocs/_astro/TableOfContents.astro_astro_type_script_index_0_lang.CKWWgpjV.js"></script></div></div> </div> </aside> <div class="main-pane astro-67yu43on">  <main data-pagefind-body class="astro-bguv2lll" lang="en" dir="ltr">    <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <h1 id="_top" class="astro-j6tvhyss">Normalization</h1>  </div> </div>  <div class="content-panel astro-7nkwcw3z"> <div class="sl-container astro-7nkwcw3z"> <div class="sl-markdown-content"> <div class="sl-heading-wrapper level-h3"><h3 id="the-architecture-of-sanity-database-normalization"><strong>The Architecture of Sanity: Database Normalization</strong></h3><a class="sl-anchor-link" href="#the-architecture-of-sanity-database-normalization"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “The Architecture of Sanity: Database Normalization”</span></a></div>
+<p>This guide provides a detailed, beginner-friendly, and interview-focused explanation of the first three normal forms. We will start with <em>why</em> we need normalization before explaining <em>how</em> to do it.</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="the-philosophy-why-we-normalize"><strong>The Philosophy: Why We Normalize</strong></h4><a class="sl-anchor-link" href="#the-philosophy-why-we-normalize"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “The Philosophy: Why We Normalize”</span></a></div>
+<p>Imagine you are running a small business and you track everything in a single spreadsheet, like this:</p>
+<p><strong>Un-normalized <code dir="auto">Orders</code> Spreadsheet:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">OrderID</th><th align="left">CustomerID</th><th align="left">CustomerName</th><th align="left">CustomerEmail</th><th align="left">ProductID</th><th align="left">ProductName</th><th align="left">ProductPrice</th><th align="left">Quantity</th></tr></thead><tbody><tr><td align="left">101</td><td align="left">55</td><td align="left">John Smith</td><td align="left"><a href="mailto:john@a.com">john@a.com</a></td><td align="left">P-12</td><td align="left">Laptop</td><td align="left">1200.00</td><td align="left">1</td></tr><tr><td align="left">101</td><td align="left">55</td><td align="left">John Smith</td><td align="left"><a href="mailto:john@a.com">john@a.com</a></td><td align="left">P-34</td><td align="left">Mouse</td><td align="left">25.00</td><td align="left">1</td></tr><tr><td align="left">102</td><td align="left">82</td><td align="left">Jane Doe</td><td align="left"><a href="mailto:jane@b.com">jane@b.com</a></td><td align="left">P-12</td><td align="left">Laptop</td><td align="left">1200.00</td><td align="left">1</td></tr><tr><td align="left">103</td><td align="left">55</td><td align="left">John Smith</td><td align="left"><a href="mailto:john@a.com">john@a.com</a></td><td align="left">P-56</td><td align="left">Keyboard</td><td align="left">75.00</td><td align="left">1</td></tr></tbody></table>
+<p>This spreadsheet is a disaster waiting to happen. It suffers from three critical problems called <strong>Data Anomalies</strong>:</p>
+<ol>
+<li><strong>Update Anomaly:</strong> John Smith changes his email address. How many rows do you have to update? You have to find every single order he’s ever placed and change the email in each one. If you miss one, your data is now inconsistent and unreliable.</li>
+<li><strong>Insertion Anomaly:</strong> A new customer, “Peter Jones,” wants to register an account, but hasn’t placed an order yet. Where do you store his information? You can’t. You can’t add him to this table because you don’t have an <code dir="auto">OrderID</code>. The structure of the table prevents you from storing valid data.</li>
+<li><strong>Deletion Anomaly:</strong> Jane Doe (<code dir="auto">OrderID</code> 102) decides to cancel her only order. You delete her row. What happens? You have just deleted the only record of Jane Doe’s existence from your database. Her name and email are gone forever.</li>
+</ol>
+<p><strong>The Goal of Normalization:</strong> To eliminate these anomalies by structuring our tables in a way that <strong>each piece of information is stored in exactly one place.</strong></p>
+<p>To do this, we need to understand a core concept:</p>
+<div class="sl-heading-wrapper level-h4"><h4 id="core-concept-functional-dependency"><strong>Core Concept: Functional Dependency</strong></h4><a class="sl-anchor-link" href="#core-concept-functional-dependency"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “Core Concept: Functional Dependency”</span></a></div>
+<p>This is the theoretical foundation of normalization. It sounds academic, but it’s simple:</p>
+<blockquote>
+<p>A column <code dir="auto">B</code> has a functional dependency on column <code dir="auto">A</code> if, for any given value of <code dir="auto">A</code>, you can uniquely determine the value of <code dir="auto">B</code>. We write this as <strong><code dir="auto">A -> B</code></strong>.</p>
+</blockquote>
+<ul>
+<li><strong>Example:</strong> In our spreadsheet, <code dir="auto">CustomerID -> CustomerName</code>. If I tell you the <code dir="auto">CustomerID</code> is <code dir="auto">55</code>, you know the <code dir="auto">CustomerName</code> must be “John Smith”.</li>
+<li><strong>Example:</strong> <code dir="auto">ProductID -> ProductName</code>. If I tell you the <code dir="auto">ProductID</code> is <code dir="auto">P-12</code>, you know the <code dir="auto">ProductName</code> must be “Laptop”.</li>
+<li><strong>Non-example:</strong> <code dir="auto">CustomerName -> CustomerID</code> is <em>not</em> a functional dependency, because there could be two customers named “John Smith”.</li>
+</ul>
+<p>Now, let’s begin the step-by-step process of cleaning our data.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="first-normal-form-1nf-the-rule-of-atomicity"><strong>First Normal Form (1NF): The Rule of Atomicity</strong></h3><a class="sl-anchor-link" href="#first-normal-form-1nf-the-rule-of-atomicity"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “First Normal Form (1NF): The Rule of Atomicity”</span></a></div>
+<ul>
+<li><strong>The Rule:</strong> Each column in a table must hold a single, <strong>atomic</strong> value. There can be no repeating groups or multivalued columns.</li>
+<li><strong>The Problem it Solves:</strong> It makes data queryable. You cannot easily search for a single value within a column that contains a list of values.</li>
+</ul>
+<p><strong>Violation of 1NF (“Before”):</strong>
+Imagine a table where you store a customer’s phone numbers in a single field.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">CustomerID</th><th align="left">CustomerName</th><th align="left">PhoneNumbers</th></tr></thead><tbody><tr><td align="left">55</td><td align="left">John Smith</td><td align="left">”555-1234, 555-9876”</td></tr><tr><td align="left">82</td><td align="left">Jane Doe</td><td align="left">”555-4567”</td></tr></tbody></table>
+<p>This violates 1NF. How would you write a <code dir="auto">WHERE</code> clause to find a specific phone number? It would require messy string parsing (<code dir="auto">LIKE '%555-9876%'</code>).</p>
+<p><strong>Compliance with 1NF (“After”):</strong>
+The solution is to ensure each cell has only one value. There are two common ways to achieve this:</p>
+<p><strong>Option 1: Add More Rows</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">CustomerID</th><th align="left">CustomerName</th><th align="left">PhoneNumber</th></tr></thead><tbody><tr><td align="left">55</td><td align="left">John Smith</td><td align="left">”555-1234”</td></tr><tr><td align="left">55</td><td align="left">John Smith</td><td align="left">”555-9876”</td></tr><tr><td align="left">82</td><td align="left">Jane Doe</td><td align="left">”555-4567”</td></tr></tbody></table>
+<p><strong>Option 2 (Better): Create a Separate Table</strong>
+This is the more standard approach, which we’ll see leads to higher normal forms.
+<code dir="auto">Customers</code> Table:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">CustomerID</th><th align="left">CustomerName</th></tr></thead><tbody><tr><td align="left">55</td><td align="left">John Smith</td></tr><tr><td align="left">82</td><td align="left">Jane Doe</td></tr></tbody></table>
+<p><code dir="auto">Customer_PhoneNumbers</code> Table:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">PhoneNumberID</th><th align="left">CustomerID</th><th align="left">PhoneNumber</th></tr></thead><tbody><tr><td align="left">1</td><td align="left">55</td><td align="left">”555-1234”</td></tr><tr><td align="left">2</td><td align="left">55</td><td align="left">”555-9876”</td></tr><tr><td align="left">3</td><td align="left">82</td><td align="left">”555-4567”</td></tr></tbody></table>
+<div class="sl-heading-wrapper level-h3"><h3 id="second-normal-form-2nf-the-rule-of-the-whole-key"><strong>Second Normal Form (2NF): The Rule of the “Whole Key”</strong></h3><a class="sl-anchor-link" href="#second-normal-form-2nf-the-rule-of-the-whole-key"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “Second Normal Form (2NF): The Rule of the “Whole Key””</span></a></div>
+<ul>
+<li><strong>Pre-requisite:</strong> The table must already be in 1NF.</li>
+<li><strong>The Rule:</strong> All non-key attributes (columns that are not part of the primary key) must be fully functionally dependent on the <strong>entire primary key</strong>.</li>
+<li><strong>The Problem it Solves:</strong> It removes redundant data that depends on only <em>part</em> of a composite primary key. <strong>Note: 2NF is only a concern for tables that have a composite primary key.</strong> If a table has a single-column primary key, it is automatically in 2NF.</li>
+</ul>
+<p><strong>Violation of 2NF (“Before”):</strong>
+Let’s look at a table representing student course enrollments. The primary key is <code dir="auto">(StudentID, CourseID)</code>, because that combination uniquely identifies an enrollment.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">StudentID</th><th align="left">CourseID</th><th align="left"><strong>CourseName</strong></th><th align="left">Grade</th></tr></thead><tbody><tr><td align="left">101</td><td align="left">C-10</td><td align="left">”Math 101”</td><td align="left">A</td></tr><tr><td align="left">101</td><td align="left">C-22</td><td align="left">”History 202”</td><td align="left">B</td></tr><tr><td align="left">102</td><td align="left">C-10</td><td align="left">”Math 101”</td><td align="left">C</td></tr></tbody></table>
+<ul>
+<li>The Primary Key is <code dir="auto">(StudentID, CourseID)</code>.</li>
+<li><code dir="auto">Grade</code> depends on the <strong>whole key</strong>. You need to know both the student and the course to determine the grade. (<code dir="auto">(StudentID, CourseID) -> Grade</code>).</li>
+<li><code dir="auto">CourseName</code> depends only on <code dir="auto">CourseID</code>. (<code dir="auto">CourseID -> CourseName</code>). This is a <strong>partial dependency</strong>, which violates 2NF. This causes redundancy; “Math 101” is repeated.</li>
+</ul>
+<p><strong>Compliance with 2NF (“After”):</strong>
+We split the table to remove the partial dependency.</p>
+<p><code dir="auto">Enrollments</code> Table:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">StudentID</th><th align="left">CourseID</th><th align="left">Grade</th></tr></thead><tbody><tr><td align="left">101</td><td align="left">C-10</td><td align="left">A</td></tr><tr><td align="left">101</td><td align="left">C-22</td><td align="left">B</td></tr><tr><td align="left">102</td><td align="left">C-10</td><td align="left">C</td></tr></tbody></table>
+<p><code dir="auto">Courses</code> Table:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">CourseID</th><th align="left">CourseName</th></tr></thead><tbody><tr><td align="left">C-10</td><td align="left">”Math 101”</td></tr><tr><td align="left">C-22</td><td align="left">”History 202”</td></tr></tbody></table>
+<p>Now, <code dir="auto">CourseName</code> is stored only once.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="third-normal-form-3nf-the-rule-of-nothing-but-the-key"><strong>Third Normal Form (3NF): The Rule of “Nothing but the Key”</strong></h3><a class="sl-anchor-link" href="#third-normal-form-3nf-the-rule-of-nothing-but-the-key"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “Third Normal Form (3NF): The Rule of “Nothing but the Key””</span></a></div>
+<ul>
+<li><strong>Pre-requisite:</strong> The table must already be in 2NF.</li>
+<li><strong>The Rule:</strong> Every non-key attribute must be dependent <em>only</em> on the primary key, and not on any other non-key attribute.</li>
+<li><strong>The Problem it Solves:</strong> It removes <strong>transitive dependencies</strong>, where a non-key column depends on another non-key column.</li>
+</ul>
+<p><strong>Violation of 3NF (“Before”):</strong>
+Let’s extend our <code dir="auto">Courses</code> table. <code dir="auto">ProfessorID</code> depends on <code dir="auto">CourseID</code>. <code dir="auto">ProfessorOffice</code> depends on <code dir="auto">ProfessorID</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">CourseID</th><th align="left">CourseName</th><th align="left">ProfessorID</th><th align="left"><strong>ProfessorOffice</strong></th></tr></thead><tbody><tr><td align="left">C-10</td><td align="left">”Math 101”</td><td align="left">P-5</td><td align="left">”Room 301”</td></tr><tr><td align="left">C-22</td><td align="left">”History 202”</td><td align="left">P-8</td><td align="left">”Room 215”</td></tr><tr><td align="left">C-30</td><td align="left">”Advanced Math”</td><td align="left">P-5</td><td align="left">”Room 301”</td></tr></tbody></table>
+<ul>
+<li>The Primary Key is <code dir="auto">CourseID</code>.</li>
+<li>The <code dir="auto">ProfessorOffice</code> depends on <code dir="auto">ProfessorID</code>. <code dir="auto">ProfessorID</code> depends on <code dir="auto">CourseID</code>.</li>
+<li>This creates the transitive dependency: <code dir="auto">CourseID -> ProfessorID -> ProfessorOffice</code>. <code dir="auto">ProfessorOffice</code> does not depend directly on the key. If Professor P-5 moves offices, you have to update multiple rows.</li>
+</ul>
+<p><strong>Compliance with 3NF (“After”):</strong>
+We split the table again to remove the transitive dependency.</p>
+<p><code dir="auto">Courses</code> Table:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">CourseID</th><th align="left">CourseName</th><th align="left">ProfessorID</th></tr></thead><tbody><tr><td align="left">C-10</td><td align="left">”Math 101”</td><td align="left">P-5</td></tr><tr><td align="left">C-22</td><td align="left">”History 202”</td><td align="left">P-8</td></tr><tr><td align="left">C-30</td><td align="left">”Advanced Math”</td><td align="left">P-5</td></tr></tbody></table>
+<p><code dir="auto">Professors</code> Table:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th align="left">ProfessorID</th><th align="left">ProfessorOffice</th></tr></thead><tbody><tr><td align="left">P-5</td><td align="left">”Room 301”</td></tr><tr><td align="left">P-8</td><td align="left">”Room 215”</td></tr></tbody></table>
+<p>Now, the professor’s office is stored only once.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="interview-gold-the-summary-and-key-questions"><strong>Interview Gold: The Summary and Key Questions</strong></h3><a class="sl-anchor-link" href="#interview-gold-the-summary-and-key-questions"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “Interview Gold: The Summary and Key Questions”</span></a></div>
+<p>A helpful mnemonic for the first three normal forms is: <strong>“The key, the whole key, and nothing but the key.”</strong></p>
+<p><strong>Q1: What is normalization and why is it important?</strong>
+<strong>A:</strong> Normalization is the process of organizing tables in a database to minimize data redundancy and prevent data anomalies (insertion, update, and deletion anomalies). It’s important because it improves data integrity, saves space, and makes the database schema more maintainable and scalable.</p>
+<p><strong>Q2: Can you explain 1NF, 2NF, and 3NF in simple terms?</strong>
+<strong>A:</strong></p>
+<ul>
+<li><strong>1NF (First Normal Form):</strong> Ensures every column has a single, atomic value. No lists or repeating groups in a cell.</li>
+<li><strong>2NF (Second Normal Form):</strong> Builds on 1NF. It requires that all non-key columns depend on the <em>entire</em> primary key, not just a part of it. This is only relevant for tables with composite primary keys.</li>
+<li><strong>3NF (Third Normal Form):</strong> Builds on 2NF. It requires that non-key columns depend <em>only</em> on the primary key, and not on other non-key columns. This removes transitive dependencies.</li>
+</ul>
+<p><strong>Q3: Is it always best to normalize to the highest level possible?</strong>
+<strong>A:</strong> Not always. This is a crucial practical point. While 3NF is the standard for most transactional databases (OLTP), there are situations, particularly in data warehousing and reporting (OLAP), where you might intentionally <strong>denormalize</strong> the data. Denormalization involves adding back redundant data to a table to speed up complex queries by reducing the number of expensive <code dir="auto">JOIN</code> operations. It is a trade-off: you sacrifice write efficiency and some data integrity for significantly faster read performance.</p> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/MyDocs/mysql/keys" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Keys</span> </span> </a> <a href="/MyDocs/mysql/retrival/comparision-operator" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Comparision Operator</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
