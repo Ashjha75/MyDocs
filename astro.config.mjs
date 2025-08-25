@@ -81,6 +81,7 @@ export default defineConfig({
 						{ label: 'DDL', link: '/mysql/mysqlddl' },
 						{ label: 'Functions', link: '/mysql/function' },
 						{ label: 'Keys', link: '/mysql/keys' },
+						{ label: 'Normalization', link: '/mysql/normalization' },
 						{
 							label: "Retrival",
 							items: [
