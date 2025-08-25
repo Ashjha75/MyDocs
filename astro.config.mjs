@@ -77,6 +77,10 @@ export default defineConfig({
 					label: '⛈️ Mysql',
 					autogenerate: { directory: 'mysql' },
 				},
+				{
+					label: '🤖 Context',
+					autogenerate: { directory: 'context' },
+				},
 			],
 		}),
 	],
