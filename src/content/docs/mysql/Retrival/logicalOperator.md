@@ -153,11 +153,12 @@ WHERE
     PhoneNumber NOT LIKE '+1%'
     OR PhoneNumber IS NULL;
 ```
+```sql
 *   **Why it's right:** This query correctly retrieves rows that meet either of two conditions:
     1.  The phone number is present and does not start with '+1'.
     2.  The phone number is `NULL` (missing entirely).
 This perfectly matches the business requirement.
-
+```
 ### **Summary of Logical Operators**
 
 | Operator | Purpose | Key Takeaway / Interview Tip |

@@ -77,7 +77,9 @@ You can perform calculations and transformations directly in your `SELECT` claus
         StockQuantity,
         Price * StockQuantity AS "Total Stock Value"
     FROM Products;
-    ```    *   `UPPER()` is a string scalar function.
+    ``` 
+    
+    *   `UPPER()` is a string scalar function.
     *   `Price * StockQuantity` is a calculated column.
 
 #### **E. Removing Duplicates with `DISTINCT`**
