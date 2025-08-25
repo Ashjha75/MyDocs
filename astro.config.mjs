@@ -20,17 +20,17 @@ export default defineConfig({
 				alt: 'MyDocs',
 			},
 			title: 'My Docs',
-			customCss: ['./src/styles/mermaid.css','./src/styles/global.css'],
+			customCss: ['./src/styles/mermaid.css', './src/styles/global.css'],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Ashjha75' },
-				{ icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/ashjha75/' }, 
-				{ icon: 'twitter', label: 'Twitter', href: 'https://x.com/ashish5jha' }, 
-				{ icon: 'external', label: 'Portfolio', href: 'https://ashish5jha.github.io/portfolio/' }],
+			{ icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/ashjha75/' },
+			{ icon: 'twitter', label: 'Twitter', href: 'https://x.com/ashish5jha' },
+			{ icon: 'external', label: 'Portfolio', href: 'https://ashish5jha.github.io/portfolio/' }],
 			// plugins: [starlightThemeObsidian()],
-			 head: [
-                {
-                    tag: 'script',
-                    attrs: { src: '/src/scripts/mermaid-init.js', defer: true },
-                },],
+			head: [
+				{
+					tag: 'script',
+					attrs: { src: '/src/scripts/mermaid-init.js', defer: true },
+				},],
 			sidebar: [
 				{
 					label: '🌱 Springboot',
@@ -40,7 +40,7 @@ export default defineConfig({
 							items: [
 								{ label: 'Rest Basics', link: '/springboot/base/rest' },
 
-								
+
 							],
 						},
 						{
@@ -73,10 +73,20 @@ export default defineConfig({
 						},
 					],
 				},
-				
+
 				{
 					label: '⛈️ Mysql',
-					autogenerate: { directory: 'mysql' },
+					items: [
+						{ label: 'Jpa Core', link: '/mysql/logicalOperator' },
+						{ label: 'Jpa Core', link: '/mysql/comparisionOperator' },
+						{ label: 'Jpa Core', link: '/mysql/range-setOperators' },
+						{ label: 'Jpa Core', link: '/mysql/distinct' },
+						{ label: 'Jpa Core', link: '/mysql/patternsMatching' },
+						{ label: 'Jpa Core', link: '/mysql/aliases' },
+						{ label: 'Jpa Core', link: '/mysql/limits' },
+						{ label: 'Jpa Core', link: '/mysql/orderBy' },
+						{ label: 'Jpa Core', link: '/mysql/select' },
+					],
 				},
 				{
 					label: '🤖 Context',
