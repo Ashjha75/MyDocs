@@ -95,6 +95,13 @@ export default defineConfig({
 								{ label: 'Limits', link: '/mysql/retrival/limits' },
 								{ label: 'Select', link: '/mysql/retrival/select' },
 							]
+						},
+						{
+							label: "Joins",
+							items: [
+								{label: 'Join Basics', link: '/mysql/retrival/joinbasics'},
+								{label: 'Inner Join', link: '/mysql/retrival/inner-join'}
+							]
 						}
 
 					],
