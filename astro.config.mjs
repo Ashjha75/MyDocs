@@ -79,10 +79,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Basics', link: '/mysql/mysqlbasic' },
 						{ label: 'DDL', link: '/mysql/mysqlddl' },
-						{ label: 'Functions', link: '/mysql/function' },
-						{ label: 'Group By', link: '/mysql/groupby' },
-						{ label: 'Keys', link: '/mysql/keys' },
-						{ label: 'Normalization', link: '/mysql/normalization' },
+						
 						{
 							label: "Retrival",
 							items: [
@@ -97,6 +94,10 @@ export default defineConfig({
 								{ label: 'Select', link: '/mysql/retrival/select' },
 							]
 						},
+						{ label: 'Functions', link: '/mysql/function' },
+						{ label: 'Group By', link: '/mysql/groupby' },
+						{ label: 'Keys', link: '/mysql/keys' },
+						{ label: 'Normalization', link: '/mysql/normalization' },
 						{
 							label: "Joins",
 							items: [
@@ -107,6 +108,9 @@ export default defineConfig({
 								{label: 'Cross Join', link: '/mysql/join/cross-join'},
 								{label: 'Union Join', link: '/mysql/join/union-union-all'}
 							]
+						},
+						{
+							label:"Subqueries",link: '/mysql/subquery'
 						}
 
 					],
