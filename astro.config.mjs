@@ -79,7 +79,7 @@ export default defineConfig({
 					items: [
 						{ label: 'Basics', link: '/mysql/mysqlbasic' },
 						{ label: 'DDL', link: '/mysql/mysqlddl' },
-						
+
 						{
 							label: "Retrival",
 							items: [
@@ -101,16 +101,28 @@ export default defineConfig({
 						{
 							label: "Joins",
 							items: [
-								{label: 'Join Basics', link: '/mysql/join/joinbasics'},
-								{label: 'Inner Join', link: '/mysql/join/inner-join'},
-								{label: 'Left-Right Join', link: '/mysql/join/left-right-join'},
-								{label: 'Full Join', link: '/mysql/join/full-join'},
-								{label: 'Cross Join', link: '/mysql/join/cross-join'},
-								{label: 'Union Join', link: '/mysql/join/union-union-all'}
+								{ label: 'Join Basics', link: '/mysql/join/joinbasics' },
+								{ label: 'Inner Join', link: '/mysql/join/inner-join' },
+								{ label: 'Left-Right Join', link: '/mysql/join/left-right-join' },
+								{ label: 'Full Join', link: '/mysql/join/full-join' },
+								{ label: 'Cross Join', link: '/mysql/join/cross-join' },
+								{ label: 'Union Join', link: '/mysql/join/union-union-all' }
 							]
 						},
 						{
-							label:"Subqueries",link: '/mysql/subquery'
+							label: "Subqueries", link: '/mysql/subquery'
+						}
+						,
+						{
+							label: "Update", link: '/mysql/update'
+						}
+						,
+						{
+							label: "Delete", link: '/mysql/delete'
+						}
+						,
+						{
+							label: "Replace", link: '/mysql/replace'
 						}
 
 					],
