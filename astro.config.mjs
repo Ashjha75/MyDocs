@@ -100,7 +100,10 @@ export default defineConfig({
 							label: "Joins",
 							items: [
 								{label: 'Join Basics', link: '/mysql/join/joinbasics'},
-								{label: 'Inner Join', link: '/mysql/join/inner-join'}
+								{label: 'Inner Join', link: '/mysql/join/inner-join'},
+								{label: 'Left-Right Join', link: '/mysql/join/left-right-join'},
+								{label: 'Cross Join', link: '/mysql/join/cross-join'},
+								{label: 'Union Join', link: '/mysql/join/union-union-all-join'}
 							]
 						}
 
