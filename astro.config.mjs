@@ -131,6 +131,12 @@ export default defineConfig({
 					label: '🤖 Context',
 					autogenerate: { directory: 'context' },
 				},
+				{
+					label: '🪸 Devops',
+					items:[
+						{label: 'Basics', link: '/devops/docker/basics'}
+					]
+				},
 			],
 		}),
 	],
