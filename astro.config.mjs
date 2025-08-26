@@ -80,6 +80,7 @@ export default defineConfig({
 						{ label: 'Basics', link: '/mysql/mysqlbasic' },
 						{ label: 'DDL', link: '/mysql/mysqlddl' },
 						{ label: 'Functions', link: '/mysql/function' },
+						{ label: 'Group By', link: '/mysql/groupby' },
 						{ label: 'Keys', link: '/mysql/keys' },
 						{ label: 'Normalization', link: '/mysql/normalization' },
 						{
