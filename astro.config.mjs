@@ -99,8 +99,8 @@ export default defineConfig({
 						{
 							label: "Joins",
 							items: [
-								{label: 'Join Basics', link: '/mysql/retrival/joinbasics'},
-								{label: 'Inner Join', link: '/mysql/retrival/inner-join'}
+								{label: 'Join Basics', link: '/mysql/join/joinbasics'},
+								{label: 'Inner Join', link: '/mysql/join/inner-join'}
 							]
 						}
 
