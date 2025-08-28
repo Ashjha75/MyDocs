@@ -2,7 +2,7 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import rehypeMermaid from 'rehype-mermaid';
-import starlightThemeObsidian from 'starlight-theme-obsidian'
+import starlightThemeGalaxy from 'starlight-theme-galaxy'
 // https://astro.build/config
 export default defineConfig({
 	markdown: {
@@ -20,6 +20,7 @@ export default defineConfig({
 				alt: 'MyDocs',
 			},
 			title: 'My Docs',
+			plugins: [starlightThemeGalaxy()],
 			customCss: ['./src/styles/mermaid.css', './src/styles/global.css'],
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/Ashjha75' },
 			{ icon: 'linkedin', label: 'LinkedIn', href: 'https://www.linkedin.com/in/ashjha75/' },
