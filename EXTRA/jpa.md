@@ -145,5 +145,5 @@
 -   Working with Large Objects (`@Lob` for BLOB/CLOB)
     
 
------
+
 **Database Migration Tools** – Flyway, Liquibase
