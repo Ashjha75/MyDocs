@@ -115,11 +115,23 @@ The L2 cache is only suitable for **"reference data"**—data that is **read fre
     }
     ```
 
-**Cache Concurrency Strategies (Advanced Topic):**
-The `usage` attribute is crucial. It tells Hibernate how to manage concurrent access to cached data.
-*   **`READ_ONLY`:** For data that *never* changes. Fastest.
-*   **`READ_WRITE`:** For data that can be updated. This strategy uses soft locks to maintain consistency. When an item is updated, Hibernate will invalidate it in the cache across the application. **This is the most common strategy.**
-*   **`NONSTRICT_READ_WRITE`:** For data where slight staleness is acceptable. Offers better performance than `READ_WRITE` but without the strong consistency guarantees.
+#### **Deep Dive: Cache Concurrency Strategies**
+
+This is the most critical concept for interviews. It defines how Hibernate maintains data consistency between the cache and the database in a multi-user environment. You configure this in the `@org.hibernate.annotations.Cache` annotation.
+
+| Strategy | Analogy | Technical Mechanism | Best Use Case |
+| :--- | :--- | :--- | :--- |
+| **`READ_ONLY`** | A **Reference Manual** | Hibernate throws an exception if an attempt is made to update the entity. | Data that is guaranteed to **never** change after application startup (e.g., a list of U.S. states). Fastest performance. |
+| **`READ_WRITE`** | A **Library Book with a Checkout System** | Uses soft locks. When a transaction needs to update an entity, it acquires a lock, invalidates the cache entry, updates the DB, and then releases the lock. **This is the most common and safest strategy for read-mostly data.** | Reference data that can be occasionally updated by an administrator (e.g., adding a new `ProductCategory`). Guarantees strong consistency. |
+| **`NONSTRICT_READ_WRITE`** | A **Public Notice Board** | No locking. The cache entry is invalidated after the transaction that updated the database has committed. There is a small time window where a stale read is possible. | Data where slight staleness is acceptable for better performance (e.g., user preferences that are not mission-critical). |
+| **`TRANSACTIONAL`** | A **Bank Vault with a Full Ledger** | Fully transactional (JTA/XA). The cache provider participates in the two-phase commit. This is the most robust strategy but requires a JTA-compliant cache and has significant performance overhead. | For mission-critical distributed systems requiring the highest level of consistency. Rarely used in typical Spring Boot applications. |
+
+#### **Deep Dive: Cache Regions**
+
+By default, all cacheable entities are thrown into the same "space" in the cache. **Regions** allow you to create named, separate spaces for different types of data, each with its own configuration.
+
+*   **Why use Regions?** To apply different caching policies to different entities. You might want to cache `Country` objects for 24 hours but `ProductCategory` objects for only 1 hour. Regions make this possible.
+
 
 ---
 
