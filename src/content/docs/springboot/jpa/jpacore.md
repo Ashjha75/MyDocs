@@ -289,9 +289,8 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 ```
 
-  # Hibernate `spring.jpa.hibernate.ddl-auto` Values
+## Hibernate `spring.jpa.hibernate.ddl-auto` Values
 
-## Possible Values
 - **none**  
   → No action will be performed on the database schema.  
 
