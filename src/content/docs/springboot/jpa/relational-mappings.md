@@ -8,7 +8,7 @@ title: Relational Mappings
 
 ---
 
-### **Module 4: Relational Mapping - Connecting Your Entities**
+### **Module : Relational Mapping - Connecting Your Entities**
 
 In a real application, your objects are not islands. A `Customer` has `Order`s. A `Product` has a `Category`. Relational mapping is the process of teaching JPA how to manage these connections.
 
