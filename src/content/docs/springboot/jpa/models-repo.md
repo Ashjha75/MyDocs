@@ -7,7 +7,7 @@ title : Modeling & Repositories
 
 ---
 
-### **Module 2: Modeling Your Data - The `@Entity` as a Blueprint**
+### **Module 1: Modeling Your Data - The `@Entity` as a Blueprint**
 
 An `@Entity` is not just a simple Java object; it is a rich blueprint that instructs the JPA provider (Hibernate) on how to map its state to a relational database table.
 
@@ -96,7 +96,7 @@ public class User {
 
 ---
 
-### **Module 3: Defining Clean and Powerful Repositories**
+### **Module 2: Defining Clean and Powerful Repositories**
 
 The `JpaRepository` is the heart of Spring Data JPA. It's an abstraction that eliminates boilerplate DAO code.
 

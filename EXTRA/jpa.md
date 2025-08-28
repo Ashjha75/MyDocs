@@ -1,42 +1,5 @@
 
 
-
-# **Spring Data JPA - Enhanced Syllabus for Interviews**
-
-### **Module 2: Modeling Your Data - The @Entity**
-
--   Anatomy of an @Entity: `@Entity`, `@Table`, `@Id`, `@GeneratedValue`
-    
--   Mapping Basic Column Types: `@Column`, `@Temporal`, `@Enumerated`, `@Lob`
-    
--   Controlling Generation Strategies: `IDENTITY`, `SEQUENCE`, `TABLE`, `AUTO`
-    
--   Transient Fields: `@Transient`
-    
--   The Life Cycle of an Entity: Transient, Managed, Detached, Removed
-    
--   Embeddables: `@Embeddable` and `@Embedded`
-    
--   Composite Keys: `@EmbeddedId` and `@IdClass`
-    
-
-----------
-
-### **Module 3: Defining Repositories**
-
--   The `JpaRepository` Interface: CRUD operations
-    
--   Derived Query Methods: `findByEmail(String email)` and query derivation strategies
-    
--   Sorting and Pagination with `Sort` and `Pageable`
-    
--   Using `Optional<T>` as a Return Type for Null Safety
-    
--   Custom Repositories: Implementing custom methods
-    
--   Query Hints: `@QueryHints` for performance tuning
-    
-
 ----------
 
 ### **Module 4: Relational Mapping**

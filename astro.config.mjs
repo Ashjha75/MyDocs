@@ -75,6 +75,7 @@ export default defineConfig({
 								{ label: 'Jpa Core', link: '/springboot/jpa/jpacore' },
 								{ label: 'Jpa Caching', link: '/springboot/jpa/jpacaching' },
 								{ label: 'Modeling & Repositories', link: '/springboot/jpa/models-repo' },
+								{ label: 'Relational Mappings', link: '/springboot/jpa/relational-mappings' },
 							],
 						},
 					],
