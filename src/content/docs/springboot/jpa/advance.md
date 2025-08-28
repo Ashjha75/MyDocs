@@ -8,7 +8,7 @@ title: Performance & Concurrency
 
 ---
 
-### **Module 8: Performance Tuning & Advanced Concepts**
+### **Module : Performance Tuning & Advanced Concepts**
 
 #### **1. The N+1 Select Problem: The Silent Killer**
 

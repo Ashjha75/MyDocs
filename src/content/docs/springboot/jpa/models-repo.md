@@ -106,7 +106,8 @@ By simply extending this interface, you instantly get a full suite of CRUD metho
 
 ```java
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {}```
+public interface UserRepository extends JpaRepository<User, Long> {}
+```
 
 #### **Derived Query Methods: The "Magic" of Convention**
 
@@ -136,7 +137,8 @@ public Page<Product> getElectronics(int page, int size) {
     Pageable pageRequest = Pageable.of(page, size, Sort.by("price").descending());
     return productRepository.findByCategory("ELECTRONICS", pageRequest);
 }
-```The returned `Page<T>` object is a rich DTO containing the list of products for the current page, plus total pages, total elements, and other pagination metadata.
+```
+The returned `Page<T>` object is a rich DTO containing the list of products for the current page, plus total pages, total elements, and other pagination metadata.
 
 #### **Null Safety with `Optional<T>`**
 
