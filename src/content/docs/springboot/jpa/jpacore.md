@@ -289,7 +289,43 @@ spring.jpa.show-sql=true
 spring.jpa.properties.hibernate.format_sql=true
 ```
 
-  
+  # Hibernate `spring.jpa.hibernate.ddl-auto` Values
+
+## Possible Values
+- **none**  
+  → No action will be performed on the database schema.  
+
+- **validate**  
+  → Hibernate only validates if the schema matches the entities.  
+  🚫 Fails if tables/columns are missing or mismatched.  
+
+- **update**  
+  → Hibernate updates the schema automatically to match entities.  
+  ⚠️ Can add new columns but won’t remove old ones.  
+  Useful in development, risky in production.  
+
+- **create**  
+  → Drops existing schema and creates it fresh every time the app starts.  
+  ⚠️ All data is lost.  
+
+- **create-drop**  
+  → Similar to `create`, but additionally drops schema when the session factory is closed (e.g., app shutdown).  
+  Mostly used in tests.  
+
+## Recommended Usage
+- **Development (dev):**  
+  - `update` (easy schema evolution)  
+  - `create` / `create-drop` (if you want fresh DB each run)  
+
+- **Production (prod):**  
+  - `validate` (ensure schema is correct, but don’t change it)  
+  - `none` (let DB migrations handle schema, e.g., Flyway/Liquibase)  
+
+---
+✅ Rule of thumb:  
+- **Dev →** `update` or `create-drop`  
+- **Prod →** `validate` or `none`
+
 
 ---
 
