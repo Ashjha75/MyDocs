@@ -30,7 +30,11 @@ export default defineConfig({
 			head: [
 				{
 					tag: 'script',
-					attrs: { src: '/src/scripts/mermaid-init.js', defer: true },
+					attrs: { src: '/MyDocs/scripts/mermaid-init.js', defer: true },
+				},
+				{
+					tag: 'script',
+					attrs: { src: '/MyDocs/scripts/sidebar.js', defer: true }, // <-- your custom script
 				},],
 			sidebar: [
 				{
@@ -134,8 +138,8 @@ export default defineConfig({
 				},
 				{
 					label: '🪸 Devops',
-					items:[
-						{label: 'Basics', link: '/devops/docker/basics'}
+					items: [
+						{ label: 'Basics', link: '/devops/docker/basics' }
 					]
 				},
 			],

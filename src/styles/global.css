@@ -14,3 +14,10 @@ aside[aria-label="On this page"] {
     margin-left: 2rem;
   }
 }
+.sidebar .menu-item .children {
+  display: none;
+}
+
+.sidebar .menu-item.open .children {
+  display: block;
+}
