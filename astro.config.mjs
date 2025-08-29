@@ -87,7 +87,8 @@ export default defineConfig({
 							label: 'Spring Security',
 							items: [
 								{ label: 'Spring Security Basics', link: '/springboot/security/security-base' },
-								// { label: 'Spring Security with JWT', link: '/springboot/security/jwt' },
+								{ label: 'Spring Security User Creations', link: '/springboot/security/users-creations' },
+								// { label: 'Spring Security User Creations', link: '/springboot/security/users-creations' },
 							],
 						},
 					],
