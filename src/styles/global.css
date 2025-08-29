@@ -7,7 +7,12 @@ aside[aria-label="On this page"] {
   background-color: yellow;
   
 }
-
+.mermaid svg {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 100vw !important;
+  cursor: zoom-in !important;
+}
 
 @media (min-width: 768px) {
   main > *:nth-child(2) .sl-container {

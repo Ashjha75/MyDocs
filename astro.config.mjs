@@ -3,7 +3,6 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import rehypeMermaid from 'rehype-mermaid';
 import starlightThemeGalaxy from 'starlight-theme-galaxy'
-import astroD2 from 'astro-d2'
 // https://astro.build/config
 export default defineConfig({
     markdown: {
@@ -35,6 +34,10 @@ export default defineConfig({
             {
                 tag: 'script',
                 attrs: { src: '/MyDocs/scripts/sidebar.js', defer: true }, // <-- your custom script
+            },
+        {
+                tag: 'script',
+                attrs: { src: '/MyDocs/scripts/zoom.js', defer: true }, // <-- your custom script
             },],
         sidebar: [
             {
