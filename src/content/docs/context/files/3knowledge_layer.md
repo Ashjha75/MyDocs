@@ -1,4 +1,6 @@
-# 3. Knowledge Layer
+---
+title : 3. Knowledge Layer
+---
 
 This document is a repository of knowledge for the project. It includes links to useful resources, best practices, and solutions to common problems.
 

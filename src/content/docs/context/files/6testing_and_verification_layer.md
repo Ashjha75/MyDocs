@@ -1,5 +1,6 @@
-# 5. Testing and Verification Layer
-
+---
+title : 6. Testing and Verification Layer
+---
 This document provides a detailed guide to testing and verification in the project. It expands on the testing section in `GEMINI.md`.
 
 ---

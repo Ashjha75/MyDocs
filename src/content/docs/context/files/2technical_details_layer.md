@@ -1,4 +1,6 @@
-# 2. Technical Details Layer
+---
+title : 2. Technical Details Layer
+---
 
 This document provides a more detailed breakdown of the technical aspects of the project, expanding on the information in `GEMINI.md`.
 

@@ -1,5 +1,6 @@
-# 4. Security Layer
-
+---
+title : 4. Security Layer
+---
 This document provides a comprehensive overview of the security measures in the project. It expands on the security section in `GEMINI.md`.
 
 ---
