@@ -39,7 +39,7 @@ This is the most fundamental concept, and you must be able to explain it without
 **Interview Gold:** Always state clearly: "Authentication must always happen before authorization." You cannot determine what a user is allowed to do until you first know who they are.
 
 ---
-
+![Security Architecture](/public/securityArch.png)
 #### **3. The Security Architecture: Key Components**
 
 Spring Security is not magic. It is a well-defined system of collaborating components.
