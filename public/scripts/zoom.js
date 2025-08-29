@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.style.position = 'absolute';
     btn.style.top = '8px';
     btn.style.right = '8px';
-    btn.style.background = 'rgba(9, 9, 9, 1)';
+    btn.style.background = 'rgba(24,24,24,0.92)';
     btn.style.border = 'none';
     btn.style.borderRadius = '50%';
     btn.style.width = '32px';
@@ -17,6 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.style.justifyContent = 'center';
     btn.style.cursor = 'pointer';
     btn.style.zIndex = '10';
+    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)';
+    btn.style.transition = 'background 0.2s';
+
+    btn.onmouseenter = () => btn.style.background = 'rgba(44,44,44,1)';
+    btn.onmouseleave = () => btn.style.background = 'rgba(24,24,24,0.92)';
 
     btn.innerHTML = `
       <svg width="18" height="18" fill="white" viewBox="0 0 24 24" aria-hidden="true">
@@ -35,18 +40,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const btn = document.createElement('button');
     btn.setAttribute('aria-label', 'Close zoom');
     btn.style.position = 'absolute';
-    btn.style.top = '24px';
-    btn.style.left = '24px';
-    btn.style.background = 'rgba(34,34,34,0.8)';
+    btn.style.top = '32px';
+    btn.style.left = '32px';
+    btn.style.background = 'rgba(34,34,34,0.92)';
     btn.style.border = 'none';
     btn.style.borderRadius = '50%';
-    btn.style.width = '40px';
-    btn.style.height = '40px';
+    btn.style.width = '44px';
+    btn.style.height = '44px';
     btn.style.display = 'flex';
     btn.style.alignItems = 'center';
     btn.style.justifyContent = 'center';
     btn.style.cursor = 'pointer';
     btn.style.zIndex = '10001';
+    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)';
+    btn.style.transition = 'background 0.2s';
+
+    btn.onmouseenter = () => btn.style.background = 'rgba(54,54,54,1)';
+    btn.onmouseleave = () => btn.style.background = 'rgba(34,34,34,0.92)';
 
     btn.innerHTML = `
       <svg width="22" height="22" fill="white" viewBox="0 0 24 24" aria-hidden="true">
@@ -60,17 +70,23 @@ document.addEventListener('DOMContentLoaded', () => {
   function createZoomControl(sign, ariaLabel) {
     const btn = document.createElement('button');
     btn.setAttribute('aria-label', ariaLabel);
-    btn.style.background = 'rgba(0, 0, 0, 1)';
+    btn.style.background = 'rgba(34,34,34,0.92)';
     btn.style.border = 'none';
     btn.style.borderRadius = '50%';
-    btn.style.width = '40px';
-    btn.style.height = '40px';
+    btn.style.width = '44px';
+    btn.style.height = '44px';
     btn.style.display = 'flex';
     btn.style.alignItems = 'center';
     btn.style.justifyContent = 'center';
     btn.style.cursor = 'pointer';
     btn.style.margin = '0 8px';
     btn.style.zIndex = '10001';
+    btn.style.boxShadow = '0 2px 8px rgba(0,0,0,0.18)';
+    btn.style.transition = 'background 0.2s';
+
+    btn.onmouseenter = () => btn.style.background = 'rgba(54,54,54,1)';
+    btn.onmouseleave = () => btn.style.background = 'rgba(34,34,34,0.92)';
+
     btn.innerHTML = `
       <span style="color:white;font-size:2rem;line-height:1;">${sign}</span>
     `;
@@ -82,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth < 1024) return null;
 
     let scale = 1;
-    let origin = { x: 0, y: 0 };
     let pan = { x: 0, y: 0 };
     let isPanning = false;
     let start = { x: 0, y: 0 };
@@ -93,23 +108,24 @@ document.addEventListener('DOMContentLoaded', () => {
     overlay.style.left = 0;
     overlay.style.width = '100vw';
     overlay.style.height = '100vh';
-    overlay.style.background = 'rgba(0, 0, 0, 1)';
+    overlay.style.background = 'rgba(10, 10, 10, 0.98)';
     overlay.style.display = 'flex';
     overlay.style.alignItems = 'center';
     overlay.style.justifyContent = 'center';
     overlay.style.zIndex = 10000;
-    overlay.style.cursor = 'grab';
+    overlay.style.cursor = isPanning ? 'grabbing' : 'grab';
     overlay.style.overflow = 'hidden';
+    overlay.style.transition = 'background 0.3s';
 
     // Container for pan/zoom
     const svgContainer = document.createElement('div');
     svgContainer.style.position = 'relative';
     svgContainer.style.overflow = 'auto';
     svgContainer.style.width = '95vw';
-    svgContainer.style.height = '99vh';
-    svgContainer.style.background = 'white';
-    svgContainer.style.borderRadius = '8px';
-    svgContainer.style.boxShadow = '0 4px 32px rgba(0, 0, 0, 1)';
+    svgContainer.style.height = '95vh';
+    svgContainer.style.background = 'transparent';
+    svgContainer.style.borderRadius = '12px';
+    svgContainer.style.boxShadow = '0 4px 32px rgba(0, 0, 0, 0.7)';
     svgContainer.style.display = 'flex';
     svgContainer.style.alignItems = 'center';
     svgContainer.style.justifyContent = 'center';
@@ -122,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     svgClone.style.display = 'block';
     svgClone.style.maxWidth = 'none';
     svgClone.style.maxHeight = 'none';
+    svgClone.style.transition = 'transform 0.18s cubic-bezier(.4,2,.6,1)';
 
     svgContainer.appendChild(svgClone);
 
@@ -151,8 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const zoomInBtn = createZoomControl('+', 'Zoom in');
     zoomInBtn.style.position = 'absolute';
-    zoomInBtn.style.top = '24px';
-    zoomInBtn.style.right = '80px';
+    zoomInBtn.style.top = '32px';
+    zoomInBtn.style.right = '88px';
     zoomInBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       updateZoom(scale * 1.2);
@@ -160,8 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const zoomOutBtn = createZoomControl('−', 'Zoom out');
     zoomOutBtn.style.position = 'absolute';
-    zoomOutBtn.style.top = '24px';
-    zoomOutBtn.style.right = '24px';
+    zoomOutBtn.style.top = '32px';
+    zoomOutBtn.style.right = '32px';
     zoomOutBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       updateZoom(scale / 1.2);
@@ -184,8 +201,8 @@ document.addEventListener('DOMContentLoaded', () => {
     return overlay;
   }
 
-  // Find all Mermaid SVGs and add the zoom icon
-  document.querySelectorAll('svg').forEach(svg => {
+  // Only target SVGs with role="graphics-document document"
+  document.querySelectorAll('svg[role="graphics-document document"]').forEach(svg => {
     if (window.innerWidth < 1024) return;
 
     // Wrap SVG in a relatively positioned div for icon placement
