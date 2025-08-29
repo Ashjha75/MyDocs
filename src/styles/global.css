@@ -26,3 +26,22 @@ aside[aria-label="On this page"] {
 .sidebar .menu-item.open .children {
   display: block;
 }
+
+
+table thead tr th,
+table thead tr td {
+  min-width: max-content !important;
+  white-space: nowrap !important;
+  padding: 0.75rem 1rem !important;
+}
+
+.sl-markdown-content table {
+    width: auto !important;
+    table-layout: auto !important;
+    border-collapse: separate;
+    border-spacing: 0;
+    line-height: 1.6;
+    overflow-x: auto !important;
+    margin: 1.5rem 0;
+    min-width: 100%;
+}
