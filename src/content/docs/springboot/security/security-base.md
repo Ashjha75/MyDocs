@@ -39,7 +39,10 @@ This is the most fundamental concept, and you must be able to explain it without
 **Interview Gold:** Always state clearly: "Authentication must always happen before authorization." You cannot determine what a user is allowed to do until you first know who they are.
 
 ---
-![Security Architecture](/public/securityArch.png)
+<pre>
+<img src="/MyDocs/securityArch.png" alt="Security Architecture" style="height:280px; margin: 1em 0;" />
+</pre>
+---
 #### **3. The Security Architecture: Key Components**
 
 Spring Security is not magic. It is a well-defined system of collaborating components.
@@ -78,12 +81,7 @@ Only if a request successfully passes through every filter in the chain is it al
 This diagram illustrates the full, end-to-end flow in a modern, production-grade Spring Boot application.
 
 ```mermaid
----
----
-config:
-  theme: forest
-  look: handDrawn
----
+%%{init: {'themeVariables': { 'fontSize': '18px' }, 'flowchart': { 'nodeSpacing': 50, 'rankSpacing': 50 }, 'theme': 'forest' }}%%
 flowchart LR
     subgraph SFC["Security Filter Chain"]
         SCPF["SecurityContextPersistenceFilter"]
@@ -119,7 +117,6 @@ flowchart LR
     AP --> PE
     AM -->|3. Return back fully 'Authenticate' response| SFC
     SFC -->|4. stores| SC
-
 
 ```
 
