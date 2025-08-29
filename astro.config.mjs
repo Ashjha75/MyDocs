@@ -91,6 +91,7 @@ export default defineConfig({
                         items: [
                             { label: 'Spring Security Basics', link: '/springboot/security/security-base' },
                             { label: 'Spring Security User Creations', link: '/springboot/security/users-creations' },
+                            { label: 'Spring Security Web Securities', link: '/springboot/security/web-securities' },
                             // { label: 'Spring Security User Creations', link: '/springboot/security/users-creations' },
                         ],
                     },
