@@ -44,6 +44,7 @@ export default defineConfig({
 							label: 'Base',
 							items: [
 								{ label: 'Rest Basics', link: '/springboot/base/rest' },
+								{ label: 'Attacks', link: '/springboot/base/common-attacks' },
 
 
 							],
@@ -80,6 +81,13 @@ export default defineConfig({
 								{ label: 'Transaction Management', link: '/springboot/jpa/transaction' },
 								{ label: 'Auditing & Lifecycle Events', link: '/springboot/jpa/auditing' },
 								{ label: 'Performance & Concurrency', link: '/springboot/jpa/advance' },
+							],
+						},
+						{
+							label: 'Spring Security',
+							items: [
+								{ label: 'Spring Security Basics', link: '/springboot/security/basics' },
+								// { label: 'Spring Security with JWT', link: '/springboot/security/jwt' },
 							],
 						},
 					],
