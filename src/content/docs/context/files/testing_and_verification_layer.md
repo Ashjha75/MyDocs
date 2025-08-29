@@ -25,7 +25,7 @@ This document provides a detailed guide to testing and verification in the proje
 
 - **Jasmine**: The testing framework for unit and integration tests.
 - **Karma**: The test runner for unit and integration tests.
-- **Cypress**: The framework for E2E tests.
+- **Cypress**: The framework for E2E tests(use this).
 - **Angular Testing Library**: A library that provides utilities for testing Angular components.
 
 ---
