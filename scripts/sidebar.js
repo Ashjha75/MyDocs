@@ -3,6 +3,40 @@ document.addEventListener('DOMContentLoaded', () => {
   const ul = document.querySelector('.top-level');
   if (!ul) return;
 
+  // Store collapsed state in sessionStorage
+  const COLLAPSED_STATE_KEY = 'sidebar-collapsed-all';
+  
+  // Override Starlight's sidebar state to force all closed
+  function overrideStarlightState() {
+    const isCollapsed = sessionStorage.getItem(COLLAPSED_STATE_KEY) === 'true';
+    if (isCollapsed) {
+      // Get or create Starlight's sidebar state
+      let starlightState = {};
+      try {
+        const existing = sessionStorage.getItem('sl-sidebar-state');
+        starlightState = existing ? JSON.parse(existing) : {};
+      } catch (e) {
+        starlightState = {};
+      }
+      
+      // Force all sections to be closed in Starlight's state
+      const detailsCount = document.querySelectorAll('details').length;
+      starlightState.open = new Array(detailsCount).fill(false);
+      
+      // Save the modified state back
+      sessionStorage.setItem('sl-sidebar-state', JSON.stringify(starlightState));
+    }
+  }
+
+  function collapseAllSections() {
+    document.querySelectorAll('details').forEach((el) => {
+      el.removeAttribute('open');
+    });
+    // Store that user wants all collapsed
+    sessionStorage.setItem(COLLAPSED_STATE_KEY, 'true');
+    overrideStarlightState();
+  }
+
   // Create the Collapse All button
   const li = document.createElement('li');
   li.style.listStyle = 'none'; // Remove bullet
@@ -39,10 +73,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add click event to collapse all details
   li.querySelector('#collapse-all-btn').addEventListener('click', () => {
     console.log('All open details elements have been collapsed.');
-    document.querySelectorAll('details').forEach((el) => {
-      el.removeAttribute('open');
-    });
+    collapseAllSections();
   });
+
+  // Clear collapsed state when user manually opens a section
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('details summary') && !e.target.closest('#collapse-all-btn')) {
+      sessionStorage.removeItem(COLLAPSED_STATE_KEY);
+    }
+  });
+
+  // Apply on page load
+  const isCollapsed = sessionStorage.getItem(COLLAPSED_STATE_KEY) === 'true';
+  if (isCollapsed) {
+    // Override Starlight's state before it gets applied
+    overrideStarlightState();
+    
+    // Also apply directly with multiple attempts
+    setTimeout(() => collapseAllSections(), 10);
+    setTimeout(() => collapseAllSections(), 100);
+    setTimeout(() => collapseAllSections(), 300);
+    setTimeout(() => collapseAllSections(), 1000);
+  }
 });
 
 
