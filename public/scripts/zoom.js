@@ -226,4 +226,31 @@ document.addEventListener('DOMContentLoaded', () => {
       wrapper.appendChild(zoomBtn);
     }
   });
+
+  // Target images with class="zoomable"
+  document.querySelectorAll('img.zoomable').forEach(img => {
+    if (window.innerWidth < 1024) return;
+
+    // Wrap IMG in a relatively positioned div for icon placement
+    let wrapper = img.parentElement;
+    if (!wrapper.classList.contains('image-zoom-wrapper')) {
+      wrapper = document.createElement('div');
+      wrapper.style.position = 'relative';
+      wrapper.style.display = 'inline-block';
+      wrapper.classList.add('image-zoom-wrapper');
+      img.parentNode.insertBefore(wrapper, img);
+      wrapper.appendChild(img);
+    }
+
+    // Add zoom icon if not already present
+    if (!wrapper.querySelector('button[aria-roledescription="zoom"]')) {
+      const zoomBtn = createZoomIcon();
+      zoomBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const modal = createModal(img);
+        if (modal) document.body.appendChild(modal);
+      });
+      wrapper.appendChild(zoomBtn);
+    }
+  });
 });

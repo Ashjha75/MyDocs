@@ -40,7 +40,7 @@ This is the most fundamental concept, and you must be able to explain it without
 
 ---
 <pre>
-<img src="/MyDocs/securityArch.png" alt="Security Architecture" style="height:280px; margin: 1em 0;" />
+<img src="/MyDocs/securityArch.png" alt="Security Architecture" style="height:280px; margin: 1em 0;"  class="zoomable"/>
 </pre>
 ---
 
