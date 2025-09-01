@@ -96,6 +96,13 @@ export default defineConfig({
                             // { label: 'Spring Security User Creations', link: '/springboot/security/users-creations' },
                         ],
                     },
+                    {
+                        label: 'Spring Essentials',
+                        items: [
+                            { label: 'Spring Logging', link: '/springboot/essentials/log' },
+
+                        ],
+                    },
                 ],
             },
 
