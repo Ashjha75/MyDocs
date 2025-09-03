@@ -110,6 +110,7 @@ export default defineConfig({
                             { label: 'Spring Junit basics', link: '/springboot/testing/junitlec1' },
                             { label: 'Spring Junit Architecture', link: '/springboot/testing/junit-architecture' },
                             { label: 'Spring Junit Slicing', link: '/springboot/testing/slicing' },
+                            { label: 'Spring Mockito basics', link: '/springboot/testing/mockito' },
 
                         ],
                     },
