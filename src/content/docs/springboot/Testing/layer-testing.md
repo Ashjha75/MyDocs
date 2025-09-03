@@ -3,25 +3,27 @@ title : Layered Testing Strategy
 ---
 
 
-A robust testing suite mirrors the application's architecture. Each layer of the application has a corresponding type of test designed specifically for it.
 
 ```mermaid
+---
+config:
+  theme: forest
+---
 graph TD
     subgraph "Application Architecture"
         Controller("Controller Layer") --> Service("Service Layer")
         Service --> Repository("Repository Layer")
         Repository --> DB[(Database)]
     end
-
     subgraph "Testing Strategy"
-        WebTest("`@WebMvcTest` (Slice)") -->|Mocks| ServiceTest("Unit Test `@Mock`")
-        ServiceTest -->|Mocks| RepoTest("`@DataJpaTest` (Slice)")
+        WebTest("@WebMvcTest (Slice)") -->|Mocks| ServiceTest("Unit Test @Mock")
+        ServiceTest -->|Mocks| RepoTest("@DataJpaTest (Slice)")
         RepoTest --> TestDB[(Test DB)]
     end
-
     style WebTest fill:#e3f2fd,stroke:#1565c0,stroke-width:2px
     style ServiceTest fill:#c9f2c9,stroke:#333,stroke-width:2px
     style RepoTest fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+
 ```
 
 This diagram shows our strategy:
