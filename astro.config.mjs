@@ -107,8 +107,8 @@ export default defineConfig({
                     {
                         label: 'Spring Test',
                         items: [
-                            { label: 'Spring Junit basics', link: '/springboot/test/JunitLec1' },
-                            { label: 'Spring Junit Architecture', link: '/springboot/test/JunitArchietecture' },
+                            { label: 'Spring Junit basics', link: '/springboot/Testing/JunitLec1' },
+                            { label: 'Spring Junit Architecture', link: '/springboot/Testing/JunitArchietecture' },
 
                         ],
                     },
