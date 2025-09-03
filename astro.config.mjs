@@ -111,6 +111,7 @@ export default defineConfig({
                             { label: 'Spring Junit Architecture', link: '/springboot/testing/junit-architecture' },
                             { label: 'Spring Junit Slicing', link: '/springboot/testing/slicing' },
                             { label: 'Spring Mockito basics', link: '/springboot/testing/mockito' },
+                            { label: 'Spring Layered Testing', link: '/springboot/testing/layer-testing' },
 
                         ],
                     },
