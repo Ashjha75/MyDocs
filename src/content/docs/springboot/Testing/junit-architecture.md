@@ -1,7 +1,58 @@
 ---
 title: JUnit Architecture
 ---
+```mermaid
 
+---
+config:
+  theme: forest
+  layout: dagre
+---
+flowchart BT
+ subgraph subGraph0["Test Code Layer"]
+    direction LR
+        jupiter_tests("JUnit5 test cases")
+        vintage_tests("JUnit3/4 Test cases")
+        other_tests("Some other framework")
+  end
+ subgraph subGraph1["Test Engine Layer"]
+    direction LR
+        jupiter("JUnit Jupiter Engine")
+        vintage("JUnit Vintage Engine")
+        other("Other Test Engine")
+  end
+ subgraph subGraph2["JUnit Platform"]
+        launcher("junit-platform-launcher")
+        engine_api("junit-platform-engine")
+  end
+ subgraph subGraph3["Platform Consumers Layer"]
+    direction LR
+        sunfire("junit-platform-sunfire-provider")
+        gradle_plugin("junit-platform-gradle-plugin")
+        console("junit-platform-console")
+  end
+ subgraph subGraph4["Tools Layer"]
+    direction LR
+        maven("Build tool (Maven)")
+        gradle("Build tool (Gradle)")
+        ide("IDE (Eclipse, IntelliJ)")
+        cli("Command Line")
+  end
+    launcher --> engine_api
+    maven --> sunfire
+    gradle --> gradle_plugin
+    cli --> console
+    sunfire --> launcher
+    gradle_plugin --> launcher
+    console --> launcher
+    ide --> launcher
+    engine_api --> jupiter & vintage & other
+    jupiter --> jupiter_tests
+    vintage --> vintage_tests
+    other --> other_tests
+    JUnit_Platform["JUnit_Platform"]
+    style JUnit_Platform fill:#e8f5e9,stroke:#333,stroke-width:1px
+```
 
 ### The JUnit 5 Architecture: A Three-Part Harmony
 
