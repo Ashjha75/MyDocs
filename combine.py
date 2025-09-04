@@ -2,8 +2,9 @@ import os
 
 def dump_project_files(root_folder, output_file, skip_extensions=None, skip_files=None, skip_folders=None):
     """
-    Recursively reads all files in a project folder (Angular, Astro, Spring Boot, etc.),
-    skipping certain files/extensions/folders, and writes their contents into a single output file.
+    Recursively reads all files in a Spring Boot project (IntelliJ based),
+    skipping binaries, build artifacts, and unnecessary files.
+    Optimized for Java/Spring Boot development.
     """
 
     if skip_extensions is None:
@@ -13,11 +14,16 @@ def dump_project_files(root_folder, output_file, skip_extensions=None, skip_file
     if skip_folders is None:
         skip_folders = []
 
+    file_count = 0
     with open(output_file, "w", encoding="utf-8") as outfile:
+        outfile.write("=== SPRING BOOT PROJECT DUMP ===\n")
+        outfile.write(f"Root: {root_folder}\n")
+        outfile.write("="*50 + "\n\n")
+        
         for foldername, subfolders, filenames in os.walk(root_folder):
 
             # Skip unwanted folders completely
-            if any(skip in foldername for skip in skip_folders):
+            if any(skip in foldername.lower() for skip in skip_folders):
                 continue
 
             for filename in filenames:
@@ -28,40 +34,83 @@ def dump_project_files(root_folder, output_file, skip_extensions=None, skip_file
                     continue
 
                 file_path = os.path.join(foldername, filename)
+                relative_path = os.path.relpath(file_path, root_folder)
+                
                 try:
                     with open(file_path, "r", encoding="utf-8", errors="ignore") as infile:
-                        outfile.write(f"\n\n=== FILE: {file_path} ===\n\n")
-                        outfile.write(infile.read())
+                        content = infile.read().strip()
+                        if content:  # Only include non-empty files
+                            outfile.write(f"\n\n=== FILE: {relative_path} ===\n")
+                            outfile.write(f"Full path: {file_path}\n")
+                            outfile.write("-" * 50 + "\n")
+                            outfile.write(content)
+                            outfile.write("\n" + "-" * 50)
+                            file_count += 1
                 except Exception as e:
-                    outfile.write(
-                        f"\n\n=== FILE: {file_path} (Could not read: {e}) ===\n\n"
-                    )
+                    outfile.write(f"\n\n=== FILE: {relative_path} (Could not read: {e}) ===\n\n")
+        
+        outfile.write(f"\n\n=== SUMMARY ===\n")
+        outfile.write(f"Total files processed: {file_count}\n")
 
 
 if __name__ == "__main__":
-    # 👇 Change this to your project folder (Angular / Astro / Spring Boot / etc.)
-    root_folder = r"C:\Users\Ashish jha\Desktop\PERSONAL\DOCS\astroDocs\vigorous-visual"
+    # 👇 Change this to your Spring Boot project root folder
+    root_folder = r"C:\Users\Ashish jha\Desktop\SpringBootProject"
 
     # Output file for AI reference
-    output_file = "combined_project.txt"
+    output_file = "springboot_project_dump.txt"
 
-    # Extensions to skip (binaries, media, build artifacts, etc.)
+    # Extensions to skip (binaries, compiled files, media, etc.)
     skip_extensions = [
-        ".jpg", ".jpeg", ".png", ".ico", ".bmp", ".mp3", ".svg", ".avi", ".mov",
-        ".zip", ".rar", ".7z", ".tar", ".gz", ".class", ".jar", ".exe", ".dll",
-        ".pdf", ".db", ".lock", ".ttf", ".woff", ".woff2", ".eot"
+        # Compiled/Binary files
+        ".class", ".jar", ".war", ".ear", ".zip", ".tar", ".gz", ".rar", ".7z",
+        # Media files
+        ".jpg", ".jpeg", ".png", ".gif", ".ico", ".bmp", ".svg", ".webp",
+        ".mp3", ".mp4", ".avi", ".mov", ".wmv", ".pdf",
+        # IDE/OS files
+        ".exe", ".dll", ".so", ".dylib", ".db", ".sqlite", ".h2.db",
+        # Logs and temp files
+        ".log", ".tmp", ".temp", ".cache", ".pid",
+        # Fonts
+        ".ttf", ".woff", ".woff2", ".eot",
+        # Other
+        ".keystore", ".p12", ".jks"
     ]
 
-    # Specific files to skip (system or metadata files)
+    # Specific files to skip
     skip_files = [
-        ".ds_store", "thumbs.db", "package-lock.json", "yarn.lock"
+        # OS files
+        ".ds_store", "thumbs.db", "desktop.ini",
+        # Maven/Gradle lock files
+        "mvnw", "mvnw.cmd", "gradlew", "gradlew.bat",
+        # IDE files
+        ".project", ".classpath", "*.iws", "*.ipr",
+        # Build files
+        "package-lock.json", "yarn.lock"
     ]
 
-    # Entire folders to skip
+    # Entire folders to skip (Spring Boot specific)
     skip_folders = [
-        "node_modules", "dist", "build", ".git", ".angular", ".astro", ".vscode",
-        "coverage", ".idea", ".next", "out"
+        # Build directories
+        "target", "build", "out", "bin", "classes",
+        # IDE directories
+        ".idea", ".vscode", ".eclipse", ".metadata", ".settings",
+        # Version control
+        ".git", ".svn", ".hg",
+        # Dependencies
+        "node_modules", ".gradle", ".m2",
+        # Logs
+        "logs", "log",
+        # Spring Boot specific
+        ".mvn", "mvnw.cmd",
+        # Other
+        "temp", "tmp", ".cache", "coverage", "dist"
     ]
 
+    print(f"🚀 Starting Spring Boot project dump...")
+    print(f"📁 Scanning: {root_folder}")
+    
     dump_project_files(root_folder, output_file, skip_extensions, skip_files, skip_folders)
-    print(f"✅ All project files dumped into: {output_file}")
+    
+    print(f"✅ Spring Boot project dumped into: {output_file}")
+    print(f"📊 You can now use this file for AI analysis or documentation.")
