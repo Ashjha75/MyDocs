@@ -93,7 +93,11 @@ export default defineConfig({
                             { label: 'Spring Security User Creations', link: '/springboot/security/users-creations' },
                             { label: 'Spring Security Web Securities', link: '/springboot/security/web-securities' },
                             { label: 'Spring Security JWT', link: '/springboot/security/jwt' },
-                            // { label: 'Spring Security User Creations', link: '/springboot/security/users-creations' },
+                            {
+                                label: 'JWT ', items: [
+                                    { label: 'Security Config', link: '/springboot/security/jwt/security-config' },
+                                ]
+                            },
                         ],
                     },
 
@@ -105,6 +109,7 @@ export default defineConfig({
                             { label: 'Spring Junit Slicing', link: '/springboot/testing/slicing' },
                             { label: 'Spring Mockito basics', link: '/springboot/testing/mockito' },
                             { label: 'Spring Layered Testing', link: '/springboot/testing/layer-testing' },
+
 
                         ],
                     },
