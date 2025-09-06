@@ -86,13 +86,12 @@ This modular workflow is visualized in the diagram below.
 config:
   theme: forest
 ---
-graph TD
-    A[User Request: Analyze Report & Draft Email] --> B{Break Down into Steps};
-    B --> C[Step 1: Summarize Report];
-    C -- Summary --> D[Step 2: Identify Trends];
-    D -- Trends & Data --> E[Step 3: Compose Email];
-    E --> F[Final Output: Formatted Email];
-
+graph LR
+    A[User Request: Analyze Report & Draft Email] --> B{Break Down into Steps}
+    B --> C[Step 1: Summarize Report]
+    C -- Summary --> D[Step 2: Identify Trends]
+    D -- Trends & Data --> E[Step 3: Compose Email]
+    E --> F[Final Output: Formatted Email]
 ```
 
 #### The Importance of Structured Output
