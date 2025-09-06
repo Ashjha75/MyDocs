@@ -177,13 +177,6 @@ class UserCreationServiceTest {
 ```
 ***
 
-### What is Missing from this Syllabus?
-
-Your outline excellently covers the testing framework (JUnit 5). However, for a *unit test* of a Spring Boot component (like a service), the most critical missing piece is **Mocking**. A `UserService` almost always depends on a `UserRepository`. To test the `UserService` in isolation, we *must* be able to fake the `UserRepository`.
-
-This is the role of **Mockito**. Our next lesson will be a deep dive into using Mockito to create and control these fake dependencies, which is the key to true unit testing in a layered architecture.
-
-***
 
 ### **Interview Gold**
 

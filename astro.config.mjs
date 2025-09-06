@@ -13,7 +13,7 @@ export default defineConfig({
     site: 'https://ashjha75.github.io/MyDocs/',
     base: '/MyDocs/',
 
-    integrations: [ starlight({
+    integrations: [starlight({
         logo: {
             src: '/public/favicon.svg', // Path to your logo in the public folder
             alt: 'MyDocs',
@@ -35,7 +35,7 @@ export default defineConfig({
                 tag: 'script',
                 attrs: { src: '/MyDocs/scripts/sidebar.js', defer: true }, // <-- your custom script
             },
-        {
+            {
                 tag: 'script',
                 attrs: { src: '/MyDocs/scripts/zoom.js', defer: true }, // <-- your custom script
             },],
@@ -96,14 +96,7 @@ export default defineConfig({
                             // { label: 'Spring Security User Creations', link: '/springboot/security/users-creations' },
                         ],
                     },
-                    {
-                        label: 'Spring Essentials',
-                        items: [
-                            { label: 'Spring Logging', link: '/springboot/essentials/log' },
-                            { label: 'Spring Code Quality', link: '/springboot/essentials/code-quality' },
 
-                        ],
-                    },
                     {
                         label: 'Spring Test',
                         items: [
@@ -112,6 +105,14 @@ export default defineConfig({
                             { label: 'Spring Junit Slicing', link: '/springboot/testing/slicing' },
                             { label: 'Spring Mockito basics', link: '/springboot/testing/mockito' },
                             { label: 'Spring Layered Testing', link: '/springboot/testing/layer-testing' },
+
+                        ],
+                    },
+                    {
+                        label: 'Spring Essentials',
+                        items: [
+                            { label: 'Spring Logging', link: '/springboot/essentials/log' },
+                            { label: 'Spring Code Quality', link: '/springboot/essentials/code-quality' },
 
                         ],
                     },
@@ -182,5 +183,5 @@ export default defineConfig({
                 ]
             },
         ],
-		})],
+    })],
 });
