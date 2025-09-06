@@ -98,6 +98,7 @@ export default defineConfig({
                                     { label: 'Security Config', link: '/springboot/security/jwt/security-config' },
                                     { label: 'Jwt utils', link: '/springboot/security/jwt/jwt-utils' },
                                     { label: 'Auth Token Filter', link: '/springboot/security/jwt/auth-token-filter' },
+                                    { label: 'Custom User Details Service', link: '/springboot/security/jwt/custom-user-details-service' },
                                 ]
                             },
                         ],
