@@ -99,6 +99,7 @@ export default defineConfig({
                                     { label: 'Jwt utils', link: '/springboot/security/jwt/jwt-utils' },
                                     { label: 'Auth Token Filter', link: '/springboot/security/jwt/auth-token-filter' },
                                     { label: 'Custom User Details Service', link: '/springboot/security/jwt/custom-user-details-service' },
+                                    { label: 'Auth Entry Point JWT', link: '/springboot/security/jwt/auth-entry-point-jwt' },
                                 ]
                             },
                         ],
