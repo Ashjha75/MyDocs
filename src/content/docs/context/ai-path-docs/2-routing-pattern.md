@@ -1,6 +1,7 @@
 ---
-title : The Routing Pattern
+title : "The Routing Pattern "
 ---
+
 ## Table of Contents
 1.  [Introduction: Beyond the Straight Line](#1-introduction-beyond-the-straight-line)
 2.  [The Core Concept: What is Routing?](#2-the-core-concept-what-is-routing)
@@ -113,11 +114,16 @@ To create a system that takes a user request and routes it to one of three funct
 #### The Workflow Explained
 
 ```mermaid
+---
+config:
+  theme: forest
+---
 graph TD
-    A[User Request: "Book me a flight"] --> B{coordinator_router_chain};
-    B -- LLM decides: "booker" --> C{delegation_branch};
-    C -- Matches "booker" --> D[booking_handler];
-    D --> E[Final Output: "Booking action simulated."];
+    A[User Request: Book me a flight] --> B{coordinator_router_chain};
+    B --|LLM decides|--> C{delegation_branch};
+    C --|Matches booker|--> D[booking_handler];
+    D --> E[Final Output: Booking action simulated];
+
 ```
 
 #### The Code, Explained Step-by-Step
