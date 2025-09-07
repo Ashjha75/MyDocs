@@ -102,6 +102,7 @@ export default defineConfig({
                                     { label: 'Auth Entry Point JWT', link: '/springboot/security/jwt/auth-entry-point-jwt' },
                                     { label: 'Jwt Essentials', link: '/springboot/security/jwt/jwt-essentials' },
                                     { label: 'Jwt Summary', link: '/springboot/security/jwt/summary' },
+                                    { label: 'Jwt RBAC', link: '/springboot/security/jwt/rbac' },
                                 ]
                             },
                         ],
