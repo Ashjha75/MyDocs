@@ -101,6 +101,7 @@ export default defineConfig({
                                     { label: 'Custom User Details Service', link: '/springboot/security/jwt/custom-user-details-service' },
                                     { label: 'Auth Entry Point JWT', link: '/springboot/security/jwt/auth-entry-point-jwt' },
                                     { label: 'Jwt Essentials', link: '/springboot/security/jwt/jwt-essentials' },
+                                    { label: 'Jwt Summary', link: '/springboot/security/jwt/summary' },
                                 ]
                             },
                         ],
