@@ -105,6 +105,9 @@ export default defineConfig({
                                     { label: 'Jwt RBAC', link: '/springboot/security/jwt/rbac' },
                                 ]
                             },
+                            {
+                                label: 'OAuth2 ', autogenerate: { directory: 'security/oauth2' },
+                            },
                         ],
                     },
 
