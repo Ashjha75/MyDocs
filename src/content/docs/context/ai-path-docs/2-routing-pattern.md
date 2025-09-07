@@ -114,10 +114,7 @@ To create a system that takes a user request and routes it to one of three funct
 #### The Workflow Explained
 
 ```mermaid
----
-config:
-  theme: forest
----
+
 graph TD
     A[User Request: Book me a flight] --> B{coordinator_router_chain};
     B --|LLM decides|--> C{delegation_branch};
