@@ -106,7 +106,8 @@ export default defineConfig({
                                 ]
                             },
                             {
-                                label: 'OAuth2 ', autogenerate: { directory: 'security/oauth2' },
+                                label: 'OAuth2 ',
+                                autogenerate: { directory: 'springboot/security/oauth2' },
                             },
                         ],
                     },
