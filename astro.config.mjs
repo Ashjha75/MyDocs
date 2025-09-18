@@ -200,7 +200,16 @@ export default defineConfig({
             },
             {
                 label: '⚡ Redis',
-                autogenerate: { directory: 'redis' },
+                   items: [
+                            { label: 'Redis Fundamentals', link: '/redis/1redis-fundamentals' },
+                            { label: 'Redis Practical Use', link: '/redis/2practical-use-case' },
+                            { label: 'Redis Springboot Integration', link: '/redis/3springboot-integration' },
+                            { label: 'Redis Springboot Caching', link: '/redis/4springboot-redis-caching' },
+                            { label: 'SpringBoot Redis Advance Usage', link: '/redis/5springboot-advance-redis-usage' },
+                            { label: 'Redis Operational Knowledge', link: '/redis/6operational-knowledge' },
+                            { label: 'Redis Interview Questions', link: '/redis/7interview-focoused' },
+
+                        ],
             },
             {
                 label: '☁️ AWS',

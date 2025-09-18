@@ -1,7 +1,5 @@
 ---
 title: "4. Spring Boot Redis Caching"
-slug: spring-boot-redis-caching
-tags: redis, spring-boot, caching, spring-cache, ttl, cache-annotations
 ---
 ### **4.1 Enabling Caching: `@EnableCaching`**
 

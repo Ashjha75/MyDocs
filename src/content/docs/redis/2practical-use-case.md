@@ -1,8 +1,6 @@
 
 ---
 title: "2. Practical Use Cases for Redis"
-slug: redis-practical-use-cases
-tags: redis, spring-boot, caching, session-management, rate-limiting, pub-sub, distributed-locks
 ---
 
 ### **2.1 Caching Expensive DB Queries / API Responses**

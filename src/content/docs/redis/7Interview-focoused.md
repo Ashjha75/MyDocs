@@ -1,8 +1,5 @@
 ---
 title: "7. Redis Interview Questions"
-slug: redis-interview-questions
-tags: redis, spring-boot, caching, session-management, rate-limiting, pub
-    -sub, distributed-locks, interview-questions
 ---
 ### **1. What is Redis? When to use it?**
 

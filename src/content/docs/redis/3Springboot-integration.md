@@ -1,8 +1,6 @@
 
 ---
 title: "3. Spring Boot Integration"
-slug: spring-boot-redis-integration
-tags: redis, spring-boot, caching, session-management, rate-limiting, pub-sub, distributed-locks
 ---
 
 
