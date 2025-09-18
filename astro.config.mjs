@@ -84,6 +84,9 @@ export default defineConfig({
                             { label: 'Transaction Management', link: '/springboot/jpa/transaction' },
                             { label: 'Auditing & Lifecycle Events', link: '/springboot/jpa/auditing' },
                             { label: 'Performance & Concurrency', link: '/springboot/jpa/advance' },
+                            { label: 'Caching', items:[
+                                { label: 'Caching Basics', link: '/springboot/jpa/caching/basics' },
+                            ] },
                         ],
                     },
                     {
