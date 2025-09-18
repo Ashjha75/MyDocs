@@ -1,3 +1,10 @@
+---
+title: "Redis Fundamentals"
+slug: redis-fundamentals
+tags: redis, spring-boot, caching, session-management, rate-limiting, pub-sub, distributed-locks
+---
+
+
 ### **1. What is Redis? (in-memory, key-value, super fast)**
 
 **What it is:**

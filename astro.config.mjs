@@ -198,6 +198,10 @@ export default defineConfig({
                     { label: 'Basics', link: '/devops/docker/basics' }
                 ]
             },
+            {
+                label: '⚡ Redis',
+                autogenerate: { directory: 'redis' },
+            },
         ],
     })],
 });
