@@ -1,5 +1,5 @@
 ---
-title: "Operational Knowledge for Redis"
+title: "6. Operational Knowledge for Redis"
 slug: redis-operational-knowledge
 tags: redis, spring-boot, caching, session-management, rate-limiting, pub-sub, distributed-locks
 ---

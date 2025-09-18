@@ -1,5 +1,5 @@
 ---
-title: "Spring Boot Redis Caching"
+title: "4. Spring Boot Redis Caching"
 slug: spring-boot-redis-caching
 tags: redis, spring-boot, caching, spring-cache, ttl, cache-annotations
 ---

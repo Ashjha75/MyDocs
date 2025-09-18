@@ -1,5 +1,5 @@
 ---
-title: "Redis Fundamentals"
+title: "1. Redis Fundamentals"
 slug: redis-fundamentals
 tags: redis, spring-boot, caching, session-management, rate-limiting, pub-sub, distributed-locks
 ---

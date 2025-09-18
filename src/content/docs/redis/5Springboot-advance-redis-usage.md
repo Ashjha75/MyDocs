@@ -1,5 +1,5 @@
 ---
-title: "Spring Boot Advanced Redis Usage"
+title: "5. Spring Boot Advanced Redis Usage"
 slug: spring-boot-advanced-redis-usage
 tags: redis, spring-boot, caching, session-management, rate-limiting, pub-sub, distributed-locks
 ---
