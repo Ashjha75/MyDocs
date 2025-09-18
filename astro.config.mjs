@@ -85,7 +85,10 @@ export default defineConfig({
                             { label: 'Auditing & Lifecycle Events', link: '/springboot/jpa/auditing' },
                             { label: 'Performance & Concurrency', link: '/springboot/jpa/advance' },
                             { label: 'Caching', items:[
-                                { label: 'Caching Basics', link: '/springboot/jpa/caching/basics' },
+                                { label: 'Caching Basics', link: '/springboot/jpa/caching/1basics' },
+                                { label: 'Caching Intermediate', link: '/springboot/jpa/caching/2intermediate' },
+                                { label: 'Caching Advanced', link: '/springboot/jpa/caching/3advanced' },
+                                { label: 'Caching Interview Questions', link: '/springboot/jpa/caching/4interview' },
                             ] },
                         ],
                     },

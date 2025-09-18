@@ -7,7 +7,6 @@ title : "Basic of Caching in Spring Boot JPA"
 
 ---
 
-### **Part 1: The Foundational Concepts**
 
 #### **1.1 What is Caching? The "Why"**
 
