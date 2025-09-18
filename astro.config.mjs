@@ -202,6 +202,10 @@ export default defineConfig({
                 label: '⚡ Redis',
                 autogenerate: { directory: 'redis' },
             },
+            {
+                label: '☁️ AWS',
+                autogenerate: { directory: 'aws' },
+            },
         ],
     })],
 });
