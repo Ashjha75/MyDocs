@@ -87,7 +87,7 @@ export default defineConfig({
                             { label: 'Caching', items:[
                                 { label: 'Caching Basics', link: '/springboot/jpa/caching/1basics' },
                                 { label: 'Caching Intermediate', link: '/springboot/jpa/caching/2intermediate' },
-                                { label: 'Caching Advanced', link: '/springboot/jpa/caching/3advanced' },
+                                { label: 'Caching Advanced', link: '/springboot/jpa/caching/3advance' },
                                 { label: 'Caching Interview Questions', link: '/springboot/jpa/caching/4interview' },
                             ] },
                         ],
