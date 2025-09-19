@@ -135,6 +135,7 @@ export default defineConfig({
                         items: [
                             { label: 'Spring Logging', link: '/springboot/essentials/log' },
                             { label: 'Spring Code Quality', link: '/springboot/essentials/code-quality' },
+                            { label: 'Spring External APIs', link: '/springboot/essentials/external-apis' },
 
                         ],
                     },
