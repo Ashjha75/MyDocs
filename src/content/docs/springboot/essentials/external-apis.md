@@ -1,6 +1,5 @@
 ---
 title: "Integrating External APIs in Spring Boot"
-slug: /docs/springboot/essentials/external-apis/
 
 ---
 
