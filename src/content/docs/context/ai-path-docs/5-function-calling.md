@@ -1,5 +1,5 @@
 ---
-title: "Function Calling"
+title: "Function Calling)"
 ---
 
 ## Table of Contents
@@ -63,44 +63,26 @@ The process of using a tool follows a consistent and logical cycle:
 5.  **Observation/Result**: The result from the executed function (e.g., the weather data from the API) is returned to the agent framework.
 6.  **LLM Processing**: The framework passes the tool's result back to the LLM as additional context. The LLM can then use this new information to formulate a final, user-friendly answer or decide on the next step in its workflow.
 
-```mermaid
-graph TD
-    A[User: "Weather in London?"] --> B{LLM};
-    subgraph "Step 1: Tool Definition"
-        T[Tool: get_weather(location)] --> B;
+``` mermaid
+---
+config:
+  theme: forest
+---
+flowchart TD
+    A["👤 User<br/>Weather in London?"] --> B["🤖 LLM<br/>Decision Engine"]
+    
+    subgraph tools ["Available Tools"]
+        T["🔧 get_weather(location)<br/>Fetches current weather data"]
     end
-    B -- "Step 2 & 3: I should use the weather tool.<br/>Generate JSON: { name: 'get_weather', args: { location: 'London' } }" --> C[Orchestration Framework];
-    C -- "Step 4: Execute Python function" --> D(External API);
-    D -- "Step 5: Return data: { temp: 15, condition: 'Cloudy' }" --> C;
-    C -- "Step 6: Feed result back to LLM" --> B;
-    B -- "The weather in London is 15°C and cloudy." --> F[Final Answer];flowchart LR
-    User["👤 User<br/>Weather in London?"] 
-    LLM["🤖 LLM<br/>Processing"]
-    Tool["🔧 Weather Tool<br/>get_weather()"]
-    API["🌐 Weather API<br/>External Service"]
-    Response["💬 Response<br/>15°C, Cloudy"]
-
-    User --> LLM
-    LLM -->|"Identifies need for weather data"| Tool
-    Tool -->|"API Call"| API
-    API -->|"Returns weather data"| Tool
-    Tool -->|"Structured response"| LLM
-    LLM -->|"Natural language"| Response
-    Response -->|"Delivered to"| User
-
-    classDef userStyle fill:#e1f5fe,stroke:#01579b,stroke-width:2px
-    classDef llmStyle fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
-    classDef toolStyle fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
-    classDef apiStyle fill:#fff3e0,stroke:#e65100,stroke-width:2px
-    classDef responseStyle fill:#fce4ec,stroke:#880e4f,stroke-width:2px
-
-    class User userStyle
-    class LLM llmStyle
-    class Tool toolStyle
-    class API apiStyle
-    class Response responseStyle
-   ```
-
+    
+    B -->|"Step 1: Analyzes request<br/>Identifies need for weather tool"| C["⚙️ Orchestration Framework"]
+    C -->|"Step 2: Executes function<br/>get_weather('London')"| D["🌐 External Weather API"]
+    D -->|"Step 3: Returns data<br/>{temp: 15°C, condition: 'Cloudy'}"| C
+    C -->|"Step 4: Feeds result back"| B
+    B -->|"Step 5: Generates response"| E["💬 Final Answer<br/>It's 15°C and cloudy in London"]
+    
+    tools -.->|"Tool available to"| B
+```
 ### 4. Practical Applications: Where Agents Meet Reality
 
 Tool use is essential for almost any task that requires an agent to be aware of and act upon the world outside its static knowledge.
