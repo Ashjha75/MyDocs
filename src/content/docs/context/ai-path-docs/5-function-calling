@@ -1,0 +1,292 @@
+# AI Engineering Masterclass: The Tool Use Pattern (Function Calling)
+
+## Table of Contents
+1.  [Introduction: Giving Agents Superpowers](#1-introduction-giving-agents-superpowers)
+2.  [The Core Concept: What is Tool Use?](#2-the-core-concept-what-is-tool-use)
+    - [An Analogy: The Smart Assistant with a Phone](#an-analogy-the-smart-assistant-with-a-phone)
+3.  [The Tool Use Process: A 6-Step Flow](#3-the-tool-use-process-a-6-step-flow)
+4.  [Practical Applications: Where Agents Meet Reality](#4-practical-applications-where-agents-meet-reality)
+5.  [Hands-On Example 1: LangChain (Defining & Calling Tools)](#5-hands-on-example-1-langchain-defining--calling-tools)
+    - [The Goal](#the-goal)
+    - [The LangChain Philosophy](#the-langchain-philosophy)
+    - [The Code, Explained Step-by-Step](#the-code-explained-step-by-step)
+6.  [Hands-On Example 2: CrewAI (Agents and Tasks with Tools)](#6-hands-on-example-2-crewai-agents-and-tasks-with-tools)
+    - [The Goal](#the-goal-1)
+    - [The CrewAI Philosophy](#the-crewai-philosophy)
+    - [The Code, Explained Step-by-Step](#the-code-explained-step-by-step-1)
+7.  [Hands-On Example 3: Google ADK (Pre-built & Execution Tools)](#7-hands-on-example-3-google-adk-pre-built--execution-tools)
+    - [The ADK Philosophy](#the-adk-philosophy)
+    - [Example A: Using a Pre-built Tool (Google Search)](#example-a-using-a-pre-built-tool-google-search)
+    - [Example B: Using a Code Executor Tool](#example-b-using-a-code-executor-tool)
+8.  [Final Summary & Key Takeaways](#8-final-summary--key-takeaways)
+    - [At a Glance](#at-a-glance)
+    - [Key Takeaways Checklist](#key-takeaways-checklist)
+
+---
+
+### 1. Introduction: Giving Agents Superpowers
+
+So far, we have built sophisticated internal workflows for our agents using Chaining, Routing, Parallelization, and Reflection. These patterns allow an agent to manage information and "think" effectively. However, a truly useful agent must be able to **act**—to interact with the outside world.
+
+LLMs are trained on a static dataset. They don't know the current weather, can't access your company's database, and can't send an email. The **Tool Use** pattern solves this fundamental limitation. It provides the essential bridge between the LLM's reasoning brain and the vast array of external systems and data sources, transforming it from a text generator into a capable actor in the digital world.
+
+**Why it matters**: This is arguably the most critical pattern for creating practical, real-world agents. Without tools, an agent is just a closed-off brain; with tools, it gains hands, eyes, and ears to perceive and interact with the world.
+
+### 2. The Core Concept: What is Tool Use?
+
+**Tool Use** enables an agent to interact with external systems like APIs, databases, or services. The technical mechanism that makes this possible is often called **Function Calling**.
+
+The core idea is to describe a set of available "tools" to the LLM so that it can understand what they do. Then, when a user makes a request, the LLM can intelligently decide if one of its tools can help, figure out the necessary inputs for that tool, and ask the agent framework to execute it.
+
+It's helpful to distinguish between:
+*   **Function Calling**: The specific, technical process of invoking a piece of code (a function).
+*   **Tool Calling**: A broader, more powerful concept. A "tool" can be a simple function, but it could also be a complex API, a database query, or even another specialized agent. Thinking in terms of "Tool Calling" better captures the full potential of this pattern.
+
+#### An Analogy: The Smart Assistant with a Phone
+
+Imagine you have a brilliant personal assistant who is locked in a room with only a book of general knowledge (the LLM's training data).
+*   **Without a phone (No Tools)**: The assistant can answer general questions based on the book but can't tell you today's weather or book a flight for you. They are fundamentally limited.
+*   **With a phone and a contact list (Tool Use)**: You give the assistant a phone and a list of "tools" (contacts like "Weather Service," "Airline Booking," "Company Database").
+
+Now, when you ask, *"What's the weather in London?"*, the assistant (the LLM) knows it can't find that in its book. It looks at its contact list, sees the "Weather Service" tool, and knows it needs a `location`. It then asks the framework to make the call.
+
+### 3. The Tool Use Process: A 6-Step Flow
+
+The process of using a tool follows a consistent and logical cycle:
+
+1.  **Tool Definition**: First, we define our external functions (our "tools") and write clear descriptions for each, including their purpose and the parameters they accept. This is like creating the contact list for our assistant.
+2.  **LLM Decision**: The LLM receives the user's request and the list of available tools. It uses its reasoning ability to determine if any of its tools are suitable for fulfilling the request.
+3.  **Function Call Generation**: If the LLM decides to use a tool, it doesn't execute it directly. Instead, it generates a structured piece of data (usually JSON) specifying the **name** of the tool to call and the **arguments** to pass to it, extracted from the user's request.
+4.  **Tool Execution**: An **orchestration framework** (like LangChain or ADK) intercepts this JSON output. It's the framework's job to parse this request and execute the actual Python function with the provided arguments.
+5.  **Observation/Result**: The result from the executed function (e.g., the weather data from the API) is returned to the agent framework.
+6.  **LLM Processing**: The framework passes the tool's result back to the LLM as additional context. The LLM can then use this new information to formulate a final, user-friendly answer or decide on the next step in its workflow.
+
+```mermaid
+graph TD
+    A[User: "Weather in London?"] --> B{LLM};
+    subgraph "Step 1: Tool Definition"
+        T[Tool: get_weather(location)] --> B;
+    end
+    B -- "Step 2 & 3: I should use the weather tool.<br/>Generate JSON: { name: 'get_weather', args: { location: 'London' } }" --> C[Orchestration Framework];
+    C -- "Step 4: Execute Python function" --> D(External API);
+    D -- "Step 5: Return data: { temp: 15, condition: 'Cloudy' }" --> C;
+    C -- "Step 6: Feed result back to LLM" --> B;
+    B -- "The weather in London is 15°C and cloudy." --> F[Final Answer];flowchart LR
+    User["👤 User<br/>Weather in London?"] 
+    LLM["🤖 LLM<br/>Processing"]
+    Tool["🔧 Weather Tool<br/>get_weather()"]
+    API["🌐 Weather API<br/>External Service"]
+    Response["💬 Response<br/>15°C, Cloudy"]
+
+    User --> LLM
+    LLM -->|"Identifies need for weather data"| Tool
+    Tool -->|"API Call"| API
+    API -->|"Returns weather data"| Tool
+    Tool -->|"Structured response"| LLM
+    LLM -->|"Natural language"| Response
+    Response -->|"Delivered to"| User
+
+    classDef userStyle fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    classDef llmStyle fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    classDef toolStyle fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    classDef apiStyle fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    classDef responseStyle fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+
+    class User userStyle
+    class LLM llmStyle
+    class Tool toolStyle
+    class API apiStyle
+    class Response responseStyle
+   ```
+
+### 4. Practical Applications: Where Agents Meet Reality
+
+Tool use is essential for almost any task that requires an agent to be aware of and act upon the world outside its static knowledge.
+
+*   **Real-Time Information Retrieval**:
+    *   **Use Case**: A weather agent.
+    *   **Tool**: A weather API that takes a `location` and returns current conditions.
+*   **Interacting with Databases**:
+    *   **Use Case**: An e-commerce inventory checker.
+    *   **Tool**: An API call that takes a `product_id` and queries a database to return the stock count.
+*   **Performing Calculations**:
+    *   **Use Case**: A financial agent calculating profit.
+    *   **Tools**: A stock price API and a calculator function. The agent first calls the API to get the current price, then calls the calculator to compute the profit.
+*   **Sending Communications**:
+    *   **Use Case**: A personal assistant sending an email.
+    *   **Tool**: An email API that takes `recipient`, `subject`, and `body` as arguments.
+*   **Executing Code**:
+    *   **Use Case**: A coding assistant that can run and analyze code snippets.
+    *   **Tool**: A sandboxed code interpreter.
+*   **Controlling Other Systems**:
+    *   **Use Case**: A smart home agent.
+    *   **Tool**: An API that controls smart lights, taking a `command` (on/off) and `device_name`.
+
+### 5. Hands-On Example 1: LangChain (Defining & Calling Tools)
+
+#### The Goal
+Create an agent that can answer factual questions by using a simulated search tool.
+
+#### The LangChain Philosophy
+LangChain makes it easy to create tools from standard Python functions using the `@tool` decorator. The function's docstring is crucial, as it serves as the description for the LLM. You then "bind" these tools to an LLM and use an `AgentExecutor` to manage the entire tool-use cycle.
+
+#### The Code, Explained Step-by-Step
+
+```python
+# --- 1. Define the Tool ---
+# The `@langchain_tool` decorator registers this function as a tool.
+@langchain_tool
+def search_information(query: str) -> str:
+    """
+    Provides factual information on a given topic. Use this tool to
+    find answers to phrases like 'capital of France' or 'weather in London?'.
+    
+    IMPORTANT: The docstring is what the LLM reads to understand the tool.
+    It must be clear and descriptive.
+    """
+    print(f"--- TOOL CALLED: search_information with query: '{query}' ---")
+    # Simulate a search tool with predefined results.
+    simulated_results = { "weather in london": "15°C and cloudy." }
+    result = simulated_results.get(query.lower(), "No specific info found.")
+    return result
+
+# --- 2. Create the Agent ---
+tools = [search_information]
+# `create_tool_calling_agent` combines the LLM, the tools, and a prompt
+# into a single runnable agent. The `agent_scratchpad` is a special
+# placeholder where the agent keeps its internal thoughts and tool results.
+agent_prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a helpful assistant."),
+    ("human", "{input}"),
+    ("placeholder", "{agent_scratchpad}"),
+])
+agent = create_tool_calling_agent(llm, tools, agent_prompt)
+
+# --- 3. Create the Runtime (Executor) ---
+# `AgentExecutor` is the runtime environment for the agent. It is responsible for
+# Step 4 (Tool Execution) and Step 5 (Observation/Result). It orchestrates
+# the full loop shown in the diagram above.
+agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
+# --- 4. Run the Agent ---
+async def main():
+    # This query will trigger the tool.
+    await agent_executor.ainvoke({"input": "What's the weather like in London?"})
+    # This query will be answered by the LLM directly.
+    await agent_executor.ainvoke({"input": "Hello!"})
+```
+
+### 6. Hands-On Example 2: CrewAI (Agents and Tasks with Tools)
+
+#### The Goal
+Create a financial analyst agent that can look up the price of a stock using a tool.
+
+#### The CrewAI Philosophy
+CrewAI is structured around **Agents**, **Tasks**, and **Crews**. You give tools directly to an Agent. You then create a Task that instructs the Agent on what to do, including how to use its tools and handle potential errors. The Crew orchestrates the entire operation.
+
+#### The Code, Explained Step-by-Step
+
+```python
+# --- 1. Define the Tool ---
+# The `@tool` decorator from CrewAI is used here. This tool is designed
+# to be robust: it returns clean data (a float) on success and raises a
+# specific error on failure, which the agent can be taught to handle.
+@tool("Stock Price Lookup Tool")
+def get_stock_price(ticker: str) -> float:
+    """Fetches the latest simulated stock price for a given ticker."""
+    simulated_prices = { "AAPL": 178.15 }
+    price = simulated_prices.get(ticker.upper())
+    if price is not None:
+        return price
+    else:
+        raise ValueError(f"Ticker '{ticker.upper()}' not found.")
+
+# --- 2. Define the Agent ---
+# We create an agent and equip it with the tool in the `tools` list.
+financial_analyst_agent = Agent(
+    role='Senior Financial Analyst',
+    goal='Analyze stock data using provided tools.',
+    backstory="You are an experienced financial analyst...",
+    tools=[get_stock_price]
+)
+
+# --- 3. Define the Task ---
+# The task description is key. It explicitly tells the agent:
+# 1. What its goal is ("What is the current stock price for Apple?").
+# 2. Which tool to use ("Use the 'Stock Price Lookup Tool'").
+# 3. How to handle errors ("If the ticker is not found, you must report that...").
+analyze_aapl_task = Task(
+    description="What is the current simulated stock price for Apple (ticker: AAPL)? Use the 'Stock Price Lookup Tool' to find it. If the ticker is not found, you must report that you were unable to retrieve the price.",
+    expected_output="A single, clear sentence stating the simulated stock price for AAPL.",
+    agent=financial_analyst_agent
+)
+
+# --- 4. Formulate and Run the Crew ---
+# The Crew brings the agent and its task together and starts the execution.
+financial_crew = Crew(
+    agents=[financial_analyst_agent],
+    tasks=[analyze_aapl_task]
+)
+result = financial_crew.kickoff()
+print(result)
+```
+
+### 7. Hands-On Example 3: Google ADK (Pre-built & Execution Tools)
+
+#### The ADK Philosophy
+The Google Agent Developer Kit provides a library of powerful, pre-built tools that are easy to integrate, such as `google_search`. It also offers more advanced capabilities like a sandboxed `BuiltInCodeExecutor`, which allows an agent to write and run its own code to solve problems.
+
+#### Example A: Using a Pre-built Tool (Google Search)
+This demonstrates how simple it is to add powerful, existing functionality.
+
+```python
+# The key is adding the pre-built tool to the agent's tool list.
+root_agent = Agent(
+    name="basic_search_agent",
+    instruction="I can answer your questions by searching the internet.",
+    # Google Search is a pre-built tool, ready to use.
+    tools=[google_search] 
+)
+# The ADK Runner handles the execution when a query is passed.
+```
+
+#### Example B: Using a Code Executor Tool
+This is a more advanced form of Tool Use where the "tool" is a Python interpreter.
+
+```python
+# Here, instead of a simple tool, we give the agent a code_executor.
+code_agent = LlmAgent(
+    name="calculator_agent",
+    # The instruction tells the agent HOW to use the executor.
+    instruction="""You are a calculator agent.
+    When given a mathematical expression, write and execute Python code
+    to calculate the result. Return only the final numerical result.""",
+    # This equips the agent with a sandboxed Python interpreter.
+    code_executor=BuiltInCodeExecutor()
+)
+
+# When you ask this agent "Calculate (5 + 7) * 3", it will:
+# 1. Decide to use its code executor.
+# 2. Generate the code: `print((5 + 7) * 3)`
+# 3. The ADK runner will execute this code.
+# 4. The result `36` is returned to the LLM.
+# 5. The LLM provides the final answer: "36".
+```
+
+### 8. Final Summary & Key Takeaways
+
+#### At a Glance
+
+> **What**: LLMs are disconnected from the real world. The Tool Use pattern solves this by giving them access to external functions, APIs, and services, allowing them to retrieve real-time information and perform actions.
+>
+> **Why**: To build agents that are actually useful, they need to break out of their static knowledge bubble. Tool Use provides a standardized way for an LLM to reason about when an external function is needed and to get the result of that function's execution to inform its final response.
+>
+> **Rule of Thumb**: Use the Tool Use pattern whenever an agent needs to do something the LLM cannot do on its own. This includes accessing real-time data (weather, stocks), interacting with private data (databases), performing precise calculations, executing code, or triggering real-world actions (sending an email).
+
+#### Key Takeaways Checklist
+
+- [ ] **Tool Use (Function Calling)** allows agents to interact with external systems.
+- [ ] The process hinges on providing **clear descriptions and parameters** for each tool so the LLM can understand them.
+- [ ] The **LLM decides *when* to use a tool** and generates a structured request (JSON); the **framework executes the tool** and returns the result.
+- [ ] Frameworks like **LangChain**, **CrewAI**, and **Google ADK** provide robust abstractions to simplify this entire process.
+- [ ] A tool's docstring (**LangChain**) or description (**CrewAI**) is not just documentation—it is the primary instruction the LLM uses to decide how and when to use the tool.
