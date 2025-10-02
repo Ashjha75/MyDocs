@@ -98,38 +98,38 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Adding custom tab to sidebar...🪸');
-  // Find the <sl-sidebar-state-persist> container
-  const persist = document.querySelector('sl-sidebar-state-persist');
-  if (!persist) return;
+// document.addEventListener('DOMContentLoaded', () => {
+//   console.log('Adding custom tab to sidebar...🪸');
+//   // Find the <sl-sidebar-state-persist> container
+//   const persist = document.querySelector('sl-sidebar-state-persist');
+//   if (!persist) return;
 
-  // Create a new ul with your desired class and content
-  function addCustomUl() {
-    const customUl = document.createElement('ul');
-    customUl.className = 'tab-list tabbed-sidebar astro-3x5efdbn astro-6yyweqw4';
-    customUl.setAttribute('role', 'tablist');
+//   // Create a new ul with your desired class and content
+//   function addCustomUl() {
+//     const customUl = document.createElement('ul');
+//     customUl.className = 'tab-list tabbed-sidebar astro-3x5efdbn astro-6yyweqw4';
+//     customUl.setAttribute('role', 'tablist');
 
-    customUl.innerHTML = `
-      <li class="tab-item astro-3x5efdbn" role="presentation">
-        <a href="#__tab-custom" class="tab-link" aria-selected="false" role="tab" id="customtab0">
-          <svg aria-hidden="true" class="icon astro-3x5efdbn astro-35nr2byd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;">
-            <circle cx="12" cy="12" r="10" fill="white"/>
-            <text x="12" y="16" text-anchor="middle" font-size="10" fill="#222">New</text>
-          </svg>
-          Custom Tab
-        </a>
-      </li>
-    `;
+//     customUl.innerHTML = `
+//       <li class="tab-item astro-3x5efdbn" role="presentation">
+//         <a href="#__tab-custom" class="tab-link" aria-selected="false" role="tab" id="customtab0">
+//           <svg aria-hidden="true" class="icon astro-3x5efdbn astro-35nr2byd" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;">
+//             <circle cx="12" cy="12" r="10" fill="white"/>
+//             <text x="12" y="16" text-anchor="middle" font-size="10" fill="#222">New</text>
+//           </svg>
+//           Custom Tab
+//         </a>
+//       </li>
+//     `;
 
-    // Insert before the first .top-level ul
-    const firstUl = persist.querySelector('.top-level');
-    if (firstUl) {
-      persist.insertBefore(customUl, firstUl);
-    } else {
-      persist.appendChild(customUl);
-    }
-  }
+//     // Insert before the first .top-level ul
+//     const firstUl = persist.querySelector('.top-level');
+//     if (firstUl) {
+//       persist.insertBefore(customUl, firstUl);
+//     } else {
+//       persist.appendChild(customUl);
+//     }
+//   }
 
-  addCustomUl();
-});
+//   addCustomUl();
+// });
