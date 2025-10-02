@@ -1,5 +1,5 @@
 ---
-title: "AI Engineering Masterclass: The Planning Pattern"
+title: "Planning Pattern"
 ---
 
 

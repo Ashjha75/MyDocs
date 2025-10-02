@@ -1,5 +1,5 @@
 ---
-title: "AI Engineering Masterclass: The Tool Use Pattern (Function Calling)"
+title: "Function Calling"
 ---
 
 ## Table of Contents

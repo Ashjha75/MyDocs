@@ -1,5 +1,5 @@
 ---
-title: "AI Engineering Masterclass: The Multi-Agent Collaboration Pattern"
+title: "Multi-Agent Collaboration Pattern"
 ---
 
 ## Table of Contents
