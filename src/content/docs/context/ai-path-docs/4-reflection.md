@@ -174,7 +174,8 @@ def run_reflection_loop():
         message_history.append(HumanMessage(content=f"Critique of the previous code:\n{critique}"))
 
     print("\n--- FINAL REFINED CODE ---\n")
-    print(current_code)```
+    print(current_code)
+```
 
 ### 8. Hands-On Example 2: Google ADK (A Single Review Cycle)
 

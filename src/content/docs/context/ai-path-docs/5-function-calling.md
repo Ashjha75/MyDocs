@@ -1,5 +1,5 @@
 ---
-title: "Function Calling)"
+title: "Function Calling"
 ---
 
 ## Table of Contents
