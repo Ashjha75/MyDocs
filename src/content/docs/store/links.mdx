@@ -1,0 +1,234 @@
+---
+title: Link Store
+description: A collection of important and useful links organized by category
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<style>
+{`
+.link-card {
+  border: 1px solid var(--sl-color-gray-5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background: var(--sl-color-bg-nav);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.link-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--sl-color-accent);
+}
+
+.link-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.link-title {
+  font-weight: 600;
+  color: var(--sl-color-white);
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.link-title:hover {
+  color: var(--sl-color-accent);
+}
+
+.link-description {
+  color: var(--sl-color-gray-2);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.link-url {
+  font-size: 0.8rem;
+  color: var(--sl-color-gray-3);
+  font-family: var(--sl-font-mono);
+}
+
+.category-section {
+  margin-bottom: 2rem;
+}
+
+.category-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--sl-color-accent);
+}
+
+.category-icon {
+  font-size: 1.5rem;
+}
+`}
+</style>
+
+# 🔗 Link Store
+
+A curated collection of important links, tools, and resources organized for quick access.
+
+---
+
+<div className="category-section">
+  <h2 className="category-title">
+    <span className="category-icon">🚀</span>
+    Development Tools
+  </h2>
+  
+  <div className="link-card">
+    <div className="link-header">
+      <a href="https://github.com" className="link-title" target="_blank" rel="noopener noreferrer">
+        🐙 GitHub
+      </a>
+    </div>
+    <div className="link-description">
+      The world's leading software development platform for version control and collaboration.
+    </div>
+    <div className="link-url">https://github.com</div>
+  </div>
+
+  <div className="link-card">
+    <div className="link-header">
+      <a href="https://vercel.com" className="link-title" target="_blank" rel="noopener noreferrer">
+        ▲ Vercel
+      </a>
+    </div>
+    <div className="link-description">
+      Platform for frontend frameworks and static sites, built to integrate with your headless content.
+    </div>
+    <div className="link-url">https://vercel.com</div>
+  </div>
+
+  <div className="link-card">
+    <div className="link-header">
+      <a href="https://docs.astro.build" className="link-title" target="_blank" rel="noopener noreferrer">
+        🚀 Astro Docs
+      </a>
+    </div>
+    <div className="link-description">
+      Complete documentation for Astro, the web framework for content-driven websites.
+    </div>
+    <div className="link-url">https://docs.astro.build</div>
+  </div>
+</div>
+
+<div className="category-section">
+  <h2 className="category-title">
+    <span className="category-icon">🤖</span>
+    AI & Machine Learning
+  </h2>
+  
+  <div className="link-card">
+    <div className="link-header">
+      <a href="https://openai.com/api" className="link-title" target="_blank" rel="noopener noreferrer">
+        🧠 OpenAI API
+      </a>
+    </div>
+    <div className="link-description">
+      Access to GPT models and other AI tools through OpenAI's comprehensive API platform.
+    </div>
+    <div className="link-url">https://openai.com/api</div>
+  </div>
+
+  <div className="link-card">
+    <div className="link-header">
+      <a href="https://huggingface.co" className="link-title" target="_blank" rel="noopener noreferrer">
+        🤗 Hugging Face
+      </a>
+    </div>
+    <div className="link-description">
+      The AI community building the future with open source machine learning models and datasets.
+    </div>
+    <div className="link-url">https://huggingface.co</div>
+  </div>
+</div>
+
+<div className="category-section">
+  <h2 className="category-title">
+    <span className="category-icon">📚</span>
+    Learning Resources
+  </h2>
+  
+  <div className="link-card">
+    <div className="link-header">
+      <a href="https://developer.mozilla.org" className="link-title" target="_blank" rel="noopener noreferrer">
+        🌐 MDN Web Docs
+      </a>
+    </div>
+    <div className="link-description">
+      Comprehensive web development documentation and learning resources from Mozilla.
+    </div>
+    <div className="link-url">https://developer.mozilla.org</div>
+  </div>
+
+  <div className="link-card">
+    <div className="link-header">
+      <a href="https://spring.io/guides" className="link-title" target="_blank" rel="noopener noreferrer">
+        🍃 Spring Guides
+      </a>
+    </div>
+    <div className="link-description">
+      Step-by-step tutorials and guides for Spring Framework and Spring Boot development.
+    </div>
+    <div className="link-url">https://spring.io/guides</div>
+  </div>
+</div>
+
+<div className="category-section">
+  <h2 className="category-title">
+    <span className="category-icon">🛠️</span>
+    Utility Tools
+  </h2>
+  
+  <div className="link-card">
+    <div className="link-header">
+      <a href="https://regex101.com" className="link-title" target="_blank" rel="noopener noreferrer">
+        🔤 Regex101
+      </a>
+    </div>
+    <div className="link-description">
+      Online regex tester and debugger with real-time highlighting and explanations.
+    </div>
+    <div className="link-url">https://regex101.com</div>
+  </div>
+
+  <div className="link-card">
+    <div className="link-header">
+      <a href="https://jsonformatter.org" className="link-title" target="_blank" rel="noopener noreferrer">
+        📝 JSON Formatter
+      </a>
+    </div>
+    <div className="link-description">
+      Format, validate, and prettify JSON data with syntax highlighting and error detection.
+    </div>
+    <div className="link-url">https://jsonformatter.org</div>
+  </div>
+</div>
+
+---
+
+## 📌 Quick Add Template
+
+To add a new link, copy this template:
+
+```html
+<div className="link-card">
+  <div className="link-header">
+    <a href="YOUR_URL_HERE" className="link-title" target="_blank" rel="noopener noreferrer">
+      🔗 Link Title
+    </a>
+  </div>
+  <div className="link-description">
+    Brief description of what this link provides or why it's useful.
+  </div>
+  <div className="link-url">YOUR_URL_HERE</div>
+</div>
+```
