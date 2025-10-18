@@ -1,12 +1,5 @@
 
 
-### **Part III: The Architecture of a Modern Prompt**
-
-*   **Chapter 4: Structuring Prompts for Clarity and Control**
-    *   4.1 System Prompting: Setting Foundational Behavior
-    *   4.2 Role Prompting: Assigning a Persona to the Model
-    *   4.3 Using Delimiters: Creating Visual and Programmatic Separation
-
 *   **Chapter 5: Context Engineering: The Key to Aware Agents**
     *   5.1 Defining Context Engineering vs. Static Prompts
     *   5.2 The Layers of Dynamic Context
