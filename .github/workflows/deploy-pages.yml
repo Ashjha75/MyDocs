@@ -27,20 +27,19 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browsers and deps
-        # ensures chromium/headless_shell is available for any rendering steps
+      - name: Install Playwright browsers (required for mermaid rendering)
         run: npx playwright install --with-deps
 
       - name: Build
         run: npm run build
 
-      - name: Configure GitHub Pages
-        uses: actions/configure-pages@v3
+      - name: Inspect build output
+        run: |
+          echo "dist contents:" && ls -la ./dist || echo "dist missing"
 
-      - name: Upload artifact to Pages
-        uses: actions/upload-pages-artifact@v1
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          path: ./dist
-
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v1
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
