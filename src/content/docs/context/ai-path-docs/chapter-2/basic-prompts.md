@@ -1,5 +1,5 @@
-----
-title : "Basic Prompting Techniques"
+---
+title: "Basic Prompting Techniques"
 ---
 
 
