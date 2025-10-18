@@ -1,19 +1,5 @@
 
 
-***
-
-
-
-### **Part II: Foundational Prompting Patterns**
-
-*   **Chapter 3: Basic Prompting Techniques**
-    *   3.1 Zero-Shot Prompting: Instruction Without Exa`mples
-    *   3.2 One-Shot Prompting: Providing a Single Demonstration
-    *   3.3 Few-Shot Prompting: Establishing Patterns with Multiple Examples
-        *   3.3.1 The Importance of Example Quality and Diversity
-        *   3.3.2 Best Practices for Classification: Mixing Classes
-        *   3.3.3 The Evolution to "Many-Shot" Learning in Modern LLMs
-
 ### **Part III: The Architecture of a Modern Prompt**
 
 *   **Chapter 4: Structuring Prompts for Clarity and Control**
