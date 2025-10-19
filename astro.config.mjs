@@ -84,12 +84,14 @@ export default defineConfig({
                             { label: 'Transaction Management', link: '/springboot/jpa/transaction' },
                             { label: 'Auditing & Lifecycle Events', link: '/springboot/jpa/auditing' },
                             { label: 'Performance & Concurrency', link: '/springboot/jpa/advance' },
-                            { label: 'Caching', items:[
-                                { label: 'Caching Basics', link: '/springboot/jpa/caching/1basics' },
-                                { label: 'Caching Intermediate', link: '/springboot/jpa/caching/2intermediate' },
-                                { label: 'Caching Advanced', link: '/springboot/jpa/caching/3advance' },
-                                { label: 'Caching Interview Questions', link: '/springboot/jpa/caching/4interview' },
-                            ] },
+                            {
+                                label: 'Caching', items: [
+                                    { label: 'Caching Basics', link: '/springboot/jpa/caching/1basics' },
+                                    { label: 'Caching Intermediate', link: '/springboot/jpa/caching/2intermediate' },
+                                    { label: 'Caching Advanced', link: '/springboot/jpa/caching/3advance' },
+                                    { label: 'Caching Interview Questions', link: '/springboot/jpa/caching/4interview' },
+                                ]
+                            },
                         ],
                     },
                     {
@@ -207,20 +209,21 @@ export default defineConfig({
             },
             {
                 label: '⚡ Redis',
-                   items: [
-                            { label: 'Redis Fundamentals', link: '/redis/1redis-fundamentals' },
-                            { label: 'Redis Practical Use', link: '/redis/2practical-use-case' },
-                            { label: 'Redis Springboot Integration', link: '/redis/3springboot-integration' },
-                            { label: 'Redis Springboot Caching', link: '/redis/4springboot-redis-caching' },
-                            { label: 'SpringBoot Redis Advance Usage', link: '/redis/5springboot-advance-redis-usage' },
-                            { label: 'Redis Operational Knowledge', link: '/redis/6operational-knowledge' },
-                            { label: 'Redis Interview Questions', link: '/redis/7interview-focoused' },
+                items: [
+                    { label: 'Redis Fundamentals', link: '/redis/1redis-fundamentals' },
+                    { label: 'Redis Practical Use', link: '/redis/2practical-use-case' },
+                    { label: 'Redis Springboot Integration', link: '/redis/3springboot-integration' },
+                    { label: 'Redis Springboot Caching', link: '/redis/4springboot-redis-caching' },
+                    { label: 'SpringBoot Redis Advance Usage', link: '/redis/5springboot-advance-redis-usage' },
+                    { label: 'Redis Operational Knowledge', link: '/redis/6operational-knowledge' },
+                    { label: 'Redis Interview Questions', link: '/redis/7interview-focoused' },
 
-                        ],
+                ],
             },
             {
-                label: '☁️ AWS',
-                autogenerate: { directory: 'aws' },
+                label: '🏪 Store',
+                items: [
+                    { label: 'Links', link: '/store/links' },]
             },
         ],
     })],

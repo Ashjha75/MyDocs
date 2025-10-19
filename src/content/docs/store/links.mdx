@@ -7,67 +7,148 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
 
 <style>
 {`
-.link-card {
-  border: 1px solid var(--sl-color-gray-5);
-  border-radius: 0.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  background: var(--sl-color-bg-nav);
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+  /* Ensure theme compatibility using Starlight's CSS variables */
+  .link-card {
+    border: 1px solid var(--sl-color-gray-5, #d0d7de);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: var(--sl-color-gray-7, #f6f8fa);
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
 
-.link-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: var(--sl-color-accent);
-}
+  .dark .link-card {
+    background: var(--sl-color-gray-6, #161b22);
+    border-color: var(--sl-color-gray-5, #30363d);
+  }
 
-.link-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
-}
+  .link-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-color: var(--sl-color-accent, #0969da);
+  }
 
-.link-title {
-  font-weight: 600;
-  color: var(--sl-color-white);
-  text-decoration: none;
-  font-size: 1.1rem;
-}
+  .dark .link-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
 
-.link-title:hover {
-  color: var(--sl-color-accent);
-}
+  .link-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
 
-.link-description {
-  color: var(--sl-color-gray-2);
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
-}
+  .link-title {
+    font-weight: 600;
+    color: var(--sl-color-text-bright, #0969da);
+    text-decoration: none;
+    font-size: 1.1rem;
+    flex-grow: 1; /* Allow title to take available space */
+  }
 
-.link-url {
-  font-size: 0.8rem;
-  color: var(--sl-color-gray-3);
-  font-family: var(--sl-font-mono);
-}
+  .dark .link-title {
+    color: var(--sl-color-gray-2, #e6edf3);
+  }
 
-.category-section {
-  margin-bottom: 2rem;
-}
+  .link-title:hover {
+    color: var(--sl-color-accent, #0969da);
+  }
 
-.category-title {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid var(--sl-color-accent);
-}
+  .visit-button {
+    background: var(--sl-color-accent, #0969da);
+    color: var(--sl-color-white, #ffffff);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+    white-space: nowrap; /* Prevent button text wrapping */
+  }
 
-.category-icon {
-  font-size: 1.5rem;
-}
+  .visit-button:hover {
+    background: var(--sl-color-accent-high-contrast, #0550ae);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .dark .visit-button {
+    background: var(--sl-color-accent, #238636);
+  }
+
+  .dark .visit-button:hover {
+    background: var(--sl-color-accent-high-contrast, #2ea043);
+  }
+
+  .link-description {
+    color: var(--sl-color-text, #57606a);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+
+  .dark .link-description {
+    color: var(--sl-color-gray-3, #8b949e);
+  }
+
+  .link-url {
+    font-size: 0.8rem;
+    color: var(--sl-color-gray-4, #6e7781);
+    font-family: var(--sl-font-mono);
+    word-break: break-all; /* Ensure long URLs wrap nicely */
+    background: var(--sl-color-gray-6, #f6f8fa);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    display: inline-block;
+    margin-top: 0.25rem;
+  }
+
+  .dark .link-url {
+    background: var(--sl-color-gray-5, #21262d);
+    color: var(--sl-color-gray-3, #8b949e);
+  }
+
+  .category-section {
+    margin-bottom: 2.5rem; /* Slightly increased spacing */
+  }
+
+  .category-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* Increased gap for better visual balance */
+    margin-bottom: 1.25rem; /* Slightly increased spacing */
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--sl-color-accent, #0969da);
+    font-size: 1.5rem; /* Consistent with h2 sizing */
+    color: var(--sl-color-text-bright, #24292f);
+  }
+
+  .dark .category-title {
+    color: var(--sl-color-gray-1, #ffffff);
+  }
+
+  .category-icon {
+    font-size: 1.5rem;
+      color: var(--sl-color-accent, #0969da);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .link-header {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .visit-button {
+      align-self: flex-start; /* Align button to the start when stacked */
+    }
+  }
 `}
 </style>
 
@@ -78,157 +159,29 @@ A curated collection of important links, tools, and resources organized for quic
 ---
 
 <div className="category-section">
-  <h2 className="category-title">
-    <span className="category-icon">🚀</span>
-    Development Tools
-  </h2>
-  
+ 
   <div className="link-card">
     <div className="link-header">
-      <a href="https://github.com" className="link-title" target="_blank" rel="noopener noreferrer">
-        🐙 GitHub
-      </a>
+      <span className="link-title">Website to Markdown</span>
+      <button className="visit-button" onclick="window.open('https://markdowndown.vercel.app/', '_blank', 'noopener,noreferrer')">
+        Visit →
+      </button>
     </div>
     <div className="link-description">
       The world's leading software development platform for version control and collaboration.
     </div>
-    <div className="link-url">https://github.com</div>
+    <div className="link-url">https://markdowndown.vercel.app/</div>
   </div>
-
   <div className="link-card">
     <div className="link-header">
-      <a href="https://vercel.com" className="link-title" target="_blank" rel="noopener noreferrer">
-        ▲ Vercel
-      </a>
+      <span className="link-title">How to Do in Java</span>
+      <button className="visit-button" onclick="window.open('https://howtodoinjava.com/', '_blank', 'noopener,noreferrer')">
+        Visit →
+      </button>
     </div>
     <div className="link-description">
-      Platform for frontend frameworks and static sites, built to integrate with your headless content.
+      A comprehensive resource for Java programming tutorials, examples, and best practices.
     </div>
-    <div className="link-url">https://vercel.com</div>
-  </div>
-
-  <div className="link-card">
-    <div className="link-header">
-      <a href="https://docs.astro.build" className="link-title" target="_blank" rel="noopener noreferrer">
-        🚀 Astro Docs
-      </a>
-    </div>
-    <div className="link-description">
-      Complete documentation for Astro, the web framework for content-driven websites.
-    </div>
-    <div className="link-url">https://docs.astro.build</div>
+    <div className="link-url">https://howtodoinjava.com/</div>
   </div>
 </div>
-
-<div className="category-section">
-  <h2 className="category-title">
-    <span className="category-icon">🤖</span>
-    AI & Machine Learning
-  </h2>
-  
-  <div className="link-card">
-    <div className="link-header">
-      <a href="https://openai.com/api" className="link-title" target="_blank" rel="noopener noreferrer">
-        🧠 OpenAI API
-      </a>
-    </div>
-    <div className="link-description">
-      Access to GPT models and other AI tools through OpenAI's comprehensive API platform.
-    </div>
-    <div className="link-url">https://openai.com/api</div>
-  </div>
-
-  <div className="link-card">
-    <div className="link-header">
-      <a href="https://huggingface.co" className="link-title" target="_blank" rel="noopener noreferrer">
-        🤗 Hugging Face
-      </a>
-    </div>
-    <div className="link-description">
-      The AI community building the future with open source machine learning models and datasets.
-    </div>
-    <div className="link-url">https://huggingface.co</div>
-  </div>
-</div>
-
-<div className="category-section">
-  <h2 className="category-title">
-    <span className="category-icon">📚</span>
-    Learning Resources
-  </h2>
-  
-  <div className="link-card">
-    <div className="link-header">
-      <a href="https://developer.mozilla.org" className="link-title" target="_blank" rel="noopener noreferrer">
-        🌐 MDN Web Docs
-      </a>
-    </div>
-    <div className="link-description">
-      Comprehensive web development documentation and learning resources from Mozilla.
-    </div>
-    <div className="link-url">https://developer.mozilla.org</div>
-  </div>
-
-  <div className="link-card">
-    <div className="link-header">
-      <a href="https://spring.io/guides" className="link-title" target="_blank" rel="noopener noreferrer">
-        🍃 Spring Guides
-      </a>
-    </div>
-    <div className="link-description">
-      Step-by-step tutorials and guides for Spring Framework and Spring Boot development.
-    </div>
-    <div className="link-url">https://spring.io/guides</div>
-  </div>
-</div>
-
-<div className="category-section">
-  <h2 className="category-title">
-    <span className="category-icon">🛠️</span>
-    Utility Tools
-  </h2>
-  
-  <div className="link-card">
-    <div className="link-header">
-      <a href="https://regex101.com" className="link-title" target="_blank" rel="noopener noreferrer">
-        🔤 Regex101
-      </a>
-    </div>
-    <div className="link-description">
-      Online regex tester and debugger with real-time highlighting and explanations.
-    </div>
-    <div className="link-url">https://regex101.com</div>
-  </div>
-
-  <div className="link-card">
-    <div className="link-header">
-      <a href="https://jsonformatter.org" className="link-title" target="_blank" rel="noopener noreferrer">
-        📝 JSON Formatter
-      </a>
-    </div>
-    <div className="link-description">
-      Format, validate, and prettify JSON data with syntax highlighting and error detection.
-    </div>
-    <div className="link-url">https://jsonformatter.org</div>
-  </div>
-</div>
-
----
-
-## 📌 Quick Add Template
-
-To add a new link, copy this template:
-
-```html
-<div className="link-card">
-  <div className="link-header">
-    <a href="YOUR_URL_HERE" className="link-title" target="_blank" rel="noopener noreferrer">
-      🔗 Link Title
-    </a>
-  </div>
-  <div className="link-description">
-    Brief description of what this link provides or why it's useful.
-  </div>
-  <div className="link-url">YOUR_URL_HERE</div>
-</div>
-```
