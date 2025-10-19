@@ -22,12 +22,17 @@ A well-engineered context isn't just a single piece of information; it's a caref
 
 ```mermaid
 graph TD
-    subgraph "Final, Rich Context Sent to LLM"
-        D[Layer 3: Implicit Data<br/><em>(e.g., User ID, Chat History)</em>] --> C
-        C[Layer 2: External Data<br/><em>(e.g., RAG Documents, Tool Outputs)</em>] --> B
-        B[Layer 1: System Prompt<br/><em>(e.g., Core Rules, Persona)</em>] --> A(LLM)
-    end
-    style A fill:#cde,stroke:#333,stroke-width:2px
+
+subgraph Final_Rich_Context_Sent_to_LLM
+
+D[Layer 3: Implicit Data - e.g. User ID, Chat History] --> C
+C[Layer 2: External Data - e.g. RAG Documents, Tool Outputs] --> B
+B[Layer 1: System Prompt - e.g. Core Rules, Persona] --> A[LLM]
+
+end
+
+style A fill:#cde,stroke:#333,stroke-width:2px
+
 ```
 
 Let's break down each layer in this diagram:
