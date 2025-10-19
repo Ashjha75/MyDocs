@@ -3,14 +3,6 @@
 
 
 
-*   **Chapter 10: Supplementary Prompting Techniques**
-    *   10.1 Iterative Prompting and Manual Refinement
-    *   10.2 Providing Negative Examples
-    *   10.3 Using Analogies to Frame Tasks
-    *   10.4 Factored Cognition / Decomposition: Breaking Down Complex Tasks
-    *   10.5 Retrieval Augmented Generation (RAG): Grounding Responses in External Data
-    *   10.6 The Persona Pattern: Defining the Target Audience
-
 ### **Part VII: Specialized Applications and Best Practices**
 
 *   **Chapter 11: Prompting for Specific Domains**
