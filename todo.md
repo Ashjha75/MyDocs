@@ -3,16 +3,6 @@
 
 
 
-### **Part VI: Advanced Methodologies and Optimization**
-
-*   **Chapter 9: Automating and Refining Prompts**
-    *   9.1 Automatic Prompt Engineering (APE): Using LLMs to Generate Prompts
-    *   9.2 Programmatic Prompt Optimization (e.g., DSPy)
-        *   9.2.1 The Role of a Goldset and Objective Function
-        *   9.2.2 Optimizing Few-Shot Examples
-        *   9.2.3 Optimizing Instructional Prompts
-    *   9.3 Using LLMs to Refine Prompts (The Meta Approach)
-
 *   **Chapter 10: Supplementary Prompting Techniques**
     *   10.1 Iterative Prompting and Manual Refinement
     *   10.2 Providing Negative Examples
