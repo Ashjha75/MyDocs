@@ -1,14 +1,5 @@
 
 
-### **Part IV: Eliciting Advanced Reasoning**
-
-*   **Chapter 7: Techniques for Multi-Step Thought Processes**
-    *   7.1 Chain of Thought (CoT) Prompting
-        *   7.1.1 Zero-Shot CoT: "Let's think step by step"
-        *   7.1.2 Few-Shot CoT: Demonstrating the Reasoning Process
-    *   7.2 Self-Consistency: Improving Reliability with Majority Voting
-    *   7.3 Step-Back Prompting: Evoking Reasoning via Abstraction
-    *   7.4 Tree of Thoughts (ToT): Exploring Multiple Reasoning Paths Concurrently
 
 ### **Part V: Enabling Action and Environmental Interaction**
 
