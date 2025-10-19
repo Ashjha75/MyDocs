@@ -1,13 +1,7 @@
 
 
 
-### **Part V: Enabling Action and Environmental Interaction**
 
-*   **Chapter 8: Bridging Prompts to the Real World**
-    *   8.1 Tool Use / Function Calling: The Mechanism of Action
-    *   8.2 The ReAct Framework: Synergizing Reason and Action
-        *   8.2.1 The Thought -> Action -> Observation Loop
-        *   8.2.2 A Practical Trace of a ReAct Agent
 
 ### **Part VI: Advanced Methodologies and Optimization**
 
