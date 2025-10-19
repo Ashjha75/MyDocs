@@ -1,5 +1,5 @@
 ---
-title: Tuning the Engine: A Guide to LLM Settings
+title: "Tuning the Engine: A Guide to LLM Settings"
 ---
 
 Welcome. Until now, our focus has been on crafting the *input* to the model—the prompt. We will now turn our attention to the model's internal "engine room." The settings we are about to explore control *how* the model generates its response. They govern its creativity, its predictability, its verbosity, and its adherence to structure.
