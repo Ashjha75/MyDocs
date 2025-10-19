@@ -1,21 +1,5 @@
 
 
-*   **Chapter 5: Context Engineering: The Key to Aware Agents**
-    *   5.1 Defining Context Engineering vs. Static Prompts
-    *   5.2 The Layers of Dynamic Context
-        *   5.2.1 System Prompts
-        *   5.2.2 External Data (Retrieved Documents, Tool Outputs)
-        *   5.2.3 Implicit Data (User Identity, History)
-    *   5.3 The Role of Context in Agentic Behaviors (Memory, Planning)
-
-*   **Chapter 6: Engineering Structured and Verifiable Outputs**
-    *   6.1 Requesting Structured Output: JSON, XML, CSV
-    *   6.2 The Benefit of Forced Structure: Limiting Hallucinations
-    *   6.3 Leveraging Pydantic for an Object-Oriented Facade
-        *   6.3.1 Parsing and Validating LLM JSON with `model_validate_json`
-        *   6.3.2 Handling XML with `xmltodict` and Field Aliases
-        *   6.3.3 Ensuring Interoperability in Agentic Systems
-
 ### **Part IV: Eliciting Advanced Reasoning**
 
 *   **Chapter 7: Techniques for Multi-Step Thought Processes**
