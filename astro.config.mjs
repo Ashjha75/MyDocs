@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import rehypeMermaid from 'rehype-mermaid';
 import starlightThemeGalaxy from 'starlight-theme-galaxy'
+
 // https://astro.build/config
 export default defineConfig({
     markdown: {
