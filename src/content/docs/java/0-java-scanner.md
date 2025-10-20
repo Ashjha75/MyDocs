@@ -1,4 +1,6 @@
-# Java Scanner Class: Comprehensive Guide
+---
+title: Java Scanner Class: Comprehensive Guide
+---
 
 The `Scanner` class in Java (java.util.Scanner) is a powerful utility for reading user input from various sources, including keyboard (System.in), files, and strings. It provides methods to parse and retrieve different data types (int, float, String, etc.) from the input stream.
 
