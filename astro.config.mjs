@@ -202,7 +202,7 @@ export default defineConfig({
                 label: '🍵 Java',
                 items: [
                     { label: 'JAVA Scanner ', link: '/java/0-java-scanner' },
-                    { label: 'JAVA NOTES', link: '/java/1-javanotes' },
+                    { label: 'JAVA NOTES', link: '/java/1-java-array-notes' },
                 ]
             },
             {
