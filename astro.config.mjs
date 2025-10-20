@@ -198,7 +198,7 @@ export default defineConfig({
 
                 ],
             },
-             {
+            {
                 label: '🍵 Java',
                 items: [
                     { label: 'JAVA Scanner ', link: '/java/0-java-scanner' },
@@ -232,6 +232,10 @@ export default defineConfig({
                 label: '🏪 Store',
                 items: [
                     { label: 'Links', link: '/store/links' },]
+            },
+            {
+                label: '📇 Cheatsheets',
+                autogenerate: { directory: 'cheatsheet' },
             },
         ],
     })],
