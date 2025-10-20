@@ -197,6 +197,11 @@ export default defineConfig({
 
                 ],
             },
+             {
+                label: '🍵 Java',
+                items: [
+                    { label: 'JAVA NOTES', link: '/java/1-javanotes' },]
+            },
             {
                 label: '🤖 Context',
                 autogenerate: { directory: 'context' },
