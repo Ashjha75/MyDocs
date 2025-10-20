@@ -870,3 +870,301 @@ boolean isSortedCustom = ArrayUtils.isSorted(users, Comparator.comparing(User::g
 
 ---
 
+## Notes: Converting Arrays of Primitives to Arrays of Objects in Java
+
+Learn how to convert arrays of primitives (int, double, etc.) to arrays of their corresponding wrapper objects (Integer, Double, etc.) using Java Streams and utility methods.
+
+### 1. Using Java 8 Streams
+- Use `Arrays.stream()` and `.boxed()` to convert primitive arrays to object arrays.
+
+**Example (int[] to Integer[]):**
+```java
+int[] intArray = {1, 2, 3, 4, 5};
+Integer[] integerArray = Arrays.stream(intArray)
+    .boxed()
+    .toArray(Integer[]::new);
+```
+
+**Example (double[] to Double[]):**
+```java
+double[] doubleArray = {1.1, 2.2, 3.3};
+Double[] doubleObjArray = Arrays.stream(doubleArray)
+    .boxed()
+    .toArray(Double[]::new);
+```
+
+### 2. Using Loops
+- For older Java versions, use a loop to manually box each element.
+
+**Example:**
+```java
+int[] intArray = {1, 2, 3, 4, 5};
+Integer[] integerArray = new Integer[intArray.length];
+for (int i = 0; i < intArray.length; i++) {
+    integerArray[i] = intArray[i];
+}
+```
+
+### 3. Using Apache Commons Lang
+- Use `ArrayUtils.toObject()` for quick conversion (requires Apache Commons Lang).
+
+**Example:**
+```java
+int[] intArray = {1, 2, 3, 4, 5};
+Integer[] integerArray = ArrayUtils.toObject(intArray);
+```
+
+### Key Points
+- Use `.boxed()` with Streams for concise, modern code.
+- Manual loops work in all Java versions.
+- `ArrayUtils.toObject()` is convenient but requires an external library.
+- Converting is useful for working with collections, generics, and APIs that require object types.
+
+---
+
+
+## Notes: Converting Between Lists and Arrays in Java
+
+Learn how to convert a list to an array and an array to a list in Java using core APIs and Streams.
+
+### 1. Converting List to Array
+
+#### 1.1. Using List.toArray()
+- `Object[] toArray()`: returns an array of all elements.
+- `<T> T[] toArray(T[] a)`: returns an array of the specified type.
+- `<T> T[] toArray(IntFunction<T[]> generator)`: uses a generator function to allocate the array.
+
+**Example:**
+```java
+List<String> list = Arrays.asList("A", "B", "C");
+Object[] objArray = list.toArray();
+String[] stringArray1 = list.toArray(new String[0]);
+String[] stringArray2 = list.toArray(String[]::new);
+```
+
+#### 1.2. Using Stream.toArray()
+- Use `list.stream().toArray()` or with a generator for type safety.
+- Streams allow filtering and parallel processing.
+
+**Example:**
+```java
+List<String> list = Arrays.asList("A", "B", "C");
+String[] stringArray = list.stream().toArray(String[]::new);
+
+// Filtered example
+String[] filteredArray = list.stream()
+    .filter(s -> s.equals("A"))
+    .toArray(String[]::new);
+```
+
+### 2. Converting Array to List
+
+#### 2.1. Using Arrays.asList()
+- Returns a fixed-size list backed by the array (changes reflect both ways).
+
+**Example:**
+```java
+String[] stringArray = new String[]{"A", "B", "C"};
+List<String> list = Arrays.asList(stringArray);
+list.set(0, "Aa");
+System.out.println(list); // [Aa, B, C]
+System.out.println(Arrays.toString(stringArray)); // [Aa, B, C]
+// list.add("D"); // UnsupportedOperationException
+```
+
+#### 2.2. Using Collections.unmodifiableList()
+- Creates an unmodifiable list from the array.
+
+**Example:**
+```java
+String[] stringArray = new String[]{"A", "B", "C"};
+List<String> list = Collections.unmodifiableList(Arrays.asList(stringArray));
+// list.set(0, "Aa"); // UnsupportedOperationException
+```
+
+#### 2.3. Using Iteration and Stream
+- Use `Stream.of(array).collect(Collectors.toList())` for a mutable, independent list.
+
+**Example:**
+```java
+String[] stringArray = new String[]{"A", "B", "C"};
+List<String> list = Stream.of(stringArray).collect(Collectors.toList());
+list.add("D");
+System.out.println(list); // [A, B, C, D]
+System.out.println(Arrays.toString(stringArray)); // [A, B, C]
+```
+
+### Key Points
+- `Arrays.asList()` returns a fixed-size, backed list; changes to one affect the other.
+- Use Streams or iteration for a new, independent, mutable list.
+- Use `Collections.unmodifiableList()` for a read-only list.
+- Choose the method based on mutability and independence requirements.
+
+---
+
+## Notes: Converting Between Arrays and Streams in Java
+
+Learn how to convert arrays to streams and streams to arrays in Java, for both primitives and objects.
+
+### Quick Reference
+```java
+String[] stringArray = {"a", "b", "c", "d", "e"};
+// array -> stream
+Stream<String> strStream = Arrays.stream(stringArray);
+// stream -> array
+String[] stringArray2 = strStream.toArray(String[]::new);
+```
+
+### Specialized Primitive Streams
+- `IntStream` – for `int` values
+- `LongStream` – for `long` values
+- `DoubleStream` – for `double` values
+
+### 1. Converting an Array to Stream
+
+#### 1.1. Method Syntax
+- `Stream<T> stream(T[] array)`
+- `Stream<T> stream(T[] array, int start, int end)`
+
+#### 1.2. Primitive Array to Stream
+```java
+int[] primitiveArray = {0,1,2,3,4};
+IntStream intStream = Arrays.stream(primitiveArray);
+
+// To Stream<Integer>
+Stream<Integer> integerStream = Arrays.stream(primitiveArray).boxed();
+```
+
+#### 1.3. Object Array to Stream
+```java
+String[] stringArray = {"a", "b", "c", "d", "e"};
+Stream<String> strStream = Arrays.stream(stringArray);
+```
+
+### 2. Converting a Stream to Array
+
+#### 2.1. Method Syntax
+- `Object[] toArray()`
+- `T[] toArray(IntFunction<T[]> generator)`
+
+#### 2.2. Stream to Primitive Array
+```java
+IntStream intStream = Arrays.stream(new int[]{1,2,3});
+int[] primitiveArray = intStream.toArray();
+
+// Stream<Integer> to int[]
+Stream<Integer> integerStream = Arrays.stream(new Integer[]{1,2,3});
+int[] primitiveArray2 = integerStream.mapToInt(i -> i).toArray();
+```
+
+#### 2.3. Stream to Object Array
+```java
+Stream<String> strStream = Arrays.stream(new String[]{});
+String[] stringArray = strStream.toArray(String[]::new);
+```
+
+### Key Points
+- Use `Arrays.stream()` for array-to-stream conversion.
+- Use `.boxed()` to convert primitive streams to object streams.
+- Use `Stream.toArray()` with a generator for type safety.
+- Specialized streams (`IntStream`, `LongStream`, `DoubleStream`) support aggregate operations like `sum()` and `average()`.
+- For custom objects, use the generic `Stream<T>`.
+
+---
+
+## Notes: Converting Between String and String Array in Java
+
+Learn how to convert a String to a String array and vice versa using `String.split()`, `Pattern.split()`, and `String.join()`.
+
+### 1. String to String[]
+
+#### 1.1. Using String.split()
+- Use `split()` to tokenize a string by a delimiter or regex.
+
+**Example:**
+```java
+String names = "alex,brian,charles,david";
+String[] namesArray = names.split(","); // [alex, brian, charles, david]
+```
+
+#### 1.2. Using Pattern.split()
+- Use `Pattern.compile(delimiter).split(string)` for regex-based splitting.
+
+**Example:**
+```java
+String names = "alex,brian,charles,david";
+Pattern pattern = Pattern.compile(",");
+String[] namesArray = pattern.split(names); // [alex, brian, charles, david]
+```
+
+### 2. String[] to String
+
+- Use `String.join(delimiter, array)` to join array elements into a single string.
+
+**Example:**
+```java
+String[] tokens = {"How","To","Do","In","Java"};
+String blogName1 = String.join("", tokens);      // HowToDoInJava
+String blogName2 = String.join(" ", tokens);     // How To Do In Java
+String blogName3 = String.join("-", tokens);     // How-To-Do-In-Java
+```
+
+### Key Points
+- `split()` and `Pattern.split()` are flexible for tokenizing strings.
+- `String.join()` is concise for building strings from arrays with any delimiter.
+- For complex splitting, use regex patterns with `Pattern.split()`.
+- For joining, choose a delimiter that matches your output format.
+
+---
+
+## Notes: Converting String Array to int[] or Integer[] in Java
+
+Learn how to convert a String array to an array of int or Integer values using Java 8 Streams, including handling invalid values.
+
+### 1. String[] to int[]
+- Use `Arrays.stream()` and `mapToInt(Integer::parseInt)` to parse each string and collect to an int array.
+
+**Example:**
+```java
+String[] strArray = new String[] {"1", "2", "3"};
+int[] intArray = Arrays.stream(strArray)
+        .mapToInt(Integer::parseInt)
+        .toArray();
+System.out.println(Arrays.toString(intArray)); // [1, 2, 3]
+```
+
+### 2. String[] to Integer[]
+- Use `map(Integer::parseInt)` and collect to an Integer array.
+
+**Example:**
+```java
+String[] strArray = new String[] {"1", "2", "3"};
+Integer[] integerArray = Arrays.stream(strArray)
+        .map(Integer::parseInt)
+        .toArray(Integer[]::new);
+System.out.println(Arrays.toString(integerArray)); // [1, 2, 3]
+```
+
+### 3. Handling Invalid Values
+- Use a try-catch in the mapping function to handle `NumberFormatException` and return a default value (e.g., -1) for invalid entries.
+
+**Example:**
+```java
+String[] invalidStrArray = new String[]{"1", "2", "3", "four", "5"};
+int[] intArray = Arrays.stream(invalidStrArray).mapToInt(str -> {
+    try {
+        return Integer.parseInt(str);
+    } catch (NumberFormatException nfe) {
+        return -1;
+    }
+}).toArray();
+System.out.println(Arrays.toString(intArray)); // [1, 2, 3, -1, 5]
+```
+
+### Key Points
+- Use `mapToInt()` for primitive int arrays, `map()` for Integer arrays.
+- Always handle possible parsing errors when working with external data.
+- Choose a sensible default value for invalid entries based on your use case.
+- These techniques work for other numeric types (Double, Long) with their respective parsing methods.
+
+---
