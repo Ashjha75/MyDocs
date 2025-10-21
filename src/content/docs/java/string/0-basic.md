@@ -1,5 +1,5 @@
 ---
-title: "Java Strings: Common Interview Questions and Answers"
+title: "String Basic"
 ---
 
 ## What is a String in Java? Is it a class or a data type?

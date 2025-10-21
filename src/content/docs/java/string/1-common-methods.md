@@ -1,5 +1,5 @@
 ---
-title: "Java Strings: Common Interview Questions and Answers"
+title: "String Common Methods"
 ---
 
 ## What does length() method return?
