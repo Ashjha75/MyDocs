@@ -203,7 +203,8 @@ export default defineConfig({
                 items: [
                     { label: 'JAVA Scanner ', link: '/java/0-java-scanner' },
                     { label: 'JAVA NOTES', link: '/java/1-java-array-notes' },
-                    { label: 'String basics', link: '/java/string/0-basic' },
+                    { label: 'JAVA String', autogenerate: { directory: 'java/string' } },
+                    
                 ]
             },
             {
