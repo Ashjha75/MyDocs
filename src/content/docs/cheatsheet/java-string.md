@@ -2,7 +2,7 @@
 title: "Java String Methods Cheat Sheet"
 ---
 
-Based on the search results and common DSA patterns, here's a complete reference of String methods frequently used in coding interviews and competitive programming.[geeksforgeeks+1](https://www.geeksforgeeks.org/dsa/string-data-structure/)​
+Based on common DSA patterns, here's a complete reference of String methods frequently used in coding interviews and competitive programming.
 
 ## 1. Character Access & Information
 
@@ -64,10 +64,18 @@ Check if empty/whitespace (Java 11+)
 
 **DSA Usage:**
 
-java
-
-`// Character frequency counting  for  (char c : str.toCharArray())  {  freq[c -  'a']++;  }  
-// Palindrome check  for  (int i =  0; i < str.length()  /  2; i++)  {   if  (str.charAt(i)  != str.charAt(str.length()  -  1  - i))  {   return  false;   }  }` 
+```java
+// Character frequency counting
+for (char c : str.toCharArray()) {
+	freq[c - 'a']++;
+}
+// Palindrome check
+for (int i = 0; i < str.length() / 2; i++) {
+	if (str.charAt(i) != str.charAt(str.length() - 1 - i)) {
+		return false;
+	}
+}
+```
 
 ## 2. Search & Index Methods
 
@@ -137,10 +145,16 @@ Check suffix
 
 **DSA Usage:**
 
-java
-
-`// Pattern matching  if  (text.indexOf(pattern)  !=  -1)  {   // Pattern found  }  
-// File extension validation  if  (fileName.endsWith(".java"))  {   // Process Java file  }` 
+```java
+// Pattern matching
+if (text.indexOf(pattern) != -1) {
+	// Pattern found
+}
+// File extension validation
+if (fileName.endsWith(".java")) {
+	// Process Java file
+}
+```
 
 ## 3. Comparison Methods
 
@@ -194,10 +208,14 @@ Compare with CharSequence
 
 **DSA Usage:**
 
-java
-
-`// Sorting strings  Arrays.sort(strings,  (a, b)  -> a.compareTo(b));  
-// Case-insensitive comparison  if  ("Admin".equalsIgnoreCase(userRole))  {   // Grant access  }` 
+```java
+// Sorting strings
+Arrays.sort(strings, (a, b) -> a.compareTo(b));
+// Case-insensitive comparison
+if ("Admin".equalsIgnoreCase(userRole)) {
+	// Grant access
+}
+```
 
 ## 4. Substring & Extraction Methods
 
@@ -225,10 +243,17 @@ Substring
 
 **DSA Usage:**
 
-java
-
-`// Generate all substrings  for  (int i =  0; i < str.length(); i++)  {   for  (int j = i +  1; j <= str.length(); j++)  {   String sub = str.substring(i, j);   // Process substring   }  }  
-// Sliding window  String window = str.substring(left, right +  1);` 
+```java
+// Generate all substrings
+for (int i = 0; i < str.length(); i++) {
+	for (int j = i + 1; j <= str.length(); j++) {
+		String sub = str.substring(i, j);
+		// Process substring
+	}
+}
+// Sliding window
+String window = str.substring(left, right + 1);
+```
 
 ## 5. Modification Methods (Return New String)
 
@@ -330,11 +355,14 @@ Concatenate strings
 
 **DSA Usage:**
 
-java
-
-`// Remove non-alphanumeric  String cleaned = str.replaceAll("[^a-zA-Z0-9]",  "");  
-// Case-insensitive operations  String lower = str.toLowerCase();  
-// Remove all spaces  String noSpaces = str.replaceAll("\\s+",  "");` 
+```java
+// Remove non-alphanumeric
+String cleaned = str.replaceAll("[^a-zA-Z0-9]", "");
+// Case-insensitive operations
+String lower = str.toLowerCase();
+// Remove all spaces
+String noSpaces = str.replaceAll("\\s+", "");
+```
 
 ## 6. Split & Join Methods
 
@@ -372,10 +400,14 @@ Join with delimiter
 
 **DSA Usage:**
 
-java
-
-`// Reverse words  String[] words = str.split("\\s+");  Collections.reverse(Arrays.asList(words));  String reversed =  String.join(" ", words);  
-// CSV parsing  String[] fields = line.split(",");` 
+```java
+// Reverse words
+String[] words = str.split("\\s+");
+Collections.reverse(Arrays.asList(words));
+String reversed = String.join(" ", words);
+// CSV parsing
+String[] fields = line.split(",");
+```
 
 ## 7. Pattern Matching Methods
 
@@ -405,10 +437,16 @@ Check if regions match
 
 **DSA Usage:**
 
-java
-
-`// Validation  if  (email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$"))  {   // Valid email  }  
-// Pattern checking  if  (str.matches("[a-zA-Z]+"))  {   // Only letters  }` 
+```java
+// Validation
+if (email.matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+	// Valid email
+}
+// Pattern checking
+if (str.matches("[a-zA-Z]+")) {
+	// Only letters
+}
+```
 
 ## 8. Conversion Methods
 
@@ -470,11 +508,14 @@ Get byte array
 
 **DSA Usage:**
 
-java
-
-`// Number to string  String numStr =  String.valueOf(number);  
-// String to number (atoi)  int num =  Integer.parseInt(str);  
-// Character array to string  String s =  String.valueOf(charArray);` 
+```java
+// Number to string
+String numStr = String.valueOf(number);
+// String to number (atoi)
+int num = Integer.parseInt(str);
+// Character array to string
+String s = String.valueOf(charArray);
+```
 
 ## 9. Format & Builder Methods
 
@@ -512,10 +553,12 @@ Repeat string (Java 11+)
 
 **DSA Usage:**
 
-java
-
-`// Formatted output  String result =  String.format("Result: %d/%d = %.2f", a, b,  (double)a/b);  
-// String repetition  String pattern =  "01".repeat(5);  // "0101010101"` 
+```java
+// Formatted output
+String result = String.format("Result: %d/%d = %.2f", a, b, (double)a/b);
+// String repetition
+String pattern = "01".repeat(5); // "0101010101"
+```
 
 ## 10. Advanced Methods
 
@@ -569,10 +612,14 @@ Unicode processing
 
 **DSA Usage:**
 
-java
-
-`// String interning for comparison optimization  String s1 =  new  String("test").intern();  String s2 =  "test";  // s1 == s2 → true  
-// Stream processing  long count = str.chars()   .filter(c -> c ==  'a')   .count();` 
+```java
+// String interning for comparison optimization
+String s1 = new String("test").intern();
+String s2 = "test";
+// s1 == s2 → true
+// Stream processing
+long count = str.chars().filter(c -> c == 'a').count();
+```
 
 ## Quick Reference: Most Used in DSA
 
