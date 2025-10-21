@@ -86,41 +86,44 @@
 <p><code dir="auto">String str =  "Java";  str.concat(" Programming");  // Creates new object, original unchanged  System.out.println(str);  // Output: Java (not "Java Programming")</code></p>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="java"><code><div class="ec-line"><div class="code"><span style="--0:#F0F3F6;--1:#227188">String</span><span style="--0:#FFB757;--1:#000000"> </span><span style="--0:#F0F3F6;--1:#001080">str</span><span style="--1:#000000"><span style="--0:#FFB757"> </span><span style="--0:#FF9492">=</span><span style="--0:#F0F3F6"> </span></span><span style="--0:#ADDCFF;--1:#A31515">"Java"</span><span style="--0:#F0F3F6;--1:#000000">;</span></div></div><div class="ec-line"><div class="code"><span style="--0:#F0F3F6;--1:#001080">str</span><span style="--0:#F0F3F6;--1:#000000">.</span><span style="--0:#DBB7FF;--1:#795E26">concat</span><span style="--0:#F0F3F6;--1:#000000">(</span><span style="--0:#ADDCFF;--1:#A31515">" Programming"</span><span style="--0:#F0F3F6;--1:#000000">); </span><span style="--0:#BDC4CC;--1:#007A00">// Creates new object, original unchanged</span></div></div><div class="ec-line"><div class="code"><span style="--0:#F0F3F6;--1:#001080">System</span><span style="--0:#F0F3F6;--1:#000000">.</span><span style="--0:#F0F3F6;--1:#001080">out</span><span style="--0:#F0F3F6;--1:#000000">.</span><span style="--0:#DBB7FF;--1:#795E26">println</span><span style="--0:#F0F3F6;--1:#000000">(str); </span><span style="--0:#BDC4CC;--1:#007A00">// Output: Java (not "Java Programming")</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="String str = &#x22;Java&#x22;;str.concat(&#x22; Programming&#x22;); // Creates new object, original unchangedSystem.out.println(str); // Output: Java (not &#x22;Java Programming&#x22;)"><div></div></button></div></figure></div>
 <p><strong>Benefits:</strong></p>
-<ul>
-<li>
-<p>Thread-safe without synchronization</p>
-</li>
-<li>
-<p>String Pool optimization (memory efficiency)</p>
-</li>
-<li>
-<p>Secure for sensitive data (passwords, network connections)</p>
-</li>
-<li>
-<p>Hashcode caching for HashMap/HashSet performance</p>
-</li>
-</ul>
+<div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#f0f3f6;--1:#000000">- Thread-safe without synchronization</span></div></div><div class="ec-line"><div class="code"><span style="--0:#f0f3f6;--1:#000000">- String Pool optimization (memory efficiency)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#f0f3f6;--1:#000000">- Secure for sensitive data (passwords, network connections)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#f0f3f6;--1:#000000">- Hashcode caching for HashMap/HashSet performance</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="- Thread-safe without synchronization- String Pool optimization (memory efficiency)- Secure for sensitive data (passwords, network connections)- Hashcode caching for HashMap/HashSet performance"><div></div></button></div></figure></div>
 <div class="sl-heading-wrapper level-h2"><h2 id="what-is-the-difference-between-string-stringbuilder-and-stringbuffer">What is the difference between String, StringBuilder, and StringBuffer?</h2><a class="sl-anchor-link" href="#what-is-the-difference-between-string-stringbuilder-and-stringbuffer"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “What is the difference between String, StringBuilder, and StringBuffer?”</span></a></div>
-<p>Feature</p>
-<p>String</p>
-<p>StringBuilder</p>
-<p>StringBuffer</p>
-<p><strong>Mutability</strong></p>
-<p>Immutable</p>
-<p>Mutable</p>
-<p>Mutable</p>
-<p><strong>Thread Safety</strong></p>
-<p>Yes</p>
-<p>No</p>
-<p>Yes (synchronized)</p>
-<p><strong>Performance</strong></p>
-<p>Slow for modifications</p>
-<p>Fast</p>
-<p>Slower than StringBuilder</p>
-<p><strong>Use Case</strong></p>
-<p>Fixed strings</p>
-<p>Single-threaded modifications</p>
-<p>Multi-threaded modifications</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Feature</th><th>String</th><th>StringBuilder</th><th>StringBuffer</th></tr></thead><tbody><tr><td>Mutability</td><td>Immutable</td><td>Mutable</td><td>Mutable</td></tr><tr><td>Thread Safety</td><td>Yes</td><td>No</td><td>Yes (sync)</td></tr><tr><td>Performance</td><td>Slow</td><td>Fast</td><td>Slower</td></tr><tr><td>Use Case</td><td>Fixed</td><td>Single-thread</td><td>Multi-thread</td></tr></tbody></table>
 <p><strong>Interview Example:</strong></p>
 <p>java</p>
 <p><code dir="auto">// String - creates multiple objects  String s =  "Hello";  s = s +  " World";  // Creates new object   // StringBuilder - modifies same object (faster)  StringBuilder sb =  new  StringBuilder("Hello");  sb.append(" World");  // Modifies existing object   // StringBuffer - thread-safe version  StringBuffer sbf =  new  StringBuffer("Hello");  sbf.append(" World");  // Thread-safe operations</code></p>
@@ -132,7 +135,7 @@
 <p><code dir="auto">String s1 =  "Java";  // Stored in String Pool  String s2 =  "Java";  // Reuses same object from Pool  String s3 =  new  String("Java");  // Creates new object in Heap   System.out.println(s1 == s2);  // true (same Pool reference)  System.out.println(s1 == s3);  // false (different locations)</code></p>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="java"><code><div class="ec-line"><div class="code"><span style="--0:#F0F3F6;--1:#227188">String</span><span style="--0:#FFB757;--1:#000000"> </span><span style="--0:#F0F3F6;--1:#001080">s1</span><span style="--1:#000000"><span style="--0:#FFB757"> </span><span style="--0:#FF9492">=</span><span style="--0:#F0F3F6"> </span></span><span style="--0:#ADDCFF;--1:#A31515">"Java"</span><span style="--0:#F0F3F6;--1:#000000">; </span><span style="--0:#BDC4CC;--1:#007A00">// Stored in String Pool</span></div></div><div class="ec-line"><div class="code"><span style="--0:#F0F3F6;--1:#227188">String</span><span style="--0:#FFB757;--1:#000000"> </span><span style="--0:#F0F3F6;--1:#001080">s2</span><span style="--1:#000000"><span style="--0:#FFB757"> </span><span style="--0:#FF9492">=</span><span style="--0:#F0F3F6"> </span></span><span style="--0:#ADDCFF;--1:#A31515">"Java"</span><span style="--0:#F0F3F6;--1:#000000">; </span><span style="--0:#BDC4CC;--1:#007A00">// Reuses same object from Pool</span></div></div><div class="ec-line"><div class="code"><span style="--0:#F0F3F6;--1:#227188">String</span><span style="--0:#FFB757;--1:#000000"> </span><span style="--0:#F0F3F6;--1:#001080">s3</span><span style="--1:#000000"><span style="--0:#FFB757"> </span><span style="--0:#FF9492">=</span><span style="--0:#F0F3F6"> </span></span><span style="--0:#FF9492;--1:#AC00D8">new</span><span style="--0:#F0F3F6;--1:#000000"> </span><span style="--0:#DBB7FF;--1:#795E26">String</span><span style="--0:#F0F3F6;--1:#000000">(</span><span style="--0:#ADDCFF;--1:#A31515">"Java"</span><span style="--0:#F0F3F6;--1:#000000">); </span><span style="--0:#BDC4CC;--1:#007A00">// Creates new object in Heap</span></div></div><div class="ec-line"><div class="code"><span style="--0:#F0F3F6;--1:#001080">System</span><span style="--0:#F0F3F6;--1:#000000">.</span><span style="--0:#F0F3F6;--1:#001080">out</span><span style="--0:#F0F3F6;--1:#000000">.</span><span style="--0:#DBB7FF;--1:#795E26">println</span><span style="--1:#000000"><span style="--0:#F0F3F6">(s1 </span><span style="--0:#FF9492">==</span><span style="--0:#F0F3F6"> s2); </span></span><span style="--0:#BDC4CC;--1:#007A00">// true (same Pool reference)</span></div></div><div class="ec-line"><div class="code"><span style="--0:#F0F3F6;--1:#001080">System</span><span style="--0:#F0F3F6;--1:#000000">.</span><span style="--0:#F0F3F6;--1:#001080">out</span><span style="--0:#F0F3F6;--1:#000000">.</span><span style="--0:#DBB7FF;--1:#795E26">println</span><span style="--1:#000000"><span style="--0:#F0F3F6">(s1 </span><span style="--0:#FF9492">==</span><span style="--0:#F0F3F6"> s3); </span></span><span style="--0:#BDC4CC;--1:#007A00">// false (different locations)</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="String s1 = &#x22;Java&#x22;; // Stored in String PoolString s2 = &#x22;Java&#x22;; // Reuses same object from PoolString s3 = new String(&#x22;Java&#x22;); // Creates new object in HeapSystem.out.println(s1 == s2); // true (same Pool reference)System.out.println(s1 == s3); // false (different locations)"><div></div></button></div></figure></div>
 <div class="sl-heading-wrapper level-h2"><h2 id="what-is-the-string-constant-pool-scp">What is the String Constant Pool (SCP)?</h2><a class="sl-anchor-link" href="#what-is-the-string-constant-pool-scp"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “What is the String Constant Pool (SCP)?”</span></a></div>
-<p>The <strong>String Constant Pool</strong> (also called String Pool or String Intern Pool) is a special memory region in the Heap where Java stores unique String literals. It uses the <strong>Flyweight pattern</strong> to save memory by reusing identical string values.</p>
+<p>The <strong>String Constant Pool</strong> (also called String Pool or String Intern Pool) is a special memory region in the Heap where Java stores unique String literals. It uses a memory optimization pattern to save memory by reusing identical string values.</p>
 <p><strong>Interview Example:</strong></p>
 <p>java</p>
 <p><code dir="auto">String s1 =  "interview";  // Creates in Pool  String s2 =  "interview";  // Reuses from Pool  String s3 =  "inter"  +  "view";  // Compile-time constant, goes to Pool   System.out.println(s1 == s2);  // true  System.out.println(s1 == s3);  // true</code></p>
