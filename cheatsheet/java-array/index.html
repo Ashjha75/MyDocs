@@ -255,4 +255,60 @@
 <li><strong>Binary search</strong> → Array must be sorted first</li>
 <li><strong>Performance</strong> → Loop > stream for simple operations on small arrays</li>
 <li><strong>Memory</strong> → Creating new array for every operation is expensive</li>
-</ol> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/MyDocs/store/links" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Links</span> </span> </a>  </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>Method</strong></th><th><strong>Purpose</strong></th><th><strong>Example</strong></th></tr></thead><tbody><tr><td><code dir="auto">Arrays.sort(array)</code></td><td>Sorts the array in <strong>ascending order</strong> (uses dual-pivot Quicksort for primitives).</td><td><code dir="auto">java\nint[] arr = {5, 2, 8, 1};\nArrays.sort(arr);\nSystem.out.println(Arrays.toString(arr)); // [1, 2, 5, 8]\n</code></td></tr><tr><td><code dir="auto">Arrays.binarySearch(array, key)</code></td><td>Performs <strong>binary search</strong> on a <strong>sorted</strong> array. Returns index or negative if not found.</td><td><code dir="auto">java\nint[] arr = {1, 2, 4, 6, 8};\nSystem.out.println(Arrays.binarySearch(arr, 4)); // 2\n</code></td></tr><tr><td><code dir="auto">Arrays.equals(arr1, arr2)</code></td><td>Checks if two arrays are <strong>equal</strong> in size and content.</td><td><code dir="auto">java\nint[] a = {1, 2, 3};\nint[] b = {1, 2, 3};\nSystem.out.println(Arrays.equals(a, b)); // true\n</code></td></tr><tr><td><code dir="auto">Arrays.copyOf(array, newLength)</code></td><td>Copies the array into a <strong>new array</strong> with specified length.</td><td><code dir="auto">java\nint[] arr = {1, 2, 3};\nint[] copy = Arrays.copyOf(arr, 5);\nSystem.out.println(Arrays.toString(copy)); // [1, 2, 3, 0, 0]\n</code></td></tr><tr><td><code dir="auto">Arrays.copyOfRange(array, from, to)</code></td><td>Copies a <strong>specific range</strong> from an array (from inclusive, to exclusive).</td><td><code dir="auto">java\nint[] arr = {1, 2, 3, 4, 5};\nint[] part = Arrays.copyOfRange(arr, 1, 4);\nSystem.out.println(Arrays.toString(part)); // [2, 3, 4]\n</code></td></tr><tr><td><code dir="auto">Arrays.fill(array, value)</code></td><td>Fills the entire array with a given <strong>constant value</strong>. Useful for initialization.</td><td><code dir="auto">java\nint[] arr = new int[5];\nArrays.fill(arr, -1);\nSystem.out.println(Arrays.toString(arr)); // [-1, -1, -1, -1, -1]\n</code></td></tr><tr><td><code dir="auto">Arrays.toString(array)</code></td><td>Converts array into a <strong>readable string</strong> for debugging.</td><td><code dir="auto">java\nint[] arr = {1, 2, 3};\nSystem.out.println(Arrays.toString(arr)); // [1, 2, 3]\n</code></td></tr><tr><td><code dir="auto">Arrays.stream(array)</code></td><td>Creates a <strong>stream</strong> from an array (useful for quick operations like sum, min, max).</td><td><code dir="auto">java\nint[] arr = {1, 2, 3};\nint sum = Arrays.stream(arr).sum();\nSystem.out.println(sum); // 6\n</code></td></tr><tr><td><code dir="auto">Arrays.asList(T... a)</code></td><td>Converts an array to a fixed-size List (works only for object arrays).</td><td><code dir="auto">java\nString[] fruits = {\"Apple\", \"Banana\"};\nList&#x3C;String> list = Arrays.asList(fruits);\nSystem.out.println(list); // [Apple, Banana]\n</code></td></tr></tbody></table> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/MyDocs/store/links" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Links</span> </span> </a>  </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
