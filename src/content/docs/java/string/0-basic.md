@@ -11,6 +11,10 @@ title: "String Basic"
 java
 
 `String str1 =  "Hello";  // String literal (special support)  String str2 =  new  String("Hello");  // Using constructor` 
+```java
+String str1 = "Hello"; // String literal (special support)
+String str2 = new String("Hello"); // Using constructor
+```
 
 ## Why are strings immutable in Java?
 
@@ -21,6 +25,11 @@ Strings are immutable for **security, thread safety, performance, and hashcode c
 java
 
 `String str =  "Java";  str.concat(" Programming");  // Creates new object, original unchanged  System.out.println(str);  // Output: Java (not "Java Programming")` 
+```java
+String str = "Java";
+str.concat(" Programming"); // Creates new object, original unchanged
+System.out.println(str); // Output: Java (not "Java Programming")
+```
 
 **Benefits:**
 
@@ -82,6 +91,17 @@ java
 `// String - creates multiple objects  String s =  "Hello";  s = s +  " World";  // Creates new object  
 // StringBuilder - modifies same object (faster)  StringBuilder sb =  new  StringBuilder("Hello");  sb.append(" World");  // Modifies existing object  
 // StringBuffer - thread-safe version  StringBuffer sbf =  new  StringBuffer("Hello");  sbf.append(" World");  // Thread-safe operations` 
+```java
+// String - creates multiple objects
+String s = "Hello";
+s = s + " World"; // Creates new object
+// StringBuilder - modifies same object (faster)
+StringBuilder sb = new StringBuilder("Hello");
+sb.append(" World"); // Modifies existing object
+// StringBuffer - thread-safe version
+StringBuffer sbf = new StringBuffer("Hello");
+sbf.append(" World"); // Thread-safe operations
+```
 
 ## How are strings stored in memory (Heap vs String Pool)?
 
@@ -93,6 +113,13 @@ java
 
 `String s1 =  "Java";  // Stored in String Pool  String s2 =  "Java";  // Reuses same object from Pool  String s3 =  new  String("Java");  // Creates new object in Heap  
 System.out.println(s1 == s2);  // true (same Pool reference)  System.out.println(s1 == s3);  // false (different locations)` 
+```java
+String s1 = "Java"; // Stored in String Pool
+String s2 = "Java"; // Reuses same object from Pool
+String s3 = new String("Java"); // Creates new object in Heap
+System.out.println(s1 == s2); // true (same Pool reference)
+System.out.println(s1 == s3); // false (different locations)
+```
 
 ## What is the String Constant Pool (SCP)?
 
@@ -104,6 +131,13 @@ java
 
 `String s1 =  "interview";  // Creates in Pool  String s2 =  "interview";  // Reuses from Pool  String s3 =  "inter"  +  "view";  // Compile-time constant, goes to Pool  
 System.out.println(s1 == s2);  // true  System.out.println(s1 == s3);  // true` 
+```java
+String s1 = "interview"; // Creates in Pool
+String s2 = "interview"; // Reuses from Pool
+String s3 = "inter" + "view"; // Compile-time constant, goes to Pool
+System.out.println(s1 == s2); // true
+System.out.println(s1 == s3); // true
+```
 
 ## What happens when you use the new keyword with a String?
 
@@ -115,6 +149,14 @@ java
 
 `String s1 =  new  String("Hello");  // Creates 2 objects if "Hello" doesn't exist in Pool:  // 1. "Hello" literal in String Pool  // 2. New String object in Heap  
 String s2 =  "Hello";  // References Pool object  System.out.println(s1 == s2);  // false (different memory locations)  System.out.println(s1.equals(s2));  // true (same content)` 
+```java
+String s1 = new String("Hello"); // Creates 2 objects if "Hello" doesn't exist in Pool:
+// 1. "Hello" literal in String Pool
+// 2. New String object in Heap
+String s2 = "Hello"; // References Pool object
+System.out.println(s1 == s2); // false (different memory locations)
+System.out.println(s1.equals(s2)); // true (same content)
+```
 
 ## What is the difference between == and .equals() in Java strings?
 
@@ -126,6 +168,14 @@ java
 
 `String s1 =  "Java";  String s2 =  "Java";  String s3 =  new  String("Java");  
 System.out.println(s1 == s2);  // true (same Pool reference)  System.out.println(s1 == s3);  // false (different references)  System.out.println(s1.equals(s3));  // true (same content)` 
+```java
+String s1 = "Java";
+String s2 = "Java";
+String s3 = new String("Java");
+System.out.println(s1 == s2); // true (same Pool reference)
+System.out.println(s1 == s3); // false (different references)
+System.out.println(s1.equals(s3)); // true (same content)
+```
 
 ## How do you compare two strings lexicographically?
 
@@ -138,6 +188,16 @@ java
 `String s1 =  "apple";  String s2 =  "banana";  String s3 =  "apple";  
 System.out.println(s1.compareTo(s2));  // Negative (a < b)  System.out.println(s2.compareTo(s1));  // Positive (b > a)  System.out.println(s1.compareTo(s3));  // 0 (equal)  
 // Case-insensitive comparison  System.out.println("Apple".compareToIgnoreCase("apple"));  // 0` 
+```java
+String s1 = "apple";
+String s2 = "banana";
+String s3 = "apple";
+System.out.println(s1.compareTo(s2)); // Negative (a < b)
+System.out.println(s2.compareTo(s1)); // Positive (b > a)
+System.out.println(s1.compareTo(s3)); // 0 (equal)
+// Case-insensitive comparison
+System.out.println("Apple".compareToIgnoreCase("apple")); // 0
+```
 
 ## What are interned strings? What does String.intern() do?
 
@@ -149,6 +209,13 @@ java
 
 `String s1 =  new  String("Hello");  // Heap object  String s2 = s1.intern();  // Returns Pool reference  String s3 =  "Hello";  // Pool reference  
 System.out.println(s1 == s2);  // false (s1 is Heap, s2 is Pool)  System.out.println(s2 == s3);  // true (both reference Pool)` 
+```java
+String s1 = new String("Hello"); // Heap object
+String s2 = s1.intern(); // Returns Pool reference
+String s3 = "Hello"; // Pool reference
+System.out.println(s1 == s2); // false (s1 is Heap, s2 is Pool)
+System.out.println(s2 == s3); // true (both reference Pool)
+```
 
 **Use Case:** When comparing many strings repeatedly, interning improves `==` comparison performance.
 
@@ -165,4 +232,13 @@ java
 `String s1 =  "abc";  // String Pool  String s2 =  new  String("abc");  // Heap  
 System.out.println(s1 == s2);  // false (different references)  System.out.println(s1.equals(s2));  // true (same content)  
 // To make them equal with ==  String s3 = s2.intern();  // Returns Pool reference  System.out.println(s1 == s3);  // true (both reference Pool)` 
+```java
+String s1 = "abc"; // String Pool
+String s2 = new String("abc"); // Heap
+System.out.println(s1 == s2); // false (different references)
+System.out.println(s1.equals(s2)); // true (same content)
+// To make them equal with ==
+String s3 = s2.intern(); // Returns Pool reference
+System.out.println(s1 == s3); // true (both reference Pool)
+```
 

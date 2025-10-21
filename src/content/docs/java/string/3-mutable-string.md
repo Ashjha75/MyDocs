@@ -8,12 +8,30 @@ Both **StringBuilder** and **StringBuffer** are mutable classes for string manip
 
 **Interview Example:**
 
-java
-
-`// StringBuilder - Not thread-safe, faster  StringBuilder sb =  new  StringBuilder("Java");  sb.append(" Programming");  System.out.println(sb);  // "Java Programming"  
-// StringBuffer - Thread-safe, synchronized  StringBuffer sbf =  new  StringBuffer("Java");  sbf.append(" Programming");  System.out.println(sbf);  // "Java Programming"  
-// Performance comparison  long start =  System.nanoTime();  StringBuilder builder =  new  StringBuilder();  for  (int i =  0; i <  10000; i++)  {  builder.append("test");  }  long builderTime =  System.nanoTime()  - start;  
-start =  System.nanoTime();  StringBuffer buffer =  new  StringBuffer();  for  (int i =  0; i <  10000; i++)  {  buffer.append("test");  }  long bufferTime =  System.nanoTime()  - start;  // StringBuilder is typically 2-3x faster` 
+```java
+// StringBuilder - Not thread-safe, faster
+StringBuilder sb = new StringBuilder("Java");
+sb.append(" Programming");
+System.out.println(sb); // "Java Programming"
+// StringBuffer - Thread-safe, synchronized
+StringBuffer sbf = new StringBuffer("Java");
+sbf.append(" Programming");
+System.out.println(sbf); // "Java Programming"
+// Performance comparison
+long start = System.nanoTime();
+StringBuilder builder = new StringBuilder();
+for (int i = 0; i < 10000; i++) {
+	builder.append("test");
+}
+long builderTime = System.nanoTime() - start;
+start = System.nanoTime();
+StringBuffer buffer = new StringBuffer();
+for (int i = 0; i < 10000; i++) {
+	buffer.append("test");
+}
+long bufferTime = System.nanoTime() - start;
+// StringBuilder is typically 2-3x faster
+```
 
 **Key Differences:**
 
@@ -28,12 +46,32 @@ start =  System.nanoTime();  StringBuffer buffer =  new  StringBuffer();  for  (
 
 **Interview Example:**
 
-java
-
-`// String concatenation - creates multiple objects (SLOW)  String str =  "Hello";  for  (int i =  0; i <  1000; i++)  {  str = str +  "World";  // Creates 1000 new String objects  }  
-// StringBuilder - modifies same object (FAST)  StringBuilder sb =  new  StringBuilder("Hello");  for  (int i =  0; i <  1000; i++)  {  sb.append("World");  // Modifies same object  }  
-// Performance difference example  long start =  System.nanoTime();  String s =  "";  for  (int i =  0; i <  10000; i++)  {  s +=  "a";  // O(n²) complexity  }  long stringTime =  System.nanoTime()  - start;  
-start =  System.nanoTime();  StringBuilder sb2 =  new  StringBuilder();  for  (int i =  0; i <  10000; i++)  {  sb2.append("a");  // O(n) complexity  }  long sbTime =  System.nanoTime()  - start;  // StringBuilder is 100-1000x faster for large loops` 
+```java
+// String concatenation - creates multiple objects (SLOW)
+String str = "Hello";
+for (int i = 0; i < 1000; i++) {
+	str = str + "World"; // Creates 1000 new String objects
+}
+// StringBuilder - modifies same object (FAST)
+StringBuilder sb = new StringBuilder("Hello");
+for (int i = 0; i < 1000; i++) {
+	sb.append("World"); // Modifies same object
+}
+// Performance difference example
+long start = System.nanoTime();
+String s = "";
+for (int i = 0; i < 10000; i++) {
+	s += "a"; // O(n²) complexity
+}
+long stringTime = System.nanoTime() - start;
+start = System.nanoTime();
+StringBuilder sb2 = new StringBuilder();
+for (int i = 0; i < 10000; i++) {
+	sb2.append("a"); // O(n) complexity
+}
+long sbTime = System.nanoTime() - start;
+// StringBuilder is 100-1000x faster for large loops
+```
 
 ## What is the thread-safety difference between StringBuilder and StringBuffer?
 
@@ -41,11 +79,41 @@ start =  System.nanoTime();  StringBuilder sb2 =  new  StringBuilder();  for  (i
 
 **Interview Example:**
 
-java
-
-`// StringBuffer - Thread-safe (synchronized methods)  StringBuffer sbf =  new  StringBuffer("Shared");  Thread t1 =  new  Thread(()  ->  {   for  (int i =  0; i <  100; i++)  {  sbf.append("A");   }  });  Thread t2 =  new  Thread(()  ->  {   for  (int i =  0; i <  100; i++)  {  sbf.append("B");   }  });  t1.start();  t2.start();  // Safe: Final length will be exactly "Shared" + 200 characters  
-// StringBuilder - Not thread-safe (race conditions)  StringBuilder sb =  new  StringBuilder("Shared");  Thread t3 =  new  Thread(()  ->  {   for  (int i =  0; i <  100; i++)  {  sb.append("A");   }  });  Thread t4 =  new  Thread(()  ->  {   for  (int i =  0; i <  100; i++)  {  sb.append("B");   }  });  t3.start();  t4.start();  // Unsafe: May cause ArrayIndexOutOfBoundsException or data corruption  
-// Best practice: Use StringBuilder in single-threaded contexts  StringBuilder local =  new  StringBuilder();  local.append("Fast and safe in single thread");` 
+```java
+// StringBuffer - Thread-safe (synchronized methods)
+StringBuffer sbf = new StringBuffer("Shared");
+Thread t1 = new Thread(() -> {
+	for (int i = 0; i < 100; i++) {
+		sbf.append("A");
+	}
+});
+Thread t2 = new Thread(() -> {
+	for (int i = 0; i < 100; i++) {
+		sbf.append("B");
+	}
+});
+t1.start();
+t2.start();
+// Safe: Final length will be exactly "Shared" + 200 characters
+// StringBuilder - Not thread-safe (race conditions)
+StringBuilder sb = new StringBuilder("Shared");
+Thread t3 = new Thread(() -> {
+	for (int i = 0; i < 100; i++) {
+		sb.append("A");
+	}
+});
+Thread t4 = new Thread(() -> {
+	for (int i = 0; i < 100; i++) {
+		sb.append("B");
+	}
+});
+t3.start();
+t4.start();
+// Unsafe: May cause ArrayIndexOutOfBoundsException or data corruption
+// Best practice: Use StringBuilder in single-threaded contexts
+StringBuilder local = new StringBuilder();
+local.append("Fast and safe in single thread");
+```
 
 ## What are the main methods of StringBuilder (append(), insert(), delete(), reverse())?
 

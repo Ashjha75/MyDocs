@@ -7,13 +7,31 @@ title: "String Comparison Operations"
 
 **Interview Example:**
 
-java
+```java
+String s1 = "Java";
+String s2 = "JAVA";
+String s3 = "java";
+String s4 = "Python";
 
-`String s1 =  "Java";  String s2 =  "JAVA";  String s3 =  "java";  String s4 =  "Python";  
-System.out.println(s1.equalsIgnoreCase(s2));  // true  System.out.println(s1.equalsIgnoreCase(s3));  // true  System.out.println(s1.equalsIgnoreCase(s4));  // false  
-// Case-sensitive vs case-insensitive  System.out.println(s1.equals(s2));  // false (case matters)  System.out.println(s1.equalsIgnoreCase(s2));  // true (case ignored)  
-// Practical use case - user input validation  String userInput =  "YES";  if  (userInput.equalsIgnoreCase("yes"))  {   System.out.println("User confirmed");  // Executes  }  
-// Email comparison  String email1 =  "User@Example.COM";  String email2 =  "user@example.com";  System.out.println(email1.equalsIgnoreCase(email2));  // true` 
+System.out.println(s1.equalsIgnoreCase(s2)); // true
+System.out.println(s1.equalsIgnoreCase(s3)); // true
+System.out.println(s1.equalsIgnoreCase(s4)); // false
+
+// Case-sensitive vs case-insensitive
+System.out.println(s1.equals(s2)); // false (case matters)
+System.out.println(s1.equalsIgnoreCase(s2)); // true (case ignored)
+
+// Practical use case - user input validation
+String userInput = "YES";
+if (userInput.equalsIgnoreCase("yes")) {
+  System.out.println("User confirmed"); // Executes
+}
+
+// Email comparison
+String email1 = "User@Example.COM";
+String email2 = "user@example.com";
+System.out.println(email1.equalsIgnoreCase(email2)); // true
+```
 
 ## How to check if a string is empty or blank?
 

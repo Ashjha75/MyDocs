@@ -8,11 +8,14 @@ The **length()** method returns the **total number of characters** in the string
 
 **Interview Example:**
 
-java
-
-`String str =  "Hello World";  System.out.println(str.length());  // Output: 11  
-String empty =  "";  System.out.println(empty.length());  // Output: 0  
-String spaces =  "   ";  System.out.println(spaces.length());  // Output: 3` 
+```java
+String str = "Hello World";
+System.out.println(str.length()); // Output: 11
+String empty = "";
+System.out.println(empty.length()); // Output: 0
+String spaces = "   ";
+System.out.println(spaces.length()); // Output: 3
+```
 
 ## How do charAt(int index) and substring(int begin, int end) work?
 
@@ -20,12 +23,18 @@ String spaces =  "   ";  System.out.println(spaces.length());  // Output: 3`
 
 **Interview Example:**
 
-java
-
-`String str =  "Interview";  
-// charAt() - returns char  char ch = str.charAt(0);  // 'I'  char last = str.charAt(str.length()  -  1);  // 'w'  
-// substring(begin, end) - returns String  String sub1 = str.substring(0,  5);  // "Inter" (0 to 4)  String sub2 = str.substring(5);  // "view" (5 to end)  String sub3 = str.substring(2,  7);  // "tervi"  
-// charAt throws StringIndexOutOfBoundsException  // char invalid = str.charAt(20); // Exception` 
+```java
+String str = "Interview";
+// charAt() - returns char
+char ch = str.charAt(0); // 'I'
+char last = str.charAt(str.length() - 1); // 'w'
+// substring(begin, end) - returns String
+String sub1 = str.substring(0, 5); // "Inter" (0 to 4)
+String sub2 = str.substring(5); // "view" (5 to end)
+String sub3 = str.substring(2, 7); // "tervi"
+// charAt throws StringIndexOutOfBoundsException
+// char invalid = str.charAt(20); // Exception
+```
 
 ## What is the difference between substring() and subSequence()?
 
@@ -33,13 +42,20 @@ Both extract a portion of the string, but **substring()** returns a **String** o
 
 **Interview Example:**
 
-java
-
-`String str =  "Java Programming";  
-// substring() returns String  String sub = str.substring(5,  16);  System.out.println(sub);  // "Programming"  
-// subSequence() returns CharSequence  CharSequence seq = str.subSequence(5,  16);  System.out.println(seq);  // "Programming"  
-// substring() can use String methods directly  System.out.println(sub.toUpperCase());  // Works  
-// subSequence() needs casting for String methods  // System.out.println(seq.toUpperCase()); // Compile error  System.out.println(((String)seq).toUpperCase());  // Needs cast` 
+```java
+String str = "Java Programming";
+// substring() returns String
+String sub = str.substring(5, 16);
+System.out.println(sub); // "Programming"
+// subSequence() returns CharSequence
+CharSequence seq = str.subSequence(5, 16);
+System.out.println(seq); // "Programming"
+// substring() can use String methods directly
+System.out.println(sub.toUpperCase()); // Works
+// subSequence() needs casting for String methods
+// System.out.println(seq.toUpperCase()); // Compile error
+System.out.println(((String)seq).toUpperCase()); // Needs cast
+```
 
 ## How to check if a string contains another string?
 
