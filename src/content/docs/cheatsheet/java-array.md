@@ -488,3 +488,16 @@ for(char c : str.toCharArray()) {
 8. **Binary search** → Array must be sorted first
 9. **Performance** → Loop > stream for simple operations on small arrays
 10. **Memory** → Creating new array for every operation is expensive
+
+| **Method**                            | **Purpose**                                                                               | **Example**                                                                                                                                  |
+| ------------------------------------- | ----------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `Arrays.sort(array)`                  | Sorts the array in **ascending order** (uses dual-pivot Quicksort for primitives).        | `java\nint[] arr = {5, 2, 8, 1};\nArrays.sort(arr);\nSystem.out.println(Arrays.toString(arr)); // [1, 2, 5, 8]\n`                            |
+| `Arrays.binarySearch(array, key)`     | Performs **binary search** on a **sorted** array. Returns index or negative if not found. | `java\nint[] arr = {1, 2, 4, 6, 8};\nSystem.out.println(Arrays.binarySearch(arr, 4)); // 2\n`                                                |
+| `Arrays.equals(arr1, arr2)`           | Checks if two arrays are **equal** in size and content.                                   | `java\nint[] a = {1, 2, 3};\nint[] b = {1, 2, 3};\nSystem.out.println(Arrays.equals(a, b)); // true\n`                                       |
+| `Arrays.copyOf(array, newLength)`     | Copies the array into a **new array** with specified length.                              | `java\nint[] arr = {1, 2, 3};\nint[] copy = Arrays.copyOf(arr, 5);\nSystem.out.println(Arrays.toString(copy)); // [1, 2, 3, 0, 0]\n`         |
+| `Arrays.copyOfRange(array, from, to)` | Copies a **specific range** from an array (from inclusive, to exclusive).                 | `java\nint[] arr = {1, 2, 3, 4, 5};\nint[] part = Arrays.copyOfRange(arr, 1, 4);\nSystem.out.println(Arrays.toString(part)); // [2, 3, 4]\n` |
+| `Arrays.fill(array, value)`           | Fills the entire array with a given **constant value**. Useful for initialization.        | `java\nint[] arr = new int[5];\nArrays.fill(arr, -1);\nSystem.out.println(Arrays.toString(arr)); // [-1, -1, -1, -1, -1]\n`                  |
+| `Arrays.toString(array)`              | Converts array into a **readable string** for debugging.                                  | `java\nint[] arr = {1, 2, 3};\nSystem.out.println(Arrays.toString(arr)); // [1, 2, 3]\n`                                                     |
+| `Arrays.stream(array)`                | Creates a **stream** from an array (useful for quick operations like sum, min, max).      | `java\nint[] arr = {1, 2, 3};\nint sum = Arrays.stream(arr).sum();\nSystem.out.println(sum); // 6\n`                                         |
+| `Arrays.asList(T... a)`                | Converts an array to a fixed-size List (works only for object arrays).                     | `java\nString[] fruits = {\"Apple\", \"Banana\"};\nList<String> list = Arrays.asList(fruits);\nSystem.out.println(list); // [Apple, Banana]\n` |
+
