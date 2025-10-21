@@ -80,9 +80,7 @@ long sbTime = System.nanoTime() - start;
 **Interview Example:**
 
 ```java
-// StringBuffer - Thread-safe (synchronized methods)
 StringBuffer sbf = new StringBuffer("Shared");
-Thread t1 = new Thread(() -> {
 	for (int i = 0; i < 100; i++) {
 		sbf.append("A");
 	}

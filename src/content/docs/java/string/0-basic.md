@@ -33,56 +33,19 @@ System.out.println(str); // Output: Java (not "Java Programming")
 
 **Benefits:**
 
--   Thread-safe without synchronization
-    
--   String Pool optimization (memory efficiency)
-    
--   Secure for sensitive data (passwords, network connections)
-    
--   Hashcode caching for HashMap/HashSet performance
-    
+	- Thread-safe without synchronization
+	- String Pool optimization (memory efficiency)
+	- Secure for sensitive data (passwords, network connections)
+	- Hashcode caching for HashMap/HashSet performance
 
 ## What is the difference between String, StringBuilder, and StringBuffer?
 
-Feature
-
-String
-
-StringBuilder
-
-StringBuffer
-
-**Mutability**
-
-Immutable
-
-Mutable
-
-Mutable
-
-**Thread Safety**
-
-Yes
-
-No
-
-Yes (synchronized)
-
-**Performance**
-
-Slow for modifications
-
-Fast
-
-Slower than StringBuilder
-
-**Use Case**
-
-Fixed strings
-
-Single-threaded modifications
-
-Multi-threaded modifications
+| Feature         | String      | StringBuilder | StringBuffer |
+|----------------|------------|--------------|--------------|
+| Mutability     | Immutable  | Mutable      | Mutable      |
+| Thread Safety  | Yes        | No           | Yes (sync)   |
+| Performance    | Slow       | Fast         | Slower       |
+| Use Case       | Fixed      | Single-thread| Multi-thread |
 
 **Interview Example:**
 
@@ -123,7 +86,7 @@ System.out.println(s1 == s3); // false (different locations)
 
 ## What is the String Constant Pool (SCP)?
 
-The **String Constant Pool** (also called String Pool or String Intern Pool) is a special memory region in the Heap where Java stores unique String literals. It uses the **Flyweight pattern** to save memory by reusing identical string values.
+The **String Constant Pool** (also called String Pool or String Intern Pool) is a special memory region in the Heap where Java stores unique String literals. It uses a memory optimization pattern to save memory by reusing identical string values.
 
 **Interview Example:**
 
