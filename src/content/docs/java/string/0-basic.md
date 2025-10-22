@@ -54,6 +54,31 @@ sb.append(" World"); // Modifies existing object
 StringBuffer sbf = new StringBuffer("Hello");
 sbf.append(" World"); // Thread-safe operations
 ```
+## Benefits of String Immutability in Java
+
+1. **String Pool Optimization**  
+   String pool is possible only because `String` is immutable in Java.  
+   This allows Java Runtime to save a lot of heap space since different `String` variables can refer to the same value in the pool.  
+   If `String` were mutable, interning would not be possible because changing one variable’s value would affect all references.
+
+2. **Security**  
+   Immutability helps prevent severe security threats.  
+   For example, database usernames and passwords are passed as `String` objects.  
+   If `String` were mutable, a hacker could alter these values and compromise the application.  
+   Similarly, in socket programming, host and port details are passed as `String`, and immutability ensures they cannot be tampered with.
+
+3. **Thread Safety**  
+   Since `String` is immutable, it is inherently thread-safe.  
+   A single `String` instance can be shared among multiple threads without synchronization, avoiding concurrency issues.
+
+4. **Classloader Safety**  
+   Java ClassLoader uses `String` for loading classes.  
+   Immutability ensures that the correct class is loaded — for instance, `java.sql.Connection` cannot be maliciously altered to `myhacked.Connection`.
+
+5. **Performance (Hashcode Caching)**  
+   The hashcode of a `String` is cached at the time of creation and doesn’t need to be recalculated.  
+   This improves performance when `String` objects are used as keys in `HashMap` or other hash-based collections, making `String` the most common choice for map keys.
+
 
 ## How are strings stored in memory (Heap vs String Pool)?
 
