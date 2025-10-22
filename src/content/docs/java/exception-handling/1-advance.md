@@ -2,18 +2,18 @@
 title: "Advanced Exception Handling"
 ---
 
-### 13. How do you **create a custom exception** in Java?
+### 1. How do you **create a custom exception** in Java?
 
 To create a custom exception, extend **Exception** (for checked) or **RuntimeException** (for unchecked). Provide at least two constructors: one accepting a String message, and another accepting both message and Throwable cause for exception chaining. Follow naming convention by ending the class name with "Exception". Add Javadoc comments explaining when this exception should be thrown and optionally include custom fields for additional context like error codes.
 
 ```java
 public class InsufficientFundsException extends Exception {
     private String accountId;
-    
+
     public InsufficientFundsException(String message) {
         super(message);
     }
-    
+
     public InsufficientFundsException(String message, Throwable cause) {
         super(message, cause);
     }
@@ -24,7 +24,7 @@ public class InsufficientFundsException extends Exception {
 
 ***
 
-### 14. When should you create a **checked** vs **unchecked** custom exception?
+### 2. When should you create a **checked** vs **unchecked** custom exception?
 
 Create **checked exceptions** (extend Exception) for **recoverable conditions** that the caller should handle explicitly, like business validation failures or external system issues (InvalidAgeException, PaymentFailedException). Create **unchecked exceptions** (extend RuntimeException) for **programming errors** or conditions that shouldn't be recovered from, like configuration errors or violations of preconditions (InvalidConfigurationException). As a rule of thumb, if the caller can reasonably recover, make it checked.
 
@@ -40,7 +40,7 @@ public class InvalidAccountStateException extends RuntimeException {}
 
 ***
 
-### 15. What is **exception chaining**, and when is it useful?
+### 3. What is **exception chaining**, and when is it useful?
 
 Exception chaining (or exception wrapping) is the practice of catching a low-level exception and throwing a new higher-level exception while preserving the original exception as the cause. You pass the caught exception to the constructor of your new exception using the cause parameter. This is useful for abstraction layers to hide implementation details while preserving the full stack trace. Use getCause() to retrieve the original exception.
 
@@ -58,9 +58,17 @@ try {
 
 ***
 
-### 16. What are **best practices** for exception handling in enterprise code?
+### 4. What are **best practices** for exception handling in enterprise code?
 
-Key best practices include: **1)** Catch specific exceptions, not generic Exception or Throwable. **2)** Never use empty catch blocks; at minimum, log the exception. **3)** Don't use exceptions for control flow. **4)** Log or throw, but don't do both (avoid duplicate logging). **5)** Include meaningful error messages with context. **6)** Clean up resources in finally or use try-with-resources. **7)** Document all checked exceptions in Javadoc with @throws. **8)** Fail fast by validating early and throwing exceptions close to the source.
+Key best practices include: 
+**1)** Catch specific exceptions, not generic Exception or Throwable.
+**2)** Never use empty catch blocks; at minimum, log the exception.
+**3)** Don't use exceptions for control flow.
+**4)** Log or throw, but don't do both (avoid duplicate logging).
+**5)** Include meaningful error messages with context.
+**6)** Clean up resources in finally or use try-with-resources.
+**7)** Document all checked exceptions in Javadoc with @throws.
+**8)** Fail fast by validating early and throwing exceptions close to the source.
 
 ```java
 // Good practice
@@ -76,7 +84,7 @@ try {
 
 ***
 
-### 17. Why is it **bad practice to catch `Exception` or `Throwable`** directly?
+### 5. Why is it **bad practice to catch `Exception` or `Throwable`** directly?
 
 Catching generic Exception or Throwable masks specific problems and hides unexpected errors that you might not be prepared to handle. It can catch RuntimeExceptions that indicate bugs (like NullPointerException) and prevent them from bubbling up. Catching Throwable also catches Errors (like OutOfMemoryError) which shouldn't be handled. This makes debugging harder and can hide critical issues in production. Always catch the most specific exception types you can handle.
 
@@ -84,7 +92,7 @@ Catching generic Exception or Throwable masks specific problems and hides unexpe
 // Bad - catches everything, including programming errors
 try {
     process();
-} catch (Exception e) { 
+} catch (Exception e) {
     log.error("Something failed"); // What failed? Too generic
 }
 
@@ -99,7 +107,7 @@ catch (ValidationException e) { /* handle validation */ }
 
 ## 🚀 Spring Boot–Specific Exception Handling - Interview Answers
 
-### 18. How does **Spring Boot handle exceptions** by default?
+### 6. How does **Spring Boot handle exceptions** by default?
 
 Spring Boot uses **BasicErrorController** to handle exceptions by default. For web applications, it returns a standard error response with timestamp, status, error, message, and path. For REST APIs, it returns JSON; for browser requests, it shows the Whitelabel Error Page. Uncaught exceptions result in 500 status codes. Common exceptions like 404 (NoHandlerFoundException) and 405 (MethodNotAllowed) are automatically mapped to appropriate HTTP status codes.
 
@@ -118,14 +126,14 @@ Spring Boot uses **BasicErrorController** to handle exceptions by default. For w
 
 ***
 
-### 19. What is the role of **`@ControllerAdvice`** and **`@ExceptionHandler`**?
+### 7. What is the role of **`@ControllerAdvice`** and **`@ExceptionHandler`**?
 
 **@ControllerAdvice** is a global exception handler that applies to all controllers in your application. **@ExceptionHandler** is a method-level annotation that specifies which exception types a method handles. Together they provide centralized exception handling, allowing you to intercept exceptions thrown by any controller and return custom responses. You can have multiple @ExceptionHandler methods in one @ControllerAdvice class to handle different exception types.
 
 ```java
 @ControllerAdvice
 public class GlobalExceptionHandler {
-    
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<ErrorResponse> handleNotFound(ResourceNotFoundException ex) {
         ErrorResponse error = new ErrorResponse(404, ex.getMessage());
@@ -138,7 +146,7 @@ public class GlobalExceptionHandler {
 
 ***
 
-### 20. How can you return **custom JSON error responses** in REST APIs?
+### 8. How can you return **custom JSON error responses** in REST APIs?
 
 Create a custom error response DTO class with fields like status, message, timestamp, and path. In your @ControllerAdvice class, use @ExceptionHandler methods to catch specific exceptions and return ResponseEntity with your custom error object. You can also use @ResponseStatus to set HTTP status codes. For standardized responses, consider implementing RFC 7807 Problem Details format with ProblemDetail class.
 
@@ -147,15 +155,15 @@ public class ErrorResponse {
     private int status;
     private String message;
     private LocalDateTime timestamp;
-    
+
     // constructors, getters, setters
 }
 
 @ExceptionHandler(ValidationException.class)
 public ResponseEntity<ErrorResponse> handleValidation(ValidationException ex) {
     ErrorResponse error = new ErrorResponse(
-        400, 
-        ex.getMessage(), 
+        400,
+        ex.getMessage(),
         LocalDateTime.now()
     );
     return ResponseEntity.badRequest().body(error);
@@ -166,7 +174,7 @@ public ResponseEntity<ErrorResponse> handleValidation(ValidationException ex) {
 
 ***
 
-### 21. What is **`ResponseStatusException`**, and how do you use it?
+### 9. What is **`ResponseStatusException`**, and how do you use it?
 
 **ResponseStatusException** is a Spring 5+ convenience class that allows you to throw HTTP exceptions without creating custom exception classes. It takes an HTTP status code, reason message, and optional cause. This is useful for simple cases where you don't need a custom exception class. However, for complex applications with many exception types, custom exceptions with @ControllerAdvice provide better organization and reusability.
 
@@ -175,7 +183,7 @@ public ResponseEntity<ErrorResponse> handleValidation(ValidationException ex) {
 public User getUser(@PathVariable Long id) {
     return userRepository.findById(id)
         .orElseThrow(() -> new ResponseStatusException(
-            HttpStatus.NOT_FOUND, 
+            HttpStatus.NOT_FOUND,
             "User not found with id: " + id
         ));
 }
@@ -185,7 +193,7 @@ public User getUser(@PathVariable Long id) {
 
 ***
 
-### 22. What's the difference between **global exception handling** and **per-controller handling**?
+### 10. What's the difference between **global exception handling** and **per-controller handling**?
 
 **Global exception handling** uses @ControllerAdvice to handle exceptions across all controllers in the application, promoting code reuse and consistency. **Per-controller handling** uses @ExceptionHandler methods within a specific @Controller or @RestController, which only handle exceptions from that controller. Use global handling for common exceptions (validation, authentication) and per-controller handling for controller-specific exceptions. Global handlers execute only if the controller doesn't have a matching local handler.
 
@@ -206,7 +214,7 @@ public class UserController {
 
 ***
 
-### 23. How does Spring Boot's **default error response** (`BasicErrorController`) work?
+### 11. How does Spring Boot's **default error response** (`BasicErrorController`) work?
 
 **BasicErrorController** is Spring Boot's default error controller that maps to `/error` path. When an unhandled exception occurs, the servlet container forwards the request to this controller. It checks the Accept header: if it's `application/json`, it returns JSON error response; otherwise, it returns HTML (Whitelabel Error Page). It extracts error attributes like status, message, path, and timestamp from the request. You can customize it by extending BasicErrorController or implementing ErrorController interface.
 
@@ -215,7 +223,7 @@ public class UserController {
 @Component
 public class CustomErrorAttributes extends DefaultErrorAttributes {
     @Override
-    public Map<String, Object> getErrorAttributes(WebRequest request, 
+    public Map<String, Object> getErrorAttributes(WebRequest request,
                                                    ErrorAttributeOptions options) {
         Map<String, Object> errorAttributes = super.getErrorAttributes(request, options);
         errorAttributes.put("customField", "customValue");
@@ -223,6 +231,4 @@ public class CustomErrorAttributes extends DefaultErrorAttributes {
     }
 }
 ```
-
-
 
