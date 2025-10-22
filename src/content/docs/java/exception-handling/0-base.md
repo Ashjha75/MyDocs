@@ -4,7 +4,7 @@ title: "Base Exception Handling"
 
 ### 1. What is the difference between **checked** and **unchecked** exceptions?
 
-**Checked exceptions** are verified at compile-time and must be handled using try-catch or declared with throws keyword. They represent recoverable conditions like IOException or SQLException. **Unchecked exceptions** extend RuntimeException, are checked at runtime, and don't require mandatory handling. They typically indicate programming errors like NullPointerException or ArrayIndexOutOfBoundsException.[^1][^4]
+**Checked exceptions** are verified at compile-time and must be handled using try-catch or declared with throws keyword. They represent recoverable conditions like IOException or SQLException. **Unchecked exceptions** extend RuntimeException, are checked at runtime, and don't require mandatory handling. They typically indicate programming errors like NullPointerException or ArrayIndexOutOfBoundsException.
 
 ```java
 // Checked - must handle
@@ -18,13 +18,13 @@ public void divide() {
 }
 ```
 
-**Key takeaway:** Checked exceptions are for recoverable external issues; unchecked are for programming bugs.[^5]
+**Key takeaway:** Checked exceptions are for recoverable external issues; unchecked are for programming bugs.
 
 ***
 
 ### 2. Explain the **exception hierarchy** in Java.
 
-The root of Java's exception hierarchy is **Throwable**, which has two main branches: **Error** and **Exception**. Error represents serious problems that applications shouldn't catch (like OutOfMemoryError). Exception is divided into checked exceptions (direct subclasses of Exception) and unchecked exceptions (RuntimeException and its subclasses). All checked exceptions must be handled, while RuntimeException subclasses are optional to handle.[^4][^1]
+The root of Java's exception hierarchy is **Throwable**, which has two main branches: **Error** and **Exception**. Error represents serious problems that applications shouldn't catch (like OutOfMemoryError). Exception is divided into checked exceptions (direct subclasses of Exception) and unchecked exceptions (RuntimeException and its subclasses). All checked exceptions must be handled, while RuntimeException subclasses are optional to handle.
 
 ```
 Throwable
@@ -35,13 +35,13 @@ Throwable
         └── NullPointerException, ArithmeticException (unchecked)
 ```
 
-**Key takeaway:** Throwable → Error (don't catch) and Exception → Checked (must handle) and RuntimeException (optional).[^1]
+**Key takeaway:** Throwable → Error (don't catch) and Exception → Checked (must handle) and RuntimeException (optional).
 
 ***
 
 ### 3. What is the difference between **`throw`** and **`throws`**?
 
-**throw** is a keyword used to explicitly throw an exception from a method or code block. **throws** is used in method signature to declare that a method might throw certain exceptions, delegating the handling responsibility to the caller. throw is followed by an exception instance, while throws is followed by exception class names.[^1]
+**throw** is a keyword used to explicitly throw an exception from a method or code block. **throws** is used in method signature to declare that a method might throw certain exceptions, delegating the handling responsibility to the caller. throw is followed by an exception instance, while throws is followed by exception class names.
 
 ```java
 // throw - actually throws an exception
@@ -61,7 +61,7 @@ public void readFile() throws IOException {
 
 ### 4. What happens if an exception is **not caught** in a method?
 
-If an exception is not caught in a method, it propagates up the call stack to the calling method. This continues until either a handler is found or it reaches the main method. If uncaught in main, the JVM's default exception handler prints the stack trace and terminates the program abnormally. For checked exceptions, you must declare them using throws in the method signature.[^5][^1]
+If an exception is not caught in a method, it propagates up the call stack to the calling method. This continues until either a handler is found or it reaches the main method. If uncaught in main, the JVM's default exception handler prints the stack trace and terminates the program abnormally. For checked exceptions, you must declare them using throws in the method signature.
 
 ```java
 public void method1() {
@@ -79,7 +79,7 @@ public void method2() throws IOException {
 
 ### 5. Can we have **multiple catch blocks** for a single try block?
 
-Yes, you can have multiple catch blocks for a single try block. They are evaluated in order from top to bottom, and the first matching catch block is executed. You must order them from most specific to most general exception types, otherwise you'll get a compilation error. Only one catch block executes per exception thrown.[^1]
+Yes, you can have multiple catch blocks for a single try block. They are evaluated in order from top to bottom, and the first matching catch block is executed. You must order them from most specific to most general exception types, otherwise you'll get a compilation error. Only one catch block executes per exception thrown.
 
 ```java
 try {
@@ -99,7 +99,7 @@ try {
 
 ### 6. What is the purpose of the **finally block**? Will it always execute?
 
-The finally block is used to execute cleanup code that must run regardless of whether an exception occurs or not, such as closing files, database connections, or releasing resources. It executes **almost always**, except in cases like System.exit(), JVM crash, infinite loops, or if the thread is killed. Even if there's a return statement in try or catch, finally executes before returning.[^1]
+The finally block is used to execute cleanup code that must run regardless of whether an exception occurs or not, such as closing files, database connections, or releasing resources. It executes **almost always**, except in cases like System.exit(), JVM crash, infinite loops, or if the thread is killed. Even if there's a return statement in try or catch, finally executes before returning.
 
 ```java
 try {
@@ -151,7 +151,7 @@ try {
 
 ### 9. What's the difference between **Exception** and **Error**?
 
-**Exception** represents conditions that applications should catch and handle, like business logic failures or recoverable external issues (file not found, network timeout). **Error** represents serious problems that applications should not try to catch, such as JVM-level issues like OutOfMemoryError, StackOverflowError, or VirtualMachineError. Errors indicate catastrophic failures that typically require application restart.[^5][^1]
+**Exception** represents conditions that applications should catch and handle, like business logic failures or recoverable external issues (file not found, network timeout). **Error** represents serious problems that applications should not try to catch, such as JVM-level issues like OutOfMemoryError, StackOverflowError, or VirtualMachineError. Errors indicate catastrophic failures that typically require application restart.
 
 ```java
 // Exception - should handle
@@ -234,25 +234,4 @@ try {
     log.error(e); // same handling
 }
 ```
-
-**Key takeaway:** Multi-catch reduces code duplication when handling multiple unrelated exceptions identically.[^4][^1]
-<span style="display:none">[^2][^3][^6][^7][^8]</span>
-
-<div align="center">⁂</div>
-
-[^1]: https://www.geeksforgeeks.org/java/java-checked-vs-unchecked-exceptions/
-
-[^2]: https://byjus.com/gate/difference-between-checked-and-unchecked-exceptions-in-java/
-
-[^3]: https://www.w3schools.in/java/questions-answers/difference-between-checked-and-unchecked-exceptions-in-java
-
-[^4]: https://www.codingshuttle.com/java-programming-handbook/checked-and-unchecked-exceptions
-
-[^5]: https://rollbar.com/blog/how-to-handle-checked-unchecked-exceptions-in-java/
-
-[^6]: https://www.youtube.com/watch?v=idHyUFakHGY
-
-[^7]: https://www.youtube.com/watch?v=bCPClyGsVhc
-
-[^8]: https://stackoverflow.com/questions/6115896/understanding-checked-vs-unchecked-exceptions-in-java
 
