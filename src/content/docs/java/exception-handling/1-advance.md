@@ -61,12 +61,12 @@ try {
 ### 4. What are **best practices** for exception handling in enterprise code?
 
 Key best practices include: 
-**1)** Catch specific exceptions, not generic Exception or Throwable.
-**2)** Never use empty catch blocks; at minimum, log the exception.
-**3)** Don't use exceptions for control flow.
-**4)** Log or throw, but don't do both (avoid duplicate logging).
-**5)** Include meaningful error messages with context.
-**6)** Clean up resources in finally or use try-with-resources.
+- **1)** Catch specific exceptions, not generic Exception or Throwable.
+- **2)** Never use empty catch blocks; at minimum, log the exception.
+- **3)** Don't use exceptions for control flow.
+- **4)** Log or throw, but don't do both (avoid duplicate logging).
+- **5)** Include meaningful error messages with context.
+- **6)** Clean up resources in finally or use try-with-resources.
 **7)** Document all checked exceptions in Javadoc with @throws.
 **8)** Fail fast by validating early and throwing exceptions close to the source.
 
