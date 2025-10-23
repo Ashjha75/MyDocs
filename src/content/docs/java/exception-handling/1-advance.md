@@ -67,8 +67,8 @@ Key best practices include:
 - **4)** Log or throw, but don't do both (avoid duplicate logging).
 - **5)** Include meaningful error messages with context.
 - **6)** Clean up resources in finally or use try-with-resources.
-**7)** Document all checked exceptions in Javadoc with @throws.
-**8)** Fail fast by validating early and throwing exceptions close to the source.
+- **7)** Document all checked exceptions in Javadoc with @throws.
+- **8)** Fail fast by validating early and throwing exceptions close to the source.
 
 ```java
 // Good practice
