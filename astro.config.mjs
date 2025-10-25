@@ -211,7 +211,7 @@ export default defineConfig({
                     { label: 'JAVA Functional Interface', link: '/java/7-java-functional' },
                     { label: 'JAVA Lambda Expressions', link: '/java/8-java-lambda' },
                     { label: 'JAVA Generics', link: '/java/9-java-generics' },
-                    
+                    { label: 'JAVA Type Erasure', link: '/java/10-java-type-erasure' },
                     { label: 'JAVA String', autogenerate: { directory: 'java/string' } },
                     { label: 'JAVA Exception Handling', autogenerate: { directory: 'java/exception-handling' } },
                     
