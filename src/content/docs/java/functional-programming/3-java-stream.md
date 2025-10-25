@@ -30,7 +30,7 @@ flowchart TD
 
 **Your Answer:**
 
-Intermediate operations like `filter()`, `map()`, `sorted()` are **lazy** - they don't execute immediately and just return another Stream that can be chained. Terminal operations like `collect()`, `forEach()`, `count()` are **eager** - they trigger the actual processing and produce a final result.[2][3][4][5]
+Intermediate operations like `filter()`, `map()`, `sorted()` are **lazy** - they don't execute immediately and just return another Stream that can be chained. Terminal operations like `collect()`, `forEach()`, `count()` are **eager** - they trigger the actual processing and produce a final result.
 
 A stream won't execute at all if there's no terminal operation. For example:
 ```java
@@ -65,9 +65,9 @@ For example, if you have a list of sentences and want all words, use `flatMap()`
 
 **Your Answer:**
 
-- `filter(Predicate)` keeps only elements matching a condition[1][4]
-- `skip(n)` skips the first n elements[3][4]
-- `limit(n)` keeps only the first n elements[4][3]
+- `filter(Predicate)` keeps only elements matching a condition
+- `skip(n)` skips the first n elements
+- `limit(n)` keeps only the first n elements
 
 Yes, you can chain them and **order matters**:
 ```java
@@ -82,7 +82,7 @@ The operations execute in the order specified. For efficiency, put `filter()` fi
 
 **Your Answer:**
 
-You'll get an **IllegalStateException** with a message like "stream has already been operated upon or closed".[5][4]
+You'll get an **IllegalStateException** with a message like "stream has already been operated upon or closed".
 
 ```java
 Stream<String> stream = list.stream();
