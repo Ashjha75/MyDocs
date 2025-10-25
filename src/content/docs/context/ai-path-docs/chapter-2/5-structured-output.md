@@ -236,7 +236,7 @@ subgraph Robust_Pipeline
 A2[Agent 1 Output: JSON data with fields name and id] --> B2{Pydantic Validation}
 B2 --> C2[Order Object - Clean and Validated]
 C2 --> D2[Agent 2 - Accesses order.id]
-D2 --> E2[✅ Success!]
+D2 --> E2[ Success!]
 end
 
 ```

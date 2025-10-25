@@ -2,7 +2,7 @@
 title: "Java Immutable & Wrapper Classes"
 ---
 
-# ✅ Immutable Class
+#  Immutable Class
 
 ## 1. What makes a class immutable? List all conditions.
 A class is considered **immutable** when its **state cannot change after creation**.
@@ -74,7 +74,7 @@ Immutability prevents these critical risks.
 
 ---
 
-# ✅ Wrapper Class & Autoboxing
+#  Wrapper Class & Autoboxing
 
 ## 1. What are wrapper classes in Java and why do we need them?
 Wrapper classes are **object representations of primitive types**, e.g.:

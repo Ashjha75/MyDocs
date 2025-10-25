@@ -321,7 +321,7 @@ spring.jpa.properties.hibernate.format_sql=true
   - `none` (let DB migrations handle schema, e.g., Flyway/Liquibase)  
 
 ---
-✅ Rule of thumb:  
+ Rule of thumb:  
 - **Dev →** `update` or `create-drop`  
 - **Prod →** `validate` or `none`
 

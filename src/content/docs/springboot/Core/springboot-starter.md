@@ -52,7 +52,7 @@ DI is the **process** through which the IoC container provides required dependen
 
 **Types of DI:**
 
-1.  **Constructor Injection (✅ Preferred)**
+1.  **Constructor Injection ( Preferred)**
     * Dependencies are clearly stated, ensures the object is always in a valid state, and supports immutability with `final` fields.
     <!-- end list -->
     ```java
@@ -156,7 +156,7 @@ Here is a step-by-step breakdown of the lifecycle for a singleton bean:
 
 6.  **`BeanPostProcessor` (After Initialization)**: The `postProcessAfterInitialization()` method of any `BeanPostProcessor` is called. This step is crucial for applying proxies, which is how Spring AOP (Aspect-Oriented Programming) works.
 
-7.  **Bean is Ready** ✅: The bean is now fully configured and ready to be used by the application. It will remain in the container until it's closed.
+7.  **Bean is Ready** : The bean is now fully configured and ready to be used by the application. It will remain in the container until it's closed.
 
 8.  **Destruction Callbacks** 🗑️: When the Spring container is shut down, it calls the bean's destruction methods to allow for a graceful cleanup of resources (like closing database connections or releasing files). The order is:
 
@@ -450,7 +450,7 @@ INFO 71... [           main] c.e.MyCommandLineRunner    : CommandLineRunner exec
 
 -----
 
-## ✅ Quick Interview Checklist
+##  Quick Interview Checklist
 
 * **IoC** → Container manages object creation and lifecycle.
 * **DI** → How the container provides dependencies (constructor injection is best).

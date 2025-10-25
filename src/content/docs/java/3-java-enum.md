@@ -67,7 +67,7 @@ This is commonly used for:
 
 ----------
 
-## ✅ Enum with Custom Fields & Constructor
+##  Enum with Custom Fields & Constructor
 
 ### **4. Why can enums have constructors, and why must they be private?**
 
@@ -139,7 +139,7 @@ public static Day fromCode(int code) { ... }
 
 ----------
 
-## ✅ Enum Polymorphism
+##  Enum Polymorphism
 
 ### **7. Explain method overriding inside a specific Enum constant.**
 
@@ -192,7 +192,7 @@ This allows strategy-like behavior.
 
 ----------
 
-## ✅ Enum vs `public static final` Constants
+##  Enum vs `public static final` Constants
 
 ### **9. Why is Enum better than `public static final` constants?**
 

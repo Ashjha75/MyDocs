@@ -167,7 +167,7 @@ They don’t just start coding—they **layer the system conceptually**, then im
 
 ----------
 
-### ✅ **Pro-Level Mindset**
+###  **Pro-Level Mindset**
 
 The secret of senior developers isn’t just coding fast—they **always separate concerns, automate scaffolding, and think in layers**. AI is just a **force multiplier**; the human role is:
 

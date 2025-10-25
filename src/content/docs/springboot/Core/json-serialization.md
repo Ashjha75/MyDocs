@@ -109,7 +109,7 @@ title: Springboot Json Serialization and Deserialization
 
 ---
 
-✅ **One-Liner Summary for Interviews**:
+ **One-Liner Summary for Interviews**:
 *In Spring Boot, JSON serialization (Java ➝ JSON) and deserialization (JSON ➝ Java) are handled automatically by `MappingJackson2HttpMessageConverter`, which delegates to Jackson’s `ObjectMapper`. Behavior can be customized via Jackson annotations or by configuring the `ObjectMapper` bean.*
 
 ---

@@ -282,7 +282,7 @@ if __name__ == "__main__":
     ]
 
     dump_project_files(root_folder, output_file, skip_extensions, skip_files, skip_folders)
-    print(f"✅ All project files dumped into: {output_file}")
+    print(f" All project files dumped into: {output_file}")
 
 
 === FILE: C:\Users\Ashish jha\Desktop\PERSONAL\DOCS\astroDocs\vigorous-visual\combined_project.txt ===
@@ -575,7 +575,7 @@ This file is used to customize how Gemini interacts with your project.
 
 ---
 
-## ✅ Dos and Don'ts
+##  Dos and Don'ts
 
 - **Do**: Use the `async` pipe in templates to subscribe to observables.
 - **Don't**: Manually subscribe to observables in components without unsubscribing in `ngOnDestroy`.
@@ -731,7 +731,7 @@ export class FeatureDataService {
 
 ---
 
-## ✅ Development Principles
+##  Development Principles
 
 - Clean, maintainable, and modular code
 - Reusable UI components
@@ -1030,7 +1030,7 @@ Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro 
 
 ----------
 
-✅ **Pro Developer Mindset**
+ **Pro Developer Mindset**
 
 -   Think in **layers**, not just components.
     
@@ -1635,7 +1635,7 @@ They don’t just start coding—they **layer the system conceptually**, then im
 
 ----------
 
-### ✅ **Pro-Level Mindset**
+###  **Pro-Level Mindset**
 
 The secret of senior developers isn’t just coding fast—they **always separate concerns, automate scaffolding, and think in layers**. AI is just a **force multiplier**; the human role is:
 
@@ -1821,7 +1821,7 @@ If you want, I can **create a template you can use with AI** to build any **full
 
 ----------
 
-✅ **Summary:**
+ **Summary:**
 
 -   **Unit testing + Mocking** is your foundation.
     

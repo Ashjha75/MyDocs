@@ -37,7 +37,7 @@ This chapter sets the stage by defining what a "prompt" truly is and why the ski
         subgraph "High-Quality Prompt"
             A[Specific & Clear Prompt] --> B(Reliable & Structured Output);
             B --> C(Next Step Succeeds);
-            C --> D[✅ Task Completed Successfully];
+            C --> D[ Task Completed Successfully];
         end
 
         subgraph "Low-Quality Prompt"

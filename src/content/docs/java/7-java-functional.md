@@ -2,7 +2,7 @@
 title: "Java Functional Interface"
 ---
 
-# ✅ Functional Interface in Java
+#  Functional Interface in Java
 
 ## 1. What is a Functional Interface?
 A **Functional Interface** is an interface with **exactly one abstract method**. It represents a single operation and can be used with **Lambda Expressions**.
@@ -26,13 +26,13 @@ A **Functional Interface** is an interface with **exactly one abstract method**.
 
 ---
 
-# ✅ Allowed Methods in Functional Interface
+#  Allowed Methods in Functional Interface
 
 ## 4. Can a Functional Interface have default methods and static methods?
 | Type            | Allowed? | Reason                                                      |
 |-----------------|----------|-------------------------------------------------------------|
-| default methods | ✅ Yes    | They have implementations, so do not add abstract behavior.  |
-| static methods  | ✅ Yes    | Belong to the interface itself, not the instance.            |
+| default methods |  Yes    | They have implementations, so do not add abstract behavior.  |
+| static methods  |  Yes    | Belong to the interface itself, not the instance.            |
 
 Only **abstract methods** are counted for Functional Interface validity.
 
@@ -45,7 +45,7 @@ Only **abstract methods** are counted for Functional Interface validity.
 
 ---
 
-# ✅ Inheritance Case
+#  Inheritance Case
 
 ## 6. What happens if a Functional Interface extends another interface? How do we ensure the SAM property is maintained?
 - The **total number of abstract methods across both interfaces must be exactly one**.
@@ -59,7 +59,7 @@ interface B extends A { } // still one abstract method → valid Functional Inte
 
 ---
 
-# ✅ Built-in Functional Interfaces
+#  Built-in Functional Interfaces
 
 ## 7. `Predicate<T>` — real use case
 - Represents a **boolean test** on a value.
@@ -105,7 +105,7 @@ Supplier<Double> sup = Math::random;
 
 ---
 
-# ✅ Practical Use
+#  Practical Use
 
 ## 11. Where are Functional Interfaces used in Java Streams API?
 | Stream Operation | Functional Interface Used |

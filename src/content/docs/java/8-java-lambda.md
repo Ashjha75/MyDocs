@@ -2,7 +2,7 @@
 title: "Java Lambda Expressions"
 ---
 
-# ✅ Lambda Expressions in Java 8
+#  Lambda Expressions in Java 8
 
 ## 1. What is a Lambda Expression and why was it introduced in Java 8?
 A **Lambda Expression** is a concise way to implement a **Functional Interface** (an interface with a single abstract method).
@@ -24,7 +24,7 @@ Runnable r = () -> System.out.println("Running");
 
 ---
 
-# ✅ Syntax & Usage
+#  Syntax & Usage
 
 ## 3. Lambda for a Functional Interface with one parameter
 ```java
@@ -55,7 +55,7 @@ Task t = () -> System.out.println("Task Executed");
 
 ---
 
-# ✅ Variable & Scope
+#  Variable & Scope
 
 ## 6. What is an effectively final variable in lambda?
 A local variable **not modified after initialization** is considered **effectively final**. Lambdas can only use effectively final variables from the enclosing method.
@@ -67,7 +67,7 @@ Local variables in methods are stored on the **stack**, while lambdas may execut
 
 ---
 
-# ✅ Comparison & Reasoning
+#  Comparison & Reasoning
 
 ## 8. Difference between Lambda Expression and Anonymous Inner Class
 | Feature         | Lambda Expression         | Anonymous Inner Class         |
@@ -105,7 +105,7 @@ list.stream().filter(x -> x > 10).forEach(System.out::println);
 
 ---
 
-# ✅ Bonus: Method References (`::`)
+#  Bonus: Method References (`::`)
 
 ## 11. What are Method References and when do we use them?
 Method Reference is a shorthand for calling an existing method instead of writing a lambda.

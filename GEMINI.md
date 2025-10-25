@@ -68,7 +68,7 @@ This file is used to customize how Gemini interacts with your project.
 
 ---
 
-## ✅ Dos and Don'ts
+##  Dos and Don'ts
 
 - **Do**: Use the `async` pipe in templates to subscribe to observables.
 - **Don't**: Manually subscribe to observables in components without unsubscribing in `ngOnDestroy`.
@@ -224,7 +224,7 @@ export class FeatureDataService {
 
 ---
 
-## ✅ Development Principles
+##  Development Principles
 
 - Clean, maintainable, and modular code
 - Reusable UI components

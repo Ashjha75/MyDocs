@@ -64,4 +64,4 @@ if __name__ == "__main__":
     ]
 
     dump_project_files(root_folder, output_file, skip_extensions, skip_files, skip_folders)
-    print(f"✅ All project files dumped into: {output_file}")
+    print(f" All project files dumped into: {output_file}")

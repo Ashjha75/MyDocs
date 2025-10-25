@@ -31,7 +31,7 @@ This document provides a detailed guide to testing and verification in the proje
 
 ---
 
-## ✅ Testing and Verification Checklist
+##  Testing and Verification Checklist
 
 - [ ] All new features have unit tests with adequate coverage.
 - [ ] All critical user flows are covered by E2E tests.

@@ -155,7 +155,7 @@
 
 ----------
 
-✅ **Summary:**
+ **Summary:**
 
 -   **Unit testing + Mocking** is your foundation.
     

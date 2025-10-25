@@ -194,7 +194,7 @@
 
 ----------
 
-✅ **Pro Developer Mindset**
+ **Pro Developer Mindset**
 
 -   Think in **layers**, not just components.
     
