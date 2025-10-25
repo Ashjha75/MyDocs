@@ -2,7 +2,7 @@
 title: "Java Generics"
 ---
 
-# ✅ Java Generics
+#  Java Generics
 
 ## 1. What are generics in Java and why were they introduced?
 Generics allow us to write classes, interfaces, and methods that operate on **specific data types** while still being **reusable**. They were introduced to provide **type safety** and avoid runtime `ClassCastException`.

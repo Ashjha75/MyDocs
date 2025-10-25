@@ -2,7 +2,7 @@
 title: "Java Type Erasure"
 ---
 
-# ✅ Top Interview Questions on Type Erasure
+# Top Interview Questions on Type Erasure
 
 ## 1. What is type erasure?
 Type erasure is the process where **generic type information is removed during compilation**. Generics exist only at compile-time, not at runtime.
