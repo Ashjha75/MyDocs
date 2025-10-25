@@ -208,12 +208,11 @@ export default defineConfig({
                     { label: 'Final', link: '/java/4-java-final' },
                     { label: 'Singleton', link: '/java/5-java-singleton' },
                     { label: 'Immutable', link: '/java/6-java-immutable' },
-                    { label: 'Functional Interface', link: '/java/7-java-functional' },
-                    { label: 'Lambda Expressions', link: '/java/8-java-lambda' },
-                    { label: 'Generics', link: '/java/9-java-generics' },
-                    { label: 'Type Erasure', link: '/java/10-java-type-erasure' },
+                    { label: 'Generics', link: '/java/7-java-generics' },
+                    { label: 'Type Erasure', link: '/java/8-java-type-erasure' },
                     { label: 'String', autogenerate: { directory: 'java/string' } },
                     { label: 'Exception Handling', autogenerate: { directory: 'java/exception-handling' } },
+                    { label: 'Functional Programming', autogenerate: { directory: 'java/functional-programming' } },
                     
                 ]
             },
