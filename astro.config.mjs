@@ -209,6 +209,7 @@ export default defineConfig({
                     { label: 'JAVA Singleton', link: '/java/5-java-singleton' },
                     { label: 'JAVA Immutable', link: '/java/6-java-immutable' },
                     { label: 'JAVA Functional Interface', link: '/java/7-java-functional' },
+                    { label: 'JAVA Lambda Expressions', link: '/java/8-java-lambda' },
                     { label: 'JAVA String', autogenerate: { directory: 'java/string' } },
                     { label: 'JAVA Exception Handling', autogenerate: { directory: 'java/exception-handling' } },
                     
