@@ -202,7 +202,8 @@ export default defineConfig({
                 label: '🍵 Java',
                 items: [
                     { label: 'JAVA Scanner ', link: '/java/0-java-scanner' },
-                    { label: 'JAVA NOTES', link: '/java/1-java-array-notes' },
+                    { label: 'JAVA Array Notes', link: '/java/1-java-array-notes' },
+                    { label: 'JAVA Pojo', link: '/java/2-java-pojo' },
                     { label: 'JAVA String', autogenerate: { directory: 'java/string' } },
                     { label: 'JAVA Exception Handling', autogenerate: { directory: 'java/exception-handling' } },
                     
