@@ -9,6 +9,21 @@ title: Java Stream API
 The Stream API is Java's functional programming feature for processing collections of data in a declarative way. It consists of **intermediate operations** (lazy, return streams, can be chained) like `filter()`, `map()`, `flatMap()` that transform data, and **terminal operations** (eager, trigger execution) like `collect()`, `forEach()`, `reduce()` that produce final results. Streams are single-use, follow lazy evaluation, and support both sequential and parallel processing.
 ***
 
+``` mermaid
+---
+config:
+  theme: forest
+  layout: elk
+---
+flowchart TD
+    A["Collection"] --> B["Step 1:<br>Create Stream"]
+    B --> C["Step 2:<br>Intermediate Operations"]
+    C --> D["Step 3:<br>Terminal Operations"]
+    B --- B_note["At Step 1:<br>Streams are created from a data source<br>like Collection or Array."]
+    C --- C_note["At Step 2:<br><br>- Intermediate Operations like:<br>filter(), sorted(), map(), distinct(), etc.<br><br>- These operations transform the stream<br>into another stream.<br><br>- These are Lazy in nature, meaning they<br>execute only when a terminal operation is called."]
+    D --- D_note["At Step 3:<br><br>- Terminal Operations like:<br>collect(), reduce(), count(), etc.<br><br>- These trigger stream processing.<br><br>- After Terminal Operation, stream closes and<br>no more operations can be performed."]
+``` 
+
 ## Interview Questions & Expert Answers
 
 ### 1. What's the difference between intermediate and terminal operations? Can you give examples of when a stream would not execute at all?
