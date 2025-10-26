@@ -10,7 +10,7 @@ The Java Collections Framework is a unified architecture for representing and ma
 
 All interfaces and classes in the Collections Framework are part of the **java.util** package.
 
-![Collection Framework Hierarchy in Java](/public/collections.png)
+![Collection Framework Hierarchy in Java](/MyDocs/collections.png)
 
 ## What is the Collections Framework?
 
