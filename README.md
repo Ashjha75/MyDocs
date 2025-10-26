@@ -1,13 +1,15 @@
-# Starlight Starter Kit: Basics
-<!-- gh-pages -d dist -->
-<!-- npm run build -->
+# MyDocs: Multi-Stack Documentation & Knowledge Hub
+
 [![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
 
-```
-npm create astro@latest -- --template starlight
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> **MyDocs** is a comprehensive documentation and learning platform, combining guides, code snippets, and best practices for modern web and backend development. It leverages **Astro** and **Starlight** for static site generation, and covers:
+>
+>- **Frontend**: Angular, TypeScript, CSS, UI/UX, state management
+>- **Backend**: Spring Boot, JPA, Security, Testing, REST APIs
+>- **DevOps**: Docker, CI/CD, MySQL, Redis
+>- **AI & Prompt Engineering**: Gemini, LangChain, context-driven docs
+>
+> The project is organized in layered modules for scalable, maintainable, and production-ready systems. Ideal for developers, students, and teams seeking reference-quality docs and real-world code patterns.
 
 ## 🚀 Project Structure
 
