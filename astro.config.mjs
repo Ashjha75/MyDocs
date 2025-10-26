@@ -213,7 +213,7 @@ export default defineConfig({
                     { label: 'String', autogenerate: { directory: 'java/string' } },
                     { label: 'Exception Handling', autogenerate: { directory: 'java/exception-handling' } },
                     { label: 'Functional Programming', autogenerate: { directory: 'java/functional-programming' } },
-                    { label: 'Collections Framework', autogenerate: { directory: 'java/collections-framework' } },
+                    { label: 'Collections Framework', autogenerate: { directory: 'java/collections-framwork' } },
                 ]
             },
             {

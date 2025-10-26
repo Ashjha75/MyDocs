@@ -1,5 +1,5 @@
 ---
-title: Introduction to Collections Framework
+title: Intro to Collections Framework
 ---
 
 # Java Collections Framework - Introduction
