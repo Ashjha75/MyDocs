@@ -431,4 +431,46 @@ ArrayList maintains a <code dir="auto">modCount</code> (modification count):</p>
 <hr>
 <div class="sl-heading-wrapper level-h2"><h2 id="quick-decision-tree">Quick Decision Tree</h2><a class="sl-anchor-link" href="#quick-decision-tree"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24"><path fill="currentcolor" d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 0 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 1 0-1.42-1.42Zm8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 0 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 1 0 1.42 1.42l3.88-3.89a4.49 4.49 0 0 0 0-6.33ZM8.83 15.17a1 1 0 0 0 1.1.22 1 1 0 0 0 .32-.22l4.92-4.92a1 1 0 0 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42Z"></path></svg></span><span class="sr-only">Section titled “Quick Decision Tree”</span></a></div>
 <div class="expressive-code"><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="plaintext"><code><div class="ec-line"><div class="code"><span style="--0:#f0f3f6;--1:#000000">Need thread-safety?</span></div></div><div class="ec-line"><div class="code"><span style="--0:#f0f3f6;--1:#000000">├─ Yes → Read-heavy? → Use CopyOnWriteArrayList</span></div></div><div class="ec-line"><div class="code"><span style="--0:#f0f3f6;--1:#000000">│        Write-heavy? → Use Collections.synchronizedList() or ConcurrentHashMap</span></div></div><div class="ec-line"><div class="code"><span style="--0:#f0f3f6;--1:#000000">│</span></div></div><div class="ec-line"><div class="code"><span style="--0:#f0f3f6;--1:#000000">└─ No → Random access important?</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#f0f3f6;--1:#000000">         </span></span><span style="--0:#f0f3f6;--1:#000000">├─ Yes → ArrayList</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#f0f3f6;--1:#000000">         </span></span><span style="--0:#f0f3f6;--1:#000000">└─ No → Frequent insert/delete at ends?</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#f0f3f6;--1:#000000">                  </span></span><span style="--0:#f0f3f6;--1:#000000">├─ Yes → LinkedList or ArrayDeque</span></div></div><div class="ec-line"><div class="code"><span class="indent"><span style="--0:#f0f3f6;--1:#000000">                  </span></span><span style="--0:#f0f3f6;--1:#000000">└─ No → ArrayList (default choice)</span></div></div></code></pre><div class="copy"><button title="Copy to clipboard" data-copied="Copied!" data-code="Need thread-safety?├─ Yes → Read-heavy? → Use CopyOnWriteArrayList│        Write-heavy? → Use Collections.synchronizedList() or ConcurrentHashMap│└─ No → Random access important?         ├─ Yes → ArrayList         └─ No → Frequent insert/delete at ends?                  ├─ Yes → LinkedList or ArrayDeque                  └─ No → ArrayList (default choice)"><div></div></button></div></figure></div>
-<p><strong>Senior Dev Tip</strong>: When in doubt, <strong>start with ArrayList</strong>. It’s the most optimized collection in the JDK due to cache locality and simplicity. Profile first, optimize later. Premature use of LinkedList is a common mistake.</p> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/MyDocs/java/collections-framwork/0-intro/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Intro to Collections Framework</span> </span> </a> <a href="/MyDocs/context/ai-path-docs/chapter-1/1-prompt-chaining/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi"> Prompt Chaining</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
+<p><strong>Senior Dev Tip</strong>: When in doubt, <strong>start with ArrayList</strong>. It’s the most optimized collection in the JDK due to cache locality and simplicity. Profile first, optimize later. Premature use of LinkedList is a common mistake.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Method</th><th>Purpose</th></tr></thead><tbody><tr><td><code dir="auto">add(E e)</code></td><td>Add element at end</td></tr><tr><td><code dir="auto">add(int index, E e)</code></td><td>Insert element</td></tr><tr><td><code dir="auto">get(int index)</code></td><td>Retrieve element</td></tr><tr><td><code dir="auto">set(int index, E e)</code></td><td>Replace element</td></tr><tr><td><code dir="auto">remove(int index)</code></td><td>Remove by index</td></tr><tr><td><code dir="auto">contains(Object o)</code></td><td>Check presence</td></tr><tr><td><code dir="auto">size()</code></td><td>Number of elements</td></tr><tr><td><code dir="auto">clear()</code></td><td>Remove all</td></tr></tbody></table> </div> <footer class="sl-flex astro-3yyafb3n"> <div class="meta sl-flex astro-3yyafb3n">   </div> <div class="pagination-links print:hidden astro-u2l5gyhi" dir="ltr"> <a href="/MyDocs/java/collections-framwork/0-intro/" rel="prev" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg> <span class="astro-u2l5gyhi"> Previous <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi">Intro to Collections Framework</span> </span> </a> <a href="/MyDocs/context/ai-path-docs/chapter-1/1-prompt-chaining/" rel="next" class="astro-u2l5gyhi"> <svg aria-hidden="true" class="astro-u2l5gyhi astro-c6vsoqas" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg> <span class="astro-u2l5gyhi"> Next <br class="astro-u2l5gyhi"> <span class="link-title astro-u2l5gyhi"> Prompt Chaining</span> </span> </a> </div>   </footer>  </div> </div>   </main> </div> </div>  </div> </div>  </body></html>
