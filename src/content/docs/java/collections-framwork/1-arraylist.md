@@ -371,3 +371,13 @@ Need thread-safety?
 
 **Senior Dev Tip**: When in doubt, **start with ArrayList**. It's the most optimized collection in the JDK due to cache locality and simplicity. Profile first, optimize later. Premature use of LinkedList is a common mistake.
 
+| Method                | Purpose            |
+| --------------------- | ------------------ |
+| `add(E e)`            | Add element at end |
+| `add(int index, E e)` | Insert element     |
+| `get(int index)`      | Retrieve element   |
+| `set(int index, E e)` | Replace element    |
+| `remove(int index)`   | Remove by index    |
+| `contains(Object o)`  | Check presence     |
+| `size()`              | Number of elements |
+| `clear()`             | Remove all         |
