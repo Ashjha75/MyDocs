@@ -2,9 +2,6 @@
 title: Intro to Collections Framework
 ---
 
-# Java Collections Framework - Introduction
-
-## Overview
 
 The Java Collections Framework is a unified architecture for representing and manipulating collections of objects. It provides a standardized way to store, retrieve, and manipulate groups of data, making your code more efficient, reusable, and easier to maintain.
 
