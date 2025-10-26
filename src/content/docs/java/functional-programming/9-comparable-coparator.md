@@ -1,5 +1,5 @@
 ---
-title: "Java Comparable vs Comparator: Key Differences and Usage"
+title: "Java Comparable vs Comparator"
 ---
 Comparable and Comparator are interfaces in Java used for sorting objects. Comparable defines the **natural ordering** of a class by implementing `compareTo()` within the class itself. Comparator provides **external sorting logic** through the `compare()` method, allowing multiple sorting strategies without modifying the original class.
 
