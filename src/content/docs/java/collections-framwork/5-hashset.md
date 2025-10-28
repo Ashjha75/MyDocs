@@ -2,8 +2,6 @@
 title: "Java HashSet"
 ---
 
-# HashSet - Simple Interview Guide
-
 ## What is a HashSet in Java?
 
 HashSet is a **collection that stores only unique elements** (no duplicates allowed). It's part of the Java Collections Framework and implements the `Set` interface.
