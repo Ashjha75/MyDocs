@@ -1,8 +1,8 @@
-# Authentication & Authorization Guide for Spring Boot
-
-A complete guide to understanding and implementing auth systems with Spring Boot context.
-
 ---
+title: "Understanding Auth Systems with Spring Boot"
+---
+
+
 
 ## Phase 1: Foundation Concepts
 
