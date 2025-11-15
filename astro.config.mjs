@@ -50,7 +50,7 @@ export default defineConfig({
                             { label: 'Rest Basics', link: '/springboot/base/rest' },
                             { label: 'Attacks', link: '/springboot/base/common-attacks' },
                             { label: 'Auth System', link: '/springboot/base/auth-system' },
-                            { label: 'Maven', link: '/springboot/base/maven' },
+                            { label: 'Http Basics', link: '/springboot/base/http' },
                             { label: 'Rest', link: '/springboot/base/rest' },
                         ],
                     },

@@ -2,8 +2,6 @@
 title: "Understanding Auth Systems with Spring Boot"
 ---
 
-
-
 ## Phase 1: Foundation Concepts
 
 ### 1.1 Authentication vs Authorization
